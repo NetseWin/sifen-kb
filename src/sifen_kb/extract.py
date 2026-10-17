@@ -11,7 +11,10 @@ etiquetas). Un solo motor para el texto de página y para las celdas:
 - `pages/pNNN.txt` es el texto de la IR por página ANTES de unir tablas (`verify.ir_page_text`):
   conserva el tachado y los encabezados repetidos, y una celda multilínea queda contigua (con
   `pdftotext -layout` o `extract_text` los renglones de celdas vecinas se intercalan). El texto de
-  toda celda de tables.jsonl está, así, en el texto de su página.
+  una celda de tables.jsonl está, así, en el texto de su página, salvo una excepción estructural:
+  una observación de validación hecha de varias celdas combinadas verticalmente (MT AA01–AD02,
+  NT_016, NT_019 GDI002c) se une con `\n`, y el árbol lee la columna E entre esas celdas; ahí cada
+  renglón está en la página, no la unión (lista exacta en tests/extraction/test_raw_contract.py).
 - La página impresa del MT es el pie "septiembre de 2019 NNN", que queda fuera del árbol: se lee
   con pypdfium2 (solo ese número; no aporta texto).
 - Filas y libro de cambios: `extract_tables` y `extract_ledger`.
