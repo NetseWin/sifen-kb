@@ -1,0 +1,21 @@
+key: val:DE:D208y
+context: DE
+id: D208y
+subject_field: field:DE:D208
+versions:
+  - introduced_by: baseline
+    code: 1321
+    severity: R
+    message: |-
+      [HIP] Colisión de código de fixture (N:M): otra validación con 1321
+    observation: '[HIP] fixture sin formalizar'
+    condition:
+      expr: null
+      level: none
+      gaps: |-
+        [HIP] fixture: la regla no se formaliza
+      interpretation:
+        by: human
+        note: '[HIP] fixture'
+    evidence:
+      - raw:MT_V150@acb2499a93b3:p167:D208y

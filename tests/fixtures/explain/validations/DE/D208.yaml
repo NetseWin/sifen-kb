@@ -1,0 +1,12 @@
+key: val:DE:D208
+context: DE
+id: D208
+subject_field: field:DE:D208
+versions:
+  - introduced_by: baseline
+    code: 1310
+    severity: R
+    message: '[fixture] Tipo de documento de identidad del receptor inválido'
+    observation: '[fixture] Si D201 = 2 y D202 ≠ 4, D208 es obligatorio'
+    evidence:
+      - raw:MT_V150@acb2499a93b3:p166:D208

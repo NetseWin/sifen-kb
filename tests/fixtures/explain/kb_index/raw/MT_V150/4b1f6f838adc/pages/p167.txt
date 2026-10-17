@@ -1,0 +1,4 @@
+[fixture] D208c
+Tipo de documento de identidad del receptor incorrecto
+1321
+Si D011≠13, el total ≥ 60.000.000 no admite Innominado (D208≠5)

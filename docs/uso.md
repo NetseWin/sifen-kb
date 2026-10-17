@@ -134,7 +134,23 @@ Un código fuera de lo curado (modo índice):
 uv run sifen explain 1400              # not_curated: menciones por fecha de producción del documento
 ```
 
-<!-- SALIDA-REAL -->
+Salida real (2026-10-17; `1400` todavía no está curado):
+
+```text
+$ uv run sifen explain 1400
+NOT_CURATED · 1400 (2026-10-17 · prod · eje: procesamiento [supuesto A2])
+  Estado      NOT_CURATED: no curado: vigencia no resuelta; se listan las menciones en raw/ sin inferir la regla
+  Aviso       vigencia no resuelta: una mención posterior puede modificar o eliminar la regla
+  Menciones   3 en raw/, por fecha de producción del documento (la más reciente primero; nunca por número de NT):
+              1. NT_026 rev 5ed252f14427 · p. 1 PDF · producción 2025-06-16 (literal de raw/, sin curar)
+                 «…ción E E020 Grupo de informaciones de Compras Públicas es obligatorio 1400 El grupo de informaciones de Compras Públicas es obligatorio para tip…»
+              2. MT_V150 rev 976cd88c05c3 · p. 148 impresa / 149 PDF · sin fecha de producción
+                 «…2 1399 Campos que componen la Factura Electrónica FE (E010-E099) E020 1400 E025 1449 Campos de informaciones de Compras Públicas (E020-E029) E30…»
+              3. MT_V150 rev 976cd88c05c3 · p. 168 impresa / 169 PDF · sin fecha de producción
+                 «…n E 78 E020 Grupo de informaciones de Compras Públicas es obligatorio 1400 El grupo de informaciones de Compras Públicas es obligatorio para tip…»
+  Fuentes     verificadas el 2026-10-17 (hace 0 días)
+  KB          08cd5f7-dirty · corpus MT_V150 + NT_001–NT_027 + CHECKSUM_MT + NORMA_DECRETO_872_2023 + XSD_DIR + XSD_RAR · curado: nada
+```
 
 Un rechazo con XML (el XML, fuera del repo, no se modifica y sale enmascarado):
 

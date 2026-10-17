@@ -1,0 +1,14 @@
+key: field:DE:F014
+context: DE
+id: F014
+versions:
+  - introduced_by: baseline
+    evidence:
+      - raw:MT_V150@acb2499a93b3:p110:F014
+    group: F1
+    parent: F001
+    xml_name: dTotGralOpe
+    description: '[fixture] Total general de la operación'
+    data_type: N
+    length: 1-15p(0-8)
+    occurrence: 1-1

@@ -1,0 +1,20 @@
+key: val:DE:D777
+context: DE
+id: D777
+versions:
+  - introduced_by: baseline
+    code: 1777
+    severity: R
+    message: '[HIP] Validación de fixture cuyo código cambia'
+    observation: '[HIP] código 1777 en la línea base'
+    evidence:
+      - raw:MT_V150@acb2499a93b3:p170:D777
+  - introduced_by:
+      - NT_024#1
+    based_on: baseline
+    code: 1778
+    severity: R
+    message: '[HIP] Validación de fixture cuyo código cambia'
+    observation: '[HIP] código 1778 desde NT 24'
+    evidence:
+      - raw:NT_024@3c345a4412bc:p3:D777

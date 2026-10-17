@@ -44,7 +44,23 @@ Salida real (se pegará aquí cuando el comando esté completo):
 
 La respuesta nunca es solo "vigente" o "no vigente": incluye el **estado** y los **motivos**, el intervalo derivado, la cita (documento, revisión por hash y página), la historia, los avisos y el **horizonte de fuentes** (la fecha del último chequeo limpio del portal de DNIT). Si lo consultado todavía no está curado, responde `not_curated` con las menciones literales ordenadas por fecha de vigencia, sin inferir la regla:
 
-<!-- SALIDA-REAL -->
+Salida real de hoy sobre este repositorio (2026-10-17; `1321` todavía no está curado, así que responde en modo índice):
+
+```text
+$ uv run sifen explain 1321 --at 2025-01-10
+NOT_CURATED · 1321 (2025-01-10 · prod · eje: procesamiento [supuesto A2])
+  Estado      NOT_CURATED: no curado: vigencia no resuelta; se listan las menciones en raw/ sin inferir la regla
+  Aviso       vigencia no resuelta: una mención posterior puede modificar o eliminar la regla
+  Menciones   3 en raw/, por fecha de producción del documento (la más reciente primero; nunca por número de NT):
+              1. NT_024 rev ccc2d1550e92 · p. 1 PDF · producción 2025-01-01 (literal de raw/, sin curar)
+                 «…eceptor incorrecto para el total general de la operación en guaraníes 1321 Si el Tipo de transacción es distinto a Muestras médicas (D011≠13), E…»
+              2. NT_021 rev 1e716577d874 · p. 1 PDF · producción 2024-01-01 (literal de raw/, sin curar)
+                 «…eceptor incorrecto para el total general de la operación en guaraníes 1321 Si el Tipo de transacción es distinto a Muestras médicas (D011≠13), E…»
+              3. MT_V150 rev 976cd88c05c3 · p. 166 impresa / 167 PDF · sin fecha de producción
+                 «…eceptor incorrecto para el total general de la operación en guaraníes 1321 Si el Tipo de transacción es distinto a Muestras médicas (D011≠13), e…»
+  Fuentes     verificadas el 2026-10-17 (hace 0 días)
+  KB          08cd5f7-dirty · corpus MT_V150 + NT_001–NT_027 + CHECKSUM_MT + NORMA_DECRETO_872_2023 + XSD_DIR + XSD_RAR · curado: nada
+```
 
 La guía completa de la CLI está en [`docs/uso.md`](docs/uso.md).
 

@@ -1,0 +1,192 @@
+{
+  "query": {
+    "term": "1321",
+    "at": "2025-01-10",
+    "env": "prod",
+    "history": false,
+    "xml": null,
+    "response": null,
+    "processed_at": null
+  },
+  "kb": {
+    "revision": null,
+    "documents_curated": [
+      "MT_V150",
+      "NT_021",
+      "NT_024",
+      "NT_901",
+      "NT_902"
+    ],
+    "sources_checked_at": "2027-12-31"
+  },
+  "results": [
+    {
+      "key": "val:DE:D208c",
+      "kind": "validation",
+      "resolution": {
+        "key": "val:DE:D208c",
+        "at": "2025-01-10",
+        "env": "prod",
+        "axis": "processing",
+        "state": "in_force",
+        "reasons": [],
+        "version_index": 2,
+        "interval": [
+          {
+            "date": "2025-01-01",
+            "basis": "stated"
+          },
+          {
+            "date": "2027-04-01",
+            "basis": "stated"
+          }
+        ],
+        "source": "NT_024#1 · NT_024 rev 3c345a4412bc · p. 2 PDF",
+        "history": [
+          {
+            "introduced_by": "baseline",
+            "kind": "content",
+            "start": {
+              "date": null,
+              "basis": "baseline"
+            },
+            "code": "1321",
+            "summary": "línea base · MT_V150 rev acb2499a93b3 · p. 167 PDF"
+          },
+          {
+            "introduced_by": [
+              "NT_021#1"
+            ],
+            "kind": "content",
+            "start": {
+              "date": "2024-01-01",
+              "basis": "stated"
+            },
+            "code": "1321",
+            "summary": "NT_021#1 · NT_021 rev f467981a797d · p. 2 PDF"
+          },
+          {
+            "introduced_by": [
+              "NT_024#1"
+            ],
+            "kind": "content",
+            "start": {
+              "date": "2025-01-01",
+              "basis": "stated"
+            },
+            "code": "1321",
+            "summary": "NT_024#1 · NT_024 rev 3c345a4412bc · p. 2 PDF"
+          },
+          {
+            "introduced_by": [
+              "NT_901#1"
+            ],
+            "kind": "content",
+            "start": {
+              "date": "2027-04-01",
+              "basis": "stated"
+            },
+            "code": "1321",
+            "summary": "NT_901#1 · NT_901 rev 439b24135f19 · p. 2 PDF"
+          },
+          {
+            "introduced_by": [
+              "NT_902#1"
+            ],
+            "kind": "tombstone",
+            "start": {
+              "date": "2027-10-01",
+              "basis": "stated"
+            },
+            "code": "1321",
+            "summary": "NT_902#1 · NT_902 rev 15739cc640f4 · p. 1 PDF"
+          }
+        ],
+        "upcoming": [
+          "NT_901#1 · versión · desde 2027-04-01 (declarada) · ver ISS-0001",
+          "NT_902#1 · eliminación · desde 2027-10-01 (declarada)"
+        ],
+        "pending_effects": [],
+        "open_issues": [
+          "ISS-0002"
+        ],
+        "mentions": [],
+        "warnings": [
+          "gap de la formalización (partial): Sigue el paréntesis formal. La prosa asocia F023 a moneda extranjera y F014 a PYG (D015) (ISS-0002). Que D011 ausente equivalga a ≠ 13 y que D208 ausente no viole son interpretaciones.",
+          "ISS-0001 (temporal, resuelto): [HIP] Prórroga de NT_901 en producción: la revisión 1 (subida 2027-01-18) declaraba 01/03/2027; la revisión 2 (re-subida 2027-02-20) declara 01/04/2027. Test sin cambios (01/02/2027).",
+          "ISS-0002 (ambiguity, no bloqueante): [fixture] La prosa asocia F023 a moneda extranjera y F014 a PYG; la condición formaliza el paréntesis (F023 >= X o F014 >= X)."
+        ],
+        "sources_checked_at": "2027-12-31",
+        "processing_date_source": null
+      },
+      "version": {
+        "introduced_by": [
+          "NT_024#1"
+        ],
+        "based_on": [
+          "NT_021#1"
+        ],
+        "kind": "content",
+        "evidence": [
+          "raw:NT_024@3c345a4412bc:p2:D208c"
+        ],
+        "open_questions": [],
+        "code": "1321",
+        "severity": "R",
+        "message": "Tipo de documento de identidad del receptor incorrecto para el total general de la operación en guaraníes",
+        "observation": "Si el Tipo de transacción es distinto a Muestras médicas (D011≠13), El Tipo de documento de identidad del receptor no puede ser Innominado (D208≠5) cuando el total general de la operación en guaraníes (cuando la moneda es extranjera) o el total general de la operación (cuando la moneda es PYG) es mayor o igual a 7.000.000 (F023 >= 7.000.000 o F014 >= 7.000.000)",
+        "condition": {
+          "expr": "(not exists(D011) or D011 != 13) and exists(D208) and D208 == 5 and ((exists(F023) and F023 >= 7000000) or (exists(F014) and F014 >= 7000000))",
+          "level": "partial",
+          "gaps": "Sigue el paréntesis formal. La prosa asocia F023 a moneda extranjera y F014 a PYG (D015) (ISS-0002). Que D011 ausente equivalga a ≠ 13 y que D208 ausente no viole son interpretaciones.",
+          "interpretation": {
+            "by": "human",
+            "run": null,
+            "note": "[HIP] fixture"
+          }
+        },
+        "legal_basis": [
+          {
+            "citation": "Decreto 872/2023, art. 6, numeral 2, inciso ii)",
+            "stated_in": {
+              "doc": "NT_024",
+              "rev": "3c345a4412bc",
+              "page_pdf": 2,
+              "page_printed": null,
+              "quote": "Decreto 872/2023"
+            }
+          }
+        ]
+      },
+      "related_fields": [
+        {
+          "id": "D208",
+          "key": "field:DE:D208",
+          "xml_name": "iTipIDRec",
+          "xsd": null
+        },
+        {
+          "id": "D011",
+          "key": null,
+          "xml_name": null,
+          "xsd": null
+        },
+        {
+          "id": "F014",
+          "key": null,
+          "xml_name": null,
+          "xsd": null
+        },
+        {
+          "id": "F023",
+          "key": null,
+          "xml_name": null,
+          "xsd": null
+        }
+      ],
+      "xsd": null,
+      "xml": null
+    }
+  ],
+  "warnings": []
+}

@@ -1,0 +1,14 @@
+key: field:DE:D210
+context: DE
+id: D210
+versions:
+  - introduced_by: baseline
+    evidence:
+      - raw:MT_V150@acb2499a93b3:p166:D210
+    group: D3
+    parent: D200
+    xml_name: dNumIDRec
+    description: '[fixture] Número de documento de identidad del receptor'
+    data_type: AN
+    length: 1-20
+    occurrence: 0-1

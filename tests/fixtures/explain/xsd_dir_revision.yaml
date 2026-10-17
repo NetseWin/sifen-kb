@@ -1,0 +1,11 @@
+# Revisión XSD_DIR del manifiesto real (sources.manifest.yaml); los tests de --xml la agregan al
+# manifiesto de una copia de kb_hyp junto con la carpeta sources/XSD_DIR/2026-10-17.
+doc: XSD_DIR
+sha256: cdd1f03f1d29c4e219449fd935578e024b2613b7c731b26eca2df70e43a59ac7
+md5: 236a930dafebaaa45d40d7156b69e575
+size: 4125
+url: https://ekuatia.set.gov.py/sifen/xsd/
+filename: SHA256SUMS
+retrieved_at: 2026-10-17T19:04:34Z
+origin: portal
+path: sources/XSD_DIR/2026-10-17

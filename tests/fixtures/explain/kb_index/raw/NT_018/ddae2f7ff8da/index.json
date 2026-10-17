@@ -1,0 +1,19 @@
+{
+ "doc": "NT_018",
+ "nt_info": {
+  "fecha_literal": "01/12/2023",
+  "numero": 18,
+  "page": 1,
+  "prod_literal": "08/01/2024",
+  "test_literal": "01/12/2023"
+ },
+ "pages": [
+  {
+   "chars": 61,
+   "page_pdf": 1,
+   "page_printed": null,
+   "sha256": "26ed9adc8d84c95194c8e6497f06c087a59bb2605bf87948aaeeec45485eae18"
+  }
+ ],
+ "sha256": "ddae2f7ff8da43acc1515bb3e422d68d3980a89ead98fdbaa6899e0d03464282"
+}

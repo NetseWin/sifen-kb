@@ -1,0 +1,128 @@
+{
+  "query": {
+    "term": "NT_901",
+    "at": "2027-01-20",
+    "env": "prod",
+    "history": false,
+    "xml": null,
+    "response": null,
+    "processed_at": null
+  },
+  "kb": {
+    "revision": null,
+    "documents_curated": [
+      "MT_V150",
+      "NT_021",
+      "NT_024",
+      "NT_901",
+      "NT_902"
+    ],
+    "sources_checked_at": "2027-12-31"
+  },
+  "results": [
+    {
+      "key": "NT_901",
+      "kind": "document",
+      "resolution": null,
+      "version": null,
+      "related_fields": [],
+      "xsd": null,
+      "xml": null,
+      "document": {
+        "id": "NT_901",
+        "curated": true,
+        "title": "Nota Técnica N° 901 [HIP]",
+        "kind": "technical_note",
+        "number": 901,
+        "curation_scope": "pilot",
+        "current_revision": "439b24135f19",
+        "uncurated_revision": null,
+        "revisions": [
+          {
+            "sha12": "a164e57654f7",
+            "sha256": "a164e57654f7c2651bff6058db0a614981e41bae9e86086961fae86c6126a776",
+            "filename": "NT_E_KUATIA_901.pdf",
+            "url": "https://fixture.invalid/kb_hyp/NT_E_KUATIA_901.pdf",
+            "origin": "portal",
+            "portal_t": "2027-01-18T00:00:00",
+            "retrieved_at": "2027-01-18T12:00:00",
+            "note": "[HIP]",
+            "latest": false,
+            "curated": false,
+            "raw": false
+          },
+          {
+            "sha12": "439b24135f19",
+            "sha256": "439b24135f1951d7235268773b9d1f02fd832d590f03a535fda96633751d445b",
+            "filename": "NT_E_KUATIA_901.pdf",
+            "url": "https://fixture.invalid/kb_hyp/NT_E_KUATIA_901.pdf",
+            "origin": "portal",
+            "portal_t": "2027-02-20T00:00:00",
+            "retrieved_at": "2027-02-20T12:00:00",
+            "note": "[HIP] Re-subida: prórroga de producción.",
+            "latest": true,
+            "curated": true,
+            "raw": false
+          }
+        ],
+        "document_date": {
+          "date": "2027-01-15",
+          "literal": "15/01/2027",
+          "stated_in": "raw:NT_901@439b24135f19:p1:fechas#fecha"
+        },
+        "change_period": null,
+        "schedule": {
+          "test": {
+            "date": "2027-02-01",
+            "literal": "01/02/2027",
+            "stated_in": "raw:NT_901@439b24135f19:p1:fechas#test"
+          },
+          "prod": {
+            "date": "2027-04-01",
+            "literal": "01/04/2027",
+            "stated_in": "raw:NT_901@439b24135f19:p1:fechas#prod"
+          }
+        },
+        "superseded_by": null,
+        "effects": [
+          {
+            "id": "NT_901#1",
+            "action": "modify",
+            "target": "val:DE:D208c",
+            "verb_literal": "Se modifica la Observación de la siguiente validación",
+            "declared_scope": [
+              "observation"
+            ],
+            "state": "applied",
+            "versions": [
+              "val:DE:D208c · NT_901#1"
+            ],
+            "starts": {
+              "test": {
+                "date": "2027-02-01",
+                "basis": "stated"
+              },
+              "prod": {
+                "date": "2027-04-01",
+                "basis": "stated"
+              }
+            },
+            "from_revision": null,
+            "note": null
+          }
+        ],
+        "issues": [
+          {
+            "id": "ISS-0001",
+            "kind": "temporal",
+            "status": "resolved",
+            "blocking": false,
+            "statement": "[HIP] Prórroga de NT_901 en producción: la revisión 1 (subida 2027-01-18) declaraba 01/03/2027; la revisión 2 (re-subida 2027-02-20) declara 01/04/2027. Test sin cambios (01/02/2027)."
+          }
+        ],
+        "raw_dates": null
+      }
+    }
+  ],
+  "warnings": []
+}

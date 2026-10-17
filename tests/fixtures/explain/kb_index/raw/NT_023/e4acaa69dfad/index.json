@@ -1,0 +1,19 @@
+{
+ "doc": "NT_023",
+ "nt_info": {
+  "fecha_literal": "27/08/2024",
+  "numero": 23,
+  "page": 1,
+  "prod_literal": "27 de setiembre de 2024",
+  "test_literal": "30 de agosto de 2024"
+ },
+ "pages": [
+  {
+   "chars": 51,
+   "page_pdf": 1,
+   "page_printed": null,
+   "sha256": "4ef49e8dca1f8b6e51b4904329d8827a63c6aea7ec814043ff9844b5b1314b6f"
+  }
+ ],
+ "sha256": "e4acaa69dfad4360564ea9b07e16289efde6cfdaa105f145747b07c9257a68f8"
+}

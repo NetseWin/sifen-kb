@@ -1,0 +1,19 @@
+{
+ "doc": "NT_025",
+ "nt_info": {
+  "fecha_literal": "23/04/2024",
+  "numero": 25,
+  "page": 1,
+  "prod_literal": "28/04/2025",
+  "test_literal": "28/04/2025"
+ },
+ "pages": [
+  {
+   "chars": 57,
+   "page_pdf": 1,
+   "page_printed": null,
+   "sha256": "252d9b98e3d4fb2c21ae7fe9696281701d2902dc736895019945167bf5f94232"
+  }
+ ],
+ "sha256": "8e8a63aa2d86eff0b588789e860fded092252ecf79013467aae9e4b39f81189b"
+}

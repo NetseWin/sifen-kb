@@ -1,0 +1,1 @@
+[fixture] NT 18: corrige el código 1321 (D011≠13; total ≥ 1)

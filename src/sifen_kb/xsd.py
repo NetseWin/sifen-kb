@@ -497,6 +497,11 @@ def _root_of(resource: XMLResource) -> Element:
     return root
 
 
+def read_xml_root(xml_path: str | Path) -> Element:
+    """Raíz de un XML abierto con la lectura segura de este módulo (sin DTD, entidades ni red)."""
+    return _root_of(_open_xml(xml_path))
+
+
 def _first_line(e: BaseException) -> str:
     return (str(e).strip().splitlines() or [type(e).__name__])[0]
 

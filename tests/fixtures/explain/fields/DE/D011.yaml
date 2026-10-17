@@ -1,0 +1,14 @@
+key: field:DE:D011
+context: DE
+id: D011
+versions:
+  - introduced_by: baseline
+    evidence:
+      - raw:MT_V150@acb2499a93b3:p70:D011
+    group: D1.1
+    parent: D010
+    xml_name: iTipTra
+    description: '[fixture] Tipo de transacción'
+    data_type: N
+    length: 1-2
+    occurrence: 0-1

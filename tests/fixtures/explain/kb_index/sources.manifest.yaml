@@ -1,0 +1,62 @@
+revisions:
+  - doc: MT_V150
+    sha256: 4b1f6f838adcb57095d620a15a67920f325689c7ce562c16a42406bbf45a28df
+    md5: 65c8f09d236d4b2f297650bc3639e682
+    size: 1000
+    url: https://fixture.invalid/kb_index/MT_V150.pdf
+    filename: MT_V150.pdf
+    retrieved_at: 2026-10-17T10:00:00
+    origin: portal
+    path: sources/MT_V150/4b1f6f838adc.pdf
+    note: |-
+      [fixture] kb_index: raw/ sintético para el modo índice de explain
+  - doc: NT_018
+    sha256: ddae2f7ff8da43acc1515bb3e422d68d3980a89ead98fdbaa6899e0d03464282
+    md5: 636b29d17f6991e4370011bf5a71fe06
+    size: 1000
+    url: https://fixture.invalid/kb_index/NT_018.pdf
+    filename: NT_018.pdf
+    retrieved_at: 2026-10-17T10:00:00
+    origin: portal
+    path: sources/NT_018/ddae2f7ff8da.pdf
+    note: |-
+      [fixture] kb_index: raw/ sintético para el modo índice de explain
+  - doc: NT_021
+    sha256: 5f4ac2cd349936f8360fc097175a87cbba84f9fd8b1a63c543c9e650a6553297
+    md5: 4f75aa988db0e44ad19d9fbbc2ef938c
+    size: 1000
+    url: https://fixture.invalid/kb_index/NT_021.pdf
+    filename: NT_021.pdf
+    retrieved_at: 2026-10-17T10:00:00
+    origin: portal
+    path: sources/NT_021/5f4ac2cd3499.pdf
+    note: |-
+      [fixture] kb_index: raw/ sintético para el modo índice de explain
+  - doc: NT_023
+    sha256: e4acaa69dfad4360564ea9b07e16289efde6cfdaa105f145747b07c9257a68f8
+    md5: a6a1be5b03d7b42300101a21698d989e
+    size: 1000
+    url: https://fixture.invalid/kb_index/NT_023.pdf
+    filename: NT_023.pdf
+    retrieved_at: 2026-10-17T10:00:00
+    origin: portal
+    path: sources/NT_023/e4acaa69dfad.pdf
+    note: |-
+      [fixture] kb_index: raw/ sintético para el modo índice de explain
+  - doc: NT_025
+    sha256: 8e8a63aa2d86eff0b588789e860fded092252ecf79013467aae9e4b39f81189b
+    md5: f47d5f4899f91949144fd0eb75dabcf2
+    size: 1000
+    url: https://fixture.invalid/kb_index/NT_025.pdf
+    filename: NT_025.pdf
+    retrieved_at: 2026-10-17T10:00:00
+    origin: portal
+    path: sources/NT_025/8e8a63aa2d86.pdf
+    note: |-
+      [fixture] kb_index: raw/ sintético para el modo índice de explain
+checks:
+  - at: 2026-10-17T12:00:00
+    scope:
+      - nt
+      - manual
+    unregistered: []
