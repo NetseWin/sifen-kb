@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rMini xmlns="http://ekuatia.set.gov.py/sifen/xsd" xmlns:sig="urn:sifen-kb:mini-firma">
+  <dVerFor>150</dVerFor>
+  <DE>
+    <dCodSeg>123456789</dCodSeg>
+    <gDatGralOpe>
+      <dFeEmiDE>2025-02-10T09:30:00</dFeEmiDE>
+      <gOpeCom>
+        <iTipTra>1</iTipTra>
+        <cMoneOpe>PYG</cMoneOpe>
+      </gOpeCom>
+      <gDatRec>
+        <iTipIDRec>5</iTipIDRec>
+        <dDTipIDRec>Innominado</dDTipIDRec>
+        <dNumIDRec>0</dNumIDRec>
+        <dNomRec>RECEPTOR DE PRUEBA</dNomRec>
+      </gDatRec>
+    </gDatGralOpe>
+    <gTotSub>
+      <dTotGralOpe>7000000</dTotGralOpe>
+      <dObs>total</dObs>
+    </gTotSub>
+  </DE>
+  <sig:Firma>
+    <sig:Certificado>MIIB-CERTIFICADO-SINTETICO</sig:Certificado>
+  </sig:Firma>
+</rMini>

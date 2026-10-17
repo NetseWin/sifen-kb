@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rDE xmlns="http://ekuatia.set.gov.py/sifen/xsd">
+  <dVerFor>150</dVerFor>
+  <DE Id="01800000005001001000000822025021011234567892">
+    <gOpeDE>
+      <iTipEmi>1</iTipEmi>
+      <dDesTipEmi>Normal</dDesTipEmi>
+      <dCodSeg>123456789</dCodSeg>
+    </gOpeDE>
+    <gTimb>
+      <iTiDE>1</iTiDE>
+    </gTimb>
+    <gDatGralOpe>
+      <dFeEmiDE>2025-02-10T09:30:00</dFeEmiDE>
+      <gOpeCom>
+        <iTipTra>1</iTipTra>
+        <cMoneOpe>PYG</cMoneOpe>
+      </gOpeCom>
+      <gEmis>
+        <dRucEm>80000000</dRucEm>
+        <dDVEmi>5</dDVEmi>
+        <dNomEmi>EMISOR DE PRUEBA S.A.</dNomEmi>
+      </gEmis>
+      <gDatRec>
+        <iNatRec>2</iNatRec>
+        <iTiOpe>2</iTiOpe>
+        <iTipIDRec>1</iTipIDRec>
+        <dDTipIDRec>Cédula paraguaya</dDTipIDRec>
+        <dNumIDRec>4567890</dNumIDRec>
+        <dNomRec>RECEPTOR DE PRUEBA</dNomRec>
+      </gDatRec>
+    </gDatGralOpe>
+    <gTotSub>
+      <dTotGralOpe>5000000</dTotGralOpe>
+    </gTotSub>
+  </DE>
+</rDE>

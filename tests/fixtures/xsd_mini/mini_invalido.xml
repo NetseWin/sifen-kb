@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Errores sembrados: iTipIDRec=7 (patrón [1-6]|9), cMoneOpe=EUR (enumeración), falta dNomRec (obligatorio),
+     dFeEmiDE sin hora (patrón), falta gTotSub/dObs (obligatorio). -->
+<rMini xmlns="http://ekuatia.set.gov.py/sifen/xsd" xmlns:sig="urn:sifen-kb:mini-firma">
+  <dVerFor>150</dVerFor>
+  <DE>
+    <gDatGralOpe>
+      <dFeEmiDE>2025-02-10</dFeEmiDE>
+      <gOpeCom>
+        <iTipTra>1</iTipTra>
+        <cMoneOpe>EUR</cMoneOpe>
+      </gOpeCom>
+      <gDatRec>
+        <iTipIDRec>7</iTipIDRec>
+        <dNumIDRec>0</dNumIDRec>
+      </gDatRec>
+    </gDatGralOpe>
+    <gTotSub>
+      <dTotGralOpe>7000000</dTotGralOpe>
+    </gTotSub>
+  </DE>
+  <sig:Firma>
+    <sig:Certificado>MIIB-CERTIFICADO-SINTETICO</sig:Certificado>
+  </sig:Firma>
+</rMini>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tipos del esquema mínimo de pruebas. Se incluye desde mini_root.xsd por URL HTTPS absoluta, igual
+     que DE_v150.xsd incluye DE_Types_v150.xsd: el uri_mapper de xsd.load_schema debe resolverlo local. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://ekuatia.set.gov.py/sifen/xsd"
+           targetNamespace="http://ekuatia.set.gov.py/sifen/xsd"
+           elementFormDefault="qualified">
+
+    <xs:simpleType name="fecHhmmss">
+        <xs:restriction base="xs:dateTime">
+            <xs:pattern value="\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tiTipTra">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="13"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="cMondT">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="PYG"/>
+            <xs:enumeration value="USD"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tiTipDocRec">
+        <xs:restriction base="xs:integer">
+            <xs:whiteSpace value="collapse"/>
+            <xs:pattern value="[1-6]|9"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tdNumDocId">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9A-Za-z\-]{1,20}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tdNombre">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="4"/>
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tdCodigo">
+        <xs:restriction base="xs:string">
+            <xs:length value="9"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="tMontoBase">
+        <xs:restriction base="xs:decimal">
+            <xs:totalDigits value="23"/>
+            <xs:fractionDigits value="8"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Unión: un miembro enumerado y otro libre (como tdDtipDocRec): no debe reportar facetas -->
+    <xs:simpleType name="tdDtipDoc">
+        <xs:union>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Innominado"/>
+                    <xs:enumeration value="Pasaporte"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:minLength value="9"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:union>
+    </xs:simpleType>
+</xs:schema>

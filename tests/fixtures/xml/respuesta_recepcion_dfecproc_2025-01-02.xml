@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns2:rRetEnviDe xmlns:ns2="http://ekuatia.set.gov.py/sifen/xsd">
+  <ns2:rProtDe>
+    <ns2:Id>01800000005001001000000722024123011234567898</ns2:Id>
+    <ns2:dFecProc>2025-01-02T10:15:30-03:00</ns2:dFecProc>
+    <ns2:dEstRes>Rechazado</ns2:dEstRes>
+    <ns2:gResProc>
+      <ns2:dCodRes>1321</ns2:dCodRes>
+      <ns2:dMsgRes>Tipo de documento de identidad del receptor incorrecto para el total general de la operación en guaraníes</ns2:dMsgRes>
+    </ns2:gResProc>
+  </ns2:rProtDe>
+</ns2:rRetEnviDe>

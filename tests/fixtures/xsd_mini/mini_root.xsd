@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Esquema mínimo que imita la forma de DE_v150.xsd (rDE/DE/gDatGralOpe/gOpeCom/...) para probar xsd.py
+     sin depender de la instantánea oficial. Cubre: include por URL HTTPS, import relativo, ocurrencias,
+     facetas, unión, un nombre repetido bajo dos padres (dObs), choice y secuencia repetida. -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:sig="urn:sifen-kb:mini-firma"
+           xmlns="http://ekuatia.set.gov.py/sifen/xsd"
+           targetNamespace="http://ekuatia.set.gov.py/sifen/xsd"
+           elementFormDefault="qualified">
+
+    <xs:import namespace="urn:sifen-kb:mini-firma" schemaLocation="mini_firma.xsd"/>
+    <xs:include schemaLocation="https://ekuatia.set.gov.py/sifen/xsd/mini_types.xsd"/>
+
+    <xs:complexType name="tgOpeCom">
+        <xs:sequence>
+            <xs:element name="iTipTra" type="tiTipTra" minOccurs="0"/>
+            <xs:element name="cMoneOpe" type="cMondT"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tgDatRec">
+        <xs:sequence>
+            <xs:element name="iTipIDRec" type="tiTipDocRec" minOccurs="0"/>
+            <xs:element name="dDTipIDRec" type="tdDtipDoc" minOccurs="0"/>
+            <xs:element name="dNumIDRec" type="tdNumDocId" minOccurs="0"/>
+            <xs:element name="dNomRec" type="tdNombre"/>
+            <xs:element name="dObs" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tgDatGral">
+        <xs:sequence>
+            <xs:element name="dFeEmiDE" type="fecHhmmss"/>
+            <xs:element name="gOpeCom" type="tgOpeCom" minOccurs="0"/>
+            <xs:element name="gDatRec" type="tgDatRec"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tgTot">
+        <xs:sequence>
+            <xs:element name="dTotGralOpe" type="tMontoBase"/>
+            <xs:element name="dTotalGs" type="tMontoBase" minOccurs="0"/>
+            <xs:element name="dObs" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tgLista">
+        <xs:sequence>
+            <xs:element name="dItem" type="xs:string"/>
+            <xs:element name="dObs" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tgElige">
+        <xs:choice>
+            <xs:element name="dA" type="xs:string"/>
+            <xs:element name="dB" type="xs:string"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="tgRep">
+        <xs:sequence minOccurs="1" maxOccurs="3">
+            <xs:element name="dX" type="xs:string" maxOccurs="2"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="tDE">
+        <xs:sequence>
+            <xs:element name="dCodSeg" type="tdCodigo" minOccurs="0"/>
+            <xs:element name="gDatGralOpe" type="tgDatGral"/>
+            <xs:element name="gTotSub" type="tgTot" minOccurs="0"/>
+            <xs:element name="gLista" type="tgLista" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="gElige" type="tgElige" minOccurs="0"/>
+            <xs:element name="gRep" type="tgRep" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="rMini">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="dVerFor">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:short"/>
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="DE" type="tDE"/>
+                <xs:element ref="sig:Firma"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

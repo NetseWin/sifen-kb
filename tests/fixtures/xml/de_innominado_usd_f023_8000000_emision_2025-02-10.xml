@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rDE xmlns="http://ekuatia.set.gov.py/sifen/xsd">
+  <dVerFor>150</dVerFor>
+  <DE Id="01800000005001001000000422025021011234567892">
+    <gOpeDE>
+      <iTipEmi>1</iTipEmi>
+      <dDesTipEmi>Normal</dDesTipEmi>
+      <dCodSeg>123456789</dCodSeg>
+    </gOpeDE>
+    <gTimb>
+      <iTiDE>1</iTiDE>
+    </gTimb>
+    <gDatGralOpe>
+      <dFeEmiDE>2025-02-10T09:30:00</dFeEmiDE>
+      <gOpeCom>
+        <iTipTra>1</iTipTra>
+        <cMoneOpe>USD</cMoneOpe>
+        <dCondTiCam>1</dCondTiCam>
+        <dTiCam>8000</dTiCam>
+      </gOpeCom>
+      <gEmis>
+        <dRucEm>80000000</dRucEm>
+        <dDVEmi>5</dDVEmi>
+        <dNomEmi>EMISOR DE PRUEBA S.A.</dNomEmi>
+      </gEmis>
+      <gDatRec>
+        <iNatRec>2</iNatRec>
+        <iTiOpe>2</iTiOpe>
+        <iTipIDRec>5</iTipIDRec>
+        <dDTipIDRec>Innominado</dDTipIDRec>
+        <dNumIDRec>0</dNumIDRec>
+        <dNomRec>RECEPTOR DE PRUEBA</dNomRec>
+      </gDatRec>
+    </gDatGralOpe>
+    <gTotSub>
+      <dTotGralOpe>1000</dTotGralOpe>
+      <dTotalGs>8000000</dTotalGs>
+    </gTotSub>
+  </DE>
+</rDE>

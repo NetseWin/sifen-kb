@@ -14,3 +14,6 @@ private/
 *.key
 *.pem
 *.jks
+
+# Índice local de CodeGraph (herramienta del desarrollador)
+.codegraph/
