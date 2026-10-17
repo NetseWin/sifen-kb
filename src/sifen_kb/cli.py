@@ -94,6 +94,11 @@ def build_parser() -> argparse.ArgumentParser:
 
     ck = sub.add_parser("check", help="esquema, formato, integridad, evidencia y cobertura")
     ck.add_argument("--json", action="store_true")
+    ck.add_argument(
+        "--report",
+        action="store_true",
+        help="informe de revisión del PR: por entidad, versión anterior/nueva y diff, fechas, Issues y pasado",
+    )
     ck.set_defaults(func=_lazy("integrity:cmd_check"))
 
     fm = sub.add_parser("fmt", help="formato canónico de kb/ (y manifiesto)")

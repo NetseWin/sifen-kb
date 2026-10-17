@@ -54,6 +54,11 @@ jobs:
       - name: kb/ en formato canónico (sifen fmt --check)
         run: uv run sifen fmt --check
 
+      - name: Evidencia e integridad de kb/ (sifen check)
+        # Literales == celda, fechas == celda del encabezado correcto, cobertura, biyección efecto↔versión,
+        # pasado justificado contra main (por eso fetch-depth 0), etc. (docs/arquitectura.md §K.3, §K.4).
+        run: uv run sifen check
+
       - name: raw/ regenerado == versionado (sifen extract --check)
         run: uv run sifen extract --check
 

@@ -189,6 +189,9 @@ def load_kb(root: Path | None = None) -> KB:
     for p in sorted((kbdir / "issues").glob("*.yaml")):
         iss = _load_one(kb, p, Issue)
         if iss is not None:
+            if iss.id in kb.issues:
+                kb.errors.append(f"{p.relative_to(root)}: issue {iss.id} duplicado")
+                continue
             kb.issues[iss.id] = iss
             kb.paths[iss.id] = p
     return kb
