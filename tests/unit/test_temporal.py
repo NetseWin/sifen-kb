@@ -769,20 +769,25 @@ def test_resolve_not_curated_returns_mentions(tmp_path: Path):
 
 def test_find_mentions_without_ficha_orders_by_extracted_dates(tmp_path: Path):
     """Sin ficha en kb/documents (entregable 0) ordena por los literales `nt_info` de index.json,
-    nunca por número de NT; un literal que no es dd/mm/aaaa cuenta como sin fecha."""
-    revs = [rev(d, sha(d), retrieved=datetime(2026, 1, 1)) for d in ("NT_021", "NT_024", "NT_013", "MT_V150")]
+    nunca por número de NT; las fechas en palabras (NT 013) se entienden y un literal que no es una
+    fecha ("a definir") cuenta como sin fecha."""
+    docs = ("NT_021", "NT_024", "NT_013", "NT_099", "MT_V150")
+    revs = [rev(d, sha(d), retrieved=datetime(2026, 1, 1)) for d in docs]
     kb = make([], [val([ver("baseline")])], extra_revs=revs, root=tmp_path)
     infos = {
         "NT_021": {"fecha_literal": "29/12/2023", "prod_literal": "01/01/2024"},
         "NT_024": {"fecha_literal": "17/12/2024", "prod_literal": "01/01/2025"},
         "NT_013": {"fecha_literal": "20/03/2023", "prod_literal": "17 de Junio del 2023"},
+        "NT_099": {"fecha_literal": "a definir", "prod_literal": "a definir"},
     }
-    for d in ("NT_021", "NT_024", "NT_013", "MT_V150"):
+    for d in docs:
         write_text(page_path(tmp_path, d, sha(d)[:12], 1), "Código 1321\n")
         write_index(tmp_path, d, sha(d)[:12], {"nt_info": infos.get(d), "pages": []})
     ms = find_mentions(kb, ["1321"])
-    assert [m.doc for m in ms] == ["NT_024", "NT_021", "NT_013", "MT_V150"]
-    assert ms[0].prod_date == date(2025, 1, 1) and ms[2].prod_date is None
+    # Sin fecha al final; entre dos sin fecha desempata el DocId (determinismo), no el número.
+    assert [m.doc for m in ms] == ["NT_024", "NT_021", "NT_013", "MT_V150", "NT_099"]
+    assert ms[0].prod_date == date(2025, 1, 1) and ms[2].prod_date == date(2023, 6, 17)
+    assert ms[4].prod_date is None
 
 
 def test_pending_untargeted_mentioning(tmp_path: Path):

@@ -18,6 +18,7 @@ classifiers = [
 dependencies = [
     "pydantic>=2.12",
     "pyyaml>=6.0.3",
+    "tzdata>=2026.5 ; sys_platform == 'win32'",
     "xmlschema>=4.3",
 ]
 

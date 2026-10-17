@@ -150,7 +150,10 @@ class DateStatement(M):
             if self.value != parsed:
                 raise ValueError(f"value {self.value} ≠ parse({self.literal!r}) = {parsed}")
         elif self.value is not None and not _A_DEFINIR.search(self.literal):
-            raise ValueError(f"literal {self.literal!r} no es una fecha dd/mm/aaaa: value debe ser null")
+            raise ValueError(
+                f"literal {self.literal!r} no es una fecha (dd/mm/aaaa, dd-mm-aaaa o «dd de mes de aaaa»): "
+                "value debe ser null"
+            )
         elif _A_DEFINIR.search(self.literal) and self.value is not None:
             raise ValueError("una fecha 'a definir' debe tener value: null")
         return self

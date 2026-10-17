@@ -13,7 +13,23 @@ from datetime import date
 
 _SOFT_HYPHEN = "­"
 _SPACES = re.compile(r"[ \t  -   　]+")
-_DATE = re.compile(r"^\s*(\d{1,2})/(\d{1,2})/(\d{4})\s*$")
+_DATE = re.compile(r"^(\d{1,2})([/-])(\d{1,2})\2(\d{4})$")
+_DATE_WORDS = re.compile(r"^(\d{1,2}) de ([a-záéíóú]+) del? (\d{4})$", re.IGNORECASE)
+_MONTHS: dict[str, int] = {
+    "enero": 1,
+    "febrero": 2,
+    "marzo": 3,
+    "abril": 4,
+    "mayo": 5,
+    "junio": 6,
+    "julio": 7,
+    "agosto": 8,
+    "septiembre": 9,
+    "setiembre": 9,
+    "octubre": 10,
+    "noviembre": 11,
+    "diciembre": 12,
+}
 
 
 def normalize_text(s: str) -> str:
@@ -39,12 +55,23 @@ def normalize_text(s: str) -> str:
 
 
 def parse_date_literal(literal: str) -> date | None:
-    """'01/01/2025' -> date(2025, 1, 1). Devuelve None si el literal no es dd/mm/aaaa."""
-    m = _DATE.match(normalize_text(literal))
-    if not m:
+    """Fecha tal como la escriben las NT -> `date`; None si el literal no es una fecha.
+
+    Formas reales del corpus: '01/01/2025' (NT 019, 021, 024…), '14-10-2019' (NT 001) y en palabras,
+    '30 de agosto de 2024' (NT 023), '17 de Junio del 2023' (NT 013), con «setiembre» o
+    «septiembre». Una fecha imposible (31/02/2024) también da None.
+    """
+    s = normalize_text(literal)
+    if m := _DATE.match(s):
+        d, mo, y = int(m[1]), int(m[3]), int(m[4])
+    elif (m := _DATE_WORDS.match(s)) and m[2].lower() in _MONTHS:
+        d, mo, y = int(m[1]), _MONTHS[m[2].lower()], int(m[3])
+    else:
         return None
-    d, mo, y = (int(g) for g in m.groups())
-    return date(y, mo, d)
+    try:
+        return date(y, mo, d)
+    except ValueError:
+        return None
 
 
 def sha12(sha256_hex: str) -> str:

@@ -1,0 +1,22 @@
+session_id: a067d55b-d757-498d-a601-f946db1a3acc
+started_at: 2026-10-17T19:48:36Z
+base_commit: 4cd6a3845c5dbd55a206025be91c66fa24cc504b
+tool: claude-code
+prompt_path: curation/prompts/curar_entidad.md
+instructions_sha256: afd87e068ca1ceadee98e50efbd092c7840adb9dcdaec016edf3a148c706c16e
+inputs:
+  - path: CLAUDE.md
+    sha256: 5365f27b360317a4cb80defce6021fbe654beef29b003374c9e5916f6de51e2c
+  - path: curation/prompts/curar_entidad.md
+    sha256: 49ec8075a2f76b7c6265a23f0cda7b0b6850e52073a82373288aa7f670db9ece
+outputs:
+  - path: src/sifen_kb/normalize.py
+    sha256: f8c4f151baaf9b21e7d2ebe646b584e171f04db66273d30ac2b0684813696e36
+  - path: src/sifen_kb/model.py
+    sha256: b129c44ef6ad0dbae906da01e696e40a0d60fbe324ea38e750dd1a861a3fd60a
+  - path: tests/unit/test_yamlio_normalize.py
+    sha256: 8c08e2303c1fa2e098137c97a92883ca44b26c9dc2360bee9bfd808a5da40be9
+  - path: tests/unit/test_temporal.py
+    sha256: 9f281decc75d2a36320f3a17b5ebc6c0fb0af0371dc8f9d42620ff1f6bc57b91
+  - path: src/sifen_kb/mentions.py
+    sha256: 8d3a6b799b5a9688075a17239df14f2e1440b3ec2271c57785a97c5eb38c5e97

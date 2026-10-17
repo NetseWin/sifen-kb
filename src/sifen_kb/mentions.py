@@ -122,7 +122,8 @@ def doc_dates(kb: KB, doc_id: str, index: dict[str, Any] | None = None) -> tuple
     """(fecha de producción, fecha del documento) para ORDENAR menciones.
 
     Fuente: la ficha de `kb/documents/`. Sin ficha (entregable 0 o NT recién registrada), los
-    literales `nt_info` que `extract` copió en `index.json`, si son dd/mm/aaaa; nunca el número.
+    literales `nt_info` que `extract` copió en `index.json`, si son una fecha
+    (`normalize.parse_date_literal`); nunca el número.
     """
     doc = kb.documents.get(doc_id)
     if doc is not None:

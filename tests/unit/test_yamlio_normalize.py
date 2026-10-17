@@ -107,3 +107,27 @@ def test_date_literal_parsing():
     assert parse_date_literal(" 1/1/2024 ") == date(2024, 1, 1)
     assert parse_date_literal("a definir") is None
     assert parse_date_literal("2025-01-01") is None
+
+
+@pytest.mark.parametrize(
+    ("literal", "expected"),
+    [  # literales reales de las filas `fechas` de raw/ (NT 001, 013, 018, 020, 022, 023)
+        ("14-10-2019", date(2019, 10, 14)),
+        ("17 de Junio del 2023", date(2023, 6, 17)),
+        ("21 de Septiembre del 2023", date(2023, 9, 21)),
+        ("08 de enero de 2024", date(2024, 1, 8)),
+        ("31 de enero del 2024", date(2024, 1, 31)),
+        ("09 de febrero de 2024", date(2024, 2, 9)),
+        ("27 de setiembre de 2024", date(2024, 9, 27)),
+        ("30 de agosto\nde 2024", date(2024, 8, 30)),
+    ],
+)
+def test_date_literal_words_and_dashes(literal, expected):
+    assert parse_date_literal(literal) == expected
+
+
+@pytest.mark.parametrize(
+    "literal", ["31/02/2024", "14-10/2019", "30 de agostos de 2024", "30 agosto 2024", "13/13/2024"]
+)
+def test_date_literal_rejects_impossible_or_malformed(literal):
+    assert parse_date_literal(literal) is None
