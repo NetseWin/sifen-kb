@@ -1,0 +1,149 @@
+E8.4
+E758
+dNumFir
+Número de registro de la firma del importador
+E750
+A
+20
+0-1
+Obligados por la RG N° 16/2019 – Agroquímicos
+E8.4
+E759
+dNumReg
+Número de registro del producto otorgado por el SENAVE
+E750
+A
+1-20
+0-1
+Obligados por el Art. 1 de la RG N° 106/2021 – Agroquímicos
+E8.4
+E760
+dNumRegEntCom
+Número de registro de entidad comercial otorgado por el SENAVE
+E750
+A
+1-20
+0-1
+Obligados por el Art. 1 de la RG N° 106/2021 – Agroquímicos
+E8.4
+E761
+dNomPro
+Nombre del Producto
+E750
+A
+1-30
+0-1
+Obligados por el Art. 1 de la RG N° 106/2021 – Agroquímicos
+1.5. En el Campos que identifican al transportista (persona física o jurídica) (E980-E999) se modifica el siguiente campo: (Página 101)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E980
+gCamTrans
+Campos que identifican al transportista
+E10.4
+G
+0-1
+Obligatorio si C002 = 7
+No informar si C002 = 4, 5, 6
+Opcional cuando E903=1 y E967=1
+E10.4
+E992
+dDomFisc
+Domicilio fiscal del transportista
+E980
+A
+1-150
+1-1
+Obligatorio por RG N° 41/2014
+E10.4
+E993
+dDirChof
+Dirección del chofer
+E980
+A
+1-255
+1-1
+Obligatorio por por RG N° 41/2014
+1.6. En el Campos que identifican al documento asociado (H001-H049) se elimina la siguiente observación ya que no aplica: (Página 109)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+H
+C1
+H009
+iTipoDocAso
+Tipo de documento impreso
+H001
+N
+1
+0-1
+Obligatorio si H002=2
+No informar si H002 = 1 o 3
+1= Factura
+2= Nota de crédito
+3= Nota de débito
+4= Nota de remisión
+5= Comprobante de retención
+H
+C1
+H010
+dDTipoDocAso
+Descripción del tipo de documento impreso
+H001
+A
+7-16
+0-1
+Obligatorio si existe el campo H009
+1= “Factura”
+2= “Nota de crédito”
+3= “Nota de débito”
+4= “Nota de remisión”
+5= “Comprobante de retención”
+1.7. En el Grupo: Evento Inutilización (Formato del evento de inutilización) Se agrega número de serie al evento de Inutilización: C3 (Página 122)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+GDE
+GEI009
+dSerieNum
+Serie del número del documento
+GEI001
+A
+2
+0-1
+1.8. En el campo XDe del Schema XML 2: siRecepDE_v150.xsd (WS Recepción DE) se modifica el siguiente campo (Página 45)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+ASch03
+xDE
+XML del DE transmitido
+ASch01
+XML
+-
+1-1
+Siguiendo las definiciones del formato del DE

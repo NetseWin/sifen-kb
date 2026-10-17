@@ -1,0 +1,43 @@
+Tabla A – Convenciones Utilizadas en la Tablas de Definición de los Formatos XML
+Título
+Descripción
+i: código integrante de una tabla que se encuentra en la columna “Observaciones”
+d: nombre de un campo común
+g: nombre de un grupo
+r: raíz de XML
+Descripción
+Descripción del campo y su significado
+Nodo Padre
+Referencia al ID del campo de grupo que contiene este campo específico (campo padre)
+Tipo de Dato
+Tipo de dato (ver Tabla B)
+Longitud
+Tamaño del campo (ver Tabla C)
+Ocurrencia
+Ocurrencias, en el formato m-n, en el cual m: número mínimo de veces que el campo debe aparecer en el grupo n: número máximo de veces que el campo puede aparecer en el grupo
+Observaciones
+Observaciones importantes sobre el campo, incluyendo listas de valores posibles, validaciones relevantes entre otras.
+Versión
+Versión que el campo fue introducido en el formato, o versión en la cual ha sido modificado por la última vez
+Los tipos de campos de los archivos XML tienen su contenido descrito en la Tabla B.
+Tabla B – Tipos de Datos en los Archivos XML
+Tipo
+Descripción
+XML
+Documento XML, descripto en un schema contenido en esta ficha técnica
+G
+Grupo de elementos y/o grupos de elementos
+CG
+“Choice Group”, elemento que excluye la ocurrencia de otro Choice Group, con el mismo padre
+CE
+“Choice Element”, elemento que excluye la ocurrencia de otro Choice Element con el mismo padre • Por ejemplo los varios tipos de RUC El tipo de elemento aparece luego al lado • Por ejemplo, “CEA” indica un Choice Element alfanumérico
+A
+Alfanumérico
+N
+Numérico: Vea los diversos formatos en la Tabla C
+F
+Fecha: Los campos de fecha, según corresponda, deberán contener fecha y hora en el formato: AAAA-MM-DDThh:mm:ss o AAAA-MM-DD
+• Por ejemplo, para expresar 2:23 PM de 01 de febrero de 2018: 2018-02-01-14:23:00
+Por ejemplo, para expresar 01 de febrero de 2018: 2018-02-01
+B
+Binario en Base64 para envío de lote

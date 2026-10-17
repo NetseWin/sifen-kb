@@ -1,0 +1,116 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.4
+E752
+dVencMerc
+Fecha de vencimiento de la mercadería
+E750
+F
+10
+0-1
+Formato AAAA-MM-DD
+E8.4
+E753
+dNSerie
+Número de serie
+E750
+A
+1-10
+0-1
+E8.4
+E754
+dNumPedi
+Número de pedido
+E750
+A
+1-20
+0-1
+E8.4
+E755
+dNumSegui
+Número de seguimiento del envío
+E750
+A
+1-20
+0-1
+E8.4
+E756
+dNomImp
+Nombre del Importador
+E750
+A
+4-60
+0-1
+Obligados por la RG N° 16/2019 – Agroquímicos
+E8.4
+E757
+dDirImp
+Dirección de Importador
+E750
+A
+1-255
+0-1
+Obligados por la RG N° 16/2019 – Agroquímicos
+E8.4
+E758
+dNumFir
+Número de registro de la firma del importador
+E750
+A
+20
+0-1
+Obligados por la RG N° 16/2019 – Agroquímicos
+E8.4
+E759
+dNumReg
+Número de registro del producto otorgado por el SENAVE
+E750
+A
+20
+0-1
+Obligados por la RG N° 16/2019 y la RG N° 24/2019 – Agroquímicos
+E8.4
+E760
+dNumRegEntCom
+Número de registro de entidad comercial otorgado por el SENAVE
+E750
+A
+20
+0-1
+Obligados por la RG N° 24/2019 – Agroquímicos
+E8.5. Sector de automotores nuevos y usados (E770-E789)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.5
+E770
+gVehNuevo
+Grupo de detalle de vehículos nuevos
+E700
+G
+0-1
+E8.5
+E771
+iTipOpVN
+Tipo de operación de venta de vehículos
+E770
+N
+1
+0-1
+1= Venta a representante
+2= Venta al consumidor final
+3= Venta a gobierno
+4= Venta a flota de vehículos

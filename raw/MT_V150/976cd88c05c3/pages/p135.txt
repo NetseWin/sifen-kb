@@ -1,0 +1,67 @@
+11.6.1. REGLAS DE VALIDACIÓN PARA CANCELACIÓN
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+1
+GDE005
+La versión no corresponde
+4000
+Versión del formato del evento (GDE005) no corresponde a la versión vigente
+R
+2
+GEC002
+CDC inválido
+4001
+Debe validar que el CDC (GEC002) cuente con los 44 caracteres según las reglas de estructuración del CDC (longitud, orden de los campos del CDC, formato de la fecha invalida y/o dígito verificador)
+R
+3
+GEC002a
+CDC no existente en el SIFEN
+4002
+El identificador del CDC (GEC002) no se encuentra aprobado como DTE SIFEN
+R
+4
+GEC002b
+CDC ya se encuentra con el mismo evento solicitado
+4003
+El DTE (GEC002) ya se encuentra con un evento que se está requiriendo nuevamente (Duplicidad)
+R
+5
+GEC002c
+CDC ya se ha confirmado por el receptor
+4004
+Cuando el último evento del receptor sobre un CDC (GEC002) es una confirmación parcial o total, no se permite realizar la cancelación por parte del emisor
+R
+7
+GDE008
+Firmador no autorizado para realizar evento
+4006
+El RUC del certificado utilizado para firmar los eventos sobre DE y DTE, no corresponde al emisor/electrónico
+R
+8
+GDE008a
+Firma Digital inválida por certificado digital revocado
+4007
+El certificado digital que se utilizó para firmar el evento está revocado en la fecha de firma digital (GDE004)
+R
+9
+GDE004
+Fecha de firma digital del evento inválida
+4008
+La fecha y hora de firma digital del evento no puede ser posterior a la Fecha y hora de aprobación en el SIFEN
+R
+6
+GDE004a
+Plazo de solicitud de cancelación de una FE extemporáneo
+4009
+Cuando el tipo de documento es Factura electrónica (GEC002 inicia en 01), la fecha y hora de firma digital del evento (GDE004) de cancelación no puede superar al plazo límite de 48 hs contadas desde la fecha y hora de aprobación en el SIFEN
+R
+7
+GDE004b
+Plazo de solicitud de cancelación distinto a una FE es extemporáneo
+4010
+Cuando el tipo de documento es Autofactura electrónica o Nota de crédito o Nota de débito o Nota de remisión (GEC002 inicia en 04 o 05 o 06 o 07), la fecha y hora de firma digital del evento (GDE004) de cancelación no puede superar al plazo límite de 168 hs contadas desde la fecha y hora de aprobación en el SIFEN
+R

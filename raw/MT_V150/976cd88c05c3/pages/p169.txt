@@ -1,0 +1,63 @@
+E1. Campos que componen la Factura Electrónica FE (E010-E099)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+75
+E010
+Grupo de campos que componen la FE es obligatorio para tipo de documento electrónico seleccionado
+1350
+Si el tipo de documento electrónico informado es FE (C002=1), el grupo de campos que componen la FE (E010) es obligatorio
+R
+76
+E010a
+Grupo de campos que componen la FE no requerido
+1351
+Si el tipo de documento electrónico informado es distinto a FE (C002≠1), el grupo de campos que componen la FE (E010) no debe ser informado
+R
+77
+E012
+Descripción del indicador de presencia no corresponde al código
+1352
+La descripción del indicador de presencia no coincidente con lo informado en el campo E011
+R
+E1.1. Grupo de informaciones de Compras Públicas (E020-E029)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+78
+E020
+Grupo de informaciones de Compras Públicas es obligatorio
+1400
+El grupo de informaciones de Compras Públicas es obligatorio para tipo de operación B2G (D202=3)
+R
+79
+E020a
+Grupo de informaciones de Compras Públicas no requerido para el tipo de operación
+1401
+El grupo de informaciones de Compras Públicas solo es permitido para tipo de operación B2G (D202=3)
+R
+80
+E025
+Fecha de emisión del código de contratación inválida
+1402
+La fecha de emisión del código de contratación (E025) no puede ser superior a la fecha de emisión (D202) de la Factura Electrónica
+R
+E4. Campos que componen la Autofactura Electrónica AFE (E300-E399)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+81
+E300
+Para el tipo de documento electrónico seleccionado, es obligatorio informar el grupo de campos que componen la AFE
+2550
+Si el tipo de documento electrónico informado es AFE (C002 = 4), el grupo de campos que componen la AFE (E300) es obligatorio.
+R

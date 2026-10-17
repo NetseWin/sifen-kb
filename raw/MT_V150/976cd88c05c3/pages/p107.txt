@@ -1,0 +1,85 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+F
+F019
+dBaseGrav10
+Total base gravada al 10%
+F001
+N
+1-15p(0-8)
+0-1
+Suma de todas las ocurrencias de E735 (base gravada del IVA por ítem) cuando la operación sea a la tasa del 10% (E734=10).
+No debe existir el campo si D013 ≠ 1 o D013≠5
+F
+F020
+dTBasGraIVA
+Total de la base gravada de IVA
+F001
+N
+1-15p(0-8)
+0-1
+Corresponde al cálculo aritmético
+F018+F019
+No debe existir el campo si D013 ≠ 1 o D013≠5
+F
+F023
+dTotalGs
+Total general de la operación en Guaraníes
+F001
+N
+1-15p(0-8)
+0-1
+Si D015 ≠ PYG y D017 = 1, corresponde al cálculo aritmético:
+F014 * D018
+Si D015 ≠ PYG y D017 = 2, corresponde a la suma de todas las ocurrencias de EA009
+Este campo no debe existir si D015=PYG
+No informar si D015 = PYG
+Cuando C002=4 corresponde a F014
+F
+F024
+dTotCom
+Total + comisión
+F001
+N
+1-15p(0-8)
+0-1
+G. Campos complementarios comerciales de uso general (G001-G049)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+G
+G001
+gCamGen
+Campos de uso general
+A001
+G
+0-1
+G
+G002
+dOrdCompra
+Número de orden de compra
+G001
+A
+1-15
+0-1
+G
+G003
+dOrdVta
+Número de orden de venta
+G001
+A
+1-15
+0-1

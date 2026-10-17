@@ -1,0 +1,11 @@
+SESCUCENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° gra
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-6-
+12. Documento Tributario Electrónico (DTE): Es el Documento Electrónico aprobado por parte del SIFEN. Se entenderá de manera genérica, en el contexto del SIFEN, como Documentos Tributarios Electrónicos (DTE), los comprobantes de venta, documentos complementarios, comprobantes electrónicos, nota de remisión y otros documentos aprobados por la DNIT para su emisión por medios electrónicos.
+13. Documentación Técnica: Es el manual técnico junto con las notas técnicas del SIFEN que cuenta con un control de versión y código de integridad, y comprende los requisitos procedimentales y tecnológicos que debe cumplir el contribuyente como facturador electrónico. 14. Evento: Es toda ocurrencia o suceso registrado en el SIFEN por parte del Emisor, Receptor o la DNIT y a todo registro automático que se encuentre en él, que modifique, asigne una marca, vincule información, o afecte el estado de un Documento Electrónico o Documento Tributario Electrónico. Un evento puede generarse de manera previa o posterior a la aprobación del Documento Electrónico, dependiendo de su naturaleza.
+15. Exportación: Es la salida definitiva del país de bienes nacionales o nacionalizados en el marco de una operación comercial con personas o entidades con domicilio en el exterior, para el uso o consumo fuera del territorio nacional de dichos bienes.
+16. Facturador Electrónico: Contribuyente habilitado por la DNIT para emitir y recibir Documentos Tributarios Electrónicos.
+17. Firma Electrónica Cualificada: Una firma electrónica que se crea mediante un dispositivo cualificado de creación de firmas electrónicas y que se basa en un certificado cualificado de firma electrónica, la cual deberá estar vinculada al firmante de manera única, permitir la identificación del firmante, haber sido creada utilizando datos de creación de la firma electrónica cualificada que el firmante puede utilizar, con un

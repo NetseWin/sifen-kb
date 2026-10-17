@@ -1,0 +1,12 @@
+SESICENTENARIO DE LA EPOPEYA NACIONAL 1864- 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° (cid:9)
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-13-
+Art. 10.- Boleta Resimple Electrónica. Es el documento electrónico emitido por el contribuyente del IRE que liquida el impuesto por el régimen simplificado para pequeñas empresas (RESIMPLE), para acreditar la venta de bienes o la prestación de servicios que no sean de carácter personal, siempre que cumpla con los requisitos establecidos en la reglamentación del citado impuesto. Al momento de la emisión de este documento electrónico se deberá considerar las condiciones establecidas en los numerales 1 y 2 del artículo 6° del presente Decreto.
+Art. 11.- Boleta Electrónica de Entrada a Espectáculo Público. Es el documento electrónico emitido en operaciones con consumidores finales, el cual no podrá ser utilizado para respaldar el IVA Crédito. Sin embargo, podrá utilizarse para respaldar costos o gastos con efectos fiscales de acuerdo con las disposiciones que regulan en cada caso los impuestos vigentes en el país.
+Al momento de la emisión de este documento electrónico se deberá considerar las condiciones establecidas en los numerales 1 y 2 del artículo 6° del presente Decreto.
+SECCIÓN II
+DOCUMENTOS COMPLEMENTARIOS ELECTRÓNICOS Art. 12.- Nota de Crédito Electrónica. Es el documento electrónico emitido como comprobante de la realización de devolución de bienes en la enajenación, descuento o ajuste en el precio o bonificación otorgada, así como para documentar un crédito considerado incobrable, debiendo esta, estar asociada a una Factura Electrónica mediante la información de su Código de Control (CDC).
+La Nota de Crédito Electrónica deberá ser emitida exclusivamente por el enajenante y solamente tendrá validez en relación con una Factura Electrónica determinada, en el que se encuentre identificado el adquirente del bien o

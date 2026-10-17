@@ -1,0 +1,70 @@
+9.8.2. Descripción del procesamiento
+Tabla L – Resultados de Procesamiento del WS Consulta Masiva de RUC
+Condición
+Mensaje generado
+Devuelve el archivo
+0520=Archivo encontrado
+No se encontró el archivo generado en el día
+0521=Archivo no encontrado
+Se ha superado el límite de descargas del día (máximo una descarga diaria)
+0522=Ha sobrepasado el límite de descargas para el archivo solicitado
+El RUC del certificado no coincide con el RUC de consulta
+0523=RUC del certificado utilizado para firmar no coincide con el RUC de consulta
+9.8.3. Flujo de proceso de web service de consulta masiva de RUC
+9.8.4. Protocolo de respuesta del web service
+El Response que consumirá este servicio estará construido en XML, según el Schema expuesto a continuación: Schema XML 22: WS_ConsultaArchivoRuc.xsd
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+FSch01
+rEnviConsArchivoRUCResponse
+Raíz
+-
+G
+-
+1-1
+Elemento raíz
+FSch02
+dFecProc
+Fecha y hora del procesamiento de la petición
+FSch01
+D
+1-15
+1-1
+Fecha de proceso de la petición. Formato AAAA-MM-DDTHH:MI:SS
+FSch03
+dFecArchivo
+Fecha del archivo
+FSch01
+D
+-
+0-1
+Fecha de generación del archivo. Formato AAAA-MM-DD
+FSch04
+dCodRes
+Código de resultado de la consulta
+FSch01
+A
+1-4
+1-1
+Definido en el tópico correspondiente del capítulo 12 MT
+FSch05
+dMsgRes
+Mensaje de resultado de la consulta
+FSch01
+A
+1-255
+1-1
+Definido en el tópico correspondiente del capítulo 12 MT
+FSch06
+rConsDte
+Archivo de RUC comprimido
+FSch01
+B
+0-1
+Campo comprimido en formato Base64.

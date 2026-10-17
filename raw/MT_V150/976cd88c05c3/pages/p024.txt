@@ -1,0 +1,9 @@
+6. Modelo Operativo
+6.1. Descriptores del modelo operativo de SIFEN
+6.1.1. Archivo electrónico
+El SIFEN define el archivo electrónico basado en el lenguaje XML como la representación electrónica de una factura o los documentos establecidos en el capítulo 5 del presente MT. Del mismo modo, el archivo electrónico en el contexto de la Ley 4.017/2010 tiene naturaleza de mensaje de datos y como tal, si contiene una firma digital válida tiene admisibilidad y fuerza probatoria.
+6.1.2. Aprobación del DTE
+Para efectos de que el receptor, de un DE firmado digitalmente por un facturador electrónico, pueda asegurar que el mismo tiene validez, el modelo operativo de SIFEN ha definido que este documento debe ser objeto de unas validaciones (de conexión, técnicas, y de negocio) sobre el formato electrónico de cada uno de los DE transmitidos, cuya aprobación de uso tendrá efectos tributarios sobre los contribuyentes involucrados en la operación comercial al establecer su ingreso o no al SIFEN.
+En un archivo XML estructurado conforme el Schema XML 4: ProtProcesDE_v150.xsd (protocolo de procesamiento del DE), existen campos que definen que ha superado satisfactoriamente las validaciones definidas para el efecto en el presente MT y, por tanto, ha sido aprobado como DTE. Ver gráfica Nº 04.
+Gráfica Nº 04: Secuencia de acciones tecnológicas SIFEN
+La obtención del resultado satisfactorio de las validaciones y en consecuencia la naturaleza de DTE (Aprobación) no implican que la SET, como Administración Tributaria, pueda establecer la veracidad de la operación comercial documentada en el DTE, en consecuencia, no limita ni excluye las facultades de fiscalización de esta.

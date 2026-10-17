@@ -1,0 +1,30 @@
+CASOS
+PLAZOS
+OBSERVACION
+cumpla con una de las siguientes condiciones: • Que la diferencia entre la fecha y hora de emisión (anterior) y la fecha y hora de transmisión al SIFEN no sea superior a 120 horas (5 días). • Que la diferencia entre la fecha y hora de emisión (posterior) y la fecha y hora de transmisión al SIFEN no sea superior a 120 horas (5 días)
+Transmisión extemporánea de los DE
+Según situación de extemporaneidad
+Se considera como transmisión extemporánea de los DE al envío de aquellos documentos que se encuentren en situación contraria a la Transmisión normal de los DE, a los cuales se les aplicará las sanciones que correspondan
+Rechazo de los DE por transmisión extemporánea
+720 horas (30 días)
+Se considera situación de rechazo de los DE por transmisión extemporánea en las siguientes situaciones:
+* Cuando la diferencia entre la fecha de transmisión y la fecha de emisión del DE, sea mayor a 720 horas (30 días)
+*Cuando la diferencia entre la fecha de emisión y la fecha de transmisión del DE sea mayor a 120 horas (5 días)
+Trámite administrativo para normalizar DE rechazados por extemporaneidad
+Mayor a 720 horas (30 días)
+En caso de rechazo de los DE por transmisión extemporánea y para efectos de obtener su normalización (aprobación extemporánea) en el SIFEN, los facturadores electrónicos, deberán iniciar un trámite administrativo sin perjuicio de la aplicación de las sanciones que correspondan
+Evento de cancelación de una FE
+Hasta 48 horas (2 días)
+Para efectos del registro del evento de cancelación, necesariamente el DTE debe existir en el SIFEN.
+El cómputo del plazo será contado a partir de la aprobación del DE por parte de la SET (fecha y hora SIFEN)
+Eventos de cancelación de DTE distintos a FE
+Hasta 168 horas
+(7 días)
+Para efectos del registro del evento de cancelación, necesariamente el DTE (distinto a FE) debe existir en el SIFEN.
+El cómputo del plazo será contado a partir de la aprobación del DE por parte de la SET (fecha y hora SIFEN)
+Inutilización de la numeración de un DE
+Hasta 360 horas (15 días)
+Plazo que empieza a correr a partir del siguiente mes del consumo de la numeración del timbrado
+Eventos del Receptor: Notificación de Recepción DE/DTE, Conformidad, Disconformidad, Desconocimiento DE/DTE
+Hasta 1080 horas (45 días)
+El plazo se computa desde la fecha de emisión del DE/DTE

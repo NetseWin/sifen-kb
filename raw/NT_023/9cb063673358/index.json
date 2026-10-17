@@ -1,0 +1,55 @@
+{
+ "anomalies": [],
+ "doc": "NT_023",
+ "extractor": {
+  "engine": "tagged/pdfplumber-0.11.10",
+  "name": "sifen_kb.extract",
+  "origin": {
+   "commit": "8603b5bd572fb0a1563e216d3ec658fb5666e678",
+   "project": "pdf_to_md"
+  },
+  "page_printed_engine": "pypdfium2-5.14.0",
+  "version": "0.1.0"
+ },
+ "fixes": [],
+ "nt_info": {
+  "fecha_literal": "27/08/2024",
+  "numero": 23,
+  "page": 1,
+  "prod_literal": "27 de setiembre de 2024",
+  "test_literal": "30 de agosto de 2024"
+ },
+ "pages": [
+  {
+   "chars": 1332,
+   "page_pdf": 1,
+   "page_printed": null,
+   "sha256": "39d8fda6300c0315f9dc0e70329548815063ee9a9c899cf828a7f47453239cc6"
+  },
+  {
+   "chars": 2172,
+   "page_pdf": 2,
+   "page_printed": null,
+   "sha256": "7a0ab6c67b2272a9bffaaa084a327768e39cc1693e17d609c02d3dcc9ad04da8"
+  },
+  {
+   "chars": 1805,
+   "page_pdf": 3,
+   "page_printed": null,
+   "sha256": "efd1d8d118a8c933ef149afcf92031b86ee59c0cb714c02d19c83fa79cff7940"
+  },
+  {
+   "chars": 637,
+   "page_pdf": 4,
+   "page_printed": null,
+   "sha256": "2a2ea6b713329a47e80311ad30b7c7736510ef32d38cfe49131aa64891990887"
+  }
+ ],
+ "sha256": "9cb063673358891eb867674c5f8f7a10487512b86c5ae5fc4d0ce438a95c0b03",
+ "tables": {
+  "dates": 1,
+  "fields": 6,
+  "validations": 9
+ },
+ "tagged": true
+}

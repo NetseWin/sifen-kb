@@ -1,0 +1,72 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+11
+GET011
+Número de casa del local de la entrega requerido para el motivo Cambio del local de la entrega
+4310
+Cuando el motivo del evento es Cambio del local de la entrega (GET003=1), es obligatorio informar el número de casa del local de la entrega (GET011)
+R
+12
+GET013
+Nombre y apellido del chofer requerido para el motivo Cambio del chofer
+4311
+Cuando el motivo del evento es Cambio del chofer (GET003=2), es obligatorio informar el nombre y apellido del chofer (GET013)
+R
+13
+GET014
+Número de documento de identidad del chofer requerido para el motivo Cambio del chofer
+4312
+Cuando el motivo del evento es Cambio del chofer (GET003=2), es obligatorio informar el número de documento de identidad del chofer (GET014)
+R
+14
+GET015
+Naturaleza del transportista requerida para el motivo Cambio del transportista
+4313
+Cuando el motivo del evento es Cambio del transportista (GET003=3), es obligatorio informar la naturaleza del transportista (GET015)
+R
+15
+GET016
+RUC del transportista no informado
+4314
+Se requiere informar el número de RUC si la naturaleza del transportista es igual a contribuyente (GET015 = 1)
+R
+16
+GET016a
+RUC del transportista inexistente
+4315
+El RUC del transportista informado no existe en la base de datos de Marangatu
+R
+17
+GET016b
+El RUC del transportista se encuentra inactivo
+4316
+El RUC del transportista debe contar con un estado distinto a CANCELADO, CANCELADO DEFINITIVO o SUSPENSIÓN TEMPORAL en Marangatu al momento de la emisión del DE
+R
+18
+GET016c
+RUC del transportista no requerido
+4317
+Si la naturaleza del transportista es distinta a contribuyente (GET015 ≠ 1) el RUC del transportista (GET016) no debe ser informado
+R
+19
+GET017
+Dígito Verificador del RUC del transportista incorrecto
+4318
+El Dígito Verificador ingresado (GET017) no corresponde al módulo 11 del RUC (GET016)
+R
+20
+GET018
+Nombre o razón social del transportista es requerido para el motivo del evento
+4319
+Cuando el motivo del evento es cambio del transportista (GET003=3), es obligatorio informar el nombre o razón social del transportista (GET018)
+R
+21
+GET019
+Tipo de documento de identidad del transportista no informado
+4320
+Se requiere informar el tipo de documento de identidad si la naturaleza del transportista es igual a NO contribuyente (GET015 =2)
+R

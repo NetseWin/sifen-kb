@@ -1,0 +1,58 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GDE
+GET027
+dMarVeh
+Marca del vehículo
+GET001
+A
+1-10
+0-1
+Obligatorio si GET003=4
+GDE
+GET028
+dTipIdenVeh
+Tipo de identificación del vehículo
+GET001
+N
+1
+0-1
+Obligatorio si GET003=4
+1=Número de identificación del vehículo
+2=Número de matrícula del vehículo
+GDE
+GET029
+dNroIDVeh
+Número de identificación del vehículo
+GET001
+A
+1-20
+0-1
+Debe informarse cuando el GET028=1
+GDE
+GET030
+dNroMatVeh
+Número de matrícula del vehículo
+GET001
+A
+6
+0-1
+Debe informarse cuando el GET028=2
+11.6. REGLAS DE VALIDACIÓN DE GESTIÓN DE EVENTOS
+REFERENCIA ESTADO DE VALIDACIÓN
+CÓDIGO
+DESCRIPCIÓN
+A
+APROBADO
+AO
+APROBADO CON OBSERVACIÓN
+R
+RECHAZADO
+Los resultados de rechazo y notificación se detallan en los correspondientes códigos y mensajes de respuesta descriptos en cada Servicio Web. Las validaciones de firma digital se realizan conforme a lo establecido en las siguientes secciones: Validación del certificado de firma y Validación de la firma digital.

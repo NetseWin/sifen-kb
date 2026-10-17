@@ -1,0 +1,115 @@
+12.1.2. Códigos de respuestas de las validaciones de los DE
+Inicio ID
+Inicio código de respuesta
+Fin ID
+Fin código de respuesta
+Tipo de Regla de Validación
+Grupo de campos
+A002
+1000
+A004b
+1049
+Campos firmados del Documento Electrónico
+(A001-A099)
+B002
+1050
+B003
+1099
+Campos inherentes a la operación comercial de los Documentos Electrónicos
+(B001 -B099)
+C003
+1100
+C009
+1149
+Campos de datos del Timbrado
+(C001 - C099)
+D002
+1150
+D002e
+1199
+Campos generales del Documento Electrónico
+(D001 – D299)
+D010
+1200
+D020
+1249
+Campos inherentes a la operación comercial
+(D010-D099)
+D101
+1250
+D116
+1299
+Campos que identifican al emisor del Documento Electrónico
+(D100 -D129)
+D130
+1261
+D132
+1262
+Campos que describen la actividad económica del emisor
+(D130 -D139)
+D201
+1300
+D224
+1349
+Datos que identifican al receptor del Documento Electrónico DE
+(D200 - D299)
+E010
+1350
+E012
+1399
+Campos que componen la Factura Electrónica FE
+(E010-E099)
+E020
+1400
+E025
+1449
+Campos de informaciones de Compras Públicas
+(E020-E029)
+E300
+2550
+E322
+2561
+Campos que componen la Autofactura Electrónica AFE
+(E300-E399)
+E400
+1450
+E402
+1499
+Campos que componen la Nota Crédito/Débito Electrónica NCE - NDE
+(E400-E499)
+E500
+2600
+E506
+2650
+Campos que componen la Nota de Remisión Electrónica
+(E500-E599)
+E600
+1500
+E602
+1549
+Campos que describen la condición de la operación
+(E600–E699)
+E605
+1550
+E611a
+1599
+Campos que describan la forma de pago de la operación al contado o del monto de la entrega inicial
+(E605-E619)
+E620
+1600
+E624
+1649
+Campos que describen el pago de la operación con tarjeta de crédito/débito
+(E620-E629
+E630
+1650
+E630a
+1699
+Campos que describen el pago o entrega inicial de la operación en cheque
+(E630- E639)
+E640
+1700
+E644a
+1749
+Campos que describen la operación a crédito
+(E640-E649)

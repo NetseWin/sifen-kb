@@ -1,0 +1,2 @@
+3. ALCANCE
+Este documento tiene como alcance definir el conjunto de requisitos, condiciones y procedimientos tecnológicos que deben cumplir los contribuyentes de IVA que se adhieran de manera voluntaria, o aquellos que hayan sido seleccionados por la SET para ser facturadores electrónicos, en el Sistema Integrado de Facturación Electrónica Nacional (SIFEN) del Paraguay.

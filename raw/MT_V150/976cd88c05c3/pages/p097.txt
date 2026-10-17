@@ -1,0 +1,113 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E9.5
+E825
+dContrato
+Número de contrato
+E820
+A
+1-30
+0-1
+E9.5
+E826
+dSalAnt
+Saldo anterior
+E820
+N
+1-15p(0-4)
+0-1
+Monto del saldo anterior
+E10. Campos que describen el transporte de las mercaderías (E900-E999)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E10
+E900
+gTransp
+Campos que describen el transporte de mercaderías
+E001
+G
+0-1
+Obligatorio si C002 = 7
+Opcional si C002 = 1
+No informar si C002= 4, 5, 6
+E10
+E901
+iTipTrans
+Tipo de transporte
+E900
+N
+1
+0-1
+Obligatorio si C002 = 7
+1= Propio
+2= Tercero
+E10
+E902
+dDesTipTrans
+Descripción del tipo de transporte
+E900
+A
+6-7
+0-1
+Obligatorio si existe el campo E901
+E10
+E903
+iModTrans
+Modalidad del transporte
+E900
+N
+1
+1-1
+1=Terrestre
+2= Fluvial
+3= Aéreo
+4= Multimodal
+E10
+E904
+dDesModTrans
+Descripción de la modalidad del transporte
+E900
+A
+5-10
+1-1
+Referente al campo E903
+1= “Terrestre”
+2= “Fluvial”
+3= “Aéreo”
+4= “Multimodal”
+E10
+E905
+iRespFlete
+Responsable del costo del flete
+E900
+N
+1
+1-1
+1= Emisor de la Factura Electrónica
+2= Receptor de la Factura Electrónica
+3= Tercero
+4= Agente intermediario del transporte (cuando intervenga)
+5= Transporte propio
+E10
+E906
+cCondNeg
+Condición de la negociación
+E900
+A
+3
+0-1
+Según Tabla 10 - Incoterms

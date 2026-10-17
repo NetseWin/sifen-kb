@@ -1,0 +1,49 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+11
+GEN009a
+Tipo de documento de identidad del receptor no se debe informar
+4110
+Cuando el Tipo de documento de identidad del receptor Contribuyente (GEN005=1) no se debe informar el tipo de documento de identidad del receptor (GEN009a)
+R
+12
+GEN010
+Número de documento de identidad requerido
+4111
+Es obligatorio informar Número de documento de identidad cuando el tipo de receptor es No contribuyente (GEN005=2)
+R
+13
+GEN010a
+Número de documento de identidad no se debe informar
+4112
+Cuando el Tipo de documento de identidad del receptor Contribuyente (GEN005=1) no se debe informar el documento de identidad del receptor (GEN010)
+R
+11.6.4. REGLAS DE VALIDACIÓN PARA EL EVENTO CONFORMIDAD
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+14
+GCO001
+Incongruencia en el registro de eventos del receptor (hay un evento previo de desconocimiento)
+4156
+No se puede realizar una conformidad de DE/DTE luego de un evento de desconocimiento
+R
+15
+GCO002
+CDC del DTE ya cuenta con dos eventos de la misma naturaleza
+4150
+Sobre el CDC de un DE/DTE se puede realizar hasta dos eventos de conformidad (conformidad parcial luego una conformidad total, en ese orden)
+R
+16
+GCO002b
+CDC del DTE inválido
+4151
+La estructura del CDC informado no corresponde (longitud y/o dígito verificador)
+R

@@ -1,0 +1,75 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+38
+D105
+Nombre o razón social del emisor del DE inválido
+1263
+Se debe utilizar el siguiente texto para el ambiente de pruebas: "DE generado en ambiente de prueba - sin valor comercial ni fiscal".
+No se debe utilizar el texto "DE generado en ambiente de prueba - sin valor comercial ni fiscal" para el ambiente de producción.
+R
+39
+D111
+El Departamento, el Distrito y la Ciudad de emisión no están relacionados
+1255
+Debe haber relación entre el departamento (D111), el distrito (D113) y la ciudad (D115)
+R
+40
+D112
+Descripción del departamento de emisión no corresponde al código
+1254
+Descripción del departamento de emisión no coincidente con lo informado en el campo D111
+R
+44
+D114
+Es obligatorio indicar la descripción del código de distrito de emisión
+1256
+Si se informa el código del distrito de emisión (D113), es obligatorio informar la descripción del mismo (D114)
+R
+41
+D114a
+Descripción del distrito de emisión no corresponde al código
+1257
+Descripción del distrito de emisión no coincidente con lo informado en el campo D113
+R
+43
+D115
+La ciudad de emisión no corresponde al departamento seleccionado
+1258
+El código de la ciudad de emisión (D115) debe corresponder al departamento seleccionado (D111)
+R
+44
+D115a
+La ciudad de emisión no corresponde al distrito seleccionado
+1259
+El código de la ciudad de emisión (D115) debe corresponder al distrito seleccionado (D113)
+No se aplica esta regla si no ha sido informado el distrito
+R
+42
+D116
+Descripción de la ciudad de emisión no corresponde al código
+1260
+Descripción de la ciudad de emisión no coincidente con lo informado en el campo D115
+R
+D2.1 Campos que describen la actividad económica del emisor (D130-D139)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+43
+D131
+Código de actividad económica incorrecto
+1261
+La actividad económica seleccionada no corresponde a lo declarado en el RUC
+R
+44
+D132
+Descripción de la actividad económica no corresponde al código
+1262
+Descripción de la actividad económica no coincidente con lo informado en el campo D120
+R

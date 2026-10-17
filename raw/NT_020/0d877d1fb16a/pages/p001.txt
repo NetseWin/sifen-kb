@@ -1,0 +1,55 @@
+NOTA TÉCNICA N° 20
+Fecha: 17/11/2023
+Fecha puesta a disposición para el Ambiente de Test
+15 de diciembre de 2023
+Fecha puesta a disposición para el Ambiente de Producción
+31 de enero del 2024
+Referencia: Nuevas validaciones incluidas en el MT versión 150 para operaciones realizadas con Entidades del Gobierno.
+1. Formato de Campos XML
+1.1. Se agrega el campo dCodConDncp dentro del grupo E9.5. Grupo de datos adicionales de uso comercial (E820-E829)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+E9.5
+E827
+dCodConDncp
+Código de contratación de la DNCP
+E820
+A
+1-30
+0-1
+Código de contratación proveído por la DNCP
+2. Validaciones
+2.1. En el grupo de datos que identifican al receptor del Documento Electrónico DE (D200 - D299) se modifica la siguiente validación.
+(Página 165)
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+D202b
+El tipo de operación no compatible para un Organismo o Entidad del Estado
+1332
+Si el RUC del receptor (D206) corresponde a un Organismo o Entidad del Estado (OEE), el tipo de operación debe ser B2G (D202=3)
+R
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Norma Rojas
+25/08/2023
+Elaboración del Documento,
+Se agrega un nuevo campo y validación
+Norma Rojas
+08/09/2023
+Carlos Mendoza
+08/09/2023
+Ajuste del código del mensaje de validación

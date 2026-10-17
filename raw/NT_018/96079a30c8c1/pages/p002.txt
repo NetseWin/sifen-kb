@@ -1,0 +1,99 @@
+4. Validaciones actualizadas
+11.6.7. REGLAS DE VALIDACIÓN PARA EL EVENTO POR ACTUALIZACIÓN DE DATOS: DATOS DEL TRANSPORTE
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+26
+GET022
+Tipo de transporte requerido para el motivo Cambio de vehículo
+4325
+Cuando el motivo del evento es cambio de vehículo (GET003=4), es obligatorio informar el tipo de transporte (GET022)
+R
+27
+GET023
+Descripción del tipo de transporte es requerida
+4326
+Cuando se informa el código de tipo de transporte (GET022), es obligatorio informar la descripción del tipo de transporte (GET023)
+R
+28
+GET023a
+Descripción del tipo de transporte no corresponde al código
+4327
+Descripción del tipo de transporte no coincidente con lo informado en el campo GET022
+R
+29
+GET024
+Modalidad del transporte requerido para el motivo Cambio de vehículo
+4328
+Cuando el motivo del evento es cambio de vehículo (GET003=4), es obligatorio informar la modalidad del transporte (GET024)
+R
+30
+GET025
+Descripción de la modalidad del transporte es requerida
+4329
+Cuando se informa el código de la modalidad del transporte (GET024), es obligatorio informar la descripción de la modalidad del transporte (GET025)
+R
+31
+GET025a
+Descripción de la modalidad del transporte no corresponde al código
+4330
+Descripción de la modalidad del transporte no coincidente con lo informado en el campo GET024
+R
+32
+GET026
+Tipo de vehículo requerido para el motivo Cambio de vehículo
+4331
+Cuando el motivo del evento es cambio de vehículo (GET003=4), es obligatorio informar el tipo de vehículo (GET026)
+R
+33
+GET027
+Marca del vehículo requerida para el motivo Cambio de vehículo
+4332
+Cuando el motivo del evento es cambio de vehículo (GET003=4), es obligatorio informar la marca del vehículo (GET027)
+R
+34
+GET028
+Tipo de identificación del vehículo requerido para el motivo Cambio de vehículo
+4333
+Cuando el motivo del evento es cambio de vehículo (GET003=4), es obligatorio informar el tipo de identificación del vehículo (GET028)
+R
+35
+GET029
+Tipo de identificación del vehículo no informado
+4334
+Se requiere el número de identificación del vehículo cuando el tipo de identificación del vehículo es 1 (GET028=1)
+R
+36
+GET030
+Número de matrícula del vehículo no informado
+4335
+Se requiere número de matrícula del vehículo cuando el tipo de identificación del vehículo es 2 (GET028=2)
+R
+5. Validación nueva
+11.6.7. REGLAS DE VALIDACIÓN PARA EL EVENTO POR ACTUALIZACIÓN DE DATOS: DATOS DEL TRANSPORTE
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+37
+GET002
+CDC no existente en el SIFEN
+4336
+El identificador del CDC (GET002) no se encuentra aprobado como DTE en el SIFEN
+R
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Patricia Rolón
+31/10/2023
+Carlos Mendoza
+31/10/2023
+Elaboración del Documento.

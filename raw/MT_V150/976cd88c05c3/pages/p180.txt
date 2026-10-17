@@ -1,0 +1,74 @@
+E10. Campos que describen el transporte de las mercaderías (E900-E999)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+168
+E900
+Grupo de los campos que describen el transporte de las mercaderías es obligatorio
+2100
+Si el tipo de documento electrónico seleccionado es igual Nota de Remisión Electrónica (C002=7), es obligatorio informar el grupo de campos que describen el transporte de las mercaderías
+R
+169
+E900a
+Grupo de los campos que describen el transporte de las mercaderías no es permitido para el tipo de DE seleccionado
+2101
+El grupo de los campos que describen el transporte de las mercaderías no es permitido para Autofactura Electrónica, Nota de Crédito Electrónica, Nota de Débito Electrónica o Comprobante de Retención Electrónico (C002=4, 5, 6 o 8)
+R
+170
+E901
+Tipo de transporte no informado
+2102
+Es obligatorio informar el tipo de transporte (E901) para operaciones con Nota de Remisión Electrónica (C002 = 7)
+R
+171
+E902
+Descripción del tipo de transporte no corresponde al código
+2103
+Descripción del tipo de transporte (E902) no coincidente con lo informado en el campo E901
+R
+172
+E904
+Descripción de la modalidad de transporte no corresponde al código
+2104
+Descripción de la modalidad de transporte (E904) no corresponde a lo informado en el campo E903
+R
+173
+E909
+Fecha estimada de inicio de traslado no informada
+2107
+Es obligatorio informar la fecha estimada de inicio de traslado (E909) para el tipo de documento electrónico seleccionado
+(C002=7)
+R
+174
+E909a
+Fecha estimada de inicio de traslado es antigua
+2108
+Si se informa la fecha estimada de inicio de traslado (E909), ésta debe ser posterior a fecha en producción de SIFEN
+R
+175
+E910
+Fecha estimada de fin de traslado no informada
+2109
+Es obligatorio informar la fecha estimada de fin de traslado (E910) para el tipo de documento electrónico seleccionado (C002= 7)
+R
+176
+E910a
+Fecha estimada de fin de traslado es inválida
+2110
+Si se informa la fecha estimada de fin de traslado (E910), ésta debe ser igual o mayor a la fecha estimada de inicio de traslado (E908)
+R
+186
+E912
+Descripción del país de destino no informada
+2112
+Si se informa el código de país de destino (E911), es obligatorio indicar la descripción del país de destino (E912)
+R
+177
+E912a
+Descripción del país de destino no corresponde al código
+2113
+Descripción del país de destino (E912) no coincidente con lo informado en el campo E911
+R

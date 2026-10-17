@@ -1,0 +1,92 @@
+NOTA TÉCNICA N° 18
+Fecha: 17/11/2023
+Fecha puesta a disposición para el Ambiente de Test
+01 de diciembre de 2023
+Fecha puesta a disposición para el Ambiente de Producción
+08 de enero de 2024
+Referencia:
+● Nuevos campos y validaciones para la imputación automática de las ventas al módulo RG90.
+● Correcciones en el MT versión 150 referente a los códigos de mensajes que corresponden a la regla de validación para el evento de transporte.
+1. Campos nuevos
+1.1. Para el grupo campos inherentes a la operación comercial (D010-D099) se agrega el siguiente subgrupo y sus campos: (Páginas 66,67)
+D1.1. Campos que identifican las obligaciones afectadas (D030-D040)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Long.
+Ocu.
+Observaciones
+D1.1
+D030
+gOblAfe
+Grupo de campos que identifican las obligaciones afectadas
+D010
+G
+-
+0-11
+Detalle del tipo de obligaciones afectadas
+D1.1
+D031
+cOblAfe
+Código de la obligación afectada
+D030
+N
+3
+1-1
+Según Tabla 12 – Tipo de obligaciones.
+D1.1
+D032
+dDesOblAfe
+Descripción de la obligación afectada
+D030
+A
+21-65
+1-1
+Referente al campo D031.
+2. Validaciones nuevas
+2.1. Validaciones que identifican las obligaciones afectadas (D030-D040): (Páginas 162,163)
+D1.1. Campos que identifican las obligaciones afectadas (D030-D040)
+ID
+Mensaje de la validación
+Código
+Observación
+E
+D031
+Código de la obligación afectada inexistente
+1220
+Debe ser un código según la tabla 12 - Tipo de obligaciones.
+R
+D032
+Descripción de la obligación afectada no corresponde al código informado
+1221
+Descripción de la obligación afectada no coincidente con lo informado en el campo D031.
+R
+3. Tabla nueva
+TABLA 12 - TIPO DE OBLIGACIONES
+CÓDIGO
+DESCRIPCIÓN
+113
+IMPUESTO A LA RENTA IRACIS - REGÍMENES ESPECIALES
+143
+TRIBUTO UNICO MAQUILA
+211
+IMPUESTO AL VALOR AGREGADO - GRAVADAS Y EXONERADAS - EXPORTADORES
+311
+IMPUESTO SELECTIVO AL CONSUMO - GENERAL
+321
+IMPUESTO SELECTIVO AL CONSUMO COMBUSTIBLES
+700
+IMPUESTO A LA RENTA EMPRESARIAL - RÉGIMEN GENERAL
+701
+IMPUESTO A LA RENTA EMPRESARIAL - SIMPLE
+703
+IMPUESTO DE ZONA FRANCA
+702
+IMPUESTO A LA RENTA EMPRESARIAL - RESIMPLE
+715
+IMPUESTO A LA RENTA PERSONAL - SERVICIOS PERSONALES
+716
+IMPUESTO A LA RENTA PERSONAL - RENTAS Y GANANCIAS DE CAPITAL

@@ -1,0 +1,66 @@
+12.1.3. Códigos de respuestas de las validaciones de los eventos
+Inicio ID
+Inicio código de respuesta
+Fin ID
+Fin código de respuesta
+Tipo de Regla de Validación
+Apartado
+GEC002
+GDE004
+4000
+GEC002c
+GDE008a
+4049
+Registro del evento cancelación de factura
+GEI002
+4050
+GEI006a
+4099
+Registro del evento Inutilización
+GEN001
+4100
+GEN010a
+4113
+Registro del evento de Notificación – Recepción DE/DTE
+GCO001
+4150
+GCO004
+4156
+Registro del evento de Conformidad
+GDI001
+4200
+GDI002e
+4205
+Registro del evento de Disconformidad
+GED002b
+4250
+GED10a
+4262
+Registro del evento de Desconocimiento
+GET004
+4300
+GET030
+4323
+Reglas de validación para el evento por actualización de datos: datos del transporte
+12.2. Codificación de respuestas de los Servicios WEB del SIFEN
+Los códigos de respuesta devueltos por los WS están conformados de la siguiente forma:
+Campo ID en las tablas de reglas de validación identifica a un código de validación de dos letras, conforme la secuencia AA, AB, AC,...las cuales a su vez corresponden a un tipo de validación específico.
+También existen validaciones genéricas aplicadas a más de un documento electrónico, así como a un WS o a todos los documentos o WS.
+12.2.1. Validaciones del certificado de transmisión. Protocolo TLS
+ID
+Resultado de validación
+Código
+Observación
+E
+AA01
+Certificado de Transmisor Inválido
+0001
+Certificado de Transmisor inexistente en el mensaje
+R
+Versión incorrecta
+No se aceptan certificados de la AC
+ExtendKeyUsage no define “ClientAuth“
+AA02
+Plazo de validez del Certificado digital
+0002
+R

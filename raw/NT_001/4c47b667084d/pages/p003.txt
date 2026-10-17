@@ -1,0 +1,44 @@
+2- Se agregan las siguientes validaciones:
+ID
+Mensaje de validación
+Código
+Observación
+E
+EA004a
+Descuento global sobre el precio unitario por ítem no informado
+1860
+Si el campo de porcentaje de descuento global sobre total de la operación (F010) tiene un valor mayor a 0 (cero), es obligatorio indicar el descuento global sobre el precio unitario por ítem
+R
+F033
+Cálculo del total descuento global por ítem incorrecto
+2383
+Error en el cálculo del total descuento global por ítem Cálculo debe ser igual la suma de todas las ocurrencias de EA004 multiplicado por la cantidad EA004*E711
+R
+F034
+Cálculo del total anticipo por ítem incorrecto
+2384
+Error en el cálculo del total anticipo por ítem Cálculo debe ser igual la suma de todas las ocurrencias de EA006 multiplicado por la cantidad EA006*E711
+R
+F035
+Cálculo del total anticipo global por ítem incorrecto
+2387
+Error en el cálculo del total anticipo por ítem Cálculo debe ser igual la suma de todas las ocurrencias de EA007 multiplicado por la cantidad EA007*E711
+R
+F012
+Cálculo del total anticipos de la operación incorrecto
+2388
+Error en el cálculo del total anticipos de la operación Es la sumatoria de F034 y F035
+R
+Histórico del Documento
+Autor
+Fecha de
+Elaboración
+Revisor
+Fecha Revisión
+Principales
+Alteraciones
+Mabel Peña
+14/10/2019
+Carlos Mendoza
+14/10/2019
+Creación

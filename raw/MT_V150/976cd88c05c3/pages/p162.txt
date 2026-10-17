@@ -1,0 +1,37 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+16
+C007
+Número de documento ha sido inutilizado anteriormente
+1109
+El número de documento que pertenece al número de Timbrado, establecimiento y punto de expedición, se encuentra inutilizado
+R
+17
+C008
+Fecha de inicio de vigencia del timbrado incorrecta
+1107
+Fecha de inicio de vigencia del timbrado no corresponde a la fecha de inicio de vigencia del timbrado autorizado para el contribuyente
+R
+18
+C009
+Fecha fin de vigencia del timbrado incorrecta
+1108
+Fecha fin de vigencia del timbrado no corresponde al timbrado autorizado para el contribuyente
+R
+18
+C010
+Serie informada incorrecta
+1110
+Se debe respetar la secuencialidad en el uso de la serie.
+Ej: AA, AB, AC… AZ…. ZA, …., ZZ), la primera serie a utilizar es la serie AA.
+Los siguientes casos no son permitidos:
+(*) Primera serie distinta a AA
+(*) Serie no es vecina: la serie informada no es vecina a la mayor serie informada al SIFEN (serie actual)
+(*) Serie inmediatamente anterior: DE con serie anterior a la mayor serie enviada al SIFEN, cuya fecha y hora de firma digital es posterior a la fecha de inicio de vigencia de la serie actual en el sistema.
+(*) Serie inmediatamente posterior: DE con serie posterior a la mayor serie enviada al SIFEN, cuya fecha y hora de firma digital es anterior a la fecha de inicio de vigencia de la serie actual en el sistema.
+Referirse a la sección Manejo del timbrado y Numeración para mayor información
+R

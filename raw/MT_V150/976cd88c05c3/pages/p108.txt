@@ -1,0 +1,98 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+G
+G004
+dAsiento
+Número de asiento contable
+G001
+A
+1-10
+0-1
+G1. Campos generales de la carga (G050 - G099)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+G1
+G050
+gCamCarg
+Campos generales de la carga
+G001
+G
+0-1
+Opcional cuando C002=1 o C002=7
+No informar para C002 ≠ 1 y C002≠7
+G1
+G051
+cUniMedTotVol
+Unidad de medida del total de volumen de la mercadería
+G050
+N
+1-5
+0-1
+Según Tabla 5 – Unidad de Medida
+Si D202 = 3 utilizar los datos del WS del link de la DNCP
+Utilizar el atributo “ID”
+G1
+G052
+dDesUniMedTotVol
+Descripción de la unidad de medida del total de volumen de la mercadería
+G050
+A
+1-10
+0-1
+Referente al campo F027
+Utilizar el atributo “Código”
+Ejemplo: UNI
+G1
+G053
+dTotVolMerc
+Total volumen de la mercadería
+G050
+N
+1-20
+0-1
+Corresponde al volumen total de ítems que se han informado
+G1
+G054
+cUniMedTotPes
+Unidad de medida del peso total de la mercadería
+G050
+N
+1-5
+0-1
+Según Tabla 5 – Unidad de Medida
+Si D202 = 3 utilizar los datos del WS del link de la DNCP
+Utilizar el atributo “ID”
+G1
+G055
+dDesUniMedTotPes
+Descripción de la unidad de medida del peso total de la mercadería
+G050
+A
+1-10
+0-1
+Referente al campo F030
+Utilizar el atributo “Código”
+Ejemplo: UNI
+G1
+G056
+dTotPesMerc
+Total peso de la mercadería
+G050
+N
+1-20
+0-1
+Corresponde al peso total de ítems que se han informado

@@ -1,0 +1,96 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+224
+F015
+Si se informan operaciones gravadas al 5%, es obligatorio reportar la liquidación del IVA de dichas operaciones
+2366
+Liquidación del IVA a la tasa del 5% no informada.
+Si se informa la liquidación del IVA por ítem (E736) y E734=5, el campo F015 debe existir
+R
+225
+F015a
+Cálculo de la liquidación del IVA a la tasa del 5% incorrecto
+2367
+Error en el cálculo de la liquidación del IVA a la tasa del 5%.
+Calculo debe ser igual a la suma de todas las ocurrencias de E736 cuando E734=5
+R
+226
+F016
+Si se informan operaciones gravadas al 10%, es obligatorio reportar la liquidación del IVA de dichas operaciones
+2368
+Liquidación del IVA a la tasa del 10% no informada.
+Si se informa la liquidación del IVA por ítem (E736) y E734=10, el campo F016 debe existir
+R
+227
+F016a
+Cálculo de la liquidación del IVA a la tasa del 10% incorrecto
+2369
+Error en el cálculo de la liquidación del IVA a la tasa del 10%.
+Calculo debe ser igual a la suma de todas las ocurrencias de E736 cuando E734=10
+R
+228
+F017
+Es obligatorio informar la liquidación total del IVA
+2370
+Liquidación total del IVA no informada.
+Si existe campo F015 y/o F016 es obligatorio informar F017
+R
+229
+F017a
+Cálculo de la liquidación total del IVA incorrecto
+2371
+Error en el cálculo de la liquidación total del IVA
+Calculo debe ser igual a la suma F015+F016
+R
+230
+F018
+Si se informan operaciones gravadas al 5%, es obligatorio reportar el total de la base gravada de dichas operaciones
+2372
+Total base gravada al 5% no informado
+Si se informa la base gravada del IVA por ítem (E735) y E734=5, el campo F018 debe existir
+R
+231
+F018a
+Cálculo total base gravada al 5% incorrecto
+2373
+Error en el cálculo del total base gravada al 5%
+Calculo debe ser igual a la suma de todas las ocurrencias de E735 cuando E734=5
+R
+232
+F019
+Si se informan operaciones gravadas al 10%, es obligatorio reportar el total de la base gravada de dichas operaciones
+2374
+Total base gravada al 10% no informado
+Si se informa la base gravada del IVA por ítem (E735) y E734=10, el campo F019 debe existir
+R
+233
+F019a
+Cálculo total base gravada al 10% incorrecto
+2375
+Error en el cálculo del total base gravada al 10%
+Calculo debe ser igual a la suma de todas las ocurrencias de E735 cuando E734=10
+R
+234
+F020
+Es obligatorio informar el total de la base gravada de IVA
+2376
+Total de la base gravada del IVA no informada.
+Si existe campo F018 y/o F019 es obligatorio informar F020
+R
+235
+F020a
+Cálculo del total de la base gravada del IVA incorrecto
+2377
+Error en el cálculo del total de la base gravada del IVA
+Calculo debe ser igual a la suma F018+F019
+R
+236
+F023
+Si se informan operaciones con moneda extranjera, es obligatorio reportar el total general de la operación en guaraníes
+2382
+Si moneda de la operación es diferente de guaraníes (D015≠PYG) es obligatorio informar total general de la operación en guaraníes (F023)
+R

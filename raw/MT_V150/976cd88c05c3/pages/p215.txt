@@ -1,0 +1,25 @@
+16. GLOSARIO TÉCNICO
+Término
+Significado
+Administración Tributaria (AT)
+Subsecretaría de Estado de Tributación (SET)
+Archivo Electrónico de Factura
+Archivo electrónico (XML) con los datos de una factura. No ha sido aún firmado digitalmente.
+B2B
+Business to Business, acrónimo comúnmente utilizado para describir las operaciones entre empresas.
+B2C
+Business to Consumer, acrónimo comúnmente utilizado para describir las operaciones entre una empresa a un consumidor final.
+B2G
+Business to Government, acrónimo comúnmente utilizado para describir las operaciones entre una empresa y una entidad de gobierno.
+B2F
+Business to Foreign, acrónimo del tipo de operación para describir los servicios prestados por una empresa nacional a una empresa o persona física del exterior.
+Certificado Digital
+Es todo mensaje de datos u otro registro emitido por una entidad legalmente habilitada para el efecto y que confirma la vinculación entre el titular de una firma digital y los datos de creación de la misma.
+Código de Control del DTE (CDC)
+Número de 44 dígitos generado dentro del sistema del emisor el cual permite identificar de manera inequívoca a un DTE, evitando duplicidad en el envío de documentos a la SET.
+Código QR
+Un código QR (del inglés Quick Response Code, Código de respuesta rápida) es un módulo para almacenar información en una matriz de puntos o en un código de barras bidimensional.
+Documento Electrónico (DE)
+Es el documento emitido y firmado digitalmente por un emisor electrónico que aún no ha sido aprobado para su uso por parte de la Administración Tributaria, y en consecuencia no ha ingresado al SIFEN. Es un documento que, de acuerdo a la ley comercial, registra una operación.
+Documento Tributario Electrónico (DTE)
+Es el documento electrónico con aprobación de uso por parte de la Administración Tributaria, e ingresado al SIFEN.

@@ -1,0 +1,80 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+27
+D016
+Descripción de la moneda de la operación no corresponde al código
+1206
+Descripción de la moneda de la operación no coincidente con lo informado en el campo D015
+R
+28
+D017
+Condición del tipo de cambio no informada
+1207
+Si la moneda de la operación es distinta a PYG (D015≠PYG), es obligatorio informar la condición del tipo de cambio (D017)
+R
+29
+D017a
+Condición del tipo de cambio no requerida
+1208
+Si la moneda de la operación es igual a PYG (D015=PYG), la condición del tipo de cambio (D017) no debe ser informada
+R
+30
+D018
+Tipo de cambio de la operación no informado
+1209
+Si la condición del tipo de cambio es global (D017=1), es obligatorio informar el tipo de cambio de la operación (D018)
+R
+31
+D018a
+Tipo de cambio de la operación no requerido
+1210
+Si la condición del tipo de cambio es por ítem (D017=2) o la moneda de la operación es PYG (D015=PYG), el tipo de
+cambio de la operación (D018) no debe ser informado
+R
+32
+D020
+Descripción de la condición del anticipo no corresponde al código
+1211
+Descripción del tipo de la condición del anticipo no coincidente con lo informado en el campo D019
+R
+D2. Datos que identifican al emisor del Documento Electrónico (D100 -D129)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+33
+D101
+RUC del emisor inexistente
+1250
+El RUC informado no existe en la base de datos
+R
+34
+D101a
+RUC del Emisor inhabilitado para facturación electrónica
+1251
+RUC no se encuentra habilitado para facturación electrónica en Marangatu
+R
+35
+D101b
+El RUC del emisor se encuentra inactivo
+1252
+El RUC del contribuyente debe contar con un estado distinto a CANCELADO, CANCELADO DEFINITIVO o SUSPENSIÓN TEMPORAL en Marangatu al momento de la emisión del DE
+R
+36
+D101c
+RUC del emisor no está habilitado para utilizar este tipo de servicio
+1264
+RUC del emisor no está habilitado para utilizar el servicio síncrono
+R
+37
+D102
+Dígito Verificador del RUC del emisor incorrecto
+1253
+El Dígito Verificador ingresado no corresponde al módulo 11 del RUC
+R

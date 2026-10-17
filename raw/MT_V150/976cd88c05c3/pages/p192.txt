@@ -1,0 +1,62 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+274
+H016
+Número de constancia no informado
+2430
+Si el tipo de documento asociado seleccionado es igual a Constancia electrónica (H002=3) y el tipo de constancia es Constancia de no ser contribuyente (H014=2), es obligatorio informar el número de constancia
+R
+275
+H016a
+Número de constancia no requerido para el tipo de documento asociado
+2431
+Si el tipo de documento asociado es electrónico o impreso (H002=1 o H002=2), no se debe informar el número de constancia
+R
+276
+H017
+Número de control de la constancia no informado
+2432
+Si el tipo de documento asociado seleccionado es igual a Constancia electrónica (H002=3) y el tipo de constancia es Constancia de no ser contribuyente (H014=2), es obligatorio informar el número de control de la constancia
+R
+277
+H017a
+Número de control de la constancia no requerido para el tipo de documento asociado
+2433
+Si el tipo de documento asociado es electrónico o impreso (H002=1 o H002=2), no se debe informar el número de control de la constancia
+R
+I. Información de la Firma Digital del DTE (I001-I049)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+278
+I002
+Certificado digital no vigente al momento de firma del DE
+2450
+El certificado digital (I002) debe estar vigente (no revocado) al momento de la firma digital (A004)
+R
+J. Campos fuera de la Firma Digital (J001-J049)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+279
+J002
+Cadena de caracteres correspondiente al código QR no es coincidente con el archivo XML
+2500
+Las informaciones de la cadena de caracteres correspondiente al código QR (J002) no son coincidentes con las informaciones de los respectivos campos del archivo XML
+R
+280
+J002a
+El hash del código QR incluido el de la cadena de caracteres es inválido
+2501
+El hash del código QR incluido en la cadena de caracteres correspondiente al código QR impreso no corresponde al cálculo obtenido del hash con la cadena informada y el CSC existente en la base de datos de SIFEN
+R

@@ -1,0 +1,101 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D1
+D014
+dDesTImp
+Descripción del tipo de impuesto afectado
+D010
+A
+3-11
+1-1
+1= “IVA”
+2= “ISC”
+3= “Renta”
+4= “Ninguno”
+5= “IVA – Renta”
+D1
+D015
+cMoneOpe
+Moneda de la operación
+D010
+A
+3
+1-1
+Según tabla de códigos para monedas de acuerdo con la norma ISO 4217
+Se requiere la misma moneda para todos los ítems del DE
+D1
+D016
+dDesMoneOpe
+Descripción de la moneda de la operación
+D010
+A
+3-20
+1-1
+Referente al campo D015
+D1
+D017
+dCondTiCam
+Condición del tipo de cambio
+D010
+N
+1
+0-1
+Obligatorio si D015 ≠ PYG
+No informar si D015 = PYG
+1= Global (un solo tipo de cambio para todo el DE)
+2= Por ítem (tipo de cambio distinto por ítem)
+D1
+D018
+dTiCam
+Tipo de cambio de la operación
+D010
+N
+1-5p(0-4)
+0-1
+Obligatorio si D017 = 1
+No informar si D017 = 2
+No informar si D015=PYG
+D1
+D019
+iCondAnt
+Condición del Anticipo
+D010
+N
+1
+0-1
+1= Anticipo Global (un solo tipo de anticipo para todo el DE)
+2= Anticipo por ítem (corresponde a la distribución de Anticipos facturados por ítem)
+D1
+D020
+dDesCondAnt
+Descripción de la condición del Anticipo
+D010
+A
+15-17
+0-1
+1= “Anticipo Global”
+2= “Anticipo por Ítem”
+D2. Campos que identifican al emisor del Documento Electrónico DE (D100-D129)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D2
+D100
+gEmis
+Grupo de campos que identifican al emisor
+D001
+G
+1-1

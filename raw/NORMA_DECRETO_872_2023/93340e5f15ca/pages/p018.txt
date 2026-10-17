@@ -1,0 +1,15 @@
+SES(ZJICENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+N° 21'2
+DECRETO
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-18-
+mercaderías, debiendo su KuDE, en formato físico o digital, acompañar a la mercadería en tránsito durante todo el trayecto.
+En caso de presentarse inconvenientes técnicos que impidan la trasmisión de la Nota de Remisión Electrónica previo al traslado, esta deberá ser transmitida al SIFEN en el plazo máximo previsto en el artículo 27 del presente Decreto.
+La Nota de Remisión Electrónica no sustituye a los documentos requeridos por otras instituciones públicas diferentes a la DNIT para el traslado de productos, bienes o mercaderías que por su naturaleza requieran contar con documentación especial.
+Art. 21.- Excepciones. - No será necesaria la emisión de la Nota de Remisión Electrónica en los siguientes casos:
+1. Cuando la factura electrónica contenga todos los datos requeridos para la Nota de Remisión Electrónica.
+2. En el caso de transporte de bienes por parte del comprador, siempre que se trate de consumidor final y porte el respectivo Comprobante de Venta.
+3. En el caso de entregas a domicilio de alimentos y medicamentos destinados a consumidores finales, cuando el comprobante de venta indique el nombre y dirección del adquirente y la fecha en la que se realiza el transporte y la entrega correspondiente.
+Art. 22.- Otros Documentos Electrónicos. La DNIT reglamentará los requisitos de uso, oportunidad de implementación, forma y sistema de emisión de los otros documentos que eventualmente incorpore como Documentos Electrónicos en virtud del último párrafo del artículo 3° del presente Decreto.

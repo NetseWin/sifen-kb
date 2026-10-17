@@ -1,0 +1,76 @@
+10.4. Datos que se deben informar en los documentos electrónicos (DE)
+A fin de facilitar la comprensión de la estructura de información de los documentos electrónicos, a continuación, se referencian los campos contenidos en los mismos, los cuales se han organizado, definido y agrupado conforme a la Tabla I:
+Tabla I – Grupos de campos del Archivo XML
+AA.
+Campos que identifican el formato electrónico XML (AA001-AA009)
+A.
+Campos firmados del Documento Electrónico (A001-A099)
+B.
+Campos inherentes a la operación de Documentos Electrónicos (B001-B099)
+C.
+Campos de datos del Timbrado (C001-C099)
+D.
+Campos Generales del Documento Electrónico DE (D001-D299)
+D1.
+Campos inherentes a la operación comercial (D010-D099)
+D2.
+Campos que identifican al emisor del Documento Electrónico DE (D100-D129)
+D2.1
+Campos que describen la actividad económica del emisor (D130-D139)
+D3.
+Campos que identifican al receptor del Documento Electrónico DE (D200 al D299)
+E.
+Campos específicos por tipo de Documento Electrónico (E001-E009)
+E1.
+Campos que componen la Factura Electrónica FE (E010-E099)
+E1.1.
+Campos de informaciones de Compras Públicas (E020-E029)
+E2.
+Campos que componen la Factura Electrónica de Exportación FEE (E100-E199)
+E3.
+Campos que componen la Factura Electrónica de Importación FEI (E200-E299)
+E4.
+Campos que componen la Autofactura Electrónica AFE (E300-E399)
+E5.
+Campos que componen la Nota de Crédito/Débito Electrónica NCE-NDE (E400-E499)
+E6.
+Campos que componen la Nota de Remisión Electrónica (E500-E599)
+E7.
+Campos que describen la condición de la operación (E600-E699)
+E7.1.
+Campos que describen la forma de pago de la operación al contado o del monto de la entrega inicial (E605-E619)
+E7.1.1.
+Campos que describen el pago o entrega inicial de la operación con tarjeta de crédito/débito (E620-E629)
+E7.1.2.
+Campos que describen el pago o entrega inicial de la operación con cheque (E630-E639)
+E7.2.
+Campos que describen la operación a crédito (E640-E649)
+E7.2.1.
+Campos que describen las cuotas (E650-E659)
+E8.
+Campos que describen los ítems de la operación (E700-E899)
+E8.1.
+Campos que describen el precio, tipo de cambio y valor total de la operación por ítem (E720-E729)
+E8.1.1
+Campos que describen los descuentos, anticipos y valor total por ítem (EA001-EA050)
+E8.2.
+Campos que describen el IVA de la operación por ítem (E730-E739)
+E8.3.
+Campos que describen el ISC de la operación por ítem (futuro)
+E8.4.
+Grupo de rastreo de la mercadería (E750-E760)
+E8.5.
+Sector de automotores nuevos y usados (E770-E789)
+E9.
+Campos complementarios comerciales de uso específico (E790-E899)
+E9.2.
+Sector Energía Eléctrica (E791-E799)
+E9.3.
+Sector de Seguros (E800-E809)
+E9.3.1. Póliza de seguros (EA790-EA799)
+E9.4.
+Sector de Supermercados (E810-E819)
+E9.5.
+Grupo de datos adicionales de uso comercial (E820-E829)
+E10.
+Campos que describen el transporte de las mercaderías (E900-E999)

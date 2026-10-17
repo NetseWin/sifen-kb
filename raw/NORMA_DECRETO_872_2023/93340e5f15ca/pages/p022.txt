@@ -1,0 +1,13 @@
+SES(Z.JICENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+2V2
+DECRETO No
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-22-
+Art. 28.- Validación y aprobación de los Documentos Electrónicos. A partir de la recepción del Documento Electrónico, el SIFEN procederá a su validación para ser considerado como Documento Tributario Electrónico. De cumplir con los requisitos, el SIFEN indicará la fecha y hora en que fue aprobado el Documento Tributario Electrónico.
+Art. 29.- Rechazo del Documento Electrónico. En el caso que el Documento Electrónico enviado al SIFEN no logra superar el proceso de validación necesario para su aprobación, se rechazará automáticamente. En esta situación, se proporcionará la fecha y hora del rechazo, junto con el código y el mensaje correspondiente del primer error detectado en el Documento Electrónico durante el proceso de validación.
+De configurarse el hecho generador del impuesto, el facturador electrónico podrá hacer la corrección del Documento Electrónico rechazado y someterlo nuevamente a validación, cuantas veces sea necesario hasta lograr su aprobación, pudiendo reutilizar el mismo Código de Control (CDC); siempre y cuando, la estructura de datos del Documento Electrónico no sea modificada, caso contrario deberá emitir un nuevo Documento Electrónico.
+Aprobado el Documento Electrónico, el facturador electrónico, en su obligación de emisor, deberá enviar el nuevo KuDE o el nuevo archivo electrónico del Documento Tributario Electrónico al receptor.
+Para los casos en que no se haya logrado la aprobación del Documento Electrónico por rechazo, el facturador electrónico deberá inutilizar el número del documento generado, siempre y cuando no haya entregado el bien o prestado el servicio.
+cz,/

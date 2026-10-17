@@ -1,0 +1,30 @@
+Especificaciones sobre la Gestión de Eventos por web Services para emisores y receptores electrónicos:
+• Los eventos deben ser estructurados en un archivo XML por eventos
+• Cada evento deberá estar firmado digitalmente
+• Los eventos del emisor y receptor deberán ser transmitidos por los Web Services disponibles para dicha gestión
+• Los eventos deberán ser enviados en lotes de hasta 15 eventos de cualquier tipo (emisor y/o receptor).
+• La Inutilización de un número de DE debe ser solicitada por rango secuencial o correlativo.
+Tabla K: Correcciones de los eventos del Receptor en el SIFEN
+N°
+Correcciones
+Actor
+Tipo
+Modalidad de Registro
+Plazo
+Alcance DE
+Criterios
+Condiciones
+1
+Conformidad – Disconformidad - Desconocimiento DE o DTE
+Receptor
+Registro Requerido
+WS Sincrónico Eventos/Portal SIFEN
+Hasta 15 (quince) días del registro del primer evento
+Todos los DE o DTE
+• DTE en SIFEN • Situación Aprobado o Aprobado Extemporáneo • Se requiere informar la justificativa del evento de corrección (campo texto libre) • Solo se puede registrar un evento de corrección sobre cada evento mencionado
+• Selección del evento del receptor por equivocación
+A continuación, se presenta el cuadro que representa las relaciones que pueden darse entre eventos del receptor.
+Referencia:
+Gris = encabezado
+Verde = puede realizarse luego del evento que se encuentra en el encabezado
+Rojo = no puede realizarse luego del evento que se encuentra en el encabezado

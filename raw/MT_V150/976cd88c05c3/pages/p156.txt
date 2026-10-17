@@ -1,0 +1,40 @@
+12.3.2. WS recepción lote DE – siRecepLoteDE
+12.3.2.1. Mensaje de entrada del WS
+La primera validación corresponde al tamaño máximo permitido para el mensaje de Web Service de lote, este no debe superar los (10.000 KB). Su verificación es:
+• En el presente WS se devuelve el mensaje con código 0270.
+• En la configuración de red (firewall), en el caso que la conexión sea interrumpida sin la generación del mensaje de error con el código 0270.
+ID
+Resultado de la Validación
+Código
+Obs
+E
+BD01
+Mensaje de datos de entrada del WS siRecepLoteDE superior a 10.000 KB.
+0270
+R
+12.3.2.2. Información de control de la llamada al WS
+No se realizan validaciones específicas para este método en la versión inicial 100, sin embargo, reservamos los códigos desde el 0280 al 0299 y las correspondientes identificaciones BE01 a BE20.
+12.3.2.3. Área de datos del WS
+ID
+Resultado de la Validación
+Código
+Obs
+E
+BF01
+Lote recibido con éxito
+0300
+A
+BF02
+Lote no encolado para procesamiento
+0301
+R
+12.3.3. WS consulta resultado de lote DE – siResultLoteDE
+12.3.3.1. Mensaje de entrada del WS
+La primera validación corresponde al tamaño máximo permitido para el mensaje de Web Service, este no debe superar los (1000 KB). Su verificación es:
+• En el presente WS se devuelve el mensaje con código 0320.
+• En la configuración de red (firewall), en el caso que la conexión sea interrumpida sin la generación del mensaje de error con el código 0320.
+ID
+Resultado de la Validación
+Código
+Obs
+E

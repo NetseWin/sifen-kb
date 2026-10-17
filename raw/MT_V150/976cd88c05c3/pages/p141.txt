@@ -1,0 +1,66 @@
+N° Val
+ID
+Resultado de la Validación
+Código
+Observación
+E
+27
+GED003
+Fecha de emisión del DE/DTE ha superado el plazo para registro del evento
+4253
+El plazo del registro del evento ha superado los 45 días contados a partir de la fecha de emisión
+AO
+28
+GED004
+Fecha de Recepción debe ser mayor a la fecha de emisión del DE/DTE
+4254
+La fecha de emisión no puede ser mayor que la fecha de recepción del DE/DTE
+R
+29
+GED007
+Ruc del Receptor requerido
+4255
+Es obligatorio informar Ruc del receptor cuando el receptor es contribuyente (GED005=1)
+R
+30
+GEN007a
+Ruc del Receptor no se debe informar
+4256
+Cuando el tipo de receptor es No Contribuyente (GED005=2) no se debe informar el campo Ruc del Receptor (GED007)
+R
+31
+GED008
+Dígito verificador del RUC del contribuyente receptor requerido
+4257
+Es obligatorio informar DV del receptor cuando el receptor es contribuyente (GED005=1)
+R
+32
+GEN008a
+Dígito verificador del RUC del contribuyente receptor no se debe informar
+4258
+Cuando el tipo de receptor es No Contribuyente (GED005=2) no se debe informar el campo Dígito verificador del RUC del contribuyente receptor (GED008)
+R
+33
+GED009
+Tipo de documento de identidad del receptor requerido
+4259
+Es obligatorio informar el tipo de documento de identidad del receptor cuando el tipo de receptor es No contribuyente (GED005=2)
+R
+34
+GED009a
+Tipo de documento de identidad del receptor no se debe informar
+4260
+Cuando el Tipo de Receptor es Contribuyente (GED005=1) no es necesario informar el tipo de documento de identidad del receptor (GED009)
+R
+35
+GED010
+Número de documento de identidad requerido
+4261
+Es obligatorio informar el número de documento de identidad del receptor cuando el tipo de receptor es No contribuyente (GED005=2)
+R
+36
+GED10a
+Número de documento de identidad no se debe informar
+4262
+Cuando el Tipo de Receptor es Contribuyente (GED005=1) no es necesario informar el número de documento de identidad del receptor (GED010a)
+R

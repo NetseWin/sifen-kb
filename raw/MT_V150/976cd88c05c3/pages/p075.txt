@@ -1,0 +1,100 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E1
+E011
+iIndPres
+Indicador de presencia
+E010
+N
+1
+1-1
+1= Operación presencial
+2= Operación electrónica
+3= Operación telemarketing
+4= Venta a domicilio
+5= Operación bancaria
+6= Operación cíclica
+9= Otro
+E1
+E012
+dDesIndPres
+Descripción del indicador de presencia
+E010
+A
+10-30
+1-1
+Referente al campo E011
+1= “Operación presencial”
+2= “Operación electrónica”
+3= “Operación telemarketing”
+4= “Venta a domicilio”
+5= “Operación bancaria”
+6=” Operación cíclica”
+Si E011 = 9 informar el indicador de presencia
+E1
+E013
+dFecEmNR
+Fecha futura del traslado de mercadería
+E010
+F
+10
+0-1
+Fecha en el formato: AAAA-MM-DD
+Fecha estimada para el traslado de la mercadería y emisión de la nota de remisión electrónica cuando corresponda. RG 41/14
+E1.1. Campos de informaciones de Compras Públicas (E020-E029)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E1.1
+E020
+gCompPub
+Campos que describen las informaciones de compras públicas
+E010
+G
+0-1
+Obligatorio si D202 = 3 (Tipo de operación B2G)
+E1.1
+E021
+dModCont
+Modalidad - Código emitido por la DNCP
+E020
+A
+2
+1-1
+E1.1
+E022
+dEntCont
+Entidad - Código emitido por la DNCP
+E020
+N
+5
+1-1
+E1.1
+E023
+dAnoCont
+Año - Código emitido por la DNCP
+E020
+N
+2
+1-1
+E1.1
+E024
+dSecCont
+Secuencia - emitido por la DNCP
+E020
+N
+7
+1-1

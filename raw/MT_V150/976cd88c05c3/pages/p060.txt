@@ -1,0 +1,44 @@
+E10.1.
+Campos que identifican el local de salida de las mercaderías (E920-E939)
+E10.2.
+Campos que identifican el local de entrega de las mercaderías (E940-E959)
+E10.3.
+Campos que identifican el vehículo de traslado de mercaderías (E960-E979)
+E10.4.
+Campos que identifican al transportista (persona física o jurídica) (E980-E999)
+F.
+Campos que describen los subtotales y totales de la transacción documentada (F001-F099)
+G.
+Campos complementarios comerciales de uso general (G001-G049)
+G1. Campos generales de la carga (G050 - G099)
+H.
+Campos que identifican al documento asociado (H001-H049)
+I.
+Información de la Firma Digital del DTE (I001-I049)
+J.
+Campos fuera de la Firma Digital (J001-J049)
+10.5. Manejo del timbrado y Numeración
+Se maneja la siguiente secuencia de campos que identifican a cada DE:
+• Número de timbrado
+• Establecimiento
+• Punto de expedición
+• Tipo de documento
+• Número de documento
+• Serie
+Se ha incluido el uso de la serie (todas las combinaciones de a dos que se puedan realizar entre 2 letras mayúsculas, excepto la Ñ) ya que el timbrado no manejará una fecha de fin de vigencia.
+Ejemplo de uso:
+Situación inicial
+• Número de timbrado: 12345678
+• Establecimiento: 001
+• Punto de expedición: 001
+• Tipo de documento: 01
+• Número de documento: 0000001 al 9999999
+Inicio de la serie
+• Número de timbrado: 12345678
+• Establecimiento: 001
+• Punto de expedición: 001
+• Tipo de documento: 01
+• Número de documento: 0000001 al 9999999
+• Serie: AA
+Uso de la siguiente serie
+• Número de timbrado: 12345678

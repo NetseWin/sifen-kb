@@ -1,0 +1,21 @@
+INDICE DE SCHEMAS
+Schema XML 1: xmldsig-core-schema- v150.xsd (Estándar de la Firma Digital).............. 38
+Schema XML 2: siRecepDE_v150.xsd (WS Recepción DE) ............................................ 45
+Schema XML 3: resRecepDE_v150.xsd (Respuesta del “WS Recepción DE”) ................ 46
+Schema XML 4: ProtProcesDE_v150.xsd (Protocolo de Procesamiento de DE) ............. 46
+Schema XML 5: SiRecepLoteDE_v150.xsd (WS Recepción DE Lote) ............................. 47
+Schema XML 5A: ProtProcesLoteDE_v150.xsd (Protocolo de procesamiento del Lote) .. 47
+Schema XML 6: resRecepLoteDE_v150.xsd (Respuesta del WS Recepción Lote) ......... 48
+Schema XML 7: SiResultLoteDE_v150.xsd (WS Consulta Resultado de Lote) ................ 48
+Schema XML 8: resResultLoteDE_v150.xsd (Respuesta del WS Consulta Resultado Lote)49
+Schema XML 9: siConsDE_v150.xsd (WS Consulta DE) ................................................. 50
+Schema XML 10: resConsDE_v150.xsd (Respuesta del WS Consulta DE) ..................... 51
+Schema XML 11: ContenedorDE_v150.xsd (Contenedor de DE) .................................... 51
+Schema XML 12: ContenedorEvento_v150.xsd (Contenedor de Evento) ........................ 52
+Schema XML 13: siRecepEvento_v150.xsd (WS Recepción Evento) .............................. 52
+Schema XML 14: resRecepEvento_v150.xsd (Respuesta del WS Recepción Evento) .... 53
+Schema XML 15: siConsRUC_v150.xsd (WS Consulta RUC) ......................................... 54
+Schema XML 16: resConsRUC_v150.xsd (Respuesta del WS Consulta RUC) ............... 54
+Schema XML 17: ContenedorRUC_v150.xsd (Contenedor de RUC) ............................... 55
+Schema XML 18: DE_v150.xsd (Documento Electrónico) ............................................... 61
+Schema XML 19: Evento_v150.xsd (Formato de evento emisor) ................................... 120

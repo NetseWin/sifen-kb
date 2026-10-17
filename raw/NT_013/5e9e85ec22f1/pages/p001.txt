@@ -1,0 +1,69 @@
+NOTA TÉCNICA N° 13
+Fecha: 20/03/2023
+Fecha puesta a disposición para el Ambiente de Test
+21 de Abril del 2023
+Fecha puesta a disposición para el Ambiente de Producción
+17 de Junio del 2023
+Referencia: Correcciones y ajustes sobre el MT versión 150
+1. Formato de Campos XML
+1.1 En Campos que describen el IVA de la operación por ítem (E730-E739) se modifica el siguiente campo de Observaciones. (Página 90)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.2
+E735
+dBasGravIVA
+Base gravada del IVA por ítem
+E730
+N
+1-15p(0-8)
+1-1
+Si E731 = 1 o 4 este campo es igual al resultado del cálculo:
+[100 * EA008 * E733] / [10000 + (E734 * E733)]
+Si E731 = 2 o 3 este campo es igual 0
+1.2 En Campos que describen el IVA de la operación por ítem (E730-E739) se agregan los siguientes campos. (Página 90)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.2
+E737
+dBasExe
+Base Exenta por ítem
+E730
+N
+1-15p(0-8)
+1-1
+Si E731 = 4 este campo es igual al resultado del cálculo:
+[100 * EA008 * (100 – E733)] / [10000 + (E734 * E733)]
+Si E731 = 1 , 2 o 3 este campo es igual 0
+1.3 En Campos que describen los subtotales y totales de la transacción documentada (F001-F099) se modifican los siguientes campos de Observaciones. (Página 103)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+F
+F002
+dSubExe
+Subtotal de la operación exenta
+F001
+N
+1-15p(0-8)
+0-1
+Suma de todas las ocurrencias de EA008 (Valor total de la operación por ítem) cuando la operación sea exenta (Si E731 = 3), más Todas las ocurrencias de la Base Exenta (E737) cuando la operación sea Gravado Parcial (Si E731 = 4).

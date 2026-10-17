@@ -1,0 +1,111 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GEA
+GECF002
+Id
+CDC del DE/DTE
+GECF001
+A
+44
+1-1
+Corresponde al CDC del DTE asociado
+GEA
+GECF003
+dNumTraCCFF
+Número de transferencia de créditos fiscales
+GECF001
+A
+10
+1-1
+GEA
+GECF004
+dFeAceTraCCFF
+Fecha de aceptación del crédito fiscal
+GECF001
+F
+19
+1-1
+Evento automático por interoperabilidad: Evento devolución de créditos fiscales - Cuestionado
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GEA
+GEDF001
+rGeDevCCFFCue
+Raíz Gestión de Eventos de devolución de créditos fiscales - Cuestionado
+GDE007
+-
+-
+-
+Elemento raíz
+GEA
+GEDF002
+Id
+CDC del DE/DTE
+GEDF001
+A
+44
+1-1
+Corresponde al CDC del DTE asociado
+GEA
+GEDF003
+dNumDevSol
+Número DIR
+GEDF001
+A
+10
+1-1
+Corresponde al número de solicitud de la DIR
+GEA
+GEDF004
+dNumDevInf
+Número de informe
+GEDF001
+A
+10
+1-1
+GEA
+GEDF005
+dNumDevRes
+Número de resolución de la devolución
+GEDF001
+A
+10
+1-1
+GEA
+GEDF006
+dFeEmiSol
+Fecha de emisión de DIR
+GEDF001
+F
+19
+1-1
+GEA
+GEDF007
+dFeEmiInf
+Fecha de emisión del informe
+GEDF001
+F
+19
+1-1
+GEA
+GEDF008
+dFeEmiRes
+Fecha de emisión de la resolución
+GEDF001
+F
+19
+1-1

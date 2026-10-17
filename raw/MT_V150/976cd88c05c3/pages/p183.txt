@@ -1,0 +1,85 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+191
+E960a
+Grupo de los campos que identifican el vehículo de traslado de las mercaderías no es permitido para el tipo de documento electrónico seleccionado
+2251
+El grupo de campos que identifican el vehículo de traslado de las mercaderías no es permitido para el tipo de documento Autofactura Electrónica, Nota de Débito Electrónica, Nota de Crédito Electrónica o Comprobante de Retención Electrónico (C002=4, 5, 6 o 8)
+R
+192
+E963
+Tipo de identificación del vehículo no informado
+2255
+Se requiere el número de identificación del vehículo cuando el tipo de identificación del vehículo es 1 (E967=1)
+R
+193
+E965
+Número de matrícula del vehículo no informado
+2254
+Se requiere número de matrícula del vehículo cuando el tipo de identificación del vehículo es 2 (E967=2)
+R
+194
+E966
+Número de vuelo no informado
+2252
+Se requiere número de vuelo para la modalidad de transporte seleccionada (E903 = 3)
+R
+195
+E966a
+Número de vuelo no requerido
+2253
+Si la modalidad de transporte seleccionada es distinta a Aéreo (E903 ≠ 3) el número de vuelo (E965) no debe ser informado
+R
+E10.4. Campos que identifican al transportista (persona física o jurídica) (E980-E999)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+196
+E980
+Grupo de los campos que identifican al transportista (persona física o jurídica) es obligatorio
+2300
+Si el tipo de documento electrónico seleccionado es Nota de Remisión Electrónica (C002=7), es obligatorio informar el grupo de los campos que identifican al transportista (persona física o jurídica)
+R
+197
+E980a
+Grupo de los campos que identifican al transportista (persona física o jurídica) no es permitido para el tipo de documento electrónico seleccionado
+2301
+El grupo de campos que identifican al transportista (persona física o jurídica) no es permitido para el tipo de documento Autofactura Electrónica, Nota de Débito Electrónica, Nota de Crédito Electrónica o Comprobante de Retención Electrónico (C002=4, 5, 6 o 8)
+R
+198
+E983
+RUC del transportista no informado
+2302
+Se requiere informar el número de RUC si la naturaleza del transportista es igual a contribuyente (E981 = 1)
+R
+199
+E983a
+RUC del transportista inexistente
+2303
+El RUC del transportista informado no existe en la base de datos de Marangatu
+R
+200
+E983b
+El RUC del transportista se encuentra inactivo
+2304
+El RUC del transportista debe contar con un estado distinto a CANCELADO, CANCELADO DEFINITIVO o SUSPENSIÓN TEMPORAL en Marangatu al momento de la emisión del DE
+R
+201
+E983c
+RUC del transportista no requerido
+2305
+Si la naturaleza del transportista es distinta a contribuyente (E981≠1) el RUC del transportista (E983) no debe ser informado
+R
+202
+E984
+Dígito Verificador del RUC del transportista incorrecto
+2306
+El Dígito Verificador ingresado (E984) no corresponde al módulo 11 del RUC
+R

@@ -1,0 +1,28 @@
+GUIA DE REGLAS DE VALIDACIÓN
+N° VAL
+Corresponde a la cantidad de reglas de validación
+ID
+Corresponde a la identificación de los campos de los DE
+Mensaje de Validación
+Corresponde a las respuestas de la verificación de los campos de los DE
+Código
+Correspondiente al número de respuesta de la validación
+Observación
+Corresponde a la descripción de las reglas de validación
+E
+Estado de la validación
+V
+Versión del XML
+REFERENCIA ESTADO DE VALIDACIÓN
+CÓDIGO
+DESCRIPCIÓN
+A
+APROBADO
+AO
+APROBADO CON OBSERVACIONES
+R
+RECHAZADO
+Los resultados de rechazo y notificación se detallan en los correspondientes mensajes de respuesta descriptos en cada Servicio Web.
+12.1. Estructura de los códigos de validación
+Los códigos de incumplimiento de las validaciones están compuestos de 4 dígitos numéricos, que corresponden a los campos de los Schemas XML, siguiendo el orden dispuesto en las tablas y secciones siguientes.
+Las tablas de validación presentan en las columnas Estado el resultado correspondiente al error: Aprobado (A), Rechazo (R), Aprobado con observaciones (AO).

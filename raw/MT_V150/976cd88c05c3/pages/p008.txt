@@ -1,0 +1,16 @@
+INDICE DE GRÁFICAS
+Gráfica Nº 01 Sistema Integrado de Facturación Electrónica Nacional (SIFEN) .............. 18
+Gráfica Nº 02 Subsistema de Validación de Uso ............................................................. 19
+Gráfica Nº 03 Subsistema Electrónico Solución Gratuita E-kuatia’i .................................. 20
+Gráfica Nº 04: Secuencia de acciones tecnológicas SIFEN ............................................. 23
+Gráfica Nº 05: Flujo de comunicación .............................................................................. 28
+Gráfica Nº 06: WS Sincrónico .......................................................................................... 29
+Gráfica Nº 07: WS Asincrónico ........................................................................................ 29
+Gráfica N° 08: Relación elementos XML .......................................................................... 32
+Gráfica Nº 09 – KuDE FE Formato 1 (Papel Carta o similar) ......................................... 198
+Gráfica Nº 10 – KuDE NCE Formato 1 (Papel Carta o similar) ...................................... 199
+Gráfica Nº 11 – KuDE NDE Formato 1 (Papel Carta o similar) ...................................... 200
+Gráfica Nº 12 – KuDE AFE Formato 1 (Papel Carta o similar) ....................................... 201
+Gráfica Nº 13 – KuDE NRE Formato 1 (Papel Carta o similar) ...................................... 202
+Gráfica Nº 14 – KuDE FE Formato 2 (cinta de papel) .................................................... 203
+Gráfica Nº 15 – Cinta papel resumen del KuDE ............................................................. 204

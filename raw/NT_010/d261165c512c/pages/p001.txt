@@ -1,0 +1,112 @@
+NOTA TÉCNICA N° 010
+Fecha: 04/02/2022
+Cambios desde la fecha 01/02/2021 al 04/02/2022
+Referencia: Correcciones y ajustes sobre el MT versión 150
+1. Formato de campos XML
+1.1. En campos firmados del Documento Electrónico (A001-A099) se elimina el siguiente campo: (Página 62)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+A
+A005
+dSisFact
+Sistema de facturación
+A001
+N
+1
+1-1
+1=Sistema de facturación del contribuyente
+2=SIFEN solución gratuita
+1.2. En el Campos inherentes a la operación comercial (D010-D099) se modifica el siguiente campo: (Página 66)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D1
+D012
+dDesTipTra
+Descripción del tipo de transacción
+D010
+A
+5-39
+0-1
+Obligatorio si existe el campo D011
+1= “Venta de mercadería”
+2= “Prestación de servicios”
+3= “Mixto (Venta de mercadería y servicios)”
+4= “Venta de activo fijo”
+5= “Venta de divisas”
+6= “Compra de divisas”
+7= “Promoción o entrega de muestras”
+8= “Donación”
+9= “Anticipo”
+10= “Compra de productos”
+11= “Compra de servicios”
+12= “Venta de crédito fiscal”
+13= ”Muestras médicas (Art. 3 RG 24/2014)”
+1.3. En el Campos que componen la Nota de Remisión Electrónica (E500-E599) se modifica el siguiente campo: (Página 79)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E6
+E505
+dKmR
+Kilómetros estimados de recorrido
+E500
+N
+1-5
+1-1
+1.4. En el Grupo de rastreo de la mercadería (E750-E761) se modifica los campos de observación y longitud, se elimina los siguientes campos y se agrega los campos de nombre de producto: (Página 90 y 91)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.4
+E751
+dNumLote
+Número de lote
+E750
+A
+1-80
+0-1
+Obligados por Art. 1 de la RG N° 106/2021 – Agroquímicos
+E8.4
+E756
+dNomImp
+Nombre del Importador
+E750
+A
+4-60
+0-1
+Obligados por la RG N° 16/2019 – Agroquímicos
+E8.4
+E757
+dDirImp
+Dirección de Importador
+E750
+A
+1-255
+0-1
+Obligados por la RG N° 16/2019 – Agroquímicos

@@ -1,0 +1,189 @@
+{
+ "alerts": [
+  {
+   "detail": "fecha 2021-09-21 anterior a la de la NT 7 (2022-02-01)",
+   "id": null,
+   "nt": "NT_008",
+   "nt_page": null,
+   "type": "orden-fechas"
+  },
+  {
+   "detail": "fecha 2021-09-09 anterior a la de la NT 8 (2021-09-21)",
+   "id": null,
+   "nt": "NT_009",
+   "nt_page": null,
+   "type": "orden-fechas"
+  },
+  {
+   "detail": "fecha 2024-04-23 anterior a la de la NT 24 (2024-12-17)",
+   "id": null,
+   "nt": "NT_025",
+   "nt_page": null,
+   "type": "orden-fechas"
+  }
+ ],
+ "counts": {
+  "fields:added": 36,
+  "fields:deleted": 3,
+  "fields:modified": 47,
+  "fields:unchanged": 3,
+  "validations:added": 64,
+  "validations:deleted": 13,
+  "validations:modified": 45
+ },
+ "excluded": {
+  "esquema": 32
+ },
+ "extractor": {
+  "name": "sifen_kb.extract",
+  "origin": {
+   "commit": "8603b5bd572fb0a1563e216d3ec658fb5666e678",
+   "project": "pdf_to_md"
+  },
+  "page_printed_engine": "pypdfium2-5.14.0",
+  "version": "0.1.0"
+ },
+ "mt": {
+  "doc": "MT_V150",
+  "sha12": "976cd88c05c3"
+ },
+ "nature": "Deducción de herramienta (sifen_kb.pdf.sifen.changes, vendorizado de pdf_to_md): sugerencia para curar y oráculo de cobertura. NO es una afirmación normativa; lo normativo vive en kb/.",
+ "notes": [
+  {
+   "doc": "NT_001",
+   "numero": 1,
+   "sha12": "4c47b667084d"
+  },
+  {
+   "doc": "NT_002",
+   "numero": 2,
+   "sha12": "6aaf4a8f4797"
+  },
+  {
+   "doc": "NT_003",
+   "numero": 3,
+   "sha12": "3d27fa591b59"
+  },
+  {
+   "doc": "NT_004",
+   "numero": 4,
+   "sha12": "185619ec4bad"
+  },
+  {
+   "doc": "NT_005",
+   "numero": 5,
+   "sha12": "6889f1fc4f2e"
+  },
+  {
+   "doc": "NT_006",
+   "numero": 6,
+   "sha12": "44db68fbdcc1"
+  },
+  {
+   "doc": "NT_007",
+   "numero": 7,
+   "sha12": "ad25333d61ec"
+  },
+  {
+   "doc": "NT_008",
+   "numero": 8,
+   "sha12": "2b1c2f0b25e9"
+  },
+  {
+   "doc": "NT_009",
+   "numero": 9,
+   "sha12": "bc6a85c1e77e"
+  },
+  {
+   "doc": "NT_010",
+   "numero": 10,
+   "sha12": "d261165c512c"
+  },
+  {
+   "doc": "NT_011",
+   "numero": 11,
+   "sha12": "6abf95164f4e"
+  },
+  {
+   "doc": "NT_012",
+   "numero": 12,
+   "sha12": "3f9243e48a0a"
+  },
+  {
+   "doc": "NT_013",
+   "numero": 13,
+   "sha12": "5e9e85ec22f1"
+  },
+  {
+   "doc": "NT_014",
+   "numero": 14,
+   "sha12": "5320a52a9152"
+  },
+  {
+   "doc": "NT_015",
+   "numero": 15,
+   "sha12": "d41ae8e7d1fd"
+  },
+  {
+   "doc": "NT_016",
+   "numero": 16,
+   "sha12": "6406e5e6cd4f"
+  },
+  {
+   "doc": "NT_017",
+   "numero": 17,
+   "sha12": "21112d7c0a1a"
+  },
+  {
+   "doc": "NT_018",
+   "numero": 18,
+   "sha12": "96079a30c8c1"
+  },
+  {
+   "doc": "NT_019",
+   "numero": 19,
+   "sha12": "c3fcd3bd96d0"
+  },
+  {
+   "doc": "NT_020",
+   "numero": 20,
+   "sha12": "0d877d1fb16a"
+  },
+  {
+   "doc": "NT_021",
+   "numero": 21,
+   "sha12": "1e716577d874"
+  },
+  {
+   "doc": "NT_022",
+   "numero": 22,
+   "sha12": "269840094089"
+  },
+  {
+   "doc": "NT_023",
+   "numero": 23,
+   "sha12": "9cb063673358"
+  },
+  {
+   "doc": "NT_024",
+   "numero": 24,
+   "sha12": "ccc2d1550e92"
+  },
+  {
+   "doc": "NT_025",
+   "numero": 25,
+   "sha12": "3950e171f161"
+  },
+  {
+   "doc": "NT_026",
+   "numero": 26,
+   "sha12": "5ed252f14427"
+  },
+  {
+   "doc": "NT_027",
+   "numero": 27,
+   "sha12": "3ff6fbbf9f54"
+  }
+ ],
+ "unresolved_refs": 0
+}

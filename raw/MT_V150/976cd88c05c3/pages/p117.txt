@@ -1,0 +1,7 @@
+• Eventos automáticos por interoperabilidad
+o Ejemplo 3: interoperabilidad con sistemas de la SET (Tesaka – retenciones y Marangatu – Créditos fiscales por transferencia o devolución)
+11.4. Eventos registrados por la SET (evento futuro)
+La Administración Tributaria tiene la potestad para realizar el siguiente evento:
+11.4.1. Impugnación de DTE
+Cuando como consecuencia de un proceso de control se compruebe la falta de veracidad de la operación económica que respalda un DTE obrante en el SIFEN, la Administración Tributaria podrá impugnar la validez del mismo.
+Con excepción a los eventos del Emisor de Cancelación de DTE e Inutilización de número de DE, y a los eventos automáticos de SIFEN de Anulación y Asociación, la descripción detallada y efectos de los demás eventos, se definirán en una versión posterior del presente MT y se presentan acá como Eventos Futuros.

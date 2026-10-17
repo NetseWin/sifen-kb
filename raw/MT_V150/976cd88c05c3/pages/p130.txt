@@ -1,0 +1,96 @@
+Evento automático por interoperabilidad: Evento devolución de créditos fiscales - Devuelto
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GEA
+GEDD001
+rGeDevCCFFDev
+Raíz Gestión de Eventos de devolución de créditos fiscales - Devuelto
+GDE007
+-
+-
+-
+Elemento raíz
+GEA
+GEDD002
+Id
+CDC del DE/DTE
+GEDD001
+A
+44
+1-1
+Corresponde al CDC del DTE asociado
+GEA
+GEDD003
+dNumDevSol
+Número DIR
+GEDD001
+A
+10
+1-1
+Corresponde al número de solicitud de la DIR
+GEA
+GEDD004
+dNumDevInf
+Número de informe
+GEDD001
+A
+10
+1-1
+GEA
+GEDD005
+dNumDevRes
+Número de resolución de la devolución
+GEDD001
+A
+10
+1-1
+GEA
+GEDD006
+dFeEmiSol
+Fecha de emisión de DIR
+GEDD001
+F
+19
+1-1
+GEA
+GEDD007
+dFeEmiInf
+Fecha de emisión del informe
+GEDD001
+F
+19
+1-1
+GEA
+GEDD008
+dFeEmiRes
+Fecha de emisión de la resolución
+GEDD001
+F
+19
+1-1
+Evento automático por SIFEN: Evento anticipo
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GEA
+GEA001
+rGeVeAnt
+Raíz Gestión de Eventos anticipo
+GDE007
+-
+-
+-
+Elemento raíz

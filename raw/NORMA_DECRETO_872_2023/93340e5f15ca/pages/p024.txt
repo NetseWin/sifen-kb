@@ -1,0 +1,13 @@
+SES(ZUICENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+N° 2"2
+DECRETO
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-24-
+registrado en el SIFEN con el estado "cancelado" no tendrá validez tributaria para respaldar los créditos y débitos fiscales en el IVA, así como los ingresos, costos y gastos en los impuestos a las rentas.
+Art. 31.- Evento de Inutilización. En caso de que existiera error en la emisión del Documento Electrónico, a consecuencia de saltos en la numeración correlativa o por mal llenado en el sistema informático de facturación, el facturador electrónico deberá comunicar la inutilización de la numeración de estos, mediante el evento de inutilización de la numeración del Documento Electrónico, en el plazo que establezca la reglamentación.
+A fin de inutilizar la numeración de un Documento Electrónico, es necesario que dicho documento no haya sido enviado al receptor ni transmitido al SIFEN ni se haya configurado la operación comercial consignando en el documento.
+Art. 32.- Evento de Transporte. El emisor de la Nota de Remisión Electrónica o de la Factura Electrónica, cuando esta última contenga todos los datos requeridos para la Nota de Remisión Electrónica, podrá registrar el evento de transporte para la modificación o complementación de las informaciones de traslado de mercaderías en las siguientes situaciones:
+1. Cuando exista cambio de conductor, del transporte, de los datos de la empresa de transporte o de la cantidad de la mercadería transportada. 2. Cuando por cualquier motivo no imputable al transportista hubiera impedimento para arribar al punto de destino y fuera necesario modificar la ruta o cambiar de transporte.
+El contribuyente al momento del registro de este evento deberá indicar el motivo de la modificación y asociarlo a la Nota de Remisión Electrónica o la Factura Electrónica que contiene la información a ser modificada o complementada.

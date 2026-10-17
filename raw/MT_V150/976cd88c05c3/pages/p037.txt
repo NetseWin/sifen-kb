@@ -1,0 +1,10 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"> <soap:Header/> <soap:body> <rEnviDe xmlns="http://ekuatia.set.gov.py/sifen/xsd"> <dId>10000011111111</dId> <xDE> <rDE xmlns="http://ekuatia.set.gov.py/sifen/xsd" xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation="http://ekuatia.set.gov.py/sifen/xsd/siRecepDE_v150.xsd"> ... </rDE> </xDE> </rEnviDe> </soap:body> </soap:Envelope>
+Response de ejemplo utilizando SOAP:
+<env:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"> <env:Header/> <env:body> <ns2:rRetEnviDe xmlns:ns2="http://ekuatia.set.gov.py/sifen/xsd"> <ns2:rProtDe> <ns2:dId>00000000000000000000000000000000000000000000</ns2:dId> <ns2:dFecProc>2019-06-03T12:00:00</ns2:dFecProc> <ns2:dDigVal>0000000000000000000000000000</ns2:dDigVal> <ns2:gResProc> <ns2:dEstRes>Rechazado</ns2:dEstRes> <ns2:dProtAut>0000000000</ns2:dProtAut> <ns2:dCodRes>0160</ns2:dCodRes> <ns2:dMsgRes>XML malformado</ns2:dMsgRes> </ns2:gResProc> </ns2:rProtDe> </ns2:rRetEnviDe> </env:body> </soap:Envelope>
+7.5. Estándar de certificado digital
+El SIFEN utiliza un certificado digital, emitido por cualquiera de los PSC7, habilitados por el Ministerio de Industria y Comercio8 en su carácter de Administrador de la Autoridad Certificadora Raíz del Paraguay9 y ente regulador. El certificado será utilizado para firmar digitalmente y para autenticarse en los servicios del SIFEN. Puede ser del TIPO F110 o F211 de persona física o jurídica. En el caso de optar por el certificado de persona jurídica, el RUC del contribuyente estará contenido en el campo SerialNumber. En el caso de optar por el certificado de persona física, éste debe ser de un personal dependiente del contribuyente y el certificado debe
+7 (PSC) Prestador de Servicios de Certificación https://www.acraiz.gov.py/html/Certif_1PrestaServ.html
+8 www.acraiz.gov.py
+9 (AA) Según la Ley N°4017 de Firma Digital es el Ministerio de Industria y Comercio
+10 Tipo F1: corresponde a Certificado de Firma Digital por Software
+11 Tipo F2: corresponde a Certificado de Firma Digital por Hardware

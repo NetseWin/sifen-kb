@@ -1,0 +1,36 @@
+Control de versiones
+Versión: 120
+Fecha de modificación: 03/05/2018
+Ubicación - capítulo
+Descripción de las modificaciones
+Por la cual se crea el Manual Técnico que establece los requisitos y condiciones tecnológicos para constituirse como Facturador Electrónico del Sistema Integrado de Facturación Electrónica Nacional (SIFEN)
+Versión: 130
+Fecha de modificación: 29/06/2018
+Ubicación - capítulo
+Descripción de las modificaciones
+6 Modelo operativo
+Eliminación de Ambiente de habilitación y/o pruebas.
+Creación y Reestructuración del apartado 6.2.1 Plazo de transmisión del DE a la SET.
+Cambios en Rechazo del DE en el modelo de validación posterior
+6.2.1. Plazos SIFEN
+Se crea esta sección, se introducen cambios en la tabla de plazos
+7. Características tecnológicas del formato
+Se agrega las etiquetas <rDE> <dVerfor> en 7.2.2.1 Particularidad de la Firma digital y 7.2.2.2 Particularidad de envío de lote
+Cambios en el 7.4. Estándar de comunicación, se modificó Request de ejemplo utilizando SOAP
+8.3. Estándar de mensajes de los servicios del SIFEN y 8.4 Información de control y área de datos de los mensajes
+Se elimina la versión
+9 Descripción de los servicios web del SIFEN
+Desde el Schema XML 2 al Schema XML 14 (Se eliminó versión)
+10.3. Generación del código de seguridad
+Se agregó esta sección
+TABLA DE FORMATO DE CAMPOS DE UN DOCUMENTO ELECTRÓNICO
+El antiguo grupo A se divide en grupo AA y A.
+Se eliminó el grupo Campos que identifican a los terceros autorizados.
+Reestructuración en el grupo E
+Se agregaron campos en el grupo D3. Datos que identifican al receptor del Documento Electrónico DE (D200-D299)
+11 Gestión de eventos
+Modificaciones en 11.1.3 Anulación o Ajuste y 11.2.1 Disconformidad con el DTE
+Se agrega 11.1.4 Endoso de FE
+13.7 Código bidimensional (QR)
+Cambios en 13.7.2. Conformación del Código QR se agregaron.
+Se agregan las siguientes secciones: 13.7.3 Metodología para la generación del código QR, 13.7.4 Ejemplo de datos de generación del código QR, 13.7.5 Ejemplo URL de la imagen del QR y 13.7.6 Mensajes desplegados en consulta del QR

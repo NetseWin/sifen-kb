@@ -1,0 +1,91 @@
+9.5.2. Descripción del procesamiento
+Una vez superadas todas las validaciones iniciales y particulares, se registra el evento del DE correspondiente y este queda debidamente almacenado en el SIFEN.
+9.5.3. Protocolo de respuesta
+Conforme al Schema que precede y conforme a las validaciones efectuadas, si el procesamiento concluye con éxito, el registro de evento, contiene una respuesta satisfactoria, en caso de rechazo contiene el código y motivo de rechazo.
+Schema XML 14: resRecepEvento_v150.xsd (Respuesta del WS Recepción Evento)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+GRSch01
+rRetEnviEventoDe
+Raíz
+-
+-
+-
+-
+Elemento raíz
+GRSch02
+dFecProc
+Fecha y hora del procesamiento del último evento enviado
+GRSch01
+D
+19
+1-1
+Formato: “AAAA-MM-DD-hh:mm:ss-ss:ss”
+GRSch03
+gResProcEVe
+Grupo Resultado de Procesamiento del Evento
+GRSch01
+G
+1-15
+GRSch030
+dEstRes
+Estado del resultado
+CRSch03
+A
+8-30
+1-1
+Aprobado
+Aprobado con observación
+Rechazado
+GRSch031
+dProtAut
+Número de transacción
+GRSch03
+N
+10
+0-1
+Generado para cada registro de evento conforme dCodRes=0600
+GRSch032
+id
+Identificador del evento
+GRSch03
+N
+10
+1-1
+Corresponde al id autogenerado por el emisor, para identificar cada evento
+GRSch033
+gResProc
+Grupo Resultado de Procesamiento
+GRSch03
+G
+1-100
+Para producción se limitará a 5 mensajes máximos sin modificación de esta especificación.
+GRSch034
+dCodRes
+Código del resultado de procesamiento
+GRSch03
+N
+4
+1-1
+Definido en el tópico correspondiente del capítulo 11
+GRSch035
+dMsgRes
+Mensaje del resultado de procesamiento
+GRSch03
+A
+1-255
+1-1
+Definido en el tópico correspondiente del capítulo 11
+9.6. WS consulta RUC – siConsRUC
+Función:
+Devuelve el resultado de la consulta de los datos y estado del RUC de un contribuyente receptor.
+Proceso:
+Síncrono
+Método:
+SiConsRUC

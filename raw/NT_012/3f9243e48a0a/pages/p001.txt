@@ -1,0 +1,27 @@
+NOTA TÉCNICA N° 12
+Fecha: 21/02/2023
+Referencia: Correcciones y ajustes sobre el MT versión 150
+1. Validaciones
+1.1. En Campos inherentes a la operación comercial (D010-D099) se agrega la siguiente validación:
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+D022
+Moneda de la operación no corresponde al tipo de documento informado
+1213
+Si el tipo de documento informado es Autofactura Electrónica (C002=4) la moneda de la operación debe ser igual a PYG (D015=PYG)
+R
+Observación: Conforme a lo dispuesto en el Dictamen DEINT N° 344 de fecha 27 de Diciembre del 2022
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Jonathan Garay
+21/02/2023
+José Vernazza
+21/02/2023
+Validación 1213 – Conforme lo dispuesto en el Dictamen DEINT Nro. 344

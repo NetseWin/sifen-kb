@@ -1,0 +1,70 @@
+GENFE002e
+El receptor de la Factura electrónica debe ser innominado
+4469
+El tipo de documento de identidad del receptor informada en la factura electrónica debe ser igual a innominado (D208=5)
+R
+GENFE016
+Es obligatorio informar el número de casa del receptor
+4470
+Si se informa la dirección del receptor (GENFE015) es obligatorio informar el número de casa (GENFE016)
+R
+GENFE018
+Descripción del departamento del receptor no corresponde al código.
+4471
+Descripción del departamento del receptor no coincidente con lo informado en el campo GENFE017.
+R
+GENFE020
+Descripción del distrito de receptor no corresponde al código
+4472
+Descripción del distrito del receptor no coincidente con lo informado en el campo GENFE019
+R
+GENFE022
+Descripción de la ciudad del receptor no corresponde al código
+4473
+Descripción de la ciudad del receptor no coincidente con lo informado en el campo GENFE021
+R
+GENFE021
+El Departamento, el Distrito y la Ciudad del receptor no están relacionados
+4474
+Debe haber relación entre el departamento (GENFE017), el distrito (GENFE019) y la ciudad (GENFE021)
+Según Tabla 2.1 – Departamentos, Distritos y Ciudades
+R
+GENFE004
+Naturaleza del receptor incorrecto para el tipo de operación informado
+4475
+Si el tipo de operación es B2B (GENFE027=1), la naturaleza del receptor debe ser contribuyente (GENFE004=1)
+Si el tipo de operación es B2C o B2F (GENFE027=2 o 4), la naturaleza del receptor debe ser no contribuyente (GENFE004=2)
+R
+GENFE005
+Código de país del receptor inválido para el tipo de operación informado
+4476
+Si el tipo de operación es B2F (GENFE027=4), el país informado debe ser diferente a PRY (GENFE005≠PRY).
+Si el tipo de operación es diferente de B2F (GENFE027≠4) el país informado debe ser igual a PRY (GENFE005=PRY)
+R
+GENFE012
+El número de documento de identidad del receptor no es requerido
+4477
+Si la naturaleza del receptor es contribuyente, el número de documento de identidad no debe ser informado
+R
+GENFE015
+Dirección del receptor no informado para el tipo de documento electrónico
+4478
+Si el tipo de operación es B2F, es obligatorio informar la dirección del receptor (GENFE015)
+R
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Jonathan Garay
+11/11/2022
+Martha Rojas
+18/11/2022
+Elaboración del Documento,
+Formato de Campos y Validaciones
+Jonathan Garay
+04/05/2023
+Martha Rojas
+05/05/2023
+Se incluye el Campo de Tipo de operación y se realizan ajustes respecto a las Validaciones.

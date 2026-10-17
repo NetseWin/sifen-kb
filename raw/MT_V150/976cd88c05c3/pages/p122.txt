@@ -1,0 +1,98 @@
+GDE
+GDE003
+Id
+Identificador del evento
+N
+1-10
+1-1
+Atributo del campo GDE002
+GDE
+GDE004
+dFecFirma
+Fecha y Hora del firmado
+GDE002
+F
+19
+1-1
+Fecha y hora en el formato AAAA-MM-DDThh:mm:ss
+GDE
+GDE005
+dVerFor
+Versión del formato
+GDE002
+N
+3
+1-1
+Control de versiones
+GDE
+GDE006
+dTiGDE
+Tipo de Evento
+GDE002
+N
+1-2
+1-1
+Eventos del Emisor
+1 = Cancelación
+2 = Inutilización
+3 = Endoso (futuro)
+Eventos del Comprador
+10 = Acuse del DE (futuro)
+11 = Conformidad del DE (futuro)
+12 = Disconformidad del DE (futuro)
+13 = Desconocimiento del DE (futuro)
+GDE
+GDE007
+gGroupTiEvt
+Grupo de campos del tipo de evento
+GDE002
+G
+1-1
+Grupo correspondiente al evento según dTiGDE
+GDE
+GDE008
+Signature
+Grupo de la Firma Digital
+GDE001
+G
+1-1
+Firma Digital del campo rEve (GDE001)
+11.5.1. FORMATO DE EVENTOS EMISOR
+Grupo: Evento Cancelación (Formato del evento de cancelación)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+GDE
+GEC001
+rGeVeCan
+Raíz Gestión de Eventos Cancelación
+GDE007
+G
+-
+-
+Elemento raíz
+Obligatorio si campo dTiGDE=1 (Cancelación)
+GDE
+GEC002
+Id
+Identificador del DTE
+GEC001
+A
+44
+1-1
+Se informa el código de control (CDC)
+GDE
+GEC003
+mOtEve
+Motivo del Evento
+GEC001
+A
+5 - 500
+1-1
+Campo abierto

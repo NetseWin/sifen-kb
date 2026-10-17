@@ -1,0 +1,76 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E7.1
+E607
+dDesTiPag
+Descripción del tipo de pago
+E605
+A
+4-30
+1-1
+Referente al campo E606
+1= “Efectivo”
+2= “Cheque”
+3= “Tarjeta de crédito”
+4= “Tarjeta de débito”
+5= “Transferencia”
+6= “Giro”
+7= “Billetera electrónica”
+8= “Tarjeta empresarial”
+9= “Vale”
+10= “Retención”
+11= “Pago por anticipo”
+12= “Valor fiscal”
+13= “Valor comercial”
+14= “Compensación”
+15= “Permuta”.
+16= “Pago bancario”
+7= “Pago Móvil”
+18 = “Donación”
+19 = “Promoción”
+20 = “Consumo Interno”
+21 = “Pago Electrónico”
+Si E606 = 99, informar el tipo de pago
+E7.1
+E608
+dMonTiPag
+Monto por tipo de pago
+E605
+N
+1-15p(0-4)
+1-1
+E7.1
+E609
+cMoneTiPag
+Moneda por tipo de pago
+E605
+A
+3
+1-1
+Según tabla de códigos para monedas de acuerdo con la norma ISO 4217
+Se requiere la misma moneda para todos los ítems del DE
+E7.1
+E610
+dDMoneTiPag
+Descripción de la moneda por tipo de pago
+E605
+A
+3-20
+1-1
+Referente al campo E609
+E7.1
+E611
+dTiCamTiPag
+Tipo de cambio por tipo de pago
+E605
+N
+1-5p(0-4)
+0-1
+Obligatorio si E609 ≠ PYG

@@ -1,0 +1,16 @@
+SESJICENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° gM
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-9-
+Art. 4°.- Validez Tributaria. El Documento Electrónico que haya obtenido la aprobación por parte del SIFEN, adquiere la naturaleza de Documento Tributario Electrónico, a partir del cual, con sus eventos asociados cuando corresponda, es válido para todos los efectos tributarios.
+La aprobación de los Documentos Tributarios Electrónicos no implica la veracidad de la operación comercial documentada en el Documento Tributario Electrónico y, en consecuencia, no limita ni excluye el ejercicio de las facultades de control y fiscalización que tiene la DNIT.
+CAPÍTULO II
+DEFINICIÓN, OPORTUNIDAD Y FORMA DE EMISIÓN DE LOS DOCUMENTOS TRIBUTARIOS ELECTRÓNICOS
+SECCIÓN I
+COMPROBANTES DE VENTAS ELECTRÓNICOS
+Art. 5°.- Factura Electrónica. Es el documento electrónico emitido para respaldar documentalmente todas las operaciones realizadas por contribuyentes del IVA, ya sea con otros contribuyentes o con consumidores finales.
+Independientemente a lo dispuesto en los artículos 83 y 92 de la Ley N° 6380/2019 y en las disposiciones que regulan los impuestos vigentes en el país, la Factura Electrónica se podrá emitir en las siguientes oportunidades:
+a. En los contratos de obras de construcción, en el momento de los pagos parciales o de la emisión de cada certificado de avance de obra, o del pago total del precio establecido en el contrato respectivo, el que fuere anterior.
+b. En los contratos de servicios por etapas, avance de obra o trabajos, en el momento de concluirse cada período, fase o etapa, según el caso. c,<Í

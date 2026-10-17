@@ -1,0 +1,9 @@
+dRucRec=88899990&dTotGralOpe=300000&dTotIVA=27272&cItems=2&DigestValue=797a4759685578312f5859597a6b7357422b6650523351633530633d&IdCSC=0001&cHashQR=97ddbb3c1e7d65af03a70ffe21f2b34846ab1c89e0566c35222086766b7374ed
+Imagen QR:
+13.8.4.5. Paso 5 – Insertar la URL del paso 4 en el XML:
+Antes de la inserción de la URL en el XML, se deberá reemplazar los símbolos “&” por su equivalente en código html, el cual es “&amp;”.
+De esta manera la URL que se debe insertar en el XML, como valor del elemento <dCarQR> queda como sigue:
+https://ekuatia.set.gov.py/consultas/qr?nVersion=150&amp;Id=01444444017001001001452822017012515873260988&amp;dFeEmiDE=323031372d30312d32355430393a33353a3137&amp;dRucRec=88899990&amp;dTotGralOpe=300000&amp;dTotIVA=27272&amp;cItems=2&amp;DigestValue=797a4759685578312f5859597a6b7357422b6650523351633530633d&amp;IdCSC=0001&amp;cHashQR=97ddbb3c1e7d65af03a70ffe21f2b34846ab1c89e0566c35222086766b7374ed
+13.8.5. Mensajes desplegados en consulta del QR
+a) El DTE existe en el SIFEN con situación Aprobado o Aprobado con observaciones (Extemporáneo) – se presenta el KuDE en Cinta (para B2C) o consulta por pestañas (B2B o B2G)
+b) El DE no existe en el SIFEN

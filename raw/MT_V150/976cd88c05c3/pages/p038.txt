@@ -1,0 +1,21 @@
+contar obligatoriamente con el nombre y el RUC de la entidad en el que presta servicio el titular del certificado. En este último caso el RUC del contribuyente estará contenido en el campo SubjectAlternativeName.
+Estos certificados digitales serán exigidos por la SET en los siguientes momentos:
+• Para firma de mensajes de datos: Se refiere al archivo de documento electrónico, registro de evento y/o cualquier otro archivo XML admisible por el SIFEN, que requiera ser firmado digitalmente. El certificado digital debe contener el RUC del contribuyente emisor y la clave prevista para la función de firma digital.
+• Para establecimiento de conexiones y autenticaciones mutuas: (Comunicación entre el servidor del contribuyente y el servidor del SIFEN). Para este efecto, el certificado digital debe contener el RUC del contribuyente emisor y propietario responsable por la trasmisión del mensaje, con la extensión Extended Key Usage con el permiso clientAuth.
+Aclaración:
+• Certificado de persona jurídica: el RUC del contribuyente debe estar informado en el:
+o Campo X509 V3: Subject
+o Nombre: “Serial Number” OID: 2.5.4.5
+• Certificado de persona física: el RUC del contribuyente emisor debe estar informado en el:
+o Campo X509 V3: SubjectAlternativeName
+o Nombre: “SerialNumber” OID: 2.5.4.5
+Para ambos casos, la información del RUC debe informarse de la siguiente manera:
+RUCXXXXXXXXX-X -> es decir, se escribe la palabra RUC con mayúsculas, seguido del número de RUC correspondiente con guion y el dígito verificador, sin ningún espacio en toda la cadena.
+7.6. Estándar de firma digital
+Los archivos enviados al SIFEN son documentos electrónicos construidos en lenguaje XML y deben estar firmados con la firma digital amparada con el certificado correspondiente al RUC del contribuyente emisor del documento.
+Existen elementos que se encuentran presentes en el certificado digital del emisor de forma natural, lo que implica innecesaria su exposición en la estructura XML. En este contexto los DE firmados digitalmente no deben contener los siguientes elementos:
+<X509SubjectName>
+<X509IssuerSerial>
+<X509IssuerName>
+<X509SKI>
+De igual manera se debe evitar el uso de los siguientes elementos, ya que esta información será obtenida a partir del certificado digital del emisor.

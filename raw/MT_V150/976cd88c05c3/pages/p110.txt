@@ -1,0 +1,91 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+H
+H007
+dPExpDocAso
+Punto de expedición
+H001
+A
+3
+0-1
+Obligatorio si H002=2
+Completar con 0 (cero) a la izquierda
+No informar si H002 = 1 o 3
+H
+H008
+dNumDocAso
+Número del documento
+H001
+A
+7
+0-1
+Obligatorio si H002=2
+Completar con 0 (cero) a la izquierda hasta alcanzar 7 (siete) cifras
+No informar si H002 = 1 o 3
+H
+H009
+iTipoDocAso
+Tipo de documento impreso
+H001
+N
+1
+0-1
+Obligatorio si H002=2
+No informar si H002 = 1 o 3
+1= Factura
+2= Nota de crédito
+3= Nota de débito
+4= Nota de remisión
+5= Comprobante de retención
+H
+H010
+dDTipoDocAso
+Descripción del tipo de documento impreso
+H001
+A
+7-16
+0-1
+Obligatorio si existe el campo H009
+1= “Factura”
+2= “Nota de crédito”
+3= “Nota de débito”
+4= “Nota de remisión”
+5= “Comprobante de retención”
+H
+H011
+dFecEmiDI
+Fecha de emisión del documento impreso de referencia
+H001
+F
+10
+0-1
+Obligatorio si existe el campo H005
+Formato AAAA-MM-DD
+No Informar si campo H005 no existe
+H
+H012
+dNumComRet
+Número de comprobante de retención
+H001
+A
+15
+0-1
+Si E606 = 10, es opcional informar número de comprobante de retención (Cambio temporal).
+No informar si E606 ≠ 10
+H
+H013
+dNumResCF
+Número de resolución de crédito fiscal
+H001
+A
+15
+0-1
+Si D011 = 12 obligatorio informar número de resolución de crédito fiscal
+No informar si D011 ≠ 12

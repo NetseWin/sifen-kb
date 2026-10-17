@@ -1,0 +1,21 @@
+8.2. Servicio asíncrono
+La llamada (Request) del servidor del cliente es procesada de la siguiente manera:
+8.2.1. Secuencia del servicio asíncrono:
+a) El Cliente realiza la conexión realizando un Request al WS SIFEN.
+b) El WS SIFEN recibe la solicitud y responde con un mensaje de aprobación o rechazo, según las primeras validaciones. Esta respuesta contiene:
+a. Identificador de respuesta. (IdResp)
+b. Situación (Aprobación o Rechazo).
+c. Fecha y hora de recepción del mensaje.
+d. Tiempo promedio de procesamiento, expresado en segundos.
+c) El software cliente, al obtener el Response, cierra la conexión.
+d) El procesamiento de los DE será realizado de manera posterior a esta conexión.
+8.2.2. Tiempo promedio de procesamiento de un lote:
+El tiempo de procesamiento en SIFEN para la validación de un DE es una información esencial del rendimiento del sistema. Esta información está asociada directamente al procesamiento asincrónico de lotes de DE. En la respuesta de procesamiento de un lote, una de las informaciones que se proporcionará será, justamente, el tiempo promedio de procesamiento de un DE en los últimos 5 minutos.
+Este tiempo promedio de procesamiento tendrá como unidad de medida milisegundos.
+Para el cálculo del tiempo promedio de procesamiento se debe realizar la diferencia aritmética de tiempos de procesamiento de los DE en los últimos 5 minutos, calculado como diferencia entre las fechas (considerando día, mes, año, hora, minuto y segundo) de recepción de los lotes en SIFEN y sus fechas de procesamiento de las respuestas de los lotes procesados (considerando día, mes, año, hora, minuto y segundo).
+Este mismo tiempo promedio de procesamiento de DE estará disponible en el Portal e-Kuatia en el servicio de semáforo de monitoreo de los WS.
+Siempre que el tiempo calculado sea inferior a un segundo, la aplicación contestará como valor un segundo de tiempo promedio.
+Para los cálculos que arrojen cifras superiores a un segundo, se presentará:
+• En los casos que los decimales sean inferiores a 500 ms, el valor entero se redondeará por debajo.
+• En caso de que los decimales sean superiores a 500 ms, el valor entero se redondeará por encima.
+Los contribuyentes (clientes) deberán considerar este promedio de tiempo, antes de consumir el servicio de consulta de procesamiento y para la decisión del inicio del uso de la contingencia.

@@ -1,0 +1,89 @@
+Grupo: Evento Inutilización (Formato del evento de inutilización)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+GDE
+GEI001
+rGeVeInu
+Raiz Gestión de Eventos Inutilización
+GDE007
+-
+-
+-
+Elemento raíz
+Obligatorio si campo dTiGDE=2 (Inutilización)
+GDE
+GEI002
+dNumTim
+Número del Timbrado
+GEI001
+N
+8
+1-1
+GDE
+GEI003
+dEst
+Establecimiento
+GEI001
+A
+3
+1-1
+Completar con ceros a la izquierda
+GDE
+GEI004
+dPunExp
+Punto de expedición
+GEI001
+A
+3
+1-1
+Completar con ceros a la izquierda
+GDE
+GEI005
+dNumIn
+Número Inicio del rango del documento
+GEI001
+A
+7
+1-1
+La cantidad máxima para inutilización es un rango de hasta 1000 números del DE. Completar con ceros a la izquierda
+GDE
+GEI006
+dNumFin
+Número Final del rango del documento
+GEI001
+A
+7
+1-1
+Completar con ceros a la izquierda
+GDE
+GEI007
+iTiDE
+Tipo de Documento Electrónico
+GEI001
+N
+1-2
+1-1
+1= Factura electrónica
+2= Factura electrónica de exportación
+3= Factura electrónica de importación
+4= Autofactura electrónica
+5= Nota de crédito electrónica
+6= Nota de débito electrónica
+7= Nota de remisión electrónica
+8= Comprobante de retención electrónico
+GDE
+GEI008
+mOtEve
+Motivo del Evento
+GEI001
+A
+5-500
+1-1
+Campo libre

@@ -1,0 +1,16 @@
+SES.IICENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+N 2.1
+DECRETO . °
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-21-
+Art. 26.- KuDE. Para todos los fines en que se requiere el uso o presentación de la representación gráfica del Documento Tributario Electrónico tendrá validez la presentación del KuDE en formato digital.
+En los casos que se identifiquen diferencias de informaciones entre el Documento Tributario Electrónico y el KuDE prevalecerá la información del Documento Tributario Electrónico almacenado en el SIFEN.
+La DNIT establecerá los requisitos y condiciones relacionados a la generación del KuDE, podrá igualmente definir la utilización de un KuDE simplificado, que deberá contener como mínimo los siguientes datos: el Código de Control (CDC) del Documento Electrónico, la cantidad de ítems, la fecha de emisión, su monto total, y el Código QR.
+CAPÍTULO V
+TRANSMISIÓN, VALIDACIÓN Y RECHAZO DE LOS DOCUMENTOS ELECTRÓNICOS
+Art. 27.- Transmisión de los Documentos Electrónicos. El facturador electrónico deberá transmitir al SIFEN los Documentos Electrónicos para su validación respectiva, en el plazo máximo de hasta 72 (setenta y dos) horas posteriores a la información declarada en el campo de fecha y hora de la firma electrónica cualificada del documento electrónico.
+Transcurrido el mencionado plazo será considerado como transmisión extemporánea y se sujetará a las sanciones previstas para el efecto en las normas tributarias.
+La DNIT podrá, según sus criterios y de acuerdo con el perfil del facturador electrónico, establecer plazos menores de transmisión de los Documentos Electrónicos, estableciendo incluso la exigencia de aprobación previa a la entrega al receptor. Del mismo modo, podrá establecer los mecanismos y protocolos de dicha transmisión que deberán utilizar los diferentes facturadores electrónicos.
+4.\Í

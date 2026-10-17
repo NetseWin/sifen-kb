@@ -1,0 +1,16 @@
+13. Gráfica (KUDE)
+Este capítulo contempla los requisitos mínimos que deben observar y cumplir los facturadores electrónicos para estructurar las representaciones gráficas.
+13.1. Definición y alcance del KuDE:
+Se entiende por representación gráfica al contenido de un DE (KuDE), la cual puede ser entregada al receptor no electrónico o consumidor final en formato físico o digitalizado. Es un documento tributario auxiliar que expresa de manera simplificada una transacción que ha sido respaldada por un DE. Cabe señalar que su naturaleza simplificada obedece a que el KuDE contiene sólo algunos campos representativos del DE.
+El KuDE tiene como propósitos, los siguientes:
+• Constituirse en el documento tributario físico de una transacción respaldada por un DE emitido por facturador electrónico, a un receptor no electrónico o consumidor final.
+• Amparar el traslado de las mercaderías entre los locales del emisor o entre las instalaciones de este y el receptor comprador.
+• Constituirse en el documento tributario físico que respalda o soporta los créditos fiscales del receptor que no es facturador electrónico de SIFEN. Cabe señalar que el receptor se obliga a consultar y/o comprobar la existencia del DTE en SIFEN, tomando en consideración algunos campos presentes en el cuerpo del KuDE como criterios de consulta.
+13.2. Características y funcionalidades
+Entre las características y funcionalidades del KuDE, se encuentran las siguientes:
+• KuDE posibilita la consulta pública del DTE en la página web de SIFEN con el llenado de la información impresa del CDC o con la lectura del QR Code impreso.
+• La generación del KuDE cuando se trata del facturador electrónico debe ser realizada directamente en los sistemas de facturación, y en la base de datos oficial del SIFEN. Igualmente puede ser consultada mediante la solución gratuita provista por este sistema.
+• No puede existir información en el KuDE que no forme parte del formato del DE firmado (XML), salvo las que se mencionen en el presente capítulo.
+• La duración del papel del KuDE así como su impresión y legibilidad debe ser de un plazo no menor a seis (6) meses.
+13.3. Denominación de los KuDE
+Cada documento electrónico deberá tener la denominación según corresponda a su tipo, conforme a los enunciados citados a continuación:

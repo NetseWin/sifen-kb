@@ -1,0 +1,23 @@
+13.8. Código bidimensional (QR)
+13.8.1. Delineamientos del QR Code
+La imagen impresa del QR debe tener mínimamente 25 mm (veinticinco milímetros) de ancho, de los cuales, 22 mm son para el contenido y 3 mm de margen seguro (quiet zone). Queda a criterio del emisor si desea un tamaño mayor, en tal caso, el margen seguro debe ser el 10% del ancho total.
+El contenido de este código es cargado en el campo J002 del archivo de DE correspondiente.
+El código QR que será impreso en el KUDE, obedece al estándar internacional ISO/IEC 18004.
+Para la generación del QR Code es necesario que previamente el contribuyente sea un facturador electrónico autorizado por la SET y que haya obtenido de la Administración Tributaria, el Código de Seguridad (CSC).
+Este código estará compuesto de 32 dígitos alfanuméricos, es generado por el SIFEN y entregado al facturador electrónico al momento de su ingreso. Sirve para garantizar la seguridad y autoría del QR. Este código es de conocimiento exclusivo de la Administración Tributaria y del contribuyente, permitiéndose hasta dos códigos de seguridad en estado activo.
+13.8.2. Conformación del Código QR
+Este código está formado por un conjunto de información adicional a fin de asegurar la autoría de un documento electrónico, que puede no haber sido transmitido al SIFEN.
+Esta imagen contendrá:
+1. Dirección de la página web de consulta de la SET:
+• Producción: https://ekuatia.set.gov.py/consultas/qr?
+• Test: https://ekuatia.set.gov.py/consultas-test/qr?
+2. Conjunto de parámetros del DE:
+• Versión del QR
+• Código de Control (Id), contenido en el campo A002
+• Fecha y hora de emisión del DE (dFeEmiDE), contenido en el campo D002
+• Identificación del receptor, valor del campo D205 o D210, según corresponda.
+• F013, Total general de la operación
+• F016, Liquidación total del IVA
+• Cantidad de Ítems del DE, se obtiene contando la cantidad de ocurrencias del campo E701.
+• Hash de la Firma, DigestValue contenido en el campo XS17.
+• Id del Código entregado por el SIFEN (IdCSC).

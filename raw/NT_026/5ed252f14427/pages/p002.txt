@@ -1,0 +1,27 @@
+2.2. Se excluyen las siguientes reglas de validación E8. Campos que describen los ítems de la operación (E700-E899).
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+E704
+Código de DNCP - Nivel General es obligatorio para el tipo de operación B2G
+1800
+Si el tipo de operación seleccionado es igual a B2G (D202=3), es obligatorio informar el Código DNCP – Nivel General (E704)
+R
+E705
+Código de DNCP – Nivel Específico es obligatorio
+1801
+Si se informa el Código de DNCP – Nivel General (E704) es obligatorio informar el código de DNCP – Nivel Específico (E705)
+R
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Martha Rojas
+05/06/2025
+Jonathan Garay
+06/06/2025
+Elaboración del documento, modificaciones de campos, creación de validaciones.

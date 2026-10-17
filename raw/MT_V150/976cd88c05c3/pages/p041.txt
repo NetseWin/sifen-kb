@@ -1,0 +1,42 @@
+• Tamaño de la Clave Criptográfica: RSA 2048, para cifrado por software, para cifrado por hardware pueden ser de RSA 2048 o RSA 4096.
+• Función Criptográfica Asimétrica: RSA conforme a (https://www.w3.org/TR/2002/REC-xmlenc-core-20021210/Overview.html#rsa-1_5 ).
+• Función de “message digest”: SHA-2
+https://www.w3.org/TR/2002/REC-xmlenc-core-20021210/Overview.html#sha256
+• Codificación: Base64
+https://www.w3.org/TR/xmldsig-core1/#sec-Base-64
+• Transformaciones exigidas: Útil para canonizar el XML enviado, con el propósito de realizar la validación correcta de la firma digital:
+Enveloped, https://www.w3.org/TR/xmldsig-core1/#sec-EnvelopedSignature
+C14N, http://www.w3.org/2001/10/xml-exc-c14n#
+7.8. Procedimiento para la validación de la firma digital:
+a) Extraer la clave pública del certificado digital,
+b) Verificar el plazo de validez del certificado digital del emisor
+c) Validar la cadena de confianza, identificando al PSC, así como la lista de certificados revocados de la cadena
+d) Verificar que el certificado digital utilizado es del contribuyente y no de una autoridad certificadora
+e) Validar la integridad de las LCR utilizadas
+f) Verificar el Plazo de validez de cada LCR (Effective Date y NextUpdate) en relación al momento de la firma (campo fecha de la firma).
+7.9. Síntesis de definiciones tecnológicas
+La Tabla E resume los principales estándares de tecnología utilizados.
+Tabla E: Estándares de tecnología utilizados
+Característica
+Descripción
+Web Services
+Estándar definido por WS-I Basic Profile 1.1
+Medio lógico de comunicación
+Web Services disponibilizados por la SET
+Medio físico de comunicación
+Internet
+Protocolo de Internet
+TLS versión 1.2, con autenticación mutua utilizando los Certificados Digitales.
+Estándar de intercambio de datos
+SOAP versión 1.2
+Estándar de Mensaje
+XML en el Estándar Style/Encoding: Document/Literal.
+Estándar de Certificado Digital
+ITU-T X.509 V.3 Information Technology Open Systems Interconnection. The Directory: Public-key and attribute certificate frameworks. Emitido por un PSC habilitado por el MIC.
+https://www.acraiz.gov.py/html/Certif_1PrestaServ.html
+Estándar de la Firma Digital
+XML Digital Signature, Enveloped, con Certificado Digital X.509 versión 3, con clave privada de 2048 y estándares de criptografía asimétrica RSA, RFC5639 y algoritmo SHA-256
+Validación de la Firma Digital
+Se validarán la integridad y la autoría, además la cadena de confianza, por medio de las LCR en relación al momento de la firma (campo fecha de la firma).
+Estándares de utilización XML
+Definidos según las mejores prácticas a la hora de armar un archivo XML

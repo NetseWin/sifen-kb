@@ -1,0 +1,72 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+64
+D209a
+Descripción del tipo de documento de identidad del receptor no corresponde al código
+1313
+La descripción del tipo de documento de identidad del receptor no coincidente con lo informado en el campo D208
+R
+65
+D210
+Es obligatorio informar el número de documento de identidad del receptor
+1314
+Si la naturaleza del receptor es NO contribuyente (D201=2) y el tipo de operación es diferente a B2F (D202≠4), el número de documento de identidad debe ser informado
+R
+66
+D210a
+El número de documento de identidad del receptor no es requerido
+1323
+Si la naturaleza del receptor es contribuyente (D201=1) o el tipo de operación es igual a B2F (D202=4), el número de documento de identidad no debe ser informado
+R
+67
+D213
+Dirección del receptor no informado para el tipo de documento electrónico
+1318
+Si el tipo de documento electrónico informado es Nota de remisión electrónica (C002=7) o cuando el tipo de operación es B2F (D202=4), es obligatorio informar la dirección del receptor (D213)
+R
+68
+D218
+Es obligatorio informar el número de casa del receptor
+1330
+Si se informa la dirección del receptor (D213) es obligatorio informar el número de casa (D218)
+R
+69
+D219
+Es obligatorio informar el departamento del receptor
+1324
+Cuando se informa la dirección del receptor (D213) y el tipo de operación es distinto a B2F (D202≠4), es obligatorio informar el departamento (D219)
+R
+70
+D220
+Descripción del departamento de emisión no corresponde al código
+1325
+Descripción del departamento de emisión no coincidente con lo informado en el campo D219
+R
+71
+D222
+Descripción del distrito de emisión no corresponde al código
+1326
+Descripción del distrito de emisión no coincidente con lo informado en el campo D221
+R
+72
+D223
+Es obligatorio informar la ciudad del receptor
+1327
+Cuando se informa la dirección del receptor (D213) y el tipo de operación es distinto a B2F (D202≠4), es obligatorio informar la ciudad (D223)
+R
+73
+D223a
+El Departamento, el Distrito y la Ciudad del receptor no están relacionados
+1328
+Debe haber relación entre el departamento (D219), el distrito (D221) y la ciudad (D223)
+R
+74
+D224
+Descripción de la ciudad de emisión no corresponde al código
+1329
+Descripción de la ciudad de emisión no coincidente con lo informado en el campo D223
+R

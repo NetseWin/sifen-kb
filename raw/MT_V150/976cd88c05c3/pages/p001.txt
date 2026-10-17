@@ -1,0 +1,5 @@
+MANUAL TÉCNICO
+SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN)
+Versión 150
+10/09/2019
+El presente documento puede sufrir modificaciones hasta la implementación total del proyecto SIFEN.

@@ -1,0 +1,46 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+237
+F023a
+Cálculo del total general de la operación en guaraníes incorrecto para la condición del tipo de cambio global
+2385
+Error en el cálculo del total general de la operación en guaraníes
+Si moneda de la operación es diferente de guaraníes (D015≠PYG) y la condición del tipo de cambio es global (D017=1) el cálculo debe ser F014*D018
+R
+238
+F023b
+Cálculo del total general de la operación en guaraníes incorrecto para la condición del tipo de cambio por ítem
+2386
+Error en el cálculo del total general de la operación en guaraníes
+Si moneda de la operación es diferente de guaraníes (D015≠PYG) y la condición del tipo de cambio es por ítem (D017=2) el cálculo debe ser igual a la suma de los totales en guaraníes por ítem (EA009)
+R
+G1. Campos generales de la carga (G050 - G099)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+239
+G050
+Grupo generales de la carga no es permitido para el tipo de documento electrónico seleccionado
+2390
+El grupo de los campos generales de la carga no es permitido para tipos de documento distintos a factura electrónica o Nota de Remisión Electrónica (C002≠1 y C002≠7)
+R
+H. Campos que identifican al documento asociado (H001-H049)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+240
+H001
+Documento asociado es obligatorio para el tipo de documento electrónico seleccionado
+2400
+Si el tipo de documento electrónico seleccionado es igual a Autofactura, Nota de Crédito Electrónica, Nota de Débito Electrónica o Comprobante de Retención (C002=4, 5, 6 o 8), es obligatorio informar el grupo de campos que identifican al documento asociado
+R

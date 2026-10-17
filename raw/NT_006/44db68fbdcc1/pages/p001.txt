@@ -1,0 +1,30 @@
+NOTA TÉCNICA N° 6
+Fecha: 25/03/2021
+Cambios desde la fecha: 25/03/2021
+Referencia: Correcciones y ajustes sobre el MT versión 150
+1. VALIDACIONES
+1.1. Se agrega la siguiente validación:
+D1. Campos inherentes a la operación comercial (D010-D099)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+25
+D011a
+Tipo de transacción no requerido para el tipo de documento electrónico seleccionado
+1216
+No informar el tipo de transacción cuando C002≠1 o 4
+R
+Páginas: 162.
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Esperanza Britos
+23/03/2021
+Carlos Mendoza
+23/03/2021

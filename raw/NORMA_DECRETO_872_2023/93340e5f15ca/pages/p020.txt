@@ -1,0 +1,16 @@
+SESJICENTENARIO DE LA EPOPEYA NACIONAL 1864- 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° 272
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-20-
+CAPÍTULO IV
+FORMA DE ENVÍO Y ENTREGA DE LOS DOCUMENTOS TRIBUTARIOS
+Art. 25.- Envío y entrega del Documento Electrónico. El facturador electrónico está obligado a enviar o poner a disposición del receptor el archivo XML del Documento Electrónico y/o a entregar el KuDE del mismo, conforme a lo siguiente:
+1. Cuando el receptor sea facturador electrónico: El facturador electrónico deberá enviar el archivo XML y el KuDE del Documento Electrónico por web service, mensajería de datos, correo electrónico o ponerlo a disposición en su sistema de información o portal web para que el receptor lo descargue y consulte, o enviárselo por cualquier otro mecanismo de transmisión de datos.
+2. Cuando el receptor no sea facturador electrónico: El facturador electrónico podrá enviar o entregar el KuDE por cualquiera de los siguientes medios:
+a. Impreso.
+b. Por correo electrónico, en archivo electrónico con formato de documento portátil.
+c. Disponerlo para su descarga, consulta o impresión, en su sistema de información o portal web, o por cualquier otro mecanismo de transmisión de datos.
+En todos los casos, a solicitud del comprador, el facturador electrónico deberá entregar el KuDE de manera impresa.
+czy 'ns

@@ -1,0 +1,22 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+241
+H001a
+No informar el grupo de documento asociado
+2414
+Cuando el tipo de DE es Factura electrónica (C002=1), SIFEN permite su asociación con los siguientes documentos:
+Con Nota de remisión: Si este tipo de documento asociado es electrónico H002=1, el CDC del DTE referenciado debe pertenecer a una Nota de remisión. Si este tipo de documento asociado es impreso H002=2, el tipo de documento impreso debe ser Nota de remisión H009=4
+Con Factura: cuando el tipo de transacción del documento asociado es Anticipo (D011 del documento asociado = 9). Si este tipo de documento asociado es electrónico H002=1, el CDC del DTE referenciado debe pertenecer a una FE. Si este tipo de documento asociado es impreso H002=2, el tipo de documento impreso debe ser Factura H009=1
+Cuando el tipo de DE es Nota de crédito o Nota de débito (C002=5 o 6), no se debe informar un grupo de documento asociado distinto a Factura electrónica (Si el tipo de documento asociado es electrónico H002=1, el CDC del DTE referenciado debe pertenecer a una Factura electrónica. Si el tipo de documento asociado es impreso H002=2, el tipo de documento impreso debe ser Factura H009=1)
+Cuando el tipo de DE es Nota de remisión (C002=7) y se informa uno o más documentos asociados distintos a Factura electrónica (Si el tipo de documento asociado es electrónico H002=1, el CDC del DTE referenciado debe pertenecer a una Factura electrónica. Si el tipo de documento asociado es impreso H002=2, el tipo de documento impreso debe ser Factura H009=1)
+R
+242
+H001b
+Cantidad incorrecta de documento(s) asociado(s)
+2415
+Cuando el tipo de documento electrónico es Autofactura, Nota de crédito o nota de débito (C002=4, C002=5 o C002=6), el grupo de documento asociado informado puede aparecer una sola vez.
+R

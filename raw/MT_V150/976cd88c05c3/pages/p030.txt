@@ -1,0 +1,8 @@
+Existen dos tipos de procesamiento de Servicios Web:
+Síncronos: Se consideran a aquellos en los cuales el procesamiento y respuesta del servicio se realizan en la misma conexión de consumo. Ver gráfica Nº 06.
+Web Service 1 a 1 Sistema de Información FE Contribuyente Sincrónico SIFEN Sistema de Recepción y Procesamiento 5 Recibe mensaje de solicitud Direcciona al sistema de recepción y procesamiento 2 Realiza procesamiento Devuelve msj resultado al WS 34 Recibe mensaje con resultado Direcciona al Sistema del Contribuyente 1 Establece conexión Envía mensaje de solicitud Recibe Respuesta Termina conexión
+Gráfica Nº 06: WS Sincrónico
+Asíncronos: Son aquellos en los cuales el resultado del procesamiento del servicio requerido no es entregado en la misma conexión de la solicitud de consumo (Ver gráfica Nº 07). Consta de un mensaje y un número de lote descriptos a continuación:
+• Un mensaje con un recibo (ticket) que confirma que el archivo remitido ha superado las primeras validaciones y se ha recepcionado el lote, y
+• El número de lote, incluido en esta respuesta, con el cual el cliente (sistema del contribuyente) podrá consultar el resultado del procesamiento, consumiendo el Web Service correspondiente, en otra conexión.
+Gráfica Nº 07: WS Asincrónico

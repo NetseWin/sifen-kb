@@ -1,0 +1,29 @@
+213
+F002a
+Cálculo del subtotal de la operación exenta incorrecto
+2353
+Error en el cálculo del subtotal de la operación exenta El cálculo debe corresponder a la suma de todas las ocurrencias de EA008 (Valor total de la operación por ítem) cuando la operación sea exenta (Si E731 = 3), más Todas las ocurrencias de la Base Exenta (E737) cuando la operación sea Gravado Parcial (Si E731 = 4).
+R
+217
+F004a
+Cálculo del subtotal de la operación gravada al 5% incorrecto
+2357
+Error en el cálculo del subtotal de la operación gravada al 5% El cálculo debe corresponder a la suma de todas las ocurrencias de EA008 (Valor total de la operación por ítem) cuando la operación sea a la tasa del 5% (E734=5) y (Si E731 = 1), más todas las ocurrencias de (E735 + E736) cuando la operación sea a la tasa del 5% (E734=5) y (Si E731 = 4). No debe existir el campo si D013 ≠ 1 o D013 ≠ 5
+R
+219
+F005a
+Cálculo del subtotal de la operación gravada al 10% incorrecto
+2359
+Error en el cálculo del subtotal de la operación gravada al 10% El cálculo debe corresponder a la suma de todas las ocurrencias de EA008 (Valor total de la operación por ítem) cuando la operación sea a la tasa del 10% (E734=10) y (Si E731 = 1), más todas las ocurrencias de (E735 + E736) cuando la operación sea a la tasa del 10% (E734=10) y (Si E731 = 4). No debe existir el campo si D013 ≠ 1 o D013 ≠ 5
+R
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Jonathan Garay
+10/11/2022
+Marta Rojas
+11/11/2022
+Elaboración del Documento, Formato de Campos y Validaciones

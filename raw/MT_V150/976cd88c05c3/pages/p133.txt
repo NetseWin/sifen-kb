@@ -1,0 +1,110 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GDE
+GET018
+dNomTrans
+Nombre o razón social del transportista
+GET001
+A
+4-60
+0-1
+Obligatorio si GET003=3
+GDE
+GET019
+iTipIDTrans
+Tipo de documento de identidad del transportista
+GET001
+N
+1
+0-1
+Obligatorio si GET015 = 2
+No informar si GET015 = 1
+1= Cédula paraguaya
+2= Pasaporte
+3= Cédula extranjera
+4= Carnet de residencia
+GDE
+GET020
+dDTipIDTrans
+Descripción del tipo de documento de identidad del transportista
+GET001
+A
+9-20
+0-1
+Obligatorio si existe el campo GET019
+1= “Cédula paraguaya”
+2= “Pasaporte”
+3= “Cédula extranjera”
+4= “Carnet de residencia”
+GDE
+GET021
+dNumIDTrans
+Número de documento de identidad del transportista
+GET001
+A
+1-20
+0-1
+Obligatorio si existe el campo GET019
+GDE
+GET022
+iTipTrans
+Tipo de transporte
+GET001
+N
+1
+0-1
+Obligatorio si GET003=4
+1= Propio
+2= Tercero
+GDE
+GET023
+dDesTipTrans
+Descripción del tipo de transporte
+GET001
+A
+6-7
+0-1
+Obligatorio si existe el campo GET022
+GDE
+GET024
+iModTrans
+Modalidad del transporte
+GET001
+N
+1
+0-1
+Obligatorio si GET003=4
+1=Terrestre
+2= Fluvial
+3= Aéreo
+4= Multimodal
+GDE
+GET025
+dDesModTrans
+Descripción de la modalidad del transporte
+GET001
+A
+5-10
+1-1
+Referente al campo GET024
+1= “Terrestre”
+2= “Fluvial”
+3= “Aéreo”
+4= “Multimodal”
+GDE
+GET026
+dTiVehTras
+Tipo de vehículo
+GET001
+A
+4-10
+0-1
+Obligatorio si GET003=4
+Descripción debe ser acorde con el campo GET024

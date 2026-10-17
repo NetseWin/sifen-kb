@@ -1,0 +1,19 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+J
+J003
+dInfAdic
+Información adicional de interés para el emisor
+J001
+A
+1-5000
+0-1
+Campo de información de interés exclusivo del emisor para aclaraciones a sus clientes.
+Este campo NO debe ser enviado para al SIFEN. Puede formar parte del DE o KuDE enviado al receptor, pero NO formará parte del DTE

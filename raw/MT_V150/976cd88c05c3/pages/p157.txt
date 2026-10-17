@@ -1,0 +1,51 @@
+BG01
+Mensaje de datos de entrada del WS siResultLoteDE superior a 1000 KB.
+0320
+R
+12.3.3.2. Información de control de la llamada al WS
+ID
+Resultado de la Validación
+Código
+Obs
+E
+BH01
+RUC del certificado de conexión no autorizado a consultar el lote
+0340
+El resultado del procesamiento del lote solo puede ser consultado por el RUC que realizó la transmisión del mismo.
+R
+12.3.3.3. Área de datos del WS
+ID
+Resultado de Validación
+Código
+Obs
+E
+BI01
+Lote inexistente
+0360
+R
+BI02
+Lote en procesamiento
+0361
+R
+BI03
+Procesamiento de lote concluido
+0362
+A
+B104
+Lotes con tipos distintos de DE
+0363
+R
+12.3.4. WS consulta de DE – siConsDE
+12.3.4.1. Mensaje de entrada del WS
+La primera validación corresponde al tamaño máximo permitido para el mensaje de Web Service, este no debe superar los (1000 KB). Su verificación es:
+• En el presente WS se devuelve el mensaje con código 0380.
+• En la configuración de red (firewall), en el caso que la conexión sea interrumpida sin la generación del mensaje de error con el código 0380.
+ID
+Resultado de la Validación
+Código
+Obs
+E
+BJ01
+Mensaje de datos de entrada del WS siConsDE superior a 1000 KB.
+0380
+R

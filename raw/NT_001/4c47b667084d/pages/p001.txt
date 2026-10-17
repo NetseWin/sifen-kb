@@ -1,0 +1,59 @@
+VOLUNTARIEDAD CONTROLADA DE FACTURACIÓN ELECTRÓNICA SIFEN
+Nota Técnica Número 1
+Fecha: 14-10-2019
+​
+Cambios desde la fecha 10-09-2019 al 14-10-2019
+​ ​ ​
+Referencia: Correcciones y ajustes sobre el MT versión 150
+​
+A- Formato de campos (XML):
+1- Especificación de la fórmula a utilizar para hallar el Descuento global sobre el precio unitario por ítem (incluidos impuestos) (dDescGloItem) (Página 88)
+​
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.1.1
+EA004
+dDescGloItem
+Descuento global sobre el precio unitario por ítem (incluidos impuestos)
+EA001
+N
+1-15p(0-8)
+0-1
+Si se cuenta con un descuento global, debe ser aplicado (no es prorrateo) a cada uno de los ítems, independientemente de que un ítem cuente con un descuento particular. [F010 * E721 / 100]
+2- En el grupo Campos que describen los subtotales y totales de la transacción documentada ​
+(F001-F099) se realizó una verificación de las fórmulas utilizadas. (Página 103)
+​ ​
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+F
+F009
+dTotDesc
+Total descuento particular por ítem
+F001
+N
+1-15p(0-8)
+1-1
+Suma de la multiplicación de cada descuento particular por ítem por la cantidad de ese ítem (sumatoria de EA002*E711)
+F
+F033
+dTotDescGlotem
+Total descuento global por ítem
+F001
+N
+1-15p(0-8)
+1-1
+Sumatoria de la multiplicación de cada descuento global por ítem por la cantidad de ese ítem (sumatoria de EA004*E711)

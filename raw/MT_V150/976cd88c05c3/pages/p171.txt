@@ -1,0 +1,68 @@
+E5. Campos que componen la Nota Crédito/Débito Electrónica NCE - NDE (E400-E499)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+92
+E400
+Para el tipo de documento electrónico seleccionado es obligatorio informar el grupo de campos que componen la Nota Crédito/Débito Electrónica NCE – NDE
+1450
+Si el tipo de documento electrónico seleccionado es Nota de Crédito/Débito Electrónica (C002=5 o 6), es obligatorio informar el grupo de campos que componen la Nota de Crédito/Débito Electrónica (E400)
+R
+93
+E400a
+Para el tipo de documento electrónico seleccionado no se requiere informar el grupo de campos que componen la Nota Crédito/Débito Electrónica NCE – NDE
+1451
+Si el tipo de documento electrónico seleccionado es distinto a Nota de Crédito/Débito Electrónica (C002≠5 o 6), el grupo de campos que componen la Nota de Crédito/Débito Electrónica (E400) no debe ser informado
+R
+94
+E402
+Descripción del motivo de emisión no corresponde al código
+1452
+Descripción del motivo de emisión de la Nota de Crédito/Débito Electrónica no coincidente con lo informado en el campo E401
+R
+E6. Campos que componen la Nota de Remisión Electrónica (E500-E599)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+95
+E500
+Para el tipo de documento electrónico seleccionado, es obligatorio informar el grupo de campos que componen la NRE
+2600
+Si el tipo de documento es Nota de remisión (C002=7), es obligatorio informar el grupo de campos que componen la Nota de Remisión (E500)
+R
+96
+E500a
+Para el tipo de documento electrónico seleccionado, no se debe informar el grupo de campos que componen la NRE
+2601
+Para el tipo de documento electrónico informado (C002 ≠ 7), el grupo de campos que componen la NRE (E500) no debe informarse
+R
+97
+E501
+RUC del receptor no coincidente con el RUC del emisor
+2606
+Cuando el motivo de emisión es Traslado entre los locales de la empresa (E501=7), el RUC del emisor debe coincidir con el RUC del receptor (D101=D206)
+R
+98
+E502
+Descripción del motivo de emisión no corresponde al código
+2602
+La descripción del motivo de emisión no coincidente con lo informado en el campo E501
+R
+99
+E504
+Descripción del responsable de la emisión de la NRE, no corresponde al código
+2603
+La descripción del responsable por la emisión de la NRE, no coincide con lo informado en el campo E503
+R
+100
+E506
+Fecha futura de emisión de la factura excede el límite permitido
+2604
+El mes de la fecha estimada de emisión de la factura, no puede ser posterior al mes de la fecha de emisión de la Nota de Remisión
+R

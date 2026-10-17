@@ -1,0 +1,73 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+C
+C005
+dEst
+Establecimiento
+C001
+A
+3
+1-1
+Completar con 0 (cero) a la izquierda
+Debe coincidir con la estructura de timbrado
+C
+C006
+dPunExp
+Punto de expedición
+C001
+A
+3
+1-1
+Completar con 0 (cero) a la izquierda
+Debe coincidir con la estructura de timbrado
+C
+C007
+dNumDoc
+Número del documento
+C001
+A
+7
+1-1
+Debe empezar con 1 (uno) para un nuevo timbrado.
+Completar con 0 (cero) a la izquierda hasta alcanzar 7 (siete) cifras
+Debe coincidir con la estructura de timbrado
+Una vez que se haya agotado la numeración permitida por el sistema (9999999), la numeración de los comprobantes electrónicos se reinicia con la utilización de la serie, para evitar rechazos por duplicidad
+C
+C010
+dSerieNum
+Serie del número de timbrado
+C001
+A
+2
+0-1
+Campo obligatorio cuando ya se ha consumido la totalidad de la numeración permitida por el sistema (9999999).
+Referirse a la sección Manejo del timbrado y Numeración.
+C
+C008
+dFeIniT
+Fecha inicio de vigencia del timbrado
+C001
+F
+10
+1-1
+Formato AAAA-MM-DD
+Para el KuDE el formato de la fecha de inicio de vigencia debe contener los guiones separadores. Ejemplo:
+2018-05-31
+C
+C009
+dFeFinT
+Fecha fin de vigencia del timbrado
+C001
+F
+10
+1-1
+Formato AAAA-MM-DD
+Para el KuDE el formato de la fecha de inicio de vigencia debe contener los guiones separadores. Ejemplo:
+2018-05-31

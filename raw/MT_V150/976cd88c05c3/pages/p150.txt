@@ -1,0 +1,108 @@
+Inicio ID
+Inicio código de respuesta
+Fin ID
+Fin código de respuesta
+Tipo de Regla de Validación
+Grupo de campos
+E650
+1750
+E650a
+1799
+Campos que describen las cuotas
+(E650-E659)
+E704
+1800
+E717
+1849
+Campos que describen los ítems de la operación
+(E700-E899)
+E720
+1850
+E727
+1899
+Campos que describen el precio, tipo de cambio y valor total de la operación por ítem
+(E720-E729)
+EA003
+1852
+EA050
+1862
+Campos que describen los descuentos, anticipos y valor total por ítem
+(EA001-EA050)
+E730
+1900
+E736a
+1999
+Campos que describen el IVA de la operación
+(E730-E739)
+E740
+2000
+E745
+2049
+Campos que describen el ISC de la operación
+(E740-E749)
+E822
+2050
+E824
+2099
+Campos de datos adicionales de uso comercial
+(E820-E829)
+E900
+2100
+E912a
+2149
+Campos que describen el transporte de las mercaderías
+(E900-E999)
+E920
+2150
+E930
+2199
+Campos que identifican el local de salida de las mercaderías
+(E920-E939)
+E940
+2200
+E950
+2249
+Campos que identifican el local de entrega de las mercaderías
+(E940-E959)
+E960
+2250
+E966a
+2299
+Campos que identifican el vehículo de traslado de mercaderías
+(E960-E979)
+E980
+2300
+E989a
+2349
+Campos que identifican al transportista (persona física o jurídica)
+(E980-E999)
+F001
+2350
+F023b
+2399
+Campos que describen los subtotales y totales de la transacción documentada
+(F001-F099)
+G050
+2390
+G050
+2399
+Campos generales de la carga
+(G050 - G099)
+H001
+2400
+H017a
+2449
+Campos que identifican al documento asociado
+(H001-H049)
+I002
+2450
+I002
+2459
+Información de la Firma Digital del DTE
+(I001-I049)
+J002
+2500
+J003
+2599
+Campos fuera de la Firma Digital
+(J001-J049)

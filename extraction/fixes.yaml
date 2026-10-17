@@ -1,0 +1,25 @@
+# extraction/fixes.yaml — ÚNICA vía para corregir defectos de extracción de raw/ (docs/arquitectura.md §I).
+#
+# No es kb/: este archivo admite comentarios. `sifen extract` lo lee, aplica cada corrección a la
+# celda `cells[attr]` de la fila indicada (raw_cells conserva lo extraído), anota el id en
+# `fix_ids` de la fila y en `fixes` del index.json. Si la fila no existe, si `original` ya no
+# coincide con lo extraído (normalize_text) o si el atributo tiene tramos resaltados, la extracción
+# FALLA: una corrección vieja nunca se aplica a ciegas. Corregir `attr: id` cambia la clave de la fila.
+#
+# Formato: una lista; cada corrección con todos estos campos (`occ` es opcional, 1 por defecto).
+# Ejemplo HIPOTÉTICO (el motor actual lee bien E827 en NT_020; no hay correcciones vigentes):
+#
+# - id: FIX-0001
+#   doc: NT_020                 # DocId
+#   sha12: 0d877d1fb16a         # revisión (sha256[:12]) cuyo raw/ se corrige
+#   page: 1                     # página PDF donde empieza la fila
+#   key: E82                    # clave de la fila TAL COMO LA EXTRAE el motor (antes de corregir)
+#   occ: 1
+#   attr: id                    # atributo de cells
+#   original: E82               # texto extraído (se compara normalizado)
+#   corrected: E827
+#   motivo: el ID se imprime partido en dos renglones y el motor lo separa
+#   evidencia: NT_020 pág. 1, imagen de la celda; ID consecutivo de E826
+#
+# Revisión humana obligatoria: cada corrección entra por PR, con la imagen de la página como evidencia.
+[]

@@ -1,0 +1,90 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+261
+H008a
+Número del documento no requerido para el tipo de documento asociado
+2422
+Si el tipo de documento asociado es electrónico o es constancia electrónica (H002=1 o H002=3), no se debe informar el número de documento
+R
+262
+H009
+Tipo de documento impreso no informado
+2409
+Si el tipo de documento asociado seleccionado es igual a Impreso (H002=2), es obligatorio informar el tipo de documento impreso
+R
+263
+H009a
+Tipo de documento impreso no requerido para el tipo de documento asociado
+2423
+Si el tipo de documento asociado es electrónico o es constancia electrónica (H002=1 o H002=3), no se debe informar el tipo de documento impreso
+R
+264
+H010
+Descripción del tipo de documento impreso no corresponde al código
+2410
+Descripción del tipo de documento impreso no coincidente con lo informado en el campo H009
+R
+265
+H010a
+Descripción del tipo de documento impreso no informada
+2424
+Si se informa el tipo de documento impreso (H009), es obligatorio indicar la descripción del mismo (H010)
+R
+266
+H010b
+Descripción del tipo de documento impreso no requerida
+2435
+Si no se informa el tipo de documento impreso (H009), no se debe informar la descripción del mismo (H010)
+R
+267
+H011
+Fecha de emisión del documento impreso de referencia no informada
+2411
+Si el tipo de documento asociado seleccionado es igual a Impreso (H002=2), es obligatorio informar la fecha de emisión del documento impreso de referencia
+R
+268
+H011a
+Fecha de emisión del documento impreso de referencia no requerida para el tipo de documento asociado
+2425
+Si el tipo de documento asociado es electrónico o es constancia electrónica (H002=1 o H002=3), no se debe informar la fecha de emisión del documento impreso
+R
+236
+H012
+Número de comprobante de retención no informado
+2412
+Si el tipo de pago informado es igual a Retenciones (E606=10), es obligatorio reportar número de comprobante de retención
+R
+269
+H012a
+Forma de pago incorrecto para el Número de comprobante de retención
+2436
+Si se informa el Número de comprobante de retención (H012), es necesario que la forma de pago sea igual a Retención (E606=10)
+R
+270
+H013
+Número de resolución de crédito fiscal no informado
+2413
+Si el tipo de transacción informado es igual a Venta de crédito fiscal (D011=12), es obligatorio reportar número de resolución de crédito fiscal
+R
+271
+H014
+Tipo de constancia no informado
+2426
+Si el tipo de documento asociado seleccionado es igual a Constancia electrónica (H002=3), es obligatorio informar el tipo de constancia
+R
+272
+H014a
+Tipo de constancia no requerido para el tipo de documento asociado
+2427
+Si el tipo de documento asociado es Electrónico o Impreso (H002=1 o H002=2), no se debe informar el tipo de constancia
+R
+273
+H015a
+Descripción del tipo de constancia no corresponde al código
+2429
+Descripción del tipo de constancia no coincidente con lo informado en el campo H014
+R

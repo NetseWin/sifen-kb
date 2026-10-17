@@ -1,0 +1,40 @@
+Sección 12.4. Validaciones del formato
+Subsección I. Información de la Firma Digital del DTE (I001-I049)
+Nro. Val
+ID
+Mensaje de validación
+Código
+Observación
+E
+278
+I002
+Certificado digital no vigente al momento de firma del DE [Detalle del error]
+2450
+El certificado digital (I002) debe estar vigente(no revocado) al momento de la firma digital (A004)
+R
+Certificado del PCSC no habilitado por el MIC
+Certificado del PCSC revocado
+Certificado no está firmado por el PCSC
+Dirección de la LCR no informada
+(CRLDistributionPoint)
+Error en el acceso a la LCR
+LCR inexistente
+Certificado de firma revocado
+Certificado raíz no corresponde al MIC
+Certificado expirado
+Páginas: 152.
+PCSC : Prestadores Cualificados de Servicios de Confianza. Según Art 4. Definiciones #38 de la Ley 6822
+1.4 Se modifica la siguiente
+Sección 12.2.1 Validaciones del certificado de transmisión. Protocolo TLS
+Retorna un html con el mensaje de error de Acceso Denegado por las políticas de acceso. Estas validaciones se realizan durante la conexion con el servicio y son propias del protocolo TLS.
+La siguiente tabla muestra las posibles causas
+Inconveniente
+Observación
+Certificado de Transmisor Inválido
+Certificado de Transmisor inexistente en el mensaje
+Versión incorrecta
+No se aceptan certificados de la AC
+ExtendKeyUsage no define “ClientAuth“
+Plazo de validez del Certificado cualificado de firma electrónica
+Cadena de Certificación
+Certificado del emisor no corresponde a un PCSC habilitado en el país

@@ -1,0 +1,79 @@
+El emisor debe validar los archivos XML contra el Schema XSD correspondiente, con el fin de garantizar la integridad y el formato de estos, antes de su trasmisión al SIFEN.
+12.2.3. Validación de forma del área de datos del Request
+El área de datos correspondiente al mensaje de entrada de los WS tiene las siguientes validaciones.
+ID
+Resultado de validación
+Código
+Obs.
+E
+V
+AB01
+Fallo de schema XML del área de datos
+0100
+R
+150
+AB02
+Fallo de schema: no existe el campo raíz esperado para el mensaje
+0101
+R
+150
+AB03
+Fallo de schema: no existe el atributo versión para el campo raíz esperado para el mensaje
+0102
+R
+150
+AB05
+Existe algún namespace diferente del namespace estándar del DE
+0104
+R
+150
+AB06
+Existe(n) carácter(es) de edición en el inicio o en el final del mensaje, o entre los campos XML
+0105
+R
+150
+AB07
+Utilizado prefijo en el namespace
+0106
+R
+150
+AB08
+Utilizada codificación diferente de UTF-8
+0107
+R
+150
+12.2.4. Validación del certificado de firma
+ID
+Resultado de validación
+Código
+Observación
+E
+AC01
+Certificado inválido
+0120
+• No existe certificado de firma en el mensaje
+R
+• No se aceptan certificados del PSC
+• KeyUsage no define firma digital y no Repudio
+AC02
+Alguna o todas las fechas del certificado (inicio o final de validez del certificado) inválidas
+0121
+R
+AC03
+No existe la extensión del RUC en el certificado
+0122
+De Persona Física: en el OID, correspondiente al SubjectAlternativeName
+De Persona Jurídica: en el OID correspondiente al SerialNumber
+R
+AC04
+Cadena de certificación inválida
+0123
+• Certificado del PSC no habilitado por el MIC
+R
+• Certificado del PSC revocado
+• Certificado no está firmado por el PSC
+AC05
+0124
+• Dirección de la LCR no informada
+(CRLDistributionPoint)
+R

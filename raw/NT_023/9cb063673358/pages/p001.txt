@@ -1,0 +1,65 @@
+NOTA TÉCNICA N° 23
+Fecha: 27/08/2024
+Fecha puesta a disposición para el Ambiente de Test
+30 de agosto de 2024
+Fecha puesta a disposición para el Ambiente de Producción
+27 de setiembre de 2024
+Referencia: Correcciones y ajustes sobre el Manual Técnico versión 150
+1. FORMATO DE CAMPOS XML
+1.1. En campos que identifican al receptor del Documento Electrónico DE (D200-D299) se modifican los siguientes campos: (Página 86)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+D3
+D208
+iTipIDRec
+Tipo de documento de identidad del receptor
+D200
+N
+1
+0-1
+Obligatorio si D201 = 2 y D202 ≠ 4
+No informar si D201 = 1
+1= Cédula paraguaya
+2= Pasaporte
+3= Cédula extranjera
+4= Carnet de residencia
+5= Innominado
+6=Tarjeta Diplomática de exoneración fiscal
+9= Otro
+D3
+D210
+dNumIDRec
+Número de documento de identidad
+D200
+A
+1-20
+0-1
+Obligatorio si D201 = 2 y D202 ≠ 4
+No informar si D201 = 1
+En caso de DE innominado, completar con 0 (cero)
+Observación: Inclusión en cumplimiento a lo establecido en el Art 6° (Numeral 1) del Decreto N° 872/2023.
+1.2. En campos que describen los ítems de la operación (E700-E899) se modifica el siguiente campo en la Longitud. (Página 86)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+E8
+E711
+dCantProSer
+Cantidad del producto y/o servicio
+E700
+N
+1-10p(0-8)
+1-1

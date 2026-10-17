@@ -1,0 +1,13 @@
+Significado de la columna Descripción del Schema XML 1:
+• G: Grupo
+• A: Algoritmo
+• RC: Regla
+• E: Elemento
+Esta estructura se debe utilizar para todos los archivos firmados, utilizando el CDC, para el atributo Id
+<rDE xmlns=http://ekuatia.set.gov.py/sifen/xsd xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation="http://ekuatia.set.gov.py/sifen/xsd/siRecepDE_v150.xsd"> <dVerFor>150</dVerFor> <DE Id="0144444401700100100145282201170125158732260988"> ... </DE> <Signature xmlns="http://www.w3.org/2000/09/xmldsig#"> <SignedInfo> <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/> <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/> <Reference URI="#0144444401700100100145282201170125158732260988"> <Transforms> <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped- signature"/> <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/> </Transforms> <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/> <DigestValue>Nt2UmpjUHuu2DT6CJc2mtKhhqbq94LHSak1IsEOtuWk= </DigestValue> </Reference> </SignedInfo> <SignatureValue>DWN1my9sH4FI7ygPT3KF1ce...</SignatureValue> <KeyInfo> <X509Data> <X509Certificate>MIIIxzCCBq+gAwIBAgITXAA... </X509Certificate> </X509Data> </KeyInfo> </Signature> </rDE>
+En el proceso de verificación de los certificados, el SIFEN se encargará de consultar la lista de certificados revocados (LCR) al momento de la validación correspondiente, de manera que el contribuyente no necesitará anexar esta lista al firmar el documento.
+7.7. Especificaciones técnicas del estándar de certificado y firma digital
+• Estándar de Firma: XML Digital Signature, se utiliza el formato Enveloped http://www.w3.org/TR/xmldsig-core/
+• Certificado Digital: Expedido por una de los PSC habilitados en la República del Paraguay, estándar
+http://www.w3.org/2000/09/xmldsig#X509Data
+https://www.acraiz.gov.py/html/Certif_1PrestaServ.html

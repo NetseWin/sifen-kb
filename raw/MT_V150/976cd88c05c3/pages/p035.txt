@@ -1,0 +1,57 @@
+Los tamaños de campo utilizados en los archivos XML tienen su contenido descripto en la Tabla C. En el caso de campos con tamaño exacto los espacios no utilizados deben ser llenados con ceros no significativos (a la izquierda del campo).
+Tabla C: Tamaños de campos
+Título
+Descripción
+X
+Tamaño exacto del campo
+• ej.: 2
+x-y
+Tamaño mínimo x, máximo y
+• ej.: 0-10 (es posible expresar ningún valor, porque se permite el tamaño 0)
+Xpn
+Tamaño exacto del campo x, con n cifras decimales exactamente
+• ej.: 22p4
+xp(n-m)
+Tamaño exacto del campo x, con cifras decimales entre n y m
+• ej.: 22p(0-7)
+(x-y)p(n-m)
+Tamaño mínimo x, máximo y, con cifras decimales entre n y m
+• ej.: 1-11p(0-6) (es obligatorio expresar algún valor, porque no se permite el tamaño 0, pero la parte decimal es opcional)
+Valores separados por comas
+El campo deberá ser informado con tamaño exacto de una de las opciones listadas
+• ej.: 1, 3, 5, 8. Significa que se debe informar el campo con uno de estos cuatro tamaños fijos
+En la Tabla D se ejemplifica la manera de informar los formatos numéricos.
+Tabla D: Formatos numéricos
+Formato
+Para Informar
+Llenar campo con
+0-11p0-6
+1.105,13
+1105.13
+1.105,137
+1105.137
+1.105
+1105
+0
+0
+para no informar cantidad
+No incluir
+0-11
+1.105
+1105
+0
+0
+para no informar cantidad
+No incluir
+1-11
+1.105
+1105
+0
+0
+para no informar cantidad
+no es posible
+NOTA: De manera a simplificar y utilizar toda la potencia del lenguaje, el punto (.) se utilizará como separador de decimales, tal y como lo muestra la Tabla D
+7.2.4. Recomendaciones mejores prácticas de generación del archivo
+Como buenas prácticas al momento de la generación de los DE, tener precaución de NO incorporar:
+• Espacios en blanco en el inicio o en el final de campos numéricos y alfanuméricos.
+• Comentarios, anotaciones y documentaciones, léase las etiquetas annotation y documentation.

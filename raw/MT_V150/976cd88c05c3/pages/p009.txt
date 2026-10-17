@@ -1,0 +1,24 @@
+INDICE DE TABLAS
+Tabla A – Convenciones Utilizadas en la Tablas de Definición de los Formatos XML ..... 32
+Tabla B – Tipos de Datos en los Archivos XML ............................................................... 33
+Tabla C: Tamaños de campos ......................................................................................... 34
+Tabla D: Formatos numéricos .......................................................................................... 34
+Tabla E: Estándares de tecnología utilizados .................................................................. 40
+Tabla F – Resultados de Procesamiento del WS Consulta Resultado de Lote ................ 49
+Tabla G – Resultados de Procesamiento del WS Consulta DE ........................................ 51
+Tabla H – Resultados de Procesamiento del WS Consulta RUC ..................................... 54
+Tabla I – Grupos de campos del Archivo XML ................................................................. 58
+Tabla J: Resumen de los eventos de SIFEN según los actores ..................................... 117
+Tabla K: Correcciones de los eventos del Receptor en el SIFEN ................................... 119
+TABLA 1 – TIPO DE REGIMEN ..................................................................................... 210
+TABLA 2.1 – DEPARTAMENTOS, DISTRITOS Y CIUDADES ...................................... 210
+TABLA 2.2 - CIUDADES ................................................................................................ 210
+TABLA 3 – ACTIVIDADES ECONÓMICAS .................................................................... 211
+TABLA 4 – CODIFICACION DE PAISES ....................................................................... 211
+TABLA 5 – CODIFICACION DE UNIDADES DE MEDIDA ............................................. 211
+TABLA 6 – CODIGOS DE AFECTACION ...................................................................... 212
+TABLA 7 – CATEGORIAS DEL ISC .............................................................................. 212
+TABLA 8 – TASAS DEL ISC .......................................................................................... 212
+TABLA 9 – TIPOS DE VEHÍCULOS .............................................................................. 212
+TABLA 10 – CONDICIONES DE NEGOCIACION - INCOTERMS ................................. 213
+TABLA 11 – REGÍMENES ADUANEROS ...................................................................... 213

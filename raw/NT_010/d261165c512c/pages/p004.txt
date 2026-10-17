@@ -1,0 +1,59 @@
+2.2. Se agregan las siguientes validaciones: D2.2 Campos que identifican al responsable de la generación del DE (D140-D160) (Página 164)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+D142
+Descripción del tipo de documento de identidad del responsable de la generación del DE no corresponde al código
+1265
+Descripción del tipo de documento de identidad del responsable de la generación del DE no coincidente a lo informado en el campo D141
+R
+2.3. H. Campos que identifican al documento asociado (H001-H049) se agrega dos nuevas validaciones y se modifica una. C11 (Páginas 189)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+H004g
+El CDC asociado no corresponde al emisor del documento electrónico.
+2439
+Si el tipo de documento asociado es electrónico (H002=1) el CDC debe corresponder al emisor del documento al cual se asocia.
+R
+H004h
+El CDC asociado no corresponde al receptor del documento electrónico.
+2441
+Si el tipo de documento asociado es electrónico (H002=1) el CDC debe coincidir al receptor del documento al cual se asocia.
+R
+255
+C22
+H005b
+El número de timbrado informado corresponde a un timbrado electrónico existente en la base de datos del SIFEN
+2440
+Si el tipo de documento asociado seleccionado es igual a impreso (H002=2), no se debe informar un timbrado electrónico.
+R
+3. URL
+3.1. Se modifica la URL de Consulta QR: (Página 208)
+Ambiente de Producción: https://ekuatia.set.gov.py/consultas/qr?
+Ambiente de Test: https://ekuatia.set.gov.py/consultas-test/qr?
+4. Conformación del Código QR C18
+En la Sección 13.8.2. se agregan las siguientes observaciones adicionales para el código QR: (Página 205)
+1. Cuando el documento electrónico no tiene IVA se debe especificar el valor 0 para el campo dTotIVA.
+2. Si el Código de Seguridad del Contribuyente no está vigente en la fecha de emisión del documento electrónico se retornará el error 2501.
+5. Codificaciones
+5.1. Se Corrige en el manual la descripción en la Tabla 6 – Códigos de Afectación (Página 213)
+TABLA 6 – CODIGOS DE AFECTACION
+Código
+Descripción
+1
+Gravado IVA
+2
+Exonerado (Art. 100 - Ley 6380/2019)
+3
+Exento
+4
+Gravado parcial
+6. Namespace C23
+6.1. Se modifica el ejemplo de namespace utilizado en Eventos: (Página 31)

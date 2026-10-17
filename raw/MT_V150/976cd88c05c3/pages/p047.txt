@@ -1,0 +1,107 @@
+Este procedimiento se aplica concretamente sobre el contenido del campo ASch02 (campo XML del DE transmitido).
+9.1.3. Protocolo de respuesta
+Contiene el resultado del procesamiento del DE, conforme lo detallado en el siguiente cuadro:
+El Schema correspondiente al protocolo de respuesta será como sigue:
+Schema XML 3: resRecepDE_v150.xsd (Respuesta del “WS Recepción DE”)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+ARSch01
+rRetEnviDe
+Raíz
+-
+-
+-
+-
+Elemento raíz
+ARSch02
+xProtDe
+Protocolo de procesamiento del DE
+ARSch01
+XML
+-
+1-1
+Schema XML 4
+Schema XML 4: ProtProcesDE_v150.xsd (Protocolo de Procesamiento de DE)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+PP01
+rProtDe
+Raíz
+-
+-
+-
+-
+PP02
+id
+CDC del DE Procesado
+PP01
+A
+44
+1-1
+PP03
+dFecProc
+Fecha y hora del procesamiento
+PP01
+D
+19
+1-1
+Formato: “AAAA-MM-DD-hh:mm:ss”
+PP04
+dDigVal
+DigestValue del DE procesado
+PP01
+28
+1-1
+Permite verificar la correspondencia con el DE transmitido por el contribuyente
+PP050
+dEstRes
+Estado del resultado
+PP05
+A
+8-30
+1-1
+Aprobado
+Aprobado con observación
+Rechazado
+PP051
+dProtAut
+Número de Transacción
+PP05
+N
+10
+0-1
+PP05
+gResProc
+Grupo Resultado de Procesamiento
+PP01
+G
+1-100
+Para producción se limitará a 5 mensajes máximos sin modificación de esta especificación.
+PP052
+dCodRes
+Código del resultado de procesamiento
+PP05
+N
+4
+1-1
+Definido en el tópico correspondiente del capítulo 12
+PP053
+dMsgRes
+Mensaje del resultado de procesamiento
+PP05
+A
+1-255
+1-1
+Definido en el tópico correspondiente del capítulo 12

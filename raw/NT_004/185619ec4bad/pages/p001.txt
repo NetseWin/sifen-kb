@@ -1,0 +1,29 @@
+NOTA TÉCNICA N° 4
+Fecha: 29/12/2020
+Cambios desde la fecha: 29/12/2020 al 29/12/2020
+Referencia: Correcciones y ajustes sobre el MT versión 150
+1. VALIDACIONES
+1.1. Se elimina la siguiente validación:
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+34
+D101a
+RUC del Emisor inhabilitado para facturación electrónica
+1251
+RUC no se encuentra habilitado para facturación electrónica en Marangatu
+R
+Páginas: 163.
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Sara Ramírez
+29/12/2020
+Carlos Mendoza
+29/12/2020

@@ -1,0 +1,41 @@
+Versión: 141
+Fecha de modificación: 21/09/2018
+Ubicación - capítulo
+Descripción de las modificaciones
+6.2.1 Plazos SIFEN
+Se introducen cambios en la tabla de plazos
+7.2 Estándar del formato XML
+7.2.2 Declaración namespace, se cambia la url del namespace
+7.2.2.1 Particularidad de la firma digital, cambio del ejemplo
+7.2.2.2 Particularidad del envío de lote, cambio del ejemplo
+7.2.3 Convenciones referenciadas en tablas, mejor especificación del tipo de dato fecha y se agregó el tipo de dato Binario
+7.4 Estándar de comunicación
+Se modificaron el Request y el Response de ejemplo
+7.6 Estándar de firma digital
+Modificaciones en el Schema XML 1.
+7.10 Resumen de las Direcciones Electrónicas de los Servicios Web para Ambientes de Pruebas y Producción
+Se agregó la tabla resumen con las urls.
+8 ASPECTOS TECNOLÓGICOS DE LOS SERVICIOS WEB DEL SIFEN
+Se elimina la sección 8.4 Información de control y área de datos de los mensajes
+9 DESCRIPCIÓN de los Servicios Web del SIFEN
+* Modificaciones en los siguientes schemas: Schema XML 4, Schema XML 5, Schema XML 6, Schema XML 7, Schema XML 8, Schema XML 16, Schema XML 17
+* Se agregó el Schema XML 5A
+TABLA DE FORMATO DE CAMPOS DE UN DOCUMENTO ELECTRONICO (DE)
+Se introdujeron varios cambios en los grupos, no entramos a detallarlos en esta sección para contribuir a la legibilidad, sin embargo, esos cambios se reflejan en esta versión del Manual Técnico mediante los siguientes colores.
+Amarillo = modificaciones
+Verde = adición de campos
+11 Gestión de eventos
+Modificaciones en las validaciones a realizarse sobre los eventos de Cancelación e Inutilización
+13.8 Código bidimensional (QR)
+Se modifica el Código de Seguridad (CSC) a 32 dígitos alfanuméricos.
+Versión: 150
+Fecha de modificación: 10/09/2019
+Ubicación - capítulo
+Descripción de las modificaciones
+Se realizó la actualización de la numeración de los capítulos, estilos y formatos para mejor organización de los índices.
+4.1. Estructura y subsistemas SIFEN
+Actualización de la gráfica Nº 2
+4.2. Fundamento Legal
+Se agregó la resolución general reglamentaria
+6.2.1 Plazos SIFEN
+Se introducen plazos para eventos en la tabla

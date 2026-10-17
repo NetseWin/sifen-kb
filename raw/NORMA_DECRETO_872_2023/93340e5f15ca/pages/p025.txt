@@ -1,0 +1,14 @@
+SESQUJCENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° 207.1
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-25-
+Art. 33.- Evento de Nominación. Para la emisión de los Documentos Complementarios Electrónicos sobre las Facturas Electrónicas innominadas, la DNIT dispondrá el registro previo del evento de nominación por parte del emisor, a través del cual se identificará al receptor de las Facturas Electrónicas.
+La DNIT podrá establecer los plazos para el registro de evento de nominación, posterior a la fecha y hora de aprobación de la Factura Electrónica innominada por parte del SIFEN.
+SECCIÓN II
+EVENTOS DEL RECEPTOR
+Art. 34.- Evento de Conformidad. El receptor del Documento Tributario Electrónico, contribuyente o no, en el plazo y forma que establezca la reglamentación, podrá informar la conformidad de la operación o transacción contenida en el Documento.
+La DNIT, en la Factura Electrónica Cambiaria, dispondrá el registro del evento de conformidad, conforme a las condiciones y plazos que establezca.
+Art. 35.- Evento de Disconformidad. El receptor del Documento Tributario Electrónico, contribuyente o no, en el plazo y forma que establezca la reglamentación, podrá comunicar la existencia de errores o inconsistencias en los datos de la operación contenida en el documento.
+Art. 36.- Evento de Desconocimiento El receptor del Documento Tributario Electrónico, contribuyente o no, en el plazo y forma que establezca la reglamentación, podrá informar el desconocimiento del documento que fuera emitido a su nombre.

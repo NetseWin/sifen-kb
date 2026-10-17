@@ -1,0 +1,96 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D2
+D115
+cCiuEmi
+Código de la ciudad de emisión
+D100
+N
+1-5
+1-1
+Según Tabla 2.2 – Ciudades
+Debe corresponder a lo declarado en el RUC
+D2
+D116
+dDesCiuEmi
+Descripción de la ciudad de emisión
+D100
+A
+1-30
+1-1
+Referente al campo D115
+Debe corresponder a lo declarado en el RUC
+D2
+D117
+dTelEmi
+Teléfono local de emisión de DE
+D100
+A
+6-15
+1-1
+Debe incluir el prefijo de la ciudad
+Debe corresponder a lo declarado en el RUC
+D2
+D118
+dEmailE
+Correo electrónico del emisor
+D100
+A
+3-80
+1-1
+Debe corresponder a lo declarado en el RUC
+D2
+D119
+dDenSuc
+Denominación comercial de la sucursal
+D100
+A
+1-30
+0-1
+Denominación interna del emisor
+D2.1 Campos que describen la actividad económica del emisor (D130-D139)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D2.1
+D130
+gActEco
+Grupo de campos que describen la actividad económica del emisor
+D100
+G
+-
+1-9
+D2.1
+D131
+cActEco
+Código de la actividad económica del emisor
+D130
+A
+1-8
+1-1
+Según Tabla 3 – Actividades Económicas
+Debe corresponder a lo declarado en el RUC
+D2.1
+D132
+dDesActEco
+Descripción de la actividad económica del emisor
+D130
+A
+1-300
+1-1
+Referente al campo D120
+Según Tabla 3 – Actividades Económicas
+Debe corresponder a lo declarado en el RUC

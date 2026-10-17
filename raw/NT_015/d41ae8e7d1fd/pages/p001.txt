@@ -1,0 +1,33 @@
+NOTA TÉCNICA N° 15
+Fecha: 14/08/2023
+Fecha puesta a disposición para el Ambiente de Test
+21 de Agosto del 2023
+Fecha puesta a disposición para el Ambiente de Producción
+21 de Septiembre del 2023
+Referencia: Correcciones y ajustes sobre el MT versión 150
+1. Validaciones
+1.1. En Campos que identifican al documento asociado (H001-H049) se agrega la siguiente validación.
+(Páginas 189)
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+H004i
+El receptor informado en el CDC asociado no corresponde al informado en el evento de Nominación de Factura Electrónica
+2442
+Si el tipo de documento asociado es electrónico (H002=1) el CDC debe coincidir al receptor informado en el evento de Nominación de Factura Electrónica
+R
+Observación: Validación referente al Evento de Nominación de Factura Electrónica
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Jonathan Garay
+24/07/2023
+Martha Rojas
+08/08/2023
+Elaboración del Documento,
+Formato de Campos y Validaciones

@@ -1,0 +1,16 @@
+Cabe destacar que este código de control es incluido dentro del Schema XML, en el campo A002 como atributo para la firma del DE.
+En la representación gráfica (KuDE) deberá ser visible, por lo tanto, debe ser expuesto en grupos de cuatro caracteres, tal como sigue:
+Representación Gráfica 0144 4444 0170 0100 1001 4528 2201 7012 5158 7326 0988
+10.2. Dígito verificador del CDC
+Para el cálculo del dígito verificador del código de control se debe utilizar el módulo 11, con el cual se determina su validez.
+La documentación acerca de cómo generar este dígito, la cual se basa en la conformación antes descripta, se encuentra en la siguiente dirección:
+https://www.set.gov.py/portal/PARAGUAY-SET/detail?content-id=/repository/collaboration/sites/PARAGUAY-SET/documents/herramientas/digito-verificador.pdf
+10.3. Generación del código de seguridad
+El código de seguridad de los documentos electrónicos (campo dCodSeg) tiene como objetivo asegurar la privacidad de los documentos emitidos, debe ser generado por el contribuyente emisor, conforme a las siguientes condiciones:
+• Debe ser un número positivo de 9 dígitos.
+• Aleatorio.
+• Debe ser distinto para cada DE y generado por un algoritmo de complejidad suficiente para evitar la reproducción del valor.
+• Rango NO SECUENCIAL entre 000000001 y 999999999.
+• No tener relación con ninguna información específica o directa del DE o del emisor de manera a garantizar su seguridad.
+• No debe ser igual al número de documento campo dNumDoc.
+• En caso de ser un número de menos de 9 dígitos completar con 0 a la izquierda.

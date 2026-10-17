@@ -1,0 +1,92 @@
+2. Validaciones
+2.1 SE AGREGAN LAS SIGUIENTES REGLAS DE VALIDACIÓN PARA EL EVENTO NOMINACIÓN DE FACTURA ELECTRÓNICA
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+GENFE002
+CDC inválido
+4451
+Debe validar que el CDC (GENFE002) cuente con los 44 caracteres según las reglas de estructuración del CDC (longitud, y/o dígito verificador)
+R
+GENFE002a
+El CDC informado no existe en la base de datos del SIFEN o ha sido cancelado
+4452
+El identificador del CDC (GENFE002) no se encuentra en la base de datos del SIFEN o se encuentra cancelado
+R
+GENFE002b
+El CDC del DTE informado ya cuenta con un evento previo de nominación de factura electrónica
+4453
+El DTE (GENFE002) ya cuenta con un evento previo de nominación de factura electrónica
+R
+GENFE002c
+El tipo de documento del CDC informado no corresponde a Factura electrónica
+4454
+El CDC informado no corresponde Factura Electrónica (GENFE002)
+R
+GENFE006
+Descripción del país receptor no corresponde al código
+4456
+La descripción del país del receptor no coincidente con lo informado en el campo GENFE005
+R
+GENFE007
+Es obligatorio informar el tipo de contribuyente receptor
+4457
+Si la naturaleza del receptor es contribuyente (GENFE004=1) el tipo de contribuyente receptor debe ser informado
+R
+GENFE007a
+Tipo de contribuyente receptor inválido
+4458
+Si la naturaleza del receptor es NO contribuyente (GENFE004=2), el tipo de contribuyente receptor (GENFE007) no debe ser informado
+R
+GENFE008
+Es obligatorio informar el RUC del receptor contribuyente
+4459
+Si la naturaleza del receptor es contribuyente (GENFE004=1), el RUC del receptor debe ser informado
+R
+GENFE008a
+RUC del receptor no requerido
+4460
+Si la naturaleza del receptor es NO contribuyente (GENFE004=2), el RUC del receptor (GENFE008) no debe ser informado
+R
+GENFE008b
+RUC del receptor inexistente en la base de datos de Marangatu
+4461
+El RUC informado no existe en la base de datos de Marangatu
+R
+GENFE008c
+El RUC se encuentra inactivo para el tipo de contribuyente receptor
+4462
+Si la naturaleza del receptor es contribuyente (GENFE004=1), el RUC del receptor en Marangatu debe contar con un estado distinto a CANCELADO o CANCELADO DEFINITIVO
+R
+GENFE009
+Dígito Verificador del RUC del receptor incorrecto
+4463
+El Dígito Verificador ingresado no corresponde al módulo 11 del RUC
+R
+GENFE010
+Es obligatorio informar el tipo de documento de identidad del receptor
+4464
+Si la naturaleza del receptor es NO contribuyente (GENFE004=2), el tipo de documento de identidad debe ser informado
+R
+GENFE010a
+Tipo de documento de identidad del receptor no requerido
+4465
+Si la naturaleza del receptor es contribuyente (GENFE004=1), el tipo de documento de identidad del receptor (GENFE010) no debe ser informado
+R
+GENFE011
+Descripción del tipo de documento de identidad del receptor no corresponde al código
+4466
+La descripción del tipo de documento de identidad del receptor no coincidente con lo informado en el campo GENFE010
+R
+GENFE012
+Es obligatorio informar el número de documento de identidad del receptor
+4467
+Si la naturaleza del receptor es NO contribuyente (GENFE004=2), el número de documento de identidad debe ser informado
+R
+GENFE002d
+El RUC del Emisor del evento no corresponde al emisor de la factura electrónica
+4468
+El RUC del Emisor de la Factura Electrónica debe ser el mismo que el RUC del Emisor del evento.
+R

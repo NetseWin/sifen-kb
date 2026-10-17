@@ -1,0 +1,17 @@
+SES.TICENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECON2O-M1Í2A Y FINANZAS
+DECRETO N°
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-19-
+CAPÍTULO III
+GENERACIÓN DE LOS DOCUMENTOS ELECTRÓNICOS
+Art. 23.- Emisión de Documentos Electrónicos. Los facturadores electrónicos deberán emitir los Documentos Electrónicos cumpliendo los siguientes requisitos:
+1. Utilizar el formato electrónico XML.
+2. Contar con el identificador del Documento Electrónico (Código de Control).
+3. Incluir el timbrado otorgado por la DNIT, así como el Código de Establecimiento y Punto de Expedición de los Documentos Electrónicos.
+4. Utilizar de manera correlativa la numeración de los Documentos Electrónicos.
+5. Utilizar el Certificado Cualificado de Firma Electrónica para autenticación en SIFEN y firma de los Documentos Electrónicos. 6. Generar el Código QR utilizando el Código de Seguridad del contribuyente (CSC) otorgado por la DNIT.
+7. Otros requerimientos que correspondan a ci ertos documentos electrónicos en particular.
+El detalle técnico de los requisitos señalados y otros de similar índole se establecerán en la reglamentación.
+Art. 24.- Contenido de los Documentos Tributarios Electrónicos. La reglamentación establecerá las informaciones que se deberán consignar de manera obligatoria y opcional en cada uno de los tipos de Documentos Tributarios Electrónicos, así comqo en, s/us eventos asociados.

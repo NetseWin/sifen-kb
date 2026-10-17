@@ -1,0 +1,93 @@
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+WS DeRecepDE o del WS deResultLoteDE
+• definido en el Schema XML 4
+ContDE04
+xContEv
+Contenedor de Evento
+ContDE01
+XML
+-
+0-n
+Información de todos los eventos registrados (contenedor montado por la SET) o disponibles (contenedor montado por el emisor) hasta la fecha
+• Definido en el Schema XML 12
+Schema XML 12: ContenedorEvento_v150.xsd (Contenedor de Evento)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+ContEv01
+rContEv
+Raíz
+-
+-
+-
+-
+Elemento raíz
+ContEv02
+xEvento
+XML del Evento
+ContEv01
+XML
+-
+1-1
+Definido en el capítulo de Eventos del DE
+ContEv03
+rResEnviEventoDe
+Respuesta del WS Recepción Evento
+ContEv01
+XML
+-
+Definido en el Schema XML 14
+9.5. WS recepción evento – siRecepEvento
+Función:
+Registra un evento en un DE
+Proceso:
+Síncrono
+Método:
+siRecepEvento
+9.5.1. Definición del protocolo que consume este Servicio
+Contiene el tipo de evento y el evento.
+Schema XML 13: siRecepEvento_v150.xsd (WS Recepción Evento)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+GSch01
+rEnviEventoDe
+Raíz
+-
+-
+-
+-
+Elemento raíz
+GSch02
+dId
+Identificador de control de envío
+GSch01
+N
+1-15
+1-1
+Número secuencial autoincremental, para identificación del mensaje enviado. La responsabilidad de generar y controlar este número es exclusiva del contribuyente.
+GSch03
+dEvReg
+Evento a ser registrado
+GSch01
+XML
+1
+1-1
+De acuerdo con el schema y grupos correspondientes Descripto en el capítulo 11

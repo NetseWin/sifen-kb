@@ -1,0 +1,67 @@
+9.2. WS recepción lote DE – siRecepLoteDE
+Función:
+Recibir un lote conteniendo varios DE
+Proceso:
+Asíncrono
+Método:
+SiRecepLoteDE
+Particularidad:
+Archivo comprimido “.zip”
+9.2.1. Definición del protocolo que consume este servicio
+Para consumir este servicio, el cliente deberá construir la estructura en XML, según el Schema siguiente y comprimir dicho archivo. Cabe aclarar que el lote podrá contener hasta 50 DE del mismo tipo (ejemplo: Facturas Electrónicas), cada uno de ellos debe estar firmado.
+Schema XML 5: SiRecepLoteDE_v150.xsd (WS Recepción DE Lote)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+BSch01
+rEnvioLote
+Raíz
+-
+-
+Elemento raíz
+BSch02
+dId
+Identificador de control de envío
+BSch01
+N
+1-15
+1-1
+Número secuencial autoincremental, para identificación del mensaje enviado. La responsabilidad de generar y controlar este número es exclusiva del contribuyente.
+BSch03
+xDE
+Archivo de Lote comprimido
+BSch01
+B
+-
+1-1
+Campo comprimido en formato Base64 según el esquema del Protocolo de procesamiento del Lote
+Schema XML 5A: ProtProcesLoteDE_v150.xsd (Protocolo de procesamiento del Lote)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+LSch01
+rLoteDE
+Raíz
+-
+-
+Elemento raíz
+LSch02
+rDE
+Protocolo de procesamiento del DE
+LSch01
+XML
+-
+1-50
+Sigue las definiciones del Capítulo Formato de los DE
+9.2.2. Descripción del procesamiento
+Servicio disponible para recibir un lote que puede contener hasta 50 DE de un solo tipo, cada uno firmado digitalmente y agrupados mediante un contenedor el cual posee el certificado digital del emisor. No se requiere que el número del DE sea secuencial en el lote. Un lote debe contener solo un mismo tipo de DE.

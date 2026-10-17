@@ -1,0 +1,12 @@
+SESUICENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° 2/2
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-14-
+servicio. Asimismo, deberá contener la misma información de la Factura Electrónica a la cual se refiere, principalmente lo relacionado al tipo de moneda de la operación.
+Para la emisión de la Nota de Crédito Electrónica en los casos de devolución de bienes, descuento o ajuste en el precio y bonificación otorgada entre facturadores electrónicos se requerirá el registro del Evento de Consentimiento por parte del receptor de la nota de crédito y se deberá informar el motivo de la emisión de dicho documento.
+La DNIT podrá establecer plazos para la emisión de las Notas de Crédito Electrónicas sobre Facturas Electrónicas, contados a partir de la fecha de aprobación de estas últimas por parte del SIFEN.
+Art. 13.- Nota de Débito Electrónica. Es el documento electrónico emitido para el recupero de costos o gastos incurridos por el vendedor con posterioridad a la emisión de la Factura Electrónica, para complementar en la Factura Electrónica y para el recupero total o parcial de aquellos créditos declarados incobrables.
+La Nota de Débito Electrónica deberá ser emitida exclusivamente por el enajenante y solamente tendrá validez en relación con una Factura Electrónica determinada, en el que se encuentre identificado el adquirente del bien o servicio. Asimismo, deberá contener la misma información de la Factura Electrónica a la cual se refiere, principalmente lo relacionado al tipo de moneda de la operación.
+La DNIT podrá establecer plazos para la emisión de las Notas de Débito Electrónicas sobre Facturas Electrónicas, contados a partir de la fecha de aprobación de estas últimas por parte del SIFEN.

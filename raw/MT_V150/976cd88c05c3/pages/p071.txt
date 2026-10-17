@@ -1,0 +1,85 @@
+D2.2 Campos que identifican al responsable de la generación del DE (D140-D160)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D2.2
+D140
+gRespDE
+Grupo de campos que identifican al responsable de la generación del DE
+D100
+G
+-
+0-1
+D2.2
+D141
+iTipIDRespDE
+Tipo de documento de identidad del responsable de la generación del DE
+D140
+N
+1
+1-1
+1= Cédula paraguaya
+2= Pasaporte
+3= Cédula extranjera
+4= Carnet de residencia
+9= Otro
+D2.2
+D142
+dDTipIDRespDE
+Descripción del tipo de documento de identidad del responsable de la generación del DE
+D140
+A
+9-41
+1-1
+1= “Cédula paraguaya”
+2= “Pasaporte”
+3= “Cédula extranjera”
+4= “Carnet de residencia”
+Si D141 = 9 informar el tipo de documento de identidad del responsable de la generación del DE
+D2.2
+D143
+dNumIDRespDE
+Número de documento de identidad del responsable de la generación del DE
+D140
+A
+1-20
+1-1
+D2.2
+D144
+dNomRespDE
+Nombre o razón social del responsable de la generación del DE
+D140
+A
+4-255
+1-1
+D2.2
+D145
+dCarRespDE
+Cargo del responsable de la generación del DE
+D140
+A
+4-100
+1-1
+D3. Campos que identifican al receptor del Documento Electrónico DE (D200-D299)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D3
+D200
+gDatRec
+Grupo de campos que identifican al receptor
+D001
+G
+1-1

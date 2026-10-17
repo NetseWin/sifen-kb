@@ -1,0 +1,85 @@
+3. Código Hash de los parámetros que forman el punto 2 del QR utilizando el algoritmo SHA256.
+A continuación, se muestra un cuadro descriptivo para mejor comprensión.
+Parámetro
+Descripción
+Incluido en el DE
+ID Campo
+Longitud máxima
+Incluir en el Hash del QR
+Incluir en la URL del QR
+nVersion
+Versión de la generación del QR
+Sí
+AA002
+3
+Sí
+Sí
+Id
+CDC del correspondiente DE
+Sí
+A002
+44
+Sí
+Sí
+dFeEmiDE
+Fecha y hora de emisión del DE
+Sí
+D002
+19
+Sí
+Sí
+dRucRec/dNumIDRec
+Identificación del receptor o cliente
+Sí
+D206 o D210
+20
+Sí
+(*)
+dTotGralOpe
+Total general de la operación
+Sí
+F014
+23
+Sí
+(*)
+dTotIVA
+Liquidación total del IVA
+Sí
+F017
+23
+Sí
+(*)
+cItems
+Cantidad de items en el DE
+No
+Cuenta sobre el campo E701
+3
+Sí
+(*)
+DigestValue
+Hash de la firma digital del DE
+Sí
+XS17
+-
+Sí
+Sí
+IdCSC
+Identificador del código entregado por el SIFEN
+No
+-
+4
+Sí
+Sí
+cHashQR
+Código Hash de los parámetros
+No
+-
+-
+No
+Sí
+(*) En caso de que estos campos no contengan valor completar con un “0”
+13.8.3. Metodología para la generación del Código QR
+• Los siguientes campos deben ser convertidos a su equivalente hexadecimal
+o Fecha de Emisión
+o DigestValue de la Firma Digital
+• El valor de todos los parámetros identificados en el cuadro precedente, deben ser concatenados y aplicar el algoritmo SHA-256, para determinar el Código Hash

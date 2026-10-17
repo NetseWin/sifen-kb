@@ -1,0 +1,87 @@
+DTE
+Notificación - Recepción
+Conformidad parcial
+Conformidad total
+Disconformidad
+Desconocimiento
+Notificación - Recepción DTE
+Notificación - Recepción DTE
+Notificación - Recepción DTE
+Notificación - Recepción DTE
+Notificación - Recepción DTE
+Conformidad parcial
+Conformidad parcial
+Conformidad parcial
+Conformidad parcial
+Conformidad parcial
+Conformidad total
+Conformidad total
+Conformidad total
+Conformidad total
+Conformidad total
+Disconformidad
+Disconformidad
+Disconformidad
+Disconformidad
+Disconformidad
+Desconocimiento DTE
+Desconocimiento DTE
+Desconocimiento DTE
+Desconocimiento DTE
+Desconocimiento DTE
+Inutilización de número
+Inutilización de número
+Inutilización de número
+Inutilización de número
+Inutilización de número
+DE
+Notificación - Recepción
+Desconocimiento
+Notificación - Recepción DE
+Notificación - Recepción DE
+Conformidad parcial
+Conformidad parcial
+Conformidad total
+Conformidad total
+Disconformidad
+Disconformidad
+Desconocimiento DTE
+Desconocimiento DTE
+Inutilización de número
+Inutilización de número
+11.5. Estructura de los Eventos
+Para estructurar los diferentes eventos que afectan el estado de un DTE se toma como elemento base al Código de control (CDC), a excepción del evento de Inutilización de número de DE.
+Schema XML 19: Evento_v150.xsd (Formato de evento emisor)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+GDE
+GDE000
+gGroupGesEve
+Raíz del grupo deeventos
+GSch03
+G
+1-1
+GDE
+GDE001
+rGesEve
+Raíz de Gestión de Eventos
+GDE000
+G
+-
+1-15
+Elemento raíz
+GDE
+GDE002
+rEve
+Grupos de campos generales del evento
+GDE001
+G
+1-1
+Grupo de campos incluidos en la firma digital

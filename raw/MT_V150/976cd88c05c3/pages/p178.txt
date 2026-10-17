@@ -1,0 +1,67 @@
+E8.2. Campos que describen el IVA de la operación (E730-E739)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+148
+E730
+Grupo de los campos que describen el IVA de la operación es obligatorio
+1900
+Si el tipo de impuesto al consumo afectado es IVA o Renta o Ninguno o IVA - Renta (D013=1 o 3 o 4 o 5), el grupo de los campos que describen el IVA de la operación (E730) es obligatorio para todos los tipos de documentos electrónicos excepto Factura Electrónica de Importación, Autofactura Electrónica o Nota de Remisión Electrónica (C002=3, 4 o 7)
+R
+149
+E730a
+Grupo de los campos que describen el IVA de la operación no requerido para el tipo de documento electrónico seleccionado
+1901
+Si el tipo de documento electrónico seleccionado es igual a Factura Electrónica de Importación, Autofactura Electrónica o Nota de Remisión Electrónica (C002=3, 4 o 7), el grupo de los campos que describen el IVA de la operación (E730) no debe ser informado
+R
+150
+E730b
+Grupo de los campos que describen el IVA de la operación no requerido para el tipo de impuesto al consumo afectado seleccionado
+1902
+Si el tipo de impuesto al consumo afectado es igual a ISC (D013=2), el grupo de los campos que describen el IVA de la operación (E730) no debe ser informado
+R
+151
+E732
+Descripción de la forma de afectación tributaria del IVA no corresponde al código
+1903
+Descripción de la forma de afectación tributaria del IVA coincidente con lo informado en el campo E731
+R
+152
+E733
+Proporción gravada del IVA incorrecta para forma de afectación Gravado IVA
+1904
+Si la forma de afectación tributaria del IVA informada es Gravado IVA (E731=1), la proporción gravada del IVA debe ser igual a 100 (cien)
+R
+153
+E733a
+Proporción gravada del IVA incorrecta para forma de afectación Exonerado o Exento
+1905
+Si la forma de afectación tributaria del IVA informada es Exonerado o Exento (E731=2 o 3), la proporción gravada del IVA debe ser igual a 0 (cero)
+R
+154
+E733b
+Proporción gravada del IVA incorrecta para forma de afectación Gravado Parcial
+1906
+Si la forma de afectación tributaria del IVA informada es Gravado parcial (E731=4), la proporción gravada del IVA debe ser inferior a 100 (cien) y superior a 0 (cero)
+R
+155
+E734
+Tasa del IVA es incorrecta para forma de afectación Exonerado o Exento
+1907
+Para la forma de afectación tributaria Exonerado o Exento (E731=2 o 3), la tasa del IVA informada (E734) debe ser igual a 0 (cero)
+R
+156
+E734a
+Tasa del IVA es incorrecta para la forma de afectación Gravado IVA o Gravado parcial
+1908
+Para la forma de afectación tributaria Gravado IVA o Gravado parcial (E731=1 o 4), la tasa del IVA informada (E734) debe ser igual a 5 (cinco) o 10 (diez)
+R
+157
+E735
+Error en el cálculo de la base gravada del IVA por ítem para forma de afectación Exonerado o Exento
+1909
+Si la forma de afectación tributaria del IVA informada es Exonerado o Exento (E731=2 o 3), la base gravada del IVA por ítem (E735) debe ser igual a 0 (cero)
+R

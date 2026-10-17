@@ -1,0 +1,48 @@
+D. Campos Generales del Documento Electrónico DE (D001-D299)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D
+D001
+gDatGralOpe
+Campos generales del DE
+A001
+G
+1-1
+D
+D002
+dFeEmiDE
+Fecha y hora de emisión del DE
+D001
+F
+19
+1-1
+Fecha y hora en el formato
+AAAA-MM-DDThh:mm:ss
+Para el KuDE el formato de la fecha de emisión debe contener los guiones separadores. Ejemplo: 2018-05-31T12:00:00
+Se aceptará como límites técnicos del sistema, que la fecha de emisión del DE sea atrasada hasta 720 horas (30 días) y adelantada hasta 120 horas (5 días) en relación a la fecha y hora de transmisión al SIFEN
+D1. Campos inherentes a la operación comercial (D010-D099)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D1
+D010
+gOpeCom
+Campos inherentes a la operación comercial
+D001
+G
+0-1
+Obligatorio si C002 ≠ 7
+No informar si C002 = 7

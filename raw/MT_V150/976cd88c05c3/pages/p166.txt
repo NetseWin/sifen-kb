@@ -1,0 +1,69 @@
+D3. Datos que identifican al receptor del Documento Electrónico DE (D200 - D299)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+45
+D201
+Naturaleza del Receptor inválida para el tipo documento electrónico
+1315
+Si el tipo de documento es Autofactura (C002=4), la naturaleza del Receptor debe ser Contribuyente (D201=1)
+R
+46
+D202
+El tipo de operación no compatible con la naturaleza del receptor
+1300
+Si el tipo de documento no es autofactura (C002 ≠ 4) y si la naturaleza del receptor es No contribuyente (D201=2), el tipo de operación debe ser B2C (D202=2).
+Si el tipo de operación es B2F (D202=4), la naturaleza del receptor debe ser No contribuyente (D201=2)
+R
+47
+D202a
+El tipo de operación no compatible con el tipo documento electrónico
+1316
+Si la transacción se documenta con Autofactura (C002=4), el tipo de operación debe ser B2C (D202=2)
+R
+48
+D203
+Código de país del receptor inválido para el tipo de operación informado
+1320
+Si el tipo de operación es B2F (D202=4), el país informado debe ser diferente a PRY (D203≠PRY).
+Si el tipo de operación es diferente de B2F (D202≠4) el país informado debe ser igual a PRY (D203=PRY)
+R
+49
+D204
+Descripción del país receptor no corresponde al código
+1301
+La descripción del país del receptor no coincidente con lo informado en el campo D203
+R
+50
+D205
+Es obligatorio informar el tipo de contribuyente receptor
+1302
+Si la naturaleza del receptor es contribuyente (D201=1) el tipo de contribuyente receptor debe ser informado
+R
+51
+D205a
+Tipo de contribuyente receptor inválido
+1303
+Si la naturaleza del receptor es NO contribuyente (D201=2), el tipo de contribuyente receptor (D205) no debe ser informado
+R
+52
+D206
+Es obligatorio informar el RUC del receptor contribuyente
+1304
+Si la naturaleza del receptor es contribuyente (D201=1), el RUC del receptor debe ser informado
+R
+53
+D206a
+RUC del receptor no requerido
+1305
+Si la naturaleza del receptor es NO contribuyente (D201=2), el RUC del receptor (D206) no debe ser informado
+R
+54
+D206b
+RUC del receptor inexistente en la base de datos de Marangatu
+1306
+El RUC informado no existe en la base de datos de Marangatu
+R

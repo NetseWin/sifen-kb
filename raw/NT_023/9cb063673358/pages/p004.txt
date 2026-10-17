@@ -1,0 +1,35 @@
+CODIFICACIÓN DE UNIDADES DE MEDIDA
+Código
+Representación
+Descripción
+137
+BL
+Fardos
+138
+AB
+Bulto
+139
+BK
+Cesta
+140
+BW
+Peso Base
+Observación: Inclusión opcional de acuerdo a las necesidades de los facturadores electrónicos.
+Fuente: Códigos para las Unidades de Medición que se usan en el Comercio Internacional.
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Jonathan Garay
+18/06/2024
+Martha Rojas
+28/06/2024
+Formato de campos y validaciones. Actualización de Tabla.
+Verónica Avalos
+07/06/2024
+Martha Rojas
+02/08/2024
+Elaboración del documento.
+Inclusión de nuevas unidades de medida.

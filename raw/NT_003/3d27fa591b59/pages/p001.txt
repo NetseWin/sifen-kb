@@ -1,0 +1,67 @@
+NOTA TÉCNICA N° 3
+Fecha: 18/11/2020
+Cambios desde la fecha: 15/11/2020 al 15/11/2020
+Referencia: Correcciones y ajustes sobre el MT versión 150
+1. FORMATO
+1.1. Se modifican los siguientes campos:
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D3
+D219
+cDepRec
+Código del departamento del receptor
+D200
+N
+1-2
+0-1
+Campo obligatorio si se informa el campo D213 y D202≠4. No se debe informar cuando D202 = 4.
+Según XSD de Departamentos
+D3
+D223
+cCiuRec
+Código de la ciudad del receptor
+D200
+N
+1-5
+0-1
+Campo obligatorio si se informa el campo D213 y D202≠4, No se debe informar cuando D202 = 4.
+Según Tabla 2.2 – Ciudades
+Páginas: 72, 73.
+2. VALIDACIONES
+2.1. Se eliminan las siguientes validaciones:
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+69
+D219
+Es obligatorio informar el departamento del receptor
+1324
+Cuando se informa la dirección del receptor (D213) y el tipo de operación es distinto a B2F (D202≠4), es obligatorio informar el departamento (D219)
+R
+72
+D223
+Es obligatorio informar la ciudad del receptor
+1327
+Cuando se informa la dirección del receptor (D213) y el tipo de operación es distinto a B2F (D202≠4), es obligatorio informar la ciudad (D223)
+R
+Página: 167.
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Amanda González
+16/11/2020
+Carlos Mendoza
+16/11/2020

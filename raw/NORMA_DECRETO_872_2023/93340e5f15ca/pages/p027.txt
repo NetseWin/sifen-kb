@@ -1,0 +1,15 @@
+SESCUCENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° (cid:9)
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-27-
+2. Por Asociación: Este evento se generará cuando se realice la asociación de otros documentos, ya sean electrónicos o en formato físico, con un Documento Tributario Electrónico. También se originarán a raíz de los eventos generados por la interoperabilidad de los sistemas informáticos o de gestión de la DNIT, tanto entre sí como con los de otras entidades.
+SECCIÓN IV
+EVENTOS DE LA ADMINISTRACIÓN TRIBUTARIA
+Art. 41.- Impugnación. La DNIT podrá impugnar la validez del Documento Tributario Electrónico y de sus eventos asociados registrados en el SIFEN cuando, como consecuencia de un proceso de control o fiscalización, compruebe la falta de veracidad de la operación económica que respalda.
+Art. 42.- Otros Eventos. La DNIT, en ejercicio de sus competencias y de conformidad con las disposiciones legales pertinentes, podrá crear otros eventos relacionados con los emisores o receptores, así como con la propia autoridad tributaria, los Organismos o Entidades del Estado, y otros participantes en el contexto del SIFEN.
+De la misma manera, podrá requerir el registro obligatorio de todos los eventos asociados con los emisores y receptores en operaciones comerciales específicas.
+CAPÍTULO VII
+CONSULTA Y CONSERVACIÓN DE LOS DOCUMENTOS TRIBUTARIOS ELECTRÓNICOS
+Art. 43.- Consulta de los Documentos Tributarios Electrónicos. La DNIT dispondrá un servicio de consulta pública de la validez de los Documentos Tributarios Electrónicos mediante el uso, como criterio de consulta, del Código de Control (CDC) o del Código QR de la representación gráfica.

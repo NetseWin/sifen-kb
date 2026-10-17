@@ -1,0 +1,74 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+108
+E605b
+El grupo de campos que describen la forma de pago de la operación al contado o del monto de la entrega inicial no requerida
+1552
+Si la condición de la operación seleccionada es crédito (E601=2), y NO existe monto de entrega inicial (E645), el grupo de los campos que describen la forma de pago de la operación al contado o del monto de la entrega inicial (E605) no debe ser informado
+R
+109
+E606
+Tipo de pago inválido
+1553
+Si el tipo de pago informado es Pago bancario (E606=16), indicador de presencia seleccionado debe ser Operación bancaria (E011=5)
+Esta validación se aplica solo al DE Factura electrónica
+R
+110
+E607
+Descripción del tipo de pago no corresponde al código
+1554
+Descripción del tipo de pago no coincidente con lo informado en el campo E606
+R
+111
+E610
+Descripción de la moneda no corresponde al código
+1555
+Descripción de la moneda por tipo de pago no coincidente con lo informado en el campo E609
+R
+112
+E611
+Tipo de cambio no informado para la moneda por tipo de pago seleccionada
+1556
+Si la moneda por tipo de pago es distinta a guaraníes (E609≠PYG), es obligatorio informar el tipo de cambio por tipo de pago (E611)
+R
+113
+E611a
+Tipo de cambio informado es inválido para la moneda por tipo de pago seleccionada
+1557
+Si la moneda por tipo de pago es igual a guaraníes (E609=PYG), el tipo de cambio por tipo de pago (E611) no debe existir
+R
+E7.1.1. Campos que describen el pago de la operación con tarjeta de crédito/débito (E620-E629)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+114
+E620
+Grupo de campos que describen el pago o entrega inicial de la operación con tarjeta de crédito/debito es obligatorio
+1600
+Si el tipo de pago seleccionado es igual a Tarjeta de Crédito/Débito (E606=3 o 4), es obligatorio informar el grupo de los campos que describen el pago o entrega inicial de la operación con tarjeta de crédito/debito (E620)
+R
+115
+E620a
+Grupo de los campos que describen el pago de la operación con tarjeta de crédito/débito no requerido
+1601
+Si el tipo de pago seleccionado es distinto a Tarjeta de Crédito/Débito (E606≠3 o 4), el grupo de los campos que describen el pago o entrega inicial de la operación con tarjeta de crédito/debito (E620) no debe ser informado
+R
+116
+E622
+Descripción de la denominación de la tarjeta no corresponde al código
+1602
+Descripción de la denominación de la tarjeta (E622) no coincidente con lo informado en el campo (E621)
+R
+117
+E623
+RUC de la procesadora de tarjeta inexistente
+1603
+RUC de la procesadora de tarjeta (E623) inexistente en la base de datos de Marangatu
+R

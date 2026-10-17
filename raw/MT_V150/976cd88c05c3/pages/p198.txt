@@ -1,0 +1,17 @@
+o Producción: https://ekuatia.set.gov.py/consultas/
+o Test: https://ekuatia.set.gov.py/consultas-test/
+• CDC en once grupos de 4 posiciones.
+En esta sección de la estructura del KuDE se encuentran los siguientes campos:
+Información de consulta en SIFEN
+Ver información del QR,
+delineamientos, conformación y validación del QR
+13.4.5. Información adicional de interés para el emisor
+Este es un espacio libre de utilización del emisor facturador electrónico con referencia a información de los demás campos del DE, información comercial promocional o mensajes personalizados al receptor: Campo J003. Esta información no debe ser enviada en el archivo XML a SIFEN.
+No puede existir información propia de la operación que haya sido generada en el archivo electrónico firmado digitalmente.
+13.5. KuDE
+Los contribuyentes podrán utilizar para la representación gráfica en el KuDE cualquier formato y tamaño de papel estándar que se ajuste a sus necesidades. Las gráficas siguientes muestran modelos referenciales de KuDE para cada tipo de documento electrónico, sin embargo, cada contribuyente puede incluir otros campos presentes en el formato XML. Los campos obligatorios, que se deben mostrar, son los que están especificados por las reglamentaciones emitidas por la Administración Tributaria,
+• Factura Electrónica (FE): Gráfica N° 09
+• Nota de Crédito Electrónica (NCE): Grafica N° 10
+• Nota de Débito Electrónica (NDE): Gráfica N° 11
+• Autofactura Electrónica (AFE): Gráfica N° 12
+• Nota de Remisión Electrónica (NRE): Gráfica N° 13

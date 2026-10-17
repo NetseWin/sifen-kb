@@ -1,0 +1,60 @@
+NOTA TÉCNICA N° 27
+Fecha: 09/03/2026
+Fecha puesta a disposición para el Ambiente de Test
+09/03/2026
+Fecha puesta a disposición para el Ambiente de Producción
+09/03/2026
+Referencia: Correcciones y ajustes sobre el Manual Técnico versión 150
+1. FORMATO DE CAMPOS DE XML
+1.1. En el Evento de Nominación de Factura Electrónica (Formato del evento de nominación) se modifican los siguientes campos:
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+GDE
+GENFE010
+iTipIDRec
+Tipo de documento de identidad del receptor
+GENFE001
+N
+1
+0-1
+Obligatorio si GENFE004=2
+1=Cédula paraguaya
+2=Pasaporte
+3=Cédula extranjera
+4=Carnet de residencia
+6=Tarjeta Diplomática de exoneración fiscal
+9=Otro
+GDE
+GENFE011
+dDTipIDRec
+Descripción del tipo de documento de identidad
+GENFE001
+A
+9-41
+0-1
+Obligatorio si existe el campo GENFE010
+1= “Cédula paraguaya”
+2= “Pasaporte”
+3= “Cédula extranjera”
+4= “Carnet de residencia”
+6= “Tarjeta Diplomática de exoneración fiscal”
+Si GENFE010=9 Se deberá informar el tipo de documento de identidad del receptor
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Jonathan Garay
+05/03/2026
+Martha Rojas
+05/03/2026
+Elaboración del Documento,
+Formato de Campos y Validaciones

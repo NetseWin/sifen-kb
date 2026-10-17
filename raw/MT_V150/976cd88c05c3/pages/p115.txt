@@ -1,0 +1,13 @@
+Las FE con Notas de Crédito o Débito Electrónicas asociadas obligatoriamente deberán ser conservadas por 5 años, en estos casos, el receptor no tendrá derecho al crédito del IVA contenido en la misma ya sea en forma total o parcial.
+El estado de las FE con devoluciones o ajustes de precios quedará registrado en el SIFEN. En caso de devoluciones o ajustes de precios totales de una FE, no será posible retractarse. Para corregir esta situación, el emisor deberá generar una nueva FE exactamente igual.
+11.1.4. Endoso de FE (evento futuro)
+Es un evento solicitado por el emisor, ocurre cuando la factura electrónica, cuya aprobación de uso ha sido otorgada por la Administración Tributaria, es seleccionada por éste para ser comercializada en el mercado financiero local. Este evento se va detallar en versión futura del MT.
+11.2. Eventos registrados por el receptor
+Son aquellos eventos generados por una persona física o jurídica, a cuyo nombre fue emitido un documento electrónico. El registro del evento de receptor se puede dar sobre un DE o DTE.
+Los eventos del receptor no invalidarán el DE o DTE, sino que quedarán marcados en el SIFEN y el emisor electrónico podrá conocer dicha situación. El receptor cuenta con la facultad de comunicar a la Administración Tributaria lo siguiente:
+11.2.1. Conformidad con el DTE
+El receptor informa a la Administración Tributaria que conoce dicho documento y confirma que están correctos todas las informaciones del DTE, que no existen errores o inconsistencias en forma parcial o total y que ha recibido la mercadería o servicio.
+11.2.2. Disconformidad con el DTE
+El receptor informa a la Administración Tributaria que conoce dicho documento, pero que en el comprobante existen errores o inconsistencias en forma parcial o total.
+11.2.3. Desconocimiento con el DE o DTE
+El receptor informa a la Administración Tributaria que desconoce el documento que fuera emitido a su nombre y la operación detallada en el mismo.

@@ -1,0 +1,20 @@
+13.8.3. Metodología para la generación del Código QR
+Modificaciones en los datos del cuadro de ejemplo
+13.8.4. Ejemplo datos QR
+Se modifica para especificar por pasos la generación de código QR.
+13.8.5. Ejemplo del QR con el Código Secreto del Contribuyente
+Se elimina como 13.8.5 y se inserta como un paso más en el punto 13.8.4.
+13.8.6. Ejemplo URL de la imagen del QR
+Se elimina como 13.8.6 y se inserta como un paso más en el punto 13.8.4
+13.8.7 Mensajes desplegados en consulta del QR
+Se actualiza la numeración a 13.8.5
+14. Operación de Contingencia
+Se elimina el contenido de esta sección, ya que sigue en etapa de definición
+15. Codificaciones
+Se elimina tabla de Ciudades (Tabla 2.2) y se reemplaza por el link que lleva al archivo de Departamentos, Distritos y Ciudades (Tabla 2.1)
+Se agrega el link para la tabla de Regímenes Aduaneros (Tabla 11)
+Observación: en esta versión del Manual técnico están resaltados la mayor parte de los cambios que se introdujeron siguiendo el siguiente patrón:
+Amarillo = modificaciones
+Verde = adición de contenido
+Rojo = eliminación de contenido
+No se respetó este esquema de control de versiones a color en la eliminación de contenido relacionado a ISC, y a los tipos de documentos: Factura electrónica de exportación, Factura electrónica de importación y Comprobante de retenciones electrónico.

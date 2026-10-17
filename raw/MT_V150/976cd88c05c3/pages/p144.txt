@@ -1,0 +1,78 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+22
+GET019a
+Tipo de documento de identidad del transportista no requerido
+4321
+Si la naturaleza del transportista es igual a contribuyente (GET015 =1) el tipo de documento de identidad del transportista (GET019) no debe ser informado
+R
+23
+GET020
+Descripción del tipo de documento de identidad del transportista no informada
+4322
+Si se informa el código de tipo de documento de identidad del transportista (GET019), es obligatorio indicar la descripción del mismo (GET020)
+R
+24
+GET020a
+Descripción del tipo de documento de identidad del transportista no corresponde al código
+4323
+Descripción del tipo de documento de identidad del transportista (GET020) no coincidente con lo informado en el campo GET019
+R
+25
+GET021
+Número de documento de identidad del transportista no informado
+4324
+Si se informa el código de tipo de documento de identidad del transportista (GET019), el número de dicho documento es requerido (GET020)
+R
+26
+GET022
+Tipo de transporte requerido para el motivo Cambio de vehículo
+4313
+Cuando el motivo del evento es cambio de vehículo (GET003=4), es obligatorio informar el tipo de transporte (GET022)
+R
+27
+GET023
+Descripción del tipo de transporte es requerida
+4314
+Cuando se informa el código de tipo de transporte (GET022), es obligatorio informar la descripción del tipo de transporte (GET023)
+R
+28
+GET023a
+Descripción del tipo de transporte no corresponde al código
+4315
+Descripción del tipo de transporte no coincidente con lo informado en el campo GET022
+R
+29
+GET024
+Modalidad del transporte requerido para el motivo Cambio de vehículo
+4316
+Cuando el motivo del evento es cambio de vehículo (GET003=4), es obligatorio informar la modalidad del transporte (GET024)
+R
+30
+GET025
+Descripción de la modalidad del transporte es requerida
+4317
+Cuando se informa el código de la modalidad del transporte (GET024), es obligatorio informar la descripción de la modalidad del transporte (GET025)
+R
+31
+GET025a
+Descripción de la modalidad del transporte no corresponde al código
+4318
+Descripción de la modalidad del transporte no coincidente con lo informado en el campo GET024
+R
+32
+GET026
+Tipo de vehículo requerido para el motivo Cambio de vehículo
+4319
+Cuando el motivo del evento es cambio de vehículo (GET003=4), es obligatorio informar el tipo de vehículo (GET026)
+R
+33
+GET027
+Marca del vehículo requerida para el motivo Cambio de vehículo
+4320
+Cuando el motivo del evento es cambio de vehículo (GET003=4), es obligatorio informar la marca del vehículo (GET027)
+R

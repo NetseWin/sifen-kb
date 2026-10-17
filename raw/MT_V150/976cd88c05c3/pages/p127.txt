@@ -1,0 +1,103 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GER
+GED010
+dNumID
+Número de documento de identidad
+GED001
+A
+1-20
+0-1
+No Informar si GED005=1
+Requerido solo cuando el tipo de receptor es No Contribuyente (GED005=2)
+GER
+GED011
+mOtEve
+Motivo del Evento
+GED001
+A
+5-500
+1-1
+Evento automático por interoperabilidad: Evento asociación Retención
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GEA
+GER001
+rGeVeRetAce
+Raíz Gestión de Eventos de retención
+GDE007
+-
+-
+-
+Elemento raíz
+GEA
+GER002
+Id
+CDC del DE/DTE
+GER001
+A
+44
+1-1
+Corresponde al CDC del DTE asociado
+GEA
+GER003
+dNumTimRet
+Número de timbrado del documento de retención
+GER001
+N
+8
+1-1
+GEA
+GER004
+dEstRet
+Establecimiento
+GER001
+A
+3
+1-1
+GEA
+GER005
+dPunExpRet
+Punto de expedición
+GER001
+A
+3
+1-1
+GEA
+GER006
+dNumDocRet
+Número del documento
+GER001
+A
+7
+1-1
+GEA
+GER007
+dCodConRet
+Identificador de la retención
+GER001
+A
+40
+1-1
+GEA
+GER008
+dFeEmiRet
+Fecha de emisión de la retención
+GER001
+F
+19
+1-1

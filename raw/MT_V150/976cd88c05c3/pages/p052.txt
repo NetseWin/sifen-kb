@@ -1,0 +1,95 @@
+9.4.2. Descripción del procesamiento
+Este servicio es el encargado de recibir la petición de consulta de un DTE de la base de datos de SIFEN. En caso de no haber superado las validaciones, el Response contendrá el motivo.
+Tabla G – Resultados de Procesamiento del WS Consulta DE
+Condición
+Mensaje generado
+No existe DE consultado
+0420=CDC inexistente
+RUC del certificado utilizado en la conexión no tiene permiso para consultar el DE
+0421=RUC Certificado sin permiso
+Éxito en la consulta
+0422=CDC encontrado
+9.4.3. Protocolo de respuesta
+Como ya manifestamos en el punto anterior, si las pruebas no son superadas, contendrá el error, de lo contrario el response tendrá la información conforme al siguiente Schema.
+Schema XML 10: resConsDE_v150.xsd (Respuesta del WS Consulta DE)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+DRSch01
+rResEnviConsDe
+Raíz
+-
+-
+-
+-
+Elemento raíz
+DRSch02
+dFecProc
+Fecha y hora del procesamiento
+DRSch01
+D
+19
+1-1
+Formato: “AAAA-MM-DD-hh:mm:ss”
+DRSch03
+dCodRes
+Código del resultado de procesamiento
+DRSch01
+N
+4
+1-1
+Definido en el tópico correspondiente del capítulo 12
+DRSch04
+dMsgRes
+Mensaje del resultado de procesamiento
+DRSch01
+C
+1-255
+1-1
+Definido en el tópico correspondiente del capítulo 12
+DRSch05
+xContenDE
+Contenedor del DE
+DRSch01
+XML
+-
+0-1
+Existe solamente si dCodRes = 0422
+Definido en el Schema XML 11
+Schema XML 11: ContenedorDE_v150.xsd (Contenedor de DE)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+ContDE01
+rContDe
+Raíz
+DRSch01
+-
+-
+-
+Elemento raíz
+ContDE02
+rDE
+Archivo XML del DE
+ContDE01
+XML
+-
+1-1
+ContDE03
+dProtAut
+Número De Transacción
+ContDE01
+XML
+-
+1-1
+Número de transacción del DE, recibido por el contribuyente en el mensaje de respuesta del

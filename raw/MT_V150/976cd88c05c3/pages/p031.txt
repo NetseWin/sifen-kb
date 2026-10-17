@@ -1,0 +1,17 @@
+7.2. Estándar del formato XML
+El formato de documentos y protocolos de servicios, utilizan el lenguaje de marcas expansible (XML – Expansible Markup Language). La definición de cada archivo XML sigue un estándar denominado “Schema XML”, o lenguaje de esquema, utilizado para describir la estructura y restricciones de los documentos XML2 . Esta estructura reside en un archivo con extensión “.xsd” (XML Schema Definition), el que establece qué elementos contendrá el documento, como están organizados, cuáles son los atributos y de qué tipo deben ser estos elementos.
+7.2.1. Estándar de codificación
+La especificación de los documentos XML es el estándar 150, con la codificación de caracteres UTF-8, por lo cual todos los documentos se inician con la declaración:
+<?xml version="150" encoding="UTF-8"?> (*)
+Para mejor comprensión, se puede utilizar el siguiente enlace:
+http://www.w3.org/TR/REC-xml
+Cada archivo XML, debe poseer solo una declaración (*), para el caso de los envíos de lotes, la estructura completa del archivo debe contener solo una declaración.
+7.2.2. Declaración namespace
+El comúnmente denominado “Espacio de Nombres”3 en XML, es utilizado para proporcionar elementos y atributos con nombre único en un documento XML.
+Este espacio de nombres se declara utilizando el atributo xmlns, el cual estará incluido en el elemento raíz del documento como, por ejemplo:
+<rDE xmlns=”http://ekuatia.set.gov.py/sifen/xsd” xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ekuatia.set.gov.py/sifen/xsd siRecepDE_v150.xsd">
+Namespace utilizado en Eventos:
+2 https://es.wikipedia.org/wiki/XML_Schema
+(*) <?xml version="100" encoding="UTF-8" ?>
+3 https://es.wikipedia.org/wiki/Espacio_de_nombres_XML
+www.w3.org/TR/REC-xml

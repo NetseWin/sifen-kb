@@ -1,0 +1,108 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E10.2
+E943
+dComp1Ent
+Complemento de dirección 1 entrega
+E940
+A
+1-255
+0-1
+Nombre de la calle secundaria
+E10.2
+E944
+dComp2Ent
+Complemento de dirección 2 entrega
+E940
+A
+1-255
+0-1
+Número de departamento/ piso/ local/ edificio/ deposito del local de entrega de la mercadería
+E10.2
+E945
+cDepEnt
+Código del departamento del local de la entrega
+E940
+N
+1-2
+1-1
+Según XSD de Departamentos
+E10.2
+E946
+dDesDepEnt
+Descripción del departamento del local de la entrega
+E940
+A
+6-16
+1-1
+Referente al campo E945
+E10.2
+E947
+cDisEnt
+Código del distrito del local de la entrega
+E940
+N
+1-4
+0-1
+Según Tabla 2.1 - Distritos
+E10.2
+E948
+dDesDisEnt
+Descripción de distrito del local de la entrega
+E940
+A
+1-30
+0-1
+Obligatorio si existe el campo E947
+E10.2
+E949
+cCiuEnt
+Código de la ciudad del local de la entrega
+E940
+N
+1-5
+1-1
+Según Tabla 2.2 – Ciudades
+E10.2
+E950
+dDesCiuEnt
+Descripción de ciudad del local de la entrega
+E940
+A
+1-30
+1-1
+Referente al campo E949
+E10.2
+E951
+dTelEnt
+Teléfono de contacto del local de la entrega
+E940
+A
+6-15
+0-1
+E10.3. Campos que identifican el vehículo de traslado de mercaderías (E960-E979)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E10.3
+E960
+gVehTras
+Campos que identifican al vehículo del traslado de mercaderías
+E900
+G
+0-4
+Obligatorio si C002 = 7
+No informar si C002 = 4, 5, 6

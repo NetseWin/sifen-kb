@@ -1,0 +1,75 @@
+NOTA TÉCNICA N° 26
+Fecha: 06/06/2025
+Fecha puesta a disposición para el Ambiente de Test
+09/06/2025
+Fecha puesta a disposición para el Ambiente de Producción
+16/06/2025
+Referencia: Correcciones y ajustes sobre el MT versión 150
+1. Formato de Campos XML
+1.1. En Campos que describen los ítems de la operación (E700-E899) se modifican las siguientes observaciones.
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+E8
+E704
+dDncpG
+Código DNCP – Nivel General
+E700
+A
+8
+0-1
+Opcional si D202 = 3
+Informar se existe el código de la DNCP
+Colocar 0 (cero) a la izquierda para completar los espacios vacíos
+E8
+E705
+dDncpE
+Código DNCP – Nivel Especifico
+E700
+A
+3-4
+0-1
+Opcional si D202 = 3
+Informar se existe el código de la DNCP
+Colocar 0 (cero) a la izquierda para completar los espacios vacíos
+1.2. En Campos de informaciones de Compras Públicas (E020-E029) se modifica la siguiente observación.
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+E1.1
+E020
+gCompPub
+Campos que describen las informaciones de compras públicas
+E010
+G
+0-1
+Opcional si D202 = 3 (Tipo de operación B2G)
+2. Validaciones
+2.1. Se excluyen las siguientes reglas de validación en E1.1. GRUPO DE INFORMACIONES DE COMPRAS PÚBLICAS (E020-E029).
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+E020
+Grupo de informaciones de Compras Públicas es obligatorio
+1400
+El grupo de informaciones de Compras Públicas es obligatorio para tipo de operación B2G (D202=3)
+R
+E020a
+Grupo de informaciones de Compras Públicas no requerido para el tipo de operación
+1401
+El grupo de informaciones de Compras Públicas solo es permitido para tipo de operación B2G (D202=3)
+R

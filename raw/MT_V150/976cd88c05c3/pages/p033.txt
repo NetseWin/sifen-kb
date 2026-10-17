@@ -1,0 +1,15 @@
+<rDE xmlns="http://ekuatia.set.gov.py/sifen/xsd" xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation="http://ekuatia.set.gov.py/sifen/xsd/siRecepDE_v150.xsd"> <dVerFor>150</dVerFor> <DE Id="0144444401700100100145282201170125158732260988"> ... </DE> <Signature xmlns="http://www.w3.org/2000/09/xmldsig#"> ... </Signature> </rDE> <rDE xmlns="http://ekuatia.set.gov.py/sifen/xsd" xmlns:xsi=http://www.w3.org/2001/XMLSchema-instance xsi:schemaLocation="http://ekuatia.set.gov.py/sifen/xsd/siRecepDE_v150.xsd"> <dVerFor>150</dVerFor> <DE Id="0144444401700100100145282201170125158732260988"> ... </DE> <Signature xmlns="http://www.w3.org/2000/09/xmldsig#"> ... </Signature> </rDE>
+7.2.3. Convenciones referenciadas en tablas
+La Gráfica Nº 08 muestra la relación entre los elementos del archivo XML
+Gráfica N° 08: Relación elementos XML
+La definición de las columnas de las tablas, conforme los esquemas relacionados a los archivos XML, se expone a continuación en la Tabla A:
+Tabla A – Convenciones Utilizadas en la Tablas de Definición de los Formatos XML
+Título
+Descripción
+Grupo
+Conjunto de campos
+ID
+Identificación del campo para fines de referencia
+Campo
+Nombre del campo. La primera letra indica:
+c: código integrante de una tabla existente en el Capítulo 16

@@ -1,0 +1,71 @@
+625
+Km
+Kilómetros
+660
+ml
+Metro lineal
+885
+GL
+Unidad Medida Global
+891
+pm
+Por Milaje
+869
+ha
+Hectáreas
+569
+ración
+Ración
+TABLA 6 – CODIGOS DE AFECTACION
+Código
+Descripción
+1
+Gravado IVA
+2
+Exonerado (Art.83 - 125)
+3
+Exento
+4
+Gravado parcial
+TABLA 7 – CATEGORIAS DEL ISC
+Código
+Descripción
+1
+Sección I - (Cigarrillos, Tabacos, Esencias y Otros derivados del Tabaco)
+2
+Sección II - (Bebidas con y sin alcohol)
+3
+Sección III - (Alcoholes y Derivados del alcohol)
+4
+Sección IV- (Combustibles)
+5
+Sección V- (Artículos considerados de lujo)
+TABLA 8 – TASAS DEL ISC
+Tasas del ISC según Decretos N° 4344/04, N° 5158/10, N° 4693/15, N° 4693/15, N° 4694/15
+Código
+Porcentaje
+1
+1%
+2
+5%
+3
+9%
+4
+10%
+5
+11%
+6
+13%
+7
+16%
+8
+18%
+9
+20%
+10
+24%
+11
+34%
+12
+38%
+TABLA 9 – TIPOS DE VEHÍCULOS

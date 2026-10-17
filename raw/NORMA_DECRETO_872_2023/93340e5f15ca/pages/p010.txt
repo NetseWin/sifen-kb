@@ -1,0 +1,15 @@
+SESCIICENTENARIO DE LA EPOPEYA NACIONAL 1864- 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO 21g,-
+No
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-10-
+c. En los servicios de tracto sucesivo, se deberá emitir mensualmente, salvo que en el contrato respectivo se establezca un plazo diferente. d. En las operaciones comerciales realizadas dentro del recinto aduanero, cuando el destinatario del bien sea una persona física o jurídica con domicilio en el país se deberá emitir previo al finiquito de la declaración jurada de exportación de la mercadería.
+e. En las operaciones comerciales relacionadas con materias primas o insumos de bienes fabricados en el país, gravados por el Impuesto Selectivo al Consumo (ISC), y cuya enajenación constituya anticipo del citado impuesto por parte del contribuyente, en el momento de la entrega del bien.
+f. En el arrendamiento financiero, en el momento del vencimiento de cada cuota. Si se ejerciere la opción de compra, en el momento del pago total o parcial del saldo del precio.
+g. En la percepción de intereses resarcitorios o punitorios como consecuencia del incumplimiento en el pago de la operación, en el momento de su percepción.
+h. En los servicios de intermediación financiera, en el momento de la prestación de cada servicio. Excepcionalmente, las entidades podrán consignar en una sola Factura Electrónica, el total detallado de los servicios prestados durante el mes a sus clientes y entregarlo junto con el respectivo estado de cuenta.
+La DNIT podrá establecer la oportunidad y obligación de emisión de la factura electrónica para aquellas situaciones no especificadas en el presente artículo o que pudieran surgir con posterioridad.
+Art. 6°.- Forma de emisión de la Factura Electrónica. La factura electrónica se deberá emitir de las siguientes formas:
+1. En operaciones comerciales B2B, B2F o B2G se deberá informar en la Factura Electrónica, la identificación del receptor, en consecuencia, no se aceptará la indicación del receptor como innominado o sin nombre. P7

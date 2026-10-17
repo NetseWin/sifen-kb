@@ -1,0 +1,69 @@
+D. Datos generales del Documento Electrónico (D001 – D299)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+19
+D002
+La fecha y hora de emisión del DE informada es inválida por retraso
+1150
+Cuando la fecha y hora de emisión es anterior a la fecha y hora de transmisión al SIFEN, la diferencia no debe ser mayor a 720 horas (30 días)
+R
+20
+D002f
+La fecha y hora de emisión del DE informada es inválida por envío adelantado
+1151
+Cuando la fecha y hora de emisión del DE es posterior a la fecha y hora de transmisión al SIFEN, la diferencia no debe ser mayor a 120 horas (5 días)
+R
+21
+D002a
+Fecha y hora de emisión del DE es anterior a la fecha de lanzamiento del sistema
+1156
+La fecha y hora de emisión del DE debe ser posterior al 22 de noviembre del 2018
+R
+D1. Campos inherentes a la operación comercial (D010-D099)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+22
+D010
+Grupo de informaciones inherentes a la operación comercial es obligatorio informar para el tipo de documento
+1200
+El grupo de informaciones inherentes a la operación comercial (D010) es obligatorio informar para todos los tipos de documentos electrónicos excepto Nota de Remisión Electrónica (C002=7)
+R
+23
+D010a
+Grupo de informaciones inherentes a la operación comercial no es permitido para el tipo de documento
+1201
+El grupo de informaciones inherentes a la operación comercial (D010) no es permitido para Nota de Remisión Electrónica (C002=7)
+R
+24
+D011
+Tipo de transacción no informado para el documento electrónico seleccionado
+1202
+Es obligatorio informar el tipo de transacción para Factura Electrónica, Factura electrónica de Exportación, Factura Electrónica de Importación y Autofactura Electrónica.
+Obligatorio si C002 = 1, 2, 3 o 4
+R
+25
+D012
+Descripción del tipo de transacción no corresponde al código
+1203
+Descripción del tipo de transacción no coincidente con lo informado en el campo D011
+R
+28
+D013
+Tipo de impuesto afectado no informado
+1204
+Es obligatorio informar el tipo de impuesto afectado para Factura Electrónica y Autofactura Electrónica. Obligatorio si C002=1 o 4
+R
+26
+D014
+La descripción del tipo de impuesto afectado no corresponde al código
+1205
+Descripción del tipo de impuesto afectado no coincidente con lo informado en el campo D013
+R

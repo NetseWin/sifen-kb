@@ -1,0 +1,92 @@
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+RRSch04
+xContRUC
+Contenedor del RUC
+RRSch01
+XML
+-
+0-1
+Existe solamente si dCodRes = 0502
+Definido en el Schema XML 17
+Schema XML 17: ContenedorRUC_v150.xsd (Contenedor de RUC)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+ContRUC01
+rContRUC
+Raíz
+RRSch01
+-
+-
+-
+Elemento raíz
+ContRUC02
+dRUCCons
+RUC Consultado
+ContRUC01
+A
+5-8
+1-1
+ContRUC03
+dRazCons
+Razón social del RUC Consultado
+ContRUC01
+A
+1-250
+1-1
+ContRUC04
+dCodEstCons
+Código del Estado del RUC Consultado
+ContRUC01
+A
+3
+1-1
+ACT=Activo
+SUS=Suspensión Temporal
+SAD=Suspensión Administrativa
+BLQ=Bloqueado
+CAN=Cancelado
+CDE=Cancelado Definitivo
+ContRUC05
+dDesEstCons
+Descripción Código del Estado del RUC Consultado
+ContRUC01
+A
+6-25
+1-1
+ACT=Activo
+SUS=Suspensión Temporal
+SAD=Suspensión Administrativa
+BLQ=Bloqueado
+CAN=Cancelado
+CDE=Cancelado Definitivo
+ContRUC06
+dRUCFactElec
+RUC consultado es facturador electrónico
+ContRUC01
+A
+1
+1-1
+S = Es facturador electrónico
+N = No es facturador electrónico
+9.7. WS consulta DE de entidades u organismos externos autorizados – siConsDEST (a futuro)
+Función:
+Web service que tiene por objetivo entregar los DE y sus eventos para las entidades que tiene derecho legal de recibir determinadas facturas (Ej: DNA, con respecto a operaciones de comercio exterior, DNCP con respecto a operaciones de venta al Estado)
+Proceso:
+Síncrono
+Método:
+siConsDEST
+Observación:
+A futuro

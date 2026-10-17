@@ -1,0 +1,11 @@
+El evento de inutilización de la numeración de un DE podrá realizarse siempre y cuando éste no haya sido aprobado por el SIFEN. El estado de los números de DE inutilizados quedará registrado en el SIFEN.
+Es posible el registro de la inutilización de un rango de hasta 1000 números secuenciales de DE toda vez que no exista ningún número utilizado en dicho rango.
+Se requiere la información del motivo de la inutilización del rango de numeración en un campo libre de texto de hasta 150 caracteres.
+11.1.2. Cancelación
+Es un evento solicitado por el emisor, ocurre cuando el comprobante es emitido sin errores y transmitido y aprobado por el SIFEN se convierte en un DTE, sin embargo, por algún motivo no se concreta la transacción.
+El emisor electrónico puede solicitar la CANCELACIÓN de cualquier tipo de DTE y tiene hasta 48 hs. posteriores a la aprobación de uso del DE para generar el evento. El estado de los DTE cancelados quedará registrado en el SIFEN y es obligatoria la conservación por 5 años.
+11.1.3. Devolución y Ajuste de precios
+Son eventos automáticos generados por la emisión de una NOTA DE CRÉDITO o DÉBITO ELECTRÓNICAS.
+Es un evento exclusivo de la FACTURA ELECTRÓNICA, puesto que existen documentos para dichos efectos. Es imperativo que la Nota de Crédito o Débito Electrónica emitida se encuentre vinculada a una FE ya existente en la base de datos del SIFEN; o sea, se requiere la configuración del hecho imponible, que la factura haya sido entregada al cliente, transmitida y aprobada por SIFEN. Es importante comprender que las Notas de Crédito o Débito Electrónicas como tales, no son eventos, sino que la operación resultante de su emisión y aprobación en SIFEN genera un evento automático del sistema.
+La coexistencia de documentos electrónicos y pre-impresos solo será permitida en las etapas del Plan Piloto y Voluntariedad. Esto permite que la Nota de Crédito o Débito Electrónica emitida se encuentre vinculada a una factura pre-impresa. Igualmente, el sistema genera el evento automático de AJUSTE pero no realiza validaciones sobre los montos ajustados.
+Cuando hablamos de AJUSTE nos referimos a los casos en que se acepten devoluciones en forma parcial o se concedan descuentos y bonificaciones.

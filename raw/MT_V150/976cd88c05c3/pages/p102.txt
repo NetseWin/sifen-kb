@@ -1,0 +1,123 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E10.4
+E984
+dDVTrans
+Dígito verificador del RUC del transportista
+E980
+N
+1
+0-1
+Obligatorio si existe el campo E983
+Según algoritmo módulo 11
+E10.4
+E985
+iTipIDTrans
+Tipo de documento de identidad del transportista
+E980
+N
+1
+0-1
+Obligatorio si E981 = 2
+No informar si E981 = 1
+1= Cédula paraguaya
+2= Pasaporte
+3= Cédula extranjera
+4= Carnet de residencia
+E10.4
+E986
+dDTipIDTrans
+Descripción del tipo de documento de identidad del transportista
+E980
+A
+9-20
+0-1
+Obligatorio si existe el campo E985
+1= “Cédula paraguaya”
+2= “Pasaporte”
+3= “Cédula extranjera”
+4= “Carnet de residencia”
+E10.4
+E987
+dNumIDTrans
+Número de documento de identidad del transportista
+E980
+A
+1-20
+0-1
+Obligatorio si existe el campo E985
+E10.4
+E988
+cNacTrans
+Nacionalidad del transportista
+E980
+A
+3
+0-1
+Según XSD de Codificación de Países
+E10.4
+E989
+dDesNacTrans
+Descripción de la nacionalidad del transportista
+E980
+A
+4-30
+0-1
+Obligatorio si existe el campo E988
+E10.4
+E990
+dNumIDChof
+Número de documento de identidad del chofer
+E980
+A
+1-20
+1-1
+E10.4
+E991
+dNomChof
+Nombre y apellido del chofer
+E980
+A
+4-60
+1-1
+E10.4
+E992
+dDomFisc
+Domicilio fiscal del transportista
+E980
+A
+1-150
+0-1
+E10.4
+E993
+dDirChof
+Dirección del chofer
+E980
+A
+1-255
+0-1
+E10.4
+E994
+dNombAg
+Nombre o razón social del agente
+E980
+A
+4-60
+0-1
+Casos particulares según RG N° 41/14
+E10.4
+E995
+dRucAg
+RUC del agente
+E980
+A
+3-8
+0-1
+Casos particulares según RG N° 41/14

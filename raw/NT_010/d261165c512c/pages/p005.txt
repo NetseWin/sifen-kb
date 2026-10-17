@@ -1,0 +1,35 @@
+7. Convenciones referenciadas en tablas
+7.1. Se Corrige en el manual la descripción en la Tabla B – Tipos de Datos en los Archivos XML (Página 33)
+Tipo
+Descripción
+N
+Numérico: Vea los diversos formatos en la Tabla D
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Amanda González
+01/02/2021
+Carlos Mendoza
+Sara Ramírez
+12/04/2021
+Carlos Mendoza
+30/04/2021
+Formatos de campo y Validaciones
+Sara Ramírez
+28/05/2021
+Carlos Mendoza
+22/06/2021
+últimas correcciones de códigos
+Sara Ramirez
+19/10/2021
+Andrea Riera
+22/07/2021
+Formatos de campo, Validaciones y Tabla
+Sara Ramirez
+04/02/2022
+Andrea Riera
+25/01/2022
+Formatos de campo, Validaciones y Tabla.

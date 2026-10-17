@@ -1,0 +1,79 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+158
+E735a
+Error en el cálculo de la base gravada del IVA por ítem para tasa del 5%
+1910
+Cálculo de la base gravada del IVA por ítem incorrecto
+Si E734 = 5 este campo es igual al resultado del cálculo
+[EA008* (E733/100)] / 1,05
+R
+159
+E735b
+Error en el cálculo de la base gravada del IVA por ítem para tasa del 10%
+1911
+Cálculo de la base gravada del IVA por ítem incorrecto
+Si E734 = 10 este campo es igual al resultado del cálculo
+[EA008 * (E733/100)] / 1,1
+R
+160
+E736
+Error en el cálculo de la liquidación del IVA por ítem para forma de afectación Exonerado o Exento
+1912
+Si la forma de afectación tributaria del IVA informada es Exonerado o Exento (E731=2 o 3), la liquidación del IVA por ítem (E736) debe ser igual a 0 (cero)
+R
+161
+E736a
+Error en el cálculo de la liquidación del IVA por ítem para forma de afectación Gravado IVA o Gravado Parcial
+1913
+Cálculo de la liquidación del IVA por ítem incorrecto
+Corresponde al cálculo aritmético:
+E735 * (E734/100) para la forma de afectación tributaria Gravado IVA o Gravado parcial (E731=1 o 4)
+R
+E9.5 Grupo de datos adicionales de uso comercial (E820-E829)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+162
+E822
+Fecha de inicio de ciclo es obligatorio
+2050
+La fecha de inicio del ciclo (E812) es obligatoria si se informa el campo E811
+R
+163
+E822a
+Fecha de inicio de ciclo no requerida
+2051
+Si NO se informa el campo E811, la fecha de inicio de ciclo no debe ser informada
+R
+164
+E823
+Fecha de fin de ciclo es obligatoria
+2052
+La fecha de fin de ciclo (E813) es obligatoria si se informa la fecha de inicio de ciclo (E812)
+R
+165
+E823a
+Fecha de fin de ciclo no requerida
+2053
+Si NO se informa el campo E812, la fecha de fin de ciclo no debe ser informada
+R
+166
+E823b
+Fecha de fin de ciclo inválida
+2054
+La fecha de fin de ciclo (E813) debe ser mayor o igual a la fecha de inicio de ciclo (E812)
+R
+167
+E824
+Fecha de vencimiento del pago es retrasada
+2055
+La fecha de vencimiento para el pago no debe ser anterior a la fecha de emisión del DE (D002)
+R

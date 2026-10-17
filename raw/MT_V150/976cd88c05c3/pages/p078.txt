@@ -1,0 +1,71 @@
+E5. Campos que componen la Nota de Crédito/Débito Electrónica NCE-NDE (E400-E499)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E5
+E400
+gCamNCDE
+Campos de la Nota de Crédito/Débito Electrónica
+E001
+G
+0-1
+Obligatorio si C002 = 5 o 6 (NCE y NDE)
+No informar si C002 ≠ 5 o 6
+E5
+E401
+iMotEmi
+Motivo de emisión
+E400
+N
+1-2
+1-1
+1= Devolución y Ajuste de precios
+2= Devolución
+3= Descuento
+4= Bonificación
+5= Crédito incobrable
+6= Recupero de costo
+7= Recupero de gasto
+8= Ajuste de precio
+E5
+E402
+dDesMotEmi
+Descripción del motivo de emisión
+E400
+A
+6-30
+1-1
+Referente al campo E401
+1= “Devolución y Ajuste de precios”
+2= “Devolución”
+3= “Descuento”
+4= “Bonificación”
+5= “Crédito incobrable”
+6= “Recupero de costo”
+7= “Recupero de gasto”
+8= “Ajuste de precio”
+E6. Campos que componen la Nota de Remisión Electrónica (E500-E599)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E6
+E500
+gCamNRE
+Campos que componen la Nota de Remisión Electrónica
+E001
+G
+0-1
+Obligatorio si C002 = 7
+No informar si C002 ≠ 7

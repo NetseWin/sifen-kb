@@ -1,0 +1,106 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+G1
+G057
+iCarCarga
+Características de la Carga
+G050
+N
+1-1
+0-1
+1 – Mercaderías con cadena de frío
+2 – Carga peligrosa
+3 – Otro de características similares (especificar)
+Obligatorio cuando lo exige la RG 41/14
+G1
+G058
+dDesCarCarga
+Descripción de las características de la carga
+G050
+A
+1-50
+0-1
+1 – “Mercaderías con cadena de frío”
+2 – “Carga peligrosa”
+Si G057 = 3, informar la característica de la carga
+Obligatorio cuando lo exige la RG 41/14 – Obligatorio para KUDE
+H. Campos que identifican al documento asociado (H001-H049)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+H
+H001
+gCamDEAsoc
+Campos que identifican al DE asociado
+A001
+G
+0-99
+Obligatorio si C002 = 4, 5, 6
+Opcional si C002=1 o 7
+H
+H002
+iTipDocAso
+Tipo de documento asociado
+H001
+N
+1
+1-1
+1= Electrónico
+2= Impreso
+3= Constancia Electrónica
+H
+H003
+dDesTipDocAso
+Descripción del tipo de documento asociado
+H001
+A
+7-11
+1-1
+Referente al campo H002
+1= “Electrónico”
+2= “Impreso”
+3= “Constancia Electrónica”
+H
+H004
+dCdCDERef
+CDC del DTE referenciado
+H001
+A
+44
+0-1
+Obligatorio si H002=1
+No informar si H002 = 2 o 3
+H
+H005
+dNTimDI
+Nro. timbrado documento impreso de referencia
+H001
+N
+8
+0-1
+Obligatorio si H002=2
+No informar si H002 = 1 o 3
+H
+H006
+dEstDocAso
+Establecimiento
+H001
+A
+3
+0-1
+Obligatorio si H002=2
+Completar con 0 (cero) a la izquierda
+No informar si H002 = 1 o 3

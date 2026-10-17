@@ -1,0 +1,10 @@
+<rEnviEventoDe xmlns="http://ekuatia.set.gov.py/sifen/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> <dEvReg> <gGroupGesEve> <rGesEve xsi:schemaLocation="http://ekuatia.set.gov.py/sifen/xsd siRecepEvento_v150.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"> <rEve Id="123"> </rEve> </rGesEve> </gGroupGesEve> </dEvReg> </rEnviEventoDe>
+Cabe aclarar que no se podrá utilizar:
+• Namespace distintos a los definidos en el presente documento
+• Prefijos de namespace
+Cada documento XML tendrá su namespace individual en su correspondiente elemento raíz.
+7.2.2.1. Particularidad de la firma digital
+La declaración namespace de la firma digital debe realizarse en la etiqueta <Signature>, conforme con el siguiente ejemplo:
+<rDE xmlns="http://ekuatia.set.gov.py/sifen/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ekuatia.set.gov.py/sifen/xsd/siRecepDE_v150.xsd"> <dVerFor>150</dVerFor> <DE Id="0144444401700100100145282201170125158732260988"> </DE> <Signature xmlns="http://www.w3.org/2000/09/xmldsig#"> </Signature> </rDE>
+7.2.2.2. Particularidad del envío de lote
+En el caso de envío de lote, cada DE debe contener la declaración de su namespace individual, conforme el ejemplo:

@@ -1,0 +1,14 @@
+SESJICENTENARIO DE LA EPOPEYA NACIONAL 1864- 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+N° g1:2
+DECRETO
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-12-
+Art. 7°.- Factura Cambiaria Electrónica. Es el documento electrónico generado como título de crédito emitido a la orden, a cargo del adquirente de un bien o servicio.
+La factura cambiaria electrónica deberá cumplir con los requisitos mínimos establecidos en la Ley N° 6542/2020 y con lo dispuesto en el Título Cuarto —Documento Transmisible Electrónico de la Ley N° 6822/2021, y al momento de su emisión se deberá considerar los otros requisitos que establezca la DNIT. Art. 8°.- Factura Electrónica de Exportación. Es el documento electrónico emitido para respaldar las operaciones de exportación.
+La Factura Electrónica de Exportación deberá ser emitida por el contribuyente exportador previo a la oficialización del despacho de exportación y antes de la salida de la mercadería del territorio nacional, y servirá para respaldar la cancelación de la declaración jurada de exportación definitiva.
+En la Factura Electrónica de Exportación se deberá informar la identificación del receptor de esta, no se aceptará la indicación del receptor como innominado o sin nombre.
+La DNIT podrá crear Eventos relacionados con la información contenida en la Factura Electrónica de Exportación emitida y en el Despacho de Exportación.
+Art. 9°.- Autofactura Electrónica. Es el documento electrónico emitido por el contribuyente en su calidad de adquirente de bienes o servicios de personas físicas que no se encuentran inscriptas en el RUC o que no se encuentran obligadas a emitir comprobante de ventas, y su uso estará sujeto a las disposiciones que regulan en cada caso los impuestos vigentes en el país. La Autofactura Electrónica en ningún caso podrá ser utilizada para respaldar el IVA Crédito y no es obligatoria su impresión para que el vendedor o prestador del servicio la rubrique.
+q,/

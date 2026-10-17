@@ -1,0 +1,101 @@
+E7.1.1. Campos que describen el pago o entrega inicial de la operación con tarjeta de crédito/débito
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E7.1.1
+E620
+gPagTarCD
+Campos que describen el pago o entrega inicial de la operación con tarjeta de crédito/débito
+E605
+G
+0-1
+Se activa si E606 = 3 o 4
+E7.1.1
+E621
+iDenTarj
+Denominación de la tarjeta
+E620
+N
+1-2
+1-1
+1= Visa
+2= Mastercard
+3= American Express
+4= Maestro
+5= Panal
+6= Cabal
+99= Otro
+E7.1.1
+E622
+dDesDenTarj
+Descripción de denominación de la tarjeta
+E620
+A
+4-20
+1-1
+Referente al campo E621
+1= “Visa”
+2= “Mastercard”
+3= “American Express”
+4= “Maestro”
+5= “Panal”
+6= “Cabal”
+Si E621 = 99 informar la descripción de la denominación de la tarjeta
+E7.1.1
+E623
+dRSProTar
+Razón social de la procesadora de tarjeta
+E620
+A
+4-60
+0-1
+E7.1.1
+E624
+dRUCProTar
+RUC de la procesadora de tarjeta
+E620
+A
+3-8
+0-1
+E7.1.1
+E625
+dDVProTar
+Dígito verificador del RUC de la procesadora de tarjeta
+E620
+N
+1
+0-1
+Según algoritmo módulo 11
+E7.1.1
+E626
+iForProPa
+Forma de procesamiento de pago
+E620
+N
+1
+1-1
+1= POS
+2= Pago Electrónico (Ejemplo: compras por Internet)
+9= Otro
+E7.1.1
+E627
+dCodAuOpe
+Código de autorización de la operación
+E620
+N
+6-10
+0-1
+E7.1.1
+E628
+dNomTit
+Nombre del titular de la tarjeta
+E620
+A
+4-30
+0-1

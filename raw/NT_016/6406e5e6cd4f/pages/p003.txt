@@ -1,0 +1,46 @@
+Sección 12.2.4 Validación de certificado de firma
+ID
+Resultado de validación
+C;odigo
+Observación
+E
+AC01
+Certificado inválido
+0120
+No existe el certificado de firma en el mensaje
+R
+No se aceptan certificados del PSC
+KeyUsage no define firma digital y no Repudio
+Cadena de certificación inválida
+Páginas: 152.
+Sección 12.2.5 Validación de la firma digital
+ID
+Resultado de validación
+Código
+Observación
+E
+AD01
+Firma difiere del estándar [Detalle del error]
+0140
+No fue firmado el documento completo (falta Reference URI en la firma)
+R
+Transform Algorithm previsto en la firma (Enveloped Signature) no informado o no válido
+Canonicalization Method previsto en la firma no informádo o no válido
+Signature Method previsto en la firma no informádo o no válido
+Digest Method previsto en la firma no informádo o no válido
+Reference URI no coincide con el atributo Id del documento
+AD02
+Valor de la firma (SignatureValue) diferente del calculado por el PKI [Detalle del error]
+0141
+XML modificado luego de la firma o mal firmado
+R
+Certificado del PCSC no habilitado por el MIC
+Certificado del PCSC revocado
+Certificado no está firmado por el PCSC
+Dirección de la LCR no informada
+(CRLDistributionPoint)
+Error en el acceso a la LCR
+LCR inexistente
+Certificado de firma revocado
+Certificado raíz no corresponde al MIC
+Páginas: 153.

@@ -1,0 +1,135 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.5
+E772
+dDesTipOpVN
+Descripción del tipo de operación de venta de vehículos
+E770
+A
+16-30
+0-1
+Obligatorio si existe el campo E762
+1= “Venta a representante”
+2= “Venta al consumidor final”
+3= “Venta a gobierno”
+4= “Venta a flota de vehículos”
+E8.5
+E773
+dChasis
+Chasis del vehículo
+E770
+A
+17
+0-1
+E8.5
+E774
+dColor
+Color del vehículo
+E770
+A
+1-10
+0-1
+E8.5
+E775
+dPotencia
+Potencia del motor (CV)
+E770
+N
+1-4
+0-1
+E8.5
+E776
+dCapMot
+Capacidad del motor
+E770
+N
+1-4
+0-1
+Expresa en centímetros cúbicos (cc)
+E8.5
+E777
+dPNet
+Peso Neto
+E770
+N
+1-6p(0-4)
+0-1
+Toneladas
+E8.5
+E778
+dPBruto
+Peso Bruto
+E770
+N
+1-6p(0-4)
+0-1
+Toneladas
+E8.5
+E779
+iTipCom
+Tipo de combustible
+E770
+N
+1
+0-1
+1= Gasolina
+2= Diésel
+3= Etanol
+4= GNV
+5= Flex
+9= Otro
+E8.5
+E780
+dDesTipCom
+Descripción del tipo de combustible
+E770
+A
+3-20
+0-1
+Obligatorio si existe el campo E770
+1= “Gasolina”
+2= “Diésel”
+3= “Etanol”
+4= “GNV”
+5= “Flex”
+Si E769= 9 describir el tipo de combustible
+E8.5
+E781
+dNroMotor
+Número del motor
+E770
+A
+1-21
+0-1
+E8.5
+E782
+dCapTracc
+Capacidad máxima de tracción
+E770
+N
+1-6p(0-4)
+0-1
+Toneladas
+E8.5
+E783
+dAnoFab
+Año de fabricación
+E770
+N
+4
+0-1
+E8.5
+E784
+cTipVeh
+Tipo de vehículo
+E770
+A
+4-10
+0-1

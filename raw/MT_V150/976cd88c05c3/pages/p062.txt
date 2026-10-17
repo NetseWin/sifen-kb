@@ -1,0 +1,64 @@
+TABLA DE FORMATO DE CAMPOS DE UN DOCUMENTO ELECTRÓNICO (DE)
+Schema XML 18: DE_v150.xsd (Documento Electrónico)
+AA. Campos que identifican el formato electrónico XML (AA001-AA009)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+AA
+AA001
+rDE
+Documento Electrónico elemento raíz
+Raíz
+G
+1-1
+AA
+AA002
+dVerFor
+Versión del formato
+AA001
+N
+3
+1-1
+Control de versiones
+Este campo debe contener la versión 150
+A. Campos firmados del Documento Electrónico (A001-A099)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+A
+A001
+DE
+Campos firmados del DE
+AA001
+G
+1-1
+A
+A002
+Id
+Identificador del DE
+A001
+A
+44
+Atributo del Tag <DE>
+NOTA: Con carácter excepcional cuando un RUC contenga letras para efectos del cálculo del Dígito verificador y la generación del CDC se realizará la conversión de dicha letra por su valor en código ASCII
+A
+A003
+dDVId
+Dígito verificador del identificador del DE
+A001
+N
+1
+1-1
+Según algoritmo módulo 11

@@ -1,0 +1,41 @@
+12.2.7. Validaciones genéricas a los mensajes de control de llamada de los WS
+ID
+Resultado de Validación
+Código
+Obs
+E
+AF01
+Elemento deHeaderMsg inexistente en el SOAP Header
+0180
+R
+AF04
+RUC del certificado utilizado en la conexión no pertenece a un contribuyente activo en la base de datos de RUC.
+0183
+R
+12.3. Validaciones de cada Web Service
+12.3.1. WS recepción documento electrónico – siRecepDE
+12.3.1.1. Mensaje de entrada del WS
+La primera validación corresponde al tamaño máximo permitido para el mensaje, este no debe superar los (1000 KB). Su verificación es:
+• En el presente WS se devuelve el mensaje con código 0200.
+• En la configuración de red (firewall), en el caso que la conexión sea interrumpida sin la generación del mensaje de error con el código 0200.
+ID
+Resultado de la Validación
+Código
+Obs
+E
+BA01
+Mensaje de datos de entrada del WS siRecepDE superior a 1000 KB
+0200
+R
+12.3.1.2. Información de control de la llamada al WS
+No se realizan validaciones específicas para este método en la versión inicial 100, sin embargo, reservamos los códigos desde el 0220 al 0239 y las correspondientes identificaciones BB01 a BB20.
+12.3.1.3. Área de datos del WS
+ID
+Resultado de la Validación
+Código
+Obs
+E
+BC01
+Autorización del DE satisfactoria
+0260
+N

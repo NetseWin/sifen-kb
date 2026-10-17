@@ -1,0 +1,37 @@
+{
+ "anomalies": [],
+ "doc": "NT_003",
+ "extractor": {
+  "engine": "tagged/pdfplumber-0.11.10",
+  "name": "sifen_kb.extract",
+  "origin": {
+   "commit": "8603b5bd572fb0a1563e216d3ec658fb5666e678",
+   "project": "pdf_to_md"
+  },
+  "page_printed_engine": "pypdfium2-5.14.0",
+  "version": "0.1.0"
+ },
+ "fixes": [],
+ "nt_info": {
+  "fecha_literal": "18/11/2020",
+  "numero": 3,
+  "page": 1,
+  "prod_literal": null,
+  "test_literal": null
+ },
+ "pages": [
+  {
+   "chars": 1375,
+   "page_pdf": 1,
+   "page_printed": null,
+   "sha256": "de040225ad513606d9cb48972500eb2f0268a03ff347e54e6a2f15269abe312f"
+  }
+ ],
+ "sha256": "3d27fa591b59a56c7f03cf17340c67b359dfebed23c14c8dff655998ebfc03e8",
+ "tables": {
+  "dates": 0,
+  "fields": 2,
+  "validations": 2
+ },
+ "tagged": true
+}

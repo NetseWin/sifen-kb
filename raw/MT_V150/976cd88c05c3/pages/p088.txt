@@ -1,0 +1,103 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8
+E717
+dCanQuiMer
+Cantidad de quiebra o merma
+E700
+N
+1-10(0-4)
+0-1
+Obligatorio si se informa E715
+Lo informado en este campo se encuentra en la unidad de medida elegida en E709
+Según RG 41/14
+E8
+E718
+dPorQuiMer
+Porcentaje de quiebra o merma
+E700
+N
+1-3(0-8)
+0-1
+Obligatorio si se informa E715
+Según RG 41/14
+E8
+E719
+dCDCAnticipo
+CDC del anticipo
+E700
+A
+44
+0-1
+Obligatorio cuando se utilice una factura asociada con el tipo de transacción igual a Anticipo (D011 de la factura asociada igual a 9)
+E8.1. Campos que describen el precio, tipo de cambio y valor total de la operación por ítem (E720-E729)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.1
+E720
+gValorItem
+Campos que describen los precios, descuentos y valor total por ítem
+E700
+G
+0-1
+Obligatorio si C002 ≠ 7
+No informar si C002 = 7
+E8.1
+E721
+dPUniProSer
+Precio unitario del producto y/o servicio (incluidos impuestos)
+E720
+N
+1-15p(0-8)
+1-1
+E8.1
+E725
+dTiCamIt
+Tipo de cambio por ítem
+E720
+N
+1-5p(0-4)
+0-1
+Obligatorio si D015 ≠ PYG
+Obligatorio si D017 = 2
+No informar si D017 = 1
+E8.1
+E727
+dTotBruOpeItem
+Total bruto de la operación por ítem
+E720
+N
+1-15p(0-8)
+1-1
+Corresponde a la multiplicación del precio por ítem (E721) y la cantidad por ítem (E711)
+E8.1.1 Campos que describen los descuentos, anticipos y valor total por ítem (EA001-EA050)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.1.1
+EA001
+gValorRestaItem
+Campos que describen los descuentos, anticipos valor total por ítem
+E720
+G
+1-1

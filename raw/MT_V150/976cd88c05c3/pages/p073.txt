@@ -1,0 +1,109 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D3
+D209
+dDTipIDRec
+Descripción del tipo de documento de identidad
+D200
+A
+9-41
+0-1
+Obligatorio si existe el campo D208
+1= “Cédula paraguaya”
+2= “Pasaporte”
+3= “Cédula extranjera”
+4= “Carnet de residencia”
+5 = “Innominado”
+6= “Tarjeta Diplomática de exoneración fiscal”
+Si D208 = 9 informar el tipo de documento de identidad del receptor
+D3
+D210
+dNumIDRec
+Número de documento de identidad
+D200
+A
+1-20
+0-1
+Obligatorio si D201 = 2 y D202 ≠ 4
+No informar si D201 = 1 o D202=4
+En caso de DE innominado, completar con 0 (cero)
+D3
+D211
+dNomRec
+Nombre o razón social del receptor del DE
+D200
+A
+4-255
+1-1
+En caso de DE innominado, completar con “Sin Nombre”
+D3
+D212
+dNomFanRec
+Nombre de fantasía
+D200
+A
+4-255
+0-1
+D3
+D213
+dDirRec
+Dirección del receptor
+D200
+A
+1-255
+0-1
+Campo obligatorio cuando C002=7 o cuando D202=4
+D3
+D218
+dNumCasRec
+Número de casa del receptor
+D200
+N
+1-6
+0-1
+Campo obligatorio si se informa el campo D213
+Cuando D201 = 1, debe corresponder a lo declarado en el RUC
+D3
+D219
+cDepRec
+Código del departamento del receptor
+D200
+N
+1-2
+0-1
+Campo obligatorio si se informa el campo D213 y D202≠4, no se debe informar cuando D202 = 4.
+Según XSD de Departamentos
+D3
+D220
+dDesDepRec
+Descripción del departamento del receptor
+D200
+A
+6-16
+0-1
+Referente al campo D219
+D3
+D221
+cDisRec
+Código del distrito del receptor
+D200
+N
+1-4
+0-1
+Según Tabla 2.1 – Distritos
+D3
+D222
+dDesDisRec
+Descripción del distrito del receptor
+D200
+A
+1-30
+0-1
+Obligatorio si existe el campo D221

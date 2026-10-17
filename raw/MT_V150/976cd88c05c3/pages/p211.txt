@@ -1,0 +1,38 @@
+CDC no existente en el SIFEN, consulte con el emisor del documento.
+• Número del DTE: 001-001-00145282
+• Tipo: Factura Electrónica
+• Emisor: Empresa X – Emisor electrónico
+• RUC Emisor: 44444401-7
+• Fecha de emisión: 25/01/2018 09:35:30
+• Cantidad de ítems: 2
+• Monto Total: 300.000
+• Monto Total IVA: 27272.00
+c) El QR no es válido
+Código QR inválido, consulte con el emisor del DE.
+14. Operación de Contingencia (Futuro)
+15. CODIFICACIONES
+Se describen a continuación las tablas de codificaciones del sistema, para su utilización en el XML.
+TABLA 1 – TIPO DE REGIMEN
+Código
+Descripción
+1
+Régimen de Turismo
+2
+Importador
+3
+Exportador
+4
+Maquila
+5
+Ley N° 60/90
+6
+Régimen del Pequeño Productor
+7
+Régimen del Mediano Productor
+8
+Régimen Contable
+TABLA 2.1 – DEPARTAMENTOS, DISTRITOS Y CIUDADES
+Enlace: https://ekuatia.set.gov.py/portal/ekuatia/documentacion/documentaciontecnica
+Archivo: CODIGO DE REFERENCIA GEOGRAFICA.xlsx
+TABLA 2.2 - CIUDADES
+Se incluirá un link de descarga dado el volumen del contenido.

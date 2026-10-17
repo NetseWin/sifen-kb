@@ -1,0 +1,68 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D1
+D011
+iTipTra
+Tipo de transacción
+D010
+N
+1-2
+0-1
+Obligatorio si C002 = 1 o 4
+No informar si C002 ≠ 1 o 4
+Tipo de transacción para el emisor
+1= Venta de mercadería
+2= Prestación de servicios
+3= Mixto (Venta de mercadería y servicios)
+4= Venta de activo fijo
+5= Venta de divisas
+6= Compra de divisas
+7= Promoción o entrega de muestras
+8= Donación
+9= Anticipo
+10= Compra de productos
+11= Compra de servicios
+12= Venta de crédito fiscal
+13=Muestras médicas (Art. 3 RG 24/2014)
+D1
+D012
+dDesTipTra
+Descripción del tipo de transacción
+D010
+A
+5-36
+0-1
+Obligatorio si existe el campo D011
+1= “Venta de mercadería”
+2= “Prestación de servicios”
+3= “Mixto” (Venta de mercadería y servicios)
+4= “Venta de activo fijo”
+5= “Venta de divisas”
+6= “Compra de divisas”
+7= “Promoción o entrega de muestras”
+8= “Donación”
+9= “Anticipo”
+10= “Compra de productos”
+11= “Compra de servicios”
+12= “Venta de crédito fiscal”
+13= ”Muestras médicas (Art. 3 RG 24/2014)”
+D1
+D013
+iTImp
+Tipo de impuesto afectado
+D010
+N
+1
+1-1
+1= IVA
+2= ISC
+3=Renta
+4=Ninguno
+5=IVA - Renta

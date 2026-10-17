@@ -1,0 +1,76 @@
+GEN013
+El CDE del DTE se encuentra cancelado
+4115
+No se puede registrar la Notificación – Recepción por CDC de un DTE cancelado
+R
+GEN013a
+CDC del DTE ya cuenta con el máximo de eventos permitidos de la misma naturaleza
+4116
+CDC del DTE ya ha superado la cantidad de eventos establecidos sobre el Tipo de Evento de Notificación – Recepción DTE
+R
+2.2. EN REGLAS DE VALIDACIÓN PARA EL EVENTO CONFORMIDAD SE MODIFICAN LOS SIGUIENTES CAMPOS (Página 137)
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+GCO001
+Incongruencia en el registro de eventos del receptor (hay un evento previo de desconocimiento)
+4156
+No se puede realizar una conformidad de DE/DTE luego de un evento de desconocimiento
+R
+GCO002
+CDC del DTE ya cuenta con un eventos previo de esta naturaleza
+4150
+Sobre el CDC de un DE/DTE se puede realizar hasta un eventos de conformidad (conformidad parcial luego una conformidad total, en ese orden)
+R
+GCO002c
+CDC del DTE es inexistente o ha superado el plazo para registro del evento
+4152
+Cuando el CDC no se encuentra en la base de datos del SIFEN o el plazo del registro del evento es inválido:
+Regla para plazo inválido:
+*Si el primer evento del receptor que se pretende registrar es conformidad, este no se puede realizar después de 45 días contados a partir de la fecha de aprobación del DTE
+*Si no es el primer evento del receptor y el último evento realizado por el receptor no es una disconformidad, la conformidad no puede superar los 45 días contados a partir de la fecha de aprobación del DTE.
+*Si no es el primer evento del receptor y el último evento realizado por el receptor es una disconformidad, entonces la conformidad (evento correctivo) no puede superar los 15 días contados a partir de la fecha de realización del evento de disconformidad
+R
+GCO002e
+El CDC del DTE se encuentra cancelado
+4155
+No se puede registrar la conformidad por CDC de un DTE cancelado
+R
+GCO005
+Fecha de aprobación del DTE ha superado el plazo para registro del evento
+4157
+Sea o no el primer evento del receptor que se pretende registrar, este no se puede realizar después de 45 días corridos contados a partir de la fecha de aprobación del DTE
+R
+GCO002f
+CDC del DTE ya cuenta con el máximo de eventos permitidos de la misma naturaleza
+4158
+CDC del DTE ya ha superado la cantidad de eventos establecidos sobre el Tipo de Evento de Conformidad Parcial/Total
+R
+2.3 EN REGLAS DE VALIDACIÓN PARA EL EVENTO DISCONFORMIDAD SE MODIFICAN LOS SIGUIENTES CAMPOS
+(Página 138)
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+GDI001
+Incongruencia en el registro de eventos del receptor (hay un evento previo de desconocimiento)
+4205
+No se puede realizar una conformidad de DE/DTE luego de un evento de desconocimiento
+R
+GDI002
+CDC del DTE ya cuenta con un evento previo de esta naturaleza
+4200
+Sobre el CDC de un DTE se puede realizar hasta un evento de disconformidad
+R
+GDI002c
+CDC del DTE es inexistente o ha superado el plazo para registro del evento
+4202
+Cuando el CDC no se encuentra en la base de datos del SIFEN o el plazo del registro del evento es inválido:
+Regla para plazo inválido:
+*Si el primer evento del receptor que se pretende registrar es disconformidad, este no se puede realizar después de 45 días contados a partir de la fecha de aprobación del DTE
+*Si no es el primer evento del receptor y el último evento realizado por el receptor no es una conformidad, la disconformidad no puede superar los 45 días contados a partir de la fecha de aprobación del DTE.
+*Si no es el primer evento del receptor y el último evento realizado por el receptor es una conformidad, entonces
+R

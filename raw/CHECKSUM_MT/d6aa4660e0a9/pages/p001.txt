@@ -1,0 +1,6 @@
+Checksum MD5 de los recursos de las diferentes versiones del Manual Técnico
+MT_E_Kuatia_V141_21_09_2018.pdf
+3831B120BBDAD67AB032DA80DDED689B
+MT_E_Kuatia_V150_10_09_2019.pdf
+25EB165A8506EFA3A255B863ABCCAE95
+Manual Técnico Checksum MD5

@@ -1,0 +1,59 @@
+E7. Campos que describen la condición de la operación (E600-E699)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E7
+E600
+gCamCond
+Campos que describen la condición de la operación
+E001
+G
+0-1
+Obligatorio si C002 = 1 o 4
+No informar si C002 ≠ 1 o 4
+E7
+E601
+iCondOpe
+Condición de la operación
+E600
+N
+1
+1-1
+1= Contado
+2= Crédito
+E7
+E602
+dDCondOpe
+Descripción de la condición de operación
+E600
+A
+7
+1-1
+Referente al campo E601
+1= “Contado”
+2= “Crédito”
+E7.1. Campos que describen la forma de pago de la operación al contado o del monto de la entrega inicial (E605-E619)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E7.1
+E605
+gPaConEIni
+Campos que describen la forma de pago al contado o del monto de la entrega inicial
+E600
+G
+0-999
+Obligatorio si E601 = 1
+Obligatorio si existe el campo E645

@@ -1,0 +1,19 @@
+8.3. Estándar de mensajes de los servicios del SIFEN
+La solicitud de consumo de los servicios dispuestos por el SIFEN debe seguir el estándar:
+• Área de datos: Esquema XML definido para cada WS.
+8.4. Versión de los Schemas XML
+Las modificaciones de los Schemas correspondientes a los servicios del SIFEN, pueden originarse como necesidades técnicas, cambios normativos o de funcionalidad.
+Estos cambios no serán aplicados de forma frecuente, considerando siempre el tiempo necesario para la adecuación de los sistemas de los contribuyentes afectados.
+Los mensajes recepcionados en una versión desactualizada serán rechazados especificando el error de versión.
+Toda actualización de formato de los WS del SIFEN será correctamente respaldada por la actualización de su correspondiente Schema.
+8.4.1. Identificación de la versión de los Schemas XML
+La versión del Schema de los DE es identificada en el nombre del archivo correspondiente, con el número antecedido por los caracteres “_v”.
+El nombre del Schema XML de la factura electrónica, versión 150 es: FE_v150.xsd
+8.4.2. Liberación de versiones de los Schemas XML
+Los Schemas utilizados por el SIFEN serán reglamentados y publicados en la dirección “http://ekuatia.set.gov.py/sifen/xsd”.
+Las actualizaciones de Schemas estarán publicadas en forma comprimida y contendrá el conjunto de Schemas utilizados para la generación de los DE y consumo de WS, si correspondiera.
+Este Schema tendrá la misma versión que el DE equivalente. Los archivos comprimidos serán nominados de la siguiente manera “PS_FE_150.zip”, donde las primeras dos letras son constantes, las siguientes corresponden al tipo de DE, seguido de la versión a la cual corresponde, en el ejemplo, versión 150.
+Los archivos correspondientes a Schemas XML, se distinguen por la extensión .xsd
+Según lo descripto, el archivo correspondiente al Schema XML de la recepción del DE de la versión 150 es: SiRecepDE_v150.xsd
+8.4.3. Paquete inicial de Schemas
+Al momento de la publicación de la versión oficial del presente Manual Técnico, también se disponibilizará el paquete de Schemas afectados inicialmente.

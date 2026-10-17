@@ -1,0 +1,64 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.1.1
+EA008
+dTotOpeItem
+Valor total de la operación por ítem
+EA001
+N
+1-15p(0-8)
+1-1
+Cálculo para IVA, Renta, ninguno, IVA - Renta
+Si D013 = 1, 3, 4 o 5 (afectado al IVA, Renta, ninguno, IVA - Renta), entonces EA008 corresponde al cálculo aritmético: (E721 (Precio unitario) – EA002 (Descuento particular) – EA004 (Descuento global) – EA006 (Anticipo particular) – EA007 (Anticipo global)) * E711(cantidad)
+Cálculo para Autofactura
+(C002=4):
+E721*E711
+E8.1.1
+EA009
+dTotOpeGs
+Valor total de la operación por ítem en guaraníes
+EA001
+N
+1-15p(0-8)
+0-1
+Obligatorio si existe el campo E725
+Corresponde al cálculo aritmético
+EA008* E725
+E8.2. Campos que describen el IVA de la operación por ítem (E730-E739)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.2
+E730
+gCamIVA
+Campos que describen el IVA de la operación
+E700
+G
+0-1
+Obligatorio si D013=1, 3, 4 o 5 y C002 ≠ 4 o 7
+No informar si D013=2 y C002= 4 o 7
+E8.2
+E731
+iAfecIVA
+Forma de afectación tributaria del IVA
+E730
+N
+1
+1-1
+1= Gravado IVA
+2= Exonerado (Art. 83- Ley 125/91)
+3= Exento
+4= Gravado parcial (Grav-Exento)

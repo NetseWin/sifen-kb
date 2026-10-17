@@ -1,0 +1,18 @@
+CASOS
+PLAZOS
+OBSERVACION
+Corrección Evento del Receptor: Notificación de Recepción DE/DTE, Conformidad, Disconformidad, Desconocimiento DE/DTE
+Hasta 360 horas (15 días)
+El plazo se computa desde la fecha de registro del primer evento sobre un DTE (Conformidad o Disconformidad o Desconocimiento)
+Obs: El cómputo de los plazos fue establecido en horas corridas.
+6.3. Relación directa con los contribuyentes
+El modelo operativo de SIFEN entiende que la interacción de la SET con los facturadores electrónicos es de manera directa y sin necesidad de intermediación obligatoria de actor diferente. Quiere decir esto que, a discreción y decisión de los contribuyentes, estos podrán acudir a servicios de proveedores tecnológicos, reiterando que en todo caso la relación es directamente con los contribuyentes.
+6.4. Entrega del DE al receptor
+Como regla general, la entrega del DE por parte del emisor al receptor, en el modelo de validación y aprobación del DE, se da de manera previa, y este último se obliga a consultar a posteriori, en los servicios de consulta disponibles por SIFEN, que el DTE (luego de aprobado el DE) se encuentre conforme la operación comercial realizada.
+“Es importante remarcar que, al momento de la generación, emisión y antes de la entrega de un Documento Electrónico (DE) al receptor, el referido documento debe estar firmado digitalmente. Carecerán de total validez aquellos documentos electrónicos que no lleven la firma digital y que no fueron validados y aprobados por la Administración Tributaria”.
+Entre posibles alternativas de envío del DE del emisor al receptor, propio del ámbito comercial entre las partes, se tienen las siguientes:
+• Descarga por el receptor en página web expuesta por el emisor.
+• Archivo adjunto transmitido por correo electrónico o aplicaciones.
+• Archivo adjunto transmitido por aplicativo de mensajería electrónica de datos.
+6.5. Rechazo del DE en el modelo de aprobación posterior
+En el caso de que el DE enviado a SIFEN no supere las validaciones previstas para otorgar su aprobación, y su ajuste para ser validado, no implique cambios que alteren la construcción del Código de Control (CDC), se podrá reutilizar el mismo CDC, descrito en la sección 10.1, del DE rechazado (esto con el objeto de permitir que el DE con aprobado (DTE) pueda ser consultado por medio del QR generado en el KuDE entregado al receptor en el momento de la operación comercial), y someter nuevamente a validación. El emisor debe realizar el mismo procedimiento hasta lograr la aprobación, cuantas veces sea necesario. Esto sin prejuicio del incumplimiento de los términos y condiciones en la transmisión de los DE y la consecuente aplicación del régimen sancionatorio por la entrega extemporánea de los mismos.

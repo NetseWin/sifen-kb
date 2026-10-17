@@ -1,0 +1,14 @@
+MARANGATU 2.0 Acceso y Autenticación • Usuario y Clave Portal SIFEN Solución Gratuita E-Kuatia’i Pequeños contribuyentes Volumen bajo de DTE Timbrado - RUC Consulta DTE Generación KuDE Comunicación Actores comerciales Reportes Básicos Codificación e importación de productos y catálogos Firma Digital SET o Contribuyente Gestión de Eventos APP Móvil (Consulta QR) Generación DTE Web Service Sincrónica (1 FE/vez) Multiplataforma Web Responsive WS DTE: FE, NCE, NDE, NRE, AFE Web Service Sincrónico/Asincrónico WS Posib. import. Archivo TXT/XML Validaciones previas Solución Gratuita SIFEN
+Gráfica Nº 03 Subsistema Electrónico Solución Gratuita E-kuatia’i
+Los anteriores subsistemas mencionados de SIFEN tendrán una interoperabilidad con Marangatu, en particular con el RUC y el módulo de Autorización y Timbrado, al igual que con los prestadores de servicios de certificación de Paraguay a efectos de validar la vigencia del certificado digital.
+SIFEN proveerá todos los servicios web y de internet de consulta referente a los Documentos Tributarios Electrónicos (DTE), así como aquellos servicios orientados a indicar las novedades, afectaciones y eventos sobre los mismos.
+4.2. Fundamento legal
+El SIFEN tiene su base legal en el siguiente marco normativo:
+• La Ley N° 125/1991 "Que Establece el Nuevo Régimen Tributario" y sus modificaciones;
+• La Ley Nº 4.017/2010 “De validez jurídica de la firma electrónica, la firma digital, los mensajes de datos y el expediente electrónico”, y sus modificaciones.
+• La Ley Nº 4.679/2012 “De Trámites Administrativos”.
+• La Ley Nº 4.868/2013 “Comercio Electrónico”.
+• El Decreto N° 6.539/2005 “Por el cual se dicta el reglamento general de Timbrado y uso de Comprobantes de Venta, Documentos Complementarios, Notas de Remisión y Comprobantes de Retención” y sus modificaciones.
+• El Decreto Nº 7.369/2011” Por el cual se aprueba el Reglamento General de la Ley Nº 4.017/2010 de validez jurídica de la firma electrónica, la firma digital, los mensajes de datos y el expediente electrónico”.
+• El Decreto Nº 1.165/2014 “Por el cual se aprueba el reglamento de la Ley Nº 4.868 del 26 de febrero de 2013 de Comercio Electrónico”.
+• El Decreto Nº 7.795/2017 “Por el cual se crea el Sistema Integrado de Facturación Electrónica Nacional”.

@@ -1,0 +1,62 @@
+E10.1. Campos que identifican el local de salida de las mercaderías (E920-E939)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+178
+E920
+Grupo de los campos que identifican el local de salida de las mercaderías es obligatorio
+2150
+Si el tipo de documento electrónico seleccionado es igual a Factura Electrónica de Exportación o Nota de Remisión Electrónica (C002=2 o 7), es obligatorio informar el grupo de los campos que identifican el local de salida de las mercaderías
+R
+179
+E920a
+Grupo de los campos que identifican el local de salida de las mercaderías no es permitido para el tipo de documento electrónico seleccionado
+2151
+El grupo de los campos que identifican el local de salida de las mercaderías no es permitido para Autofactura Electrónica, Nota de Crédito Electrónica, Nota de Débito Electrónica o Comprobante de Retención Electrónica (C002=3, 4, 5, 6 o 8)
+R
+180
+E925
+El Departamento, el Distrito y Ciudad del local de Salida no están relacionados
+2153
+Debe haber relación entre el departamento (E925), el distrito (E927) y la ciudad (E929)
+R
+181
+E926
+Descripción del departamento del local de salida no corresponde al código
+2152
+Descripción del departamento del local de salida no coincidente con lo informado en el campo E925
+R
+193
+E928
+Descripción del código de distrito del local de salida no informada
+2154
+Si se informa el código del distrito del local de salida (E927), la descripción del mismo es obligatoria
+R
+182
+E928a
+Descripción del distrito del local de salida no corresponde al código
+2155
+Descripción del distrito del local de salida no coincidente con lo informado en el campo E927
+R
+159
+E929
+La ciudad del local de salida no corresponde al departamento seleccionado
+2156
+El código de la ciudad del local de salida (E929) debe corresponder al departamento seleccionado (E925)
+R
+160
+E929a
+La ciudad del local de salida no corresponde al distrito seleccionado
+2157
+El código de la ciudad del local de salida (E929) debe corresponder al distrito seleccionado (E927)
+No se aplica esta regla si no ha sido informado el distrito
+R
+183
+E930
+Descripción de la ciudad del local de salida no corresponde al código
+2158
+Descripción de la ciudad del local de salida no coincidente con lo informado en el campo E929
+R

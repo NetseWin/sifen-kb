@@ -1,0 +1,81 @@
+9.6.1. Definición del protocolo que consume este servicio
+El Request que consumirá este servicio estará construido en XML, según el Schema expuesto a continuación.
+Schema XML 15: siConsRUC_v150.xsd (WS Consulta RUC)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+RSch01
+rEnviConsRUC
+Raíz
+-
+-
+-
+-
+Elemento Raíz
+RSch02
+dId
+Identificador de control de envío
+RSch01
+N
+1-15
+1-1
+Número secuencial autoincremental, para identificación del mensaje enviado. La responsabilidad de generar y controlar este número es exclusiva del contribuyente.
+RSch03
+dRUCCons
+RUC consultado
+RSch01
+A
+5-8
+1-1
+RUC No incluye el Digito de verificación
+9.6.2. Descripción del procesamiento
+Este servicio es el encargado de recibir la petición de consulta de los datos y estado del RUC de un contribuyente receptor en la base de datos de SIFEN. Solamente se permiten conexiones con certificado digital. Los posibles resultados se listan en la tabla H.
+Tabla H – Resultados de Procesamiento del WS Consulta RUC
+Condición
+Mensaje generado
+El RUC consultado no existe en el Sistema
+0500=RUC no existe
+RUC no tiene permiso para utilizar el WS
+0501=RUC sin permiso consulta WS
+Éxito en la consulta
+0502=RUC encontrado
+9.6.3. Protocolo de respuesta
+En casos de que haya concluido con éxito la consulta, contiene el código de respuesta 0502, o en caso contrario contiene el código de respuesta correspondiente.
+Schema XML 16: resConsRUC_v150.xsd (Respuesta del WS Consulta RUC)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+RRSch01
+rResEnviConsRUC
+Raíz
+-
+-
+-
+-
+Elemento raíz
+RRSch02
+dCodRes
+Código del resultado de la consulta RUC
+RRSch01
+N
+4
+1-1
+Definido en el tópico correspondiente del capítulo 12
+RRSch03
+dMsgRes
+Mensaje del resultado de la consulta RUC
+RRSch01
+A
+1-255
+1-1
+Definido en el tópico correspondiente del capítulo 12

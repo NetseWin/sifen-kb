@@ -1,0 +1,78 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+B
+B006
+dInfoFisc
+Información de interés del Fisco respecto al DE
+B001
+A
+1-3000
+0-1
+Esta información debe ser impresa en el KuDE.
+Cuando el tipo de documento es Nota de remisión (C002=7) es obligatorio informar el mensaje según el Art. 3 Inc. 7 de la Resolución general Nro. 41/2014
+C. Campos de datos del Timbrado (C001-C099)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+C
+C001
+gTimb
+Datos del timbrado
+A001
+G
+1-1
+C
+C002
+iTiDE
+Tipo de Documento Electrónico
+C001
+N
+1-2
+1-1
+1= Factura electrónica
+2= Factura electrónica de exportación (Futuro)
+3= Factura electrónica de importación (Futuro)
+4= Autofactura electrónica
+5= Nota de crédito electrónica
+6= Nota de débito electrónica
+7= Nota de remisión electrónica
+8= Comprobante de retención electrónico (Futuro)
+C
+C003
+dDesTiDE
+Descripción del tipo de documento electrónico
+C001
+A
+15-40
+1-1
+Referente al campo C002
+1= “Factura electrónica”
+2= “Factura electrónica de exportación”
+3= “Factura electrónica de importación”
+4= “Autofactura electrónica”
+5= “Nota de crédito electrónica”
+6= “Nota de débito electrónica”
+7= “Nota de remisión electrónica”
+8= “Comprobante de retención electrónico”
+C
+C004
+dNumTim
+Número del timbrado
+C001
+N
+8
+1-1
+Debe coincidir con la estructura de timbrado

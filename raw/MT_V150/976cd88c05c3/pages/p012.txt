@@ -1,0 +1,36 @@
+Versión: 140
+Fecha de modificación: 23/08/2018
+Ubicación - capítulo
+Descripción de las modificaciones
+Se detallan los cambios de la versión actual y la anterior en el control de versiones.
+6.2.1. Plazos SIFEN
+Se introducen cambios en la tabla de plazos
+6.5 Rechazo del DE en el modelo de validación posterior
+Se aclara el procedimiento
+7.2.3 Tabla A Tipos de Datos y en todas las secciones en donde se utilizan fechas.
+* Del tipo de dato Fecha (F) se elimina la zona horaria.
+* En el tipo de dato Numérico (N) no se mantiene una longitud invariante.
+7.5 Estándar de certificado digital
+Se agrega un ejemplo de uso del dato RUC
+8.2.2 Tiempo promedio de procesamiento de un lote
+Aclaraciones en tiempos de procesamiento
+8.4.5. Paquete de Schemas para el ambiente de pruebas
+Se elimina esta sección, debido a que ya no se utiliza el ambiente (prueba o producción)
+9. DESCRIPCIÓN DE LOS SERVICIOS WEB DEL SIFEN
+* Se eliminó el ambiente y la versión del formato de los Web Services.
+* Se modifica la versión de los Schemas de 100 a 140.
+* El proceso síncrono ahora devuelve un número de transacción.
+El proceso asíncrono en su respuesta contiene un número de lote (denominado Número del protocolo de autorización anteriormente)
+* Se agrega el Web service de consulta de RUC siConsRUC y el Web service consulta DE destinadas siConsDEST
+10.1. Estructura del código de control (CDC) de los DE
+Se modifica la estructura del CDC, ahora se diferencian el RUC del emisor y su Dígito verificador.
+TABLA DE FORMATO DE CAMPOS DE UN DOCUMENTO ELECTRONICO (DE)
+Se introdujeron varios cambios en los grupos, no entramos a detallarlos en esta sección para contribuir a la legibilidad, sin embargo, esos cambios se reflejan en esta versión del Manual Técnico mediante los siguientes colores.
+Amarillo = modificaciones
+Verde = adición de campos
+11 Gestión de eventos
+Se agrega una tabla resumen de tipo de evento según el actor.
+Se agrega las estructuras correspondientes a los eventos de Cancelación e Inutilización.
+Se agregan las validaciones a realizarse sobre los eventos de Cancelación e Inutilización
+13.7 Código bidimensional (QR)
+Se elimina el ambiente de generación

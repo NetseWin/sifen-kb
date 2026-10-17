@@ -1,0 +1,64 @@
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+CSch02
+dId
+Identificador de control de envío
+CSch01
+N
+1-15
+1-1
+Número secuencial autoincremental, para identificación del mensaje enviado. La responsabilidad de generar y controlar este número es exclusiva del contribuyente.
+CSch03
+dProtConsLote
+Número del lote
+CSch01
+N
+1-15
+1-1
+Obtenido a partir del mensaje de respuesta al WS soRecepLoteDE(Schema XML 5)
+9.3.2. Descripción del procesamiento
+Servicio que se encarga de retornar el resultado del procesamiento de cada DE contenido en el lote que fuera recibido. Cada uno de los DE es identificado y contiene el resultado de su procesamiento y la situación, si fue aprobado, aprobado con observación, o rechazado; en caso de aprobado con observación, serán informadas las mismas (hasta 5 observaciones); y en caso de rechazo, será informado el motivo (solo el primer motivo de rechazo).
+Tabla F – Resultados de Procesamiento del WS Consulta Resultado de Lote
+Condición
+Mensaje generado
+No existe número de lote consultado
+0360 (Número del Lote inexistente)
+No se ha culminado el procesamiento de los DE del lote consultado
+0361 Lote en procesamiento
+Éxito en la consulta
+0362 (Procesamiento de lote concluido) - La respuesta también contiene el contenedor del DE, definido en el Schema XML 11
+9.3.3. Protocolo de respuesta
+Conforme a lo definido deberá contener alguno de los mensajes de la tabla anterior, con la respuesta correspondiente.
+Para el caso que el procesamiento del lote haya concluido, el Response también contendrá el protocolo de respuesta de cada uno de los DE contenidos en el lote, de acuerdo al Schema descrito a continuación.
+Schema XML 8: resResultLoteDE_v150.xsd (Respuesta del WS Consulta Resultado Lote)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+CRSch01
+rResEnviConsLoteDe
+Raíz
+-
+-
+-
+-
+Elemento raíz
+CRSch02
+dFecProc
+Fecha y hora del procesamiento del lote
+CRSch01
+D
+19
+1-1
+Formato: “AAAA-MM-DDhh:mm:ss”
+Si el lote no fue procesado, el valor será vacío.

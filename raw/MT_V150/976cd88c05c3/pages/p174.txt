@@ -1,0 +1,74 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+118
+E624
+Digito verificador del RUC de la procesadora de tarjeta es inexistente
+1604
+El Dígito verificador ingresado (E624) no corresponde al módulo 11 del RUC
+R
+E7.1.2. Campos que describen el pago de la operación en cheque (E630- E639)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+119
+E630
+Grupo de los campos que describen el pago o entrega inicial de la operación en cheque es obligatorio
+1650
+Si el tipo de pago seleccionado es igual a Cheque (E606=2), es obligatorio informar el grupo de los campos que describen el pago o entrega inicial de la operación con cheque (E630)
+R
+120
+E630a
+Grupo de los campos que describen el pago o entrega inicial de la operación en cheque no requerido
+1651
+Si el tipo de pago seleccionado es distinto a Cheque (E606≠2), el grupo de los campos que describen el pago o entrega inicial de la operación con cheque (E630) no debe ser informado
+R
+E7.2. Campos que describen la forma de pago a crédito (E640-E649)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+121
+E640
+Grupo de los campos que describen la forma de pago a crédito es obligatorio
+1700
+Si la condición de la operación seleccionada es igual a Crédito (E601=2), es obligatorio informar el grupo de los campos que describen la operación a crédito (E640)
+R
+122
+E640a
+Grupo de los campos que describen la forma de pago a crédito no requerido
+1701
+Si la condición de la operación seleccionada es distinta a Crédito (E601≠2), el grupo de los campos que describen la operación a crédito (E640) no debe ser informado
+R
+123
+E642
+Descripción de la condición de la operación a crédito no corresponde al código
+1702
+Descripción de la condición de la operación a crédito no coincidente con lo informado en el campo E641
+R
+124
+E643
+Plazo del crédito es obligatorio
+1703
+Si la condición de la operación a crédito seleccionada es igual a Plazo (E641=1), es obligatorio informar el plazo del crédito (E643)
+R
+125
+E643a
+Plazo del crédito no requerido
+1704
+Si la condición de la operación a crédito seleccionada es distinta a Plazo (E641≠1), el plazo del crédito (E643) no debe ser informado
+R
+126
+E644
+Cantidad de cuotas es obligatorio
+1705
+Si la condición de la operación a crédito seleccionada es igual a Cuota (E641=2), es obligatorio informar la cantidad de cuotas (E644)
+R

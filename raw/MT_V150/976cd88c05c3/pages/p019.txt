@@ -1,0 +1,10 @@
+4. Sistema Integrado de Facturación Electrónica Nacional SIFEN
+4.1. Estructura y subsistemas SIFEN
+El Sistema Integrado de Facturación Electrónica Nacional (SIFEN) se encuentra estructurado en dos subsistemas (subsistema de validación, y subsistema solución gratuita de facturación electrónica) que agrupan funcionalidades específicas y servicios orientados a diferentes segmentos del universo de contribuyentes de la SET, diferenciadas en su alcance, modelo operativo y tecnológico, volumen transaccional; así como, en su desarrollo y construcción en el horizonte de tiempo de ejecución. Ver Gráfica Nº 01.
+Gráfica Nº 01 Sistema Integrado de Facturación Electrónica Nacional (SIFEN)
+Subsistema de Aprobación: se encuentra orientado en especial a grandes y medianos contribuyentes, los cuales se podrán adherir de manera voluntaria o podrán ser seleccionados por la SET de manera obligatoria a facturar electrónicamente. Los facturadores electrónicos comprendidos en este subsistema tendrán que observar los requisitos, condiciones y plazos establecidos en el Decreto, su Resolución Reglamentaria y en el presente Manual Técnico.
+Este subsistema contempla dos momentos en su operación:
+Primer momento – Operación comercial con documentos electrónicos (DE)
+Como resultado de la operación comercial, el facturador electrónico emite el documento electrónico (DE) firmado digitalmente y lo envía al comprador o receptor, en formato XML. Si el comprador o receptor no es facturador electrónico, el emisor deberá enviar o disponibilizar una representación gráfica del documento (KuDE) que soporta la transacción en formato físico o digital.
+Segundo momento – Transmisión de los documentos electrónicos (DE) a la SET
+Los contribuyentes facturadores electrónicos, envían el formato XML firmado digitalmente de los DE a la SET para su proceso de validación (Ver Gráfica Nº 02).

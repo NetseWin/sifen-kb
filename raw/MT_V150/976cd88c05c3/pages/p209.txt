@@ -1,0 +1,18 @@
+En este ejemplo el código secreto del contribuyente es el correspondiente al IdCSC = 0001. Si el contribuyente tiene más de un código secreto activo, deberá especificar el IdCSC correspondiente al código que utilizará.
+El código de seguridad solo se utiliza para generar el código hash que luego será concatenado a los datos del paso 1. Por ningún motivo el contribuyente debe compartir su código de seguridad, ni enviar concatenado como parte de la URL del código QR.
+13.8.4.3. Paso 3 – Generar el Hash con los datos del paso 2:
+Para la generación del código Hash se toman los datos generados en el Paso 2 y se le aplica el algoritmo SHA-256, el cual debe devolver un valor en codificación hexadecimal.
+97ddbb3c1e7d65af03a70ffe21f2b34846ab1c89e0566c35222086766b7374ed
+13.8.4.4. Paso 4 – Generar la URL para la imagen QR:
+La URL final que será utilizada para generar la imagen QR es el resultado de la concatenación siguiente:
+URL QR = URL Consulta QR + Datos del Paso 1 + Hash generado en el paso 3
+Donde,
+URL Consulta QR:
+Ambiente de Producción: https://www.ekuatia.set.gov.py/consultas/qr?
+Ambiente de Test: https://www.ekuatia.set.gov.py/consultas-test/qr?
+Datos del Paso 1:
+nVersion=142&Id=01444444017001001001452822017012515873260988&dFeEmiDE=323031372d30312d32355430393a33353a3137&dRucRec=88899990&dTotGralOpe=300000&dTotIVA=27272&cItems=2&DigestValue=797a4759685578312f5859597a6b7357422b6650523351633530633d&IdCSC=0001
+Hash generado en el paso 3 (con su nombre de parámetro):
+cHashQR=97ddbb3c1e7d65af03a70ffe21f2b34846ab1c89e0566c35222086766b7374ed
+URL QR:
+https://ekuatia.set.gov.py/consultas/qr?nVersion=150&Id=01444444017001001001452822017012515873260988&dFeEmiDE=323031372d30312d32355430393a33353a3137&

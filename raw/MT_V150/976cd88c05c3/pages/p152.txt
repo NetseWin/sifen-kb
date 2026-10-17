@@ -1,0 +1,38 @@
+ID
+Resultado de validación
+Código
+Observación
+E
+AA03
+Cadena de Certificación
+0003
+Certificado del emisor no corresponde a un PSC habilitado en el país
+R
+Certificado del PSC revocado
+Certificado no firmado por el PSC emisor del Certificado
+AA04
+LCR del Certificado Transmisor
+0004
+No existe la dirección de la LCR (CRL DistributionPoint)
+R
+LCR indisponible
+LCR invalida
+AA05
+Certificado del transmisor revocado
+0005
+R
+AA06
+Certificado Raíz no pertenece al MIC
+0006
+R
+AA07
+No existe la extensión del RUC del emisor en el certificado
+0007
+Si el Certificado es de persona jurídica, el RUC debe estar informado en el campo SerialNumber en caso de ser del tipo de Persona Física el RUC, estará informado en el campo: SubjectAlternativeName
+R
+Aclaramos que las validaciones AA01 a AA05 son realizadas por el propio protocolo TLS
+12.2.2. Validación de la estructura XML de los WS
+La información es enviada y recibida por medio de los WS, utilizando mensajes en formato XML definido para cada uno de los servicios.
+Las actualizaciones de formato, así como estructura en los XML son controlados por medio del versionado del archivo.
+La validación de la estructura del archivo XML es realizada por medio de un analizador sintáctico que verifica si el mensaje está estructurado de acuerdo a las definiciones y reglas de su Schema XML. La primera validación realizada es la correspondencia entre el mensaje y su Schema.
+El emisor debe generar los mensajes XML en el formato correspondiente a la versión vigente, informando ésta en el campo de versión dentro del grupo rDE

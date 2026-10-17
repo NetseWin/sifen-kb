@@ -1,0 +1,68 @@
+11.6.3. REGLAS DE VALIDACIÓN PARA NOTIFICACIÓN – RECEPCIÓN DE/DTE
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+1
+GEN001
+Incongruencia en el registro de eventos del receptor (hay un evento previo de conformidad o disconformidad o desconocimiento)
+4113
+No se puede realizar una notificación – recepción de DE luego de un evento de desconocimiento.
+No se puede realizar una notificación – recepción de DTE luego de un evento de Conformidad parcial o total, Disconformidad o Desconocimiento
+R
+2
+GEN002b
+CDC del DTE ya cuenta con un evento de esta naturaleza
+4101
+Sobre el CDC de un DE/DTE se puede realizar hasta un evento de notificación - recepción
+R
+3
+GEN002c
+CDC del DTE inválido
+4102
+La estructura del CDC informado no corresponde (Longitud y/o dígito verificador)
+R
+4
+GEN003
+Fecha de emisión del DE/DTE ha superado el plazo para registro del evento
+4103
+El plazo del registro del evento ha superado los 45 días contados a partir de la fecha de emisión
+AO
+5
+GEN004
+Fecha de Recepción debe ser mayor o igual a la fecha de emisión del DE/DTE
+4104
+La fecha de emisión no puede ser mayor que la fecha de recepción del DE/DTE
+R
+6
+GEN007
+Ruc del Receptor requerido
+4105
+Es obligatorio informar Ruc del receptor cuando el tipo de receptor es Contribuyente (GEN005=1)
+R
+7
+GEN007a
+Ruc del Receptor no se debe informar
+4106
+Cuando el tipo de receptor es No Contribuyente (GEN005=2) no se debe informar el campo Ruc del Receptor (GEN007)
+R
+8
+GEN008
+Dígito verificador del RUC del contribuyente receptor requerido
+4107
+Es obligatorio informar DV del receptor cuando el tipo de receptor es Contribuyente (GEN005=1)
+R
+9
+GEN008a
+Dígito verificador del RUC del contribuyente receptor no se debe informar
+4108
+Cuando el tipo de receptor es No Contribuyente (GEN005=2) no se debe informar el campo Dígito verificador del RUC del contribuyente receptor (GEN008)
+R
+10
+GEN009
+Tipo de documento de identidad del receptor requerido
+4109
+Es obligatorio informar Tipo de documento de identidad del receptor cuando el tipo de receptor es No contribuyente (GEN005=2)
+R

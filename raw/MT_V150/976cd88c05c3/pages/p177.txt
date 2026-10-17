@@ -1,0 +1,51 @@
+E8.1.1 Campos que describen los descuentos, anticipos y valor total por ítem (EA001-EA050)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+142
+EA003
+Porcentaje de descuento particular por ítem no informado
+1852
+Si se informa el campo de descuento por ítem (EA002) con un monto superior a 0 (cero), es obligatorio indicar el porcentaje respectivo
+R
+143
+EA003a
+Error en el cálculo del porcentaje de descuento particular por ítem
+1861
+EA003 representa el porcentaje de descuento de EA002 con respecto al precio unitario del producto y/o servicios (E721)
+Según la siguiente fórmula:
+[EA002 * 100 / E721]
+Puede haber una variación de 0.8
+R
+144
+EA004
+El descuento global sobre el precio unitario por ítem no coincidente con lo informado
+1862
+El descuento global sobre el precio unitario por ítem no coincide con lo informado en el porcentaje de descuento global sobre total de la operación (F010)
+Según la siguiente fórmula: [EA004 * 100 / E721]
+Puede haber una variación de 0.8
+R
+145
+EA008
+Error en el cálculo del valor total de la operación por ítem
+1853
+Cálculo del valor total de la operación por ítem incorrecto
+EA008 debe corresponder al cálculo aritmético:
+IVA: (E721- EA002 – EA004 – EA006 – EA007) * E711
+R
+146
+EA009
+Valor total de la operación por ítem en guaraníes no informado
+1857
+Si se informa el tipo de cambio por ítem (E725), el valor total de la operación por ítem en guaraníes es obligatorio
+R
+147
+EA009a
+Error en el cálculo del valor total de la operación por ítem en guaraníes
+1858
+Cálculo del valor total de la operación por ítem en guaraníes incorrecto
+EA009 debe corresponder al cálculo aritmético EA008 * E725
+R

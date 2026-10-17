@@ -1,0 +1,77 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+214
+F003
+Subtotal de operaciones exoneradas de IVA no informado
+2354
+Si se informan operaciones exoneradas, es obligatorio reportar el subtotal de dichas operaciones
+Si el campo E731=2 debe existir F003
+R
+215
+F003a
+Cálculo del subtotal de la operación exonerada incorrecto
+2355
+Error en el cálculo del subtotal de la operación exonerada.
+Calculo debe ser igual a la suma de todas las ocurrencias de EA008 cuando E731=2
+R
+216
+F004
+Subtotal de operaciones gravadas al 5% de IVA no informado
+2356
+Si se informan operaciones gravadas al 5%, es obligatorio reportar el subtotal de dichas operaciones.
+Si el campo E731=1 o 4 y E734=5 debe existir F004
+Corresponde al porcentaje (%) de la tasa expresado en números enteros
+R
+217
+F004a
+Cálculo del subtotal de la operación gravada al 5% incorrecto
+2357
+Error en el cálculo del subtotal de la operación gravada al 5%. Calculo debe ser igual a la suma de todas las ocurrencias de EA008 cuando E734=5
+R
+218
+F005
+Subtotal de operaciones gravadas al 10% de IVA no informado
+2358
+Si se informan operaciones gravadas al 10%, es obligatorio reportar el subtotal de dichas operaciones.
+Si el campo E731=1 o 4 y E734=10 debe existir F005
+Corresponde al porcentaje (%) de la tasa expresado en números enteros
+R
+219
+F005a
+Cálculo del subtotal de la operación gravada al 10% incorrecto
+2359
+Error en el cálculo del subtotal de la operación gravada al 10%. Calculo debe ser igual a la suma de todas las ocurrencias de EA008 cuando E734=10
+R
+220
+F008
+Cálculo del total de la operación incorrecto
+2362
+Error en el cálculo del total de la operación.
+Si la operación es grabada con IVA, Renta o Ninguno (D013=1, 3, 4 o 5) el cálculo debe ser igual a la suma F002+F003+F004+F005
+Cuando C002=4 corresponde a la suma de todas las ocurrencias de EA008 (Valor total de la operación por ítem)
+R
+221
+F009
+Cálculo del total descuento por ítem incorrecto.
+2363
+Error en el cálculo del total de descuento por ítem
+Calculo debe ser igual la suma de todas las ocurrencias de EA002 multiplicado por la cantidad EA002*E711
+R
+222
+F011
+Cálculo del descuento sobre el total de la operación incorrecto
+2364
+Error en el cálculo del descuento sobre el total de la operación
+Es la sumatoria de EA002 y EA004 de cada ítem
+R
+223
+F014
+Cálculo del total general de la operación incorrecto.
+2365
+Error en el cálculo del total general de la operación
+Cuando C002=1, 5 o 6 el cálculo debe ser igual a F008–F011–F012-F013
+R

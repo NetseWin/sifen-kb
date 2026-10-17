@@ -1,0 +1,68 @@
+ID
+Resultado de validación
+Código
+Observación
+E
+Problema en la LCR del certificado de firma
+• Error en el acceso a la LCR
+• LCR inexistente
+AC06
+Certificado de firma revocado
+0125
+R
+AC07
+Certificado raíz no corresponde al MIC
+0126
+R
+12.2.5. Validación de la firma digital
+ID
+Resultado de validación
+Código
+Observación
+E
+AD01
+Firma difiere del estándar
+0140
+• No fue firmado el documento completo (falta Reference URI en la firma)
+R
+• Transform Algorithm previsto en la firma (“C14N” y Enveloped) no informado
+AD02
+Valor de la firma (SignatureValue) diferente del calculado por el PKI
+0141
+• Certificado del PSC no habilitado por el MIC
+R
+• Certificado del PSC revocado
+• Certificado no está firmado por el PSC
+• Dirección de la LCR no informada
+(CRLDistributionPoint)
+• Error en el acceso a la LCR
+• LCR inexistente
+• Certificado de firma revocado
+• Certificado raíz no corresponde al MIC
+AD03
+RUC del certificado utilizado para firmar no pertenece al Contribuyente emisor
+0142
+R
+12.2.6. Validaciones genéricas a los mensajes de entrada de los WS
+Las presentes validaciones son aplicadas a los mensajes de entrada de cualquiera de los Web Services dispuestos por la SET
+ID
+Resultado de Validación
+Código
+Obs
+E
+AE01
+XML malformado
+0160
+R
+AE02
+Servidor de procesamiento momentáneamente sin respuesta
+0161
+R
+AE03
+Servidor de procesamiento paralizado, sin tiempo de regreso
+0162
+R
+AE04
+Versión del formato del WS no soportada
+0163
+R

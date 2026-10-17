@@ -1,0 +1,31 @@
+NOTA TÉCNICA N° 25
+Fecha: 23/04/2024
+Fecha puesta a disposición para el Ambiente de Test
+28/04/2025
+Fecha puesta a disposición para el Ambiente de Producción
+28/04/2025
+Referencia: Correcciones y ajustes sobre el Manual Técnico versión 150
+1. Validaciones
+1.1. En la sección 11.6.1 REGLAS DE VALIDACIÓN PARA CANCELACIÓN se excluye la siguiente validación: (Página 134)
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+GEC002c
+CDC ya se ha confirmado por el receptor
+4004
+Cuando el último evento del receptor sobre un CDC (GEC002) es una confirmación parcial o total, no se permite realizar la cancelación por parte del emisor
+R
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Jonathan Garay
+23/04/2025
+Martha Rojas
+23/04/2025
+Elaboración del Documento,
+Formato de Campos y Validaciones

@@ -1,0 +1,96 @@
+E7.2.1. Campos que describen las cuotas (E650-E659)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E7.2.1
+E650
+gCuotas
+Campos que describen las cuotas
+E640
+G
+0-999
+Se activa si E641 = 2
+E7.2.1
+E653
+cMoneCuo
+Moneda de las cuotas
+E650
+A
+3
+1-1
+Según tabla de códigos para monedas de acuerdo con la norma ISO 4217
+Se requiere la misma moneda para todos los ítems del DE
+E7.2.1
+E654
+dDMoneCuo
+Descripción de la moneda de las cuotas
+E650
+A
+3-20
+1-1
+Referente al campo E653
+E7.2.1
+E651
+dMonCuota
+Monto de cada cuota
+E650
+N
+1-15p(0-4)
+1-1
+E7.2.1
+E652
+dVencCuo
+Fecha de vencimiento de cada cuota
+E650
+F
+10
+0-1
+Fecha en el formato: AAAA-MM-DD
+E8. Campos que describen los ítems de la operación (E700-E899)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8
+E700
+gCamItem
+Campos que describen los ítems de la operación
+E001
+G
+1-999
+E8
+E701
+dCodInt
+Código interno
+E700
+A
+1-20
+1-1
+Código interno de identificación de la mercadería o servicio de responsabilidad del emisor. No se pueden tener ítems distintos de mercadería o servicio con el mismo código interno en su catastro de productos o servicios. Este código se puede repetir en el DE siempre que el producto o servicio sea el mismo.
+E8
+E702
+dParAranc
+Partida arancelaria
+E700
+N
+4
+0-1
+E8
+E703
+dNCM
+Nomenclatura común del Mercosur (NCM)
+E700
+N
+6-8
+0-1

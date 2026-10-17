@@ -1,0 +1,49 @@
+{
+ "anomalies": [],
+ "doc": "NT_001",
+ "extractor": {
+  "engine": "geometry/pdfplumber-0.11.10",
+  "name": "sifen_kb.extract",
+  "origin": {
+   "commit": "8603b5bd572fb0a1563e216d3ec658fb5666e678",
+   "project": "pdf_to_md"
+  },
+  "page_printed_engine": "pypdfium2-5.14.0",
+  "version": "0.1.0"
+ },
+ "fixes": [],
+ "nt_info": {
+  "fecha_literal": "14-10-2019",
+  "numero": 1,
+  "page": 1,
+  "prod_literal": null,
+  "test_literal": null
+ },
+ "pages": [
+  {
+   "chars": 1443,
+   "page_pdf": 1,
+   "page_printed": null,
+   "sha256": "dd7d6dcc4b5df3972a4d8b85c476483cece18d735e53a46defc836e9268b752d"
+  },
+  {
+   "chars": 1812,
+   "page_pdf": 2,
+   "page_printed": null,
+   "sha256": "09469a04a9e4cbc2d23d816949b25dd8082a1a44cfd564252b5e27c93b3cf75a"
+  },
+  {
+   "chars": 1327,
+   "page_pdf": 3,
+   "page_printed": null,
+   "sha256": "2e3220aad8876c180905ab2b513a25d85aa2ca5d0bbeec3271eebeeb2368863c"
+  }
+ ],
+ "sha256": "4c47b667084dce5ee790b764af09c9b224c6cd0473555282ff07c18146a7e008",
+ "tables": {
+  "dates": 0,
+  "fields": 8,
+  "validations": 9
+ },
+ "tagged": false
+}

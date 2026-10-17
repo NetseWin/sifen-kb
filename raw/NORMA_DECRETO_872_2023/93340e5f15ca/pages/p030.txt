@@ -1,0 +1,15 @@
+SESTJICENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO WYZ
+NO
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-30-
+Sin perjuicio de la aplicación de eventuales sanciones, la DNIT podrá dar de baja los timbrados de documentos no electrónicos de los facturadores electrónicos obligados, que no cumplan con la baja de dichos timbrados hasta la fecha de inicio de la obligatoriedad del uso de Documentos Tributarios Electrónicos.
+CAPÍTULO IX
+DISPOSICIONES GENERALES
+Art. 47.- Sanciones. La DNIT establecerá las sanciones por los incumplimientos de los deberes formales asociados a la emisión de Documentos Tributarios Electrónicos previstos en el presente Decreto y sus reglamentaciones.
+Art. 48.- Documentación Técnica. La DNIT deberá comunicar a los facturadores electrónicos, como mínimo 6 (seis) meses antes de su implementación, cualquier modificación al formato o a las especificaciones técnicas establecidas en la documentación técnica del SIFEN.
+Los cambios de versión en la documentación técnica con motivo de la implementación de nuevos Documentos Electrónicos, no implicará la necesidad de una nueva habilitación de los facturadores electrónicos.
+Art. 49.- Contingencia. En caso de inconvenientes técnicos y situaciones de fuerza mayor o caso fortuito que impidan la operativa normal de la facturación electrónica, la DNIT establecerá los procedimientos alternativos de operación en contingencia.
+Art. 50.- Sistema de facturación gratuito. La DNIT deberá poner a disposición de los contribuyentes un sistema gratuito que permita a estos, emitir y enviar los Documentos Tributarios Electrónicos.

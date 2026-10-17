@@ -1,0 +1,67 @@
+11.6.7. REGLAS DE VALIDACIÓN PARA EL EVENTO POR ACTUALIZACIÓN DE DATOS: DATOS DEL TRANSPORTE
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+1
+GET004
+El Departamento, el Distrito y la Ciudad del local de entrega no están relacionados
+4300
+Debe haber relación entre el departamento (GET004), el distrito (GET006) y la ciudad (GET008)
+R
+2
+GET004a
+Código del departamento del local de la entrega requerido para el motivo Cambio del local de la entrega
+4301
+Cuando el motivo del evento es Cambio del local de la entrega (GET003=1), es obligatorio informar el código del departamento del local de la entrega (GET004)
+R
+3
+GET005
+Descripción del departamento del local de la entrega es requerida
+4302
+Cuando se informa el código del departamento del local de la entrega (GET004), es obligatorio informar la descripción del departamento del local de la entrega (GET005)
+R
+4
+GET005a
+Descripción del departamento del local de la entrega no corresponde al código
+4303
+Descripción del departamento del local de la entrega no coincidente con lo informado en el campo GET004
+R
+5
+GET007
+Descripción del distrito del local de la entrega es requerida
+4304
+Cuando se informa el código del distrito del local de la entrega (GET006), es obligatorio informar la descripción del distrito del local de la entrega (GET007)
+R
+6
+GET007a
+Descripción del distrito del local de la entrega no corresponde al código
+4305
+Descripción del distrito del local de entrega no coincidente con lo informado en el campo GET006
+R
+7
+GET008
+Código de la ciudad del local de la entrega requerido para el motivo Cambio del local de la entrega
+4306
+Cuando el motivo del evento es Cambio del local de la entrega (GET003=1), es obligatorio informar el código de la ciudad del local de la entrega (GET004)
+R
+8
+GET009
+Descripción de la ciudad del local de la entrega es requerida
+4307
+Cuando se informa el código de la ciudad del local de la entrega (GET008), es obligatorio informar la descripción de la ciudad del local de la entrega (GET009)
+R
+9
+GET009a
+Descripción de la ciudad del local de la entrega no corresponde al código
+4308
+Descripción de la ciudad del local de la entrega no coincidente con lo informado en el campo GET008
+R
+10
+GET010
+Dirección del local de la entrega requerida para el motivo Cambio del local de la entrega
+4309
+Cuando el motivo del evento es Cambio del local de la entrega (GET003=1), es obligatorio informar la dirección del local de la entrega (GET010)
+R

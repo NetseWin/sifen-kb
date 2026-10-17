@@ -1,0 +1,9 @@
+10. Formato de los Documentos Electrónicos
+10.1. Estructura del código de control (CDC) de los DE
+A fin de mantener una única identificación para cada documento electrónico, implementamos el código de control o CDC14.
+Este CDC debe ser generado por el sistema de facturación del emisor conforme a los delineamientos contenidos en el presente Manual Técnico.
+Conformación del CDC
+Para lograr una mayor comprensión se describe a continuación un ejemplo de cómo generar un CDC:
+Consideraremos:
+Por lo tanto, el CDC estará conformado como sigue:
+14 CDC Código de Control, único en cada DE, se referencia de forma unívoca en el SIFEN

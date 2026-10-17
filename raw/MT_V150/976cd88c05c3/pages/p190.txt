@@ -1,0 +1,61 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+252
+H004f
+Moneda de la operación informada no coincidente con la moneda del para el documento asociado.
+2438
+Cuando el documento asociado es una FE (CDC inicia con 01), en donde el tipo de transacción en este documento asociado es Anticipo (D011=9) y el tipo de documento recibido es otra FE (C002=1), el DTE y el DE deben tener la misma moneda de la operación (D015 del documento asociado igual al D015 del documento recibido)
+Cuando el tipo de documento es Nota de crédito o Nota de débito Electrónica (C002=5 o C002=6) y el documento asociado es Factura electrónica (CDC inicia con 01), el DTE y el DE deben tener la misma moneda de la operación (D015 del documento asociado igual al D015 del documento recibido)
+R
+253
+H005
+Número de timbrado del documento impreso de referencia no informado
+2405
+Si el tipo de documento asociado seleccionado es igual a Impreso (H002=2), es obligatorio informar el número de timbrado del documento impreso de referencia
+R
+254
+H005a
+Número de timbrado no requerido para el tipo de documento asociado
+2419
+Si el tipo de documento asociado es electrónico o es constancia electrónica (H002=1 o H002=3), no se debe informar el número de timbrado
+R
+255
+H005b
+Número de timbrado no corresponde al tipo de documento asociado
+2440
+Si el tipo de documento asociado seleccionado es igual a impreso (H002=2), no se debe informar un timbrado electrónico
+R
+256
+H006
+Código de establecimiento del documento impreso de referencia no informado
+2406
+Si el tipo de documento asociado seleccionado es igual a Impreso (H002=2), es obligatorio informar el código de establecimiento del documento impreso de referencia
+R
+257
+H006a
+Código de establecimiento no requerido para el tipo de documento asociado
+2420
+Si el tipo de documento asociado es electrónico o es constancia electrónica (H002=1 o H002=3), no se debe informar el código de establecimiento
+R
+258
+H007
+Código de punto de expedición del documento impreso de referencia no informado
+2407
+Si el tipo de documento asociado seleccionado es igual a Impreso (H002=2), es obligatorio informar el código de punto de expedición del documento impreso de referencia
+R
+259
+H007a
+Código de punto de expedición no requerido para el tipo de documento asociado
+2421
+Si el tipo de documento asociado es electrónico o es constancia electrónica (H002=1 o H002=3), no se debe informar el código de punto de expedición
+R
+260
+H008
+Número del documento impreso no informado
+2408
+Si el tipo de documento asociado seleccionado es igual a Impreso (H002=2), es obligatorio informar el número del documento impreso de referencia
+R

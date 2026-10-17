@@ -1,0 +1,54 @@
+la disconformidad (evento correctivo) no puede superar los 15 días contados a partir de la fecha de realización del evento de conformidad
+GDI003
+Fecha de aprobación del DTE ha superado el plazo para registro del evento
+4206
+Sea o no el primer evento del receptor que se pretende registrar, este no se puede realizar después de 45 días corridos contados a partir de la fecha de aprobación del DTE.
+R
+GDI003a
+CDC del DTE ya cuenta con el máximo de eventos permitidos de la misma naturaleza
+4207
+CDC del DTE ya ha superado la cantidad de eventos establecidos sobre el Tipo de Evento de Disconformidad
+R
+2.4 REGLAS DE VALIDACIÓN PARA EL EVENTO DESCONOCIMIENTO DE/DTE SE MODIFICAN LOS SIGUIENTES CAMPOS (Página 139)
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+GED002b
+CDC del DTE ya cuenta con un evento previo de esta naturaleza
+4251
+Sobre el CDC de un DTE se puede realizar hasta un evento de desconocimiento
+R
+GED003
+Fecha de emisión del DE/DTE ha superado el plazo para registro del evento
+4253
+El plazo del registro del evento Desconocimiento DE ha superado los 45 días contados a partir de la fecha de emisión
+R
+GED012
+Fecha de aprobación del DTE ha superado el plazo para registro del evento
+4263
+El plazo del registro del evento Desconocimiento DTE ha superado los 45 días contados a partir de la fecha de aprobación del DTE
+R
+GED013
+El CDE del DTE se encuentra cancelado
+4264
+No se puede registrar el desconocimiento por CDC de un DTE cancelado
+R
+GED013a
+CDC del DTE ya cuenta con el máximo de eventos permitidos de la misma naturaleza
+4265
+CDC del DTE ya ha superado la cantidad de eventos establecidos sobre el Tipo de Evento de Desconocimiento DTE
+R
+3. En la sección de “Validación de la firma digital” se agrega la siguiente:
+(Página 153)
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+AD04
+La firma del Evento del receptor del DE/DTE no corresponde
+0143
+La firma digital del evento debe corresponder al receptor del DE/DTE
+R

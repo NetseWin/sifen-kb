@@ -1,0 +1,3 @@
+13.7. Cinta papel resumen del KuDE
+Si el consumidor pide se permite la impresión de un KuDE resumen que no trae el detalle de los ítems de las mercaderías y el detalle del impuesto, solo con la información de la cantidad Total de ítems y monto total. En la consulta pública del portal e-Kuatia por el CDC o en la consulta pública por QR Code, el consumidor podrá imprimir el KuDE completo con los detalles de ítems y el impuesto.
+Gráfica Nº 15 – Cinta papel resumen del KuDE

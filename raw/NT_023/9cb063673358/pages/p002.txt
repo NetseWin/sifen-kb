@@ -1,0 +1,78 @@
+1.3. En el de Sector Energía Eléctrica (E791-E799) se modifica el siguiente campo en la ocurrencia. (Página 93)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+E9.2
+E791
+gGrupEner
+Grupo del sector de energía eléctrica
+E790
+G
+0-9
+E9.2
+E797
+dConKwh
+Consumo
+E791
+N
+1-11p2
+0-1
+Corresponde a la diferencia entre E796-E795
+1.4. H. Campos que identifican al documento asociado (H001-H049) se incorpora el siguiente campo. (Página 110)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+H
+H018
+dRucFus
+RUC fusionado
+H001
+A
+3-8
+0-1
+Obligatorio cuando el CDC del DTE referenciado corresponda a un RUC fusionado
+Observación: Inclusión opcional de acuerdo a las necesidades de los facturadores electrónicos.
+2. VALIDACIONES
+2.1. En datos que identifican al receptor del Documento Electrónico DE (D200 - D299) se modifica la siguiente validación. (Página 167)
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+D208e
+El adquiriente del comprobante de venta informado no se encuentra identificado. Favor verifique el dato ingresado.
+1331
+Si el tipo de documento electrónico seleccionado es igual a Nota de Crédito, Nota de Débito o Nota de Remisión Electrónica (C002 = 5, 6, 7), el tipo de documento de identidad del receptor no puede ser INNOMINADO (D208 ≠ 5)
+R
+D210
+Es obligatorio informar el número de documento de identidad del receptor
+1314
+Si la naturaleza del receptor es NO contribuyente (D201=2) y el tipo de operación es diferente a B2F (D202≠4), el número de documento de identidad debe ser informado
+R
+D208f
+Tipo de documento de identidad del receptor incorrecto para el tipo de operación
+1333
+El Tipo de documento de identidad del receptor no puede ser innominado (D208=5), cuando el tipo de operación es distinto a B2C (D202 ≠ 2)
+R
+D210b
+El número de documento de identidad del receptor no es requerido
+1334
+Si la naturaleza del receptor es contribuyente (D201=1) el número de documento de identidad no debe ser informado
+R
+D208g
+El tipo de documento de identidad del receptor es requerido
+1335
+Si la naturaleza del receptor es NO Contribuyente (D201=2), el tipo de documento de identidad del receptor debe ser informado
+R

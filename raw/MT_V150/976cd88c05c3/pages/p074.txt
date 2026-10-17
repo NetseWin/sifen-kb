@@ -1,0 +1,97 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D3
+D223
+cCiuRec
+Código de la ciudad del receptor
+D200
+N
+1-5
+0-1
+Campo obligatorio si se informa el campo D213 y D202≠4, no se debe informar cuando D202 = 4.
+Según Tabla 2.2 – Ciudades
+D3
+D224
+dDesCiuRec
+Descripción de la ciudad del receptor
+D200
+A
+1-30
+0-1
+Referente al campo D223
+D3
+D214
+dTelRec
+Número de teléfono del receptor
+D200
+A
+6-15
+0-1
+Debe incluir el prefijo de la ciudad si D203 = PRY
+D3
+D215
+dCelRec
+Número de celular del receptor
+D200
+A
+10-20
+0-1
+D3
+D216
+dEmailRec
+Correo electrónico del receptor
+D200
+A
+3-80
+0-1
+D3
+D217
+dCodCliente
+Código del cliente
+D200
+A
+3-15
+0-1
+E. Campos específicos por tipo de Documento Electrónico (E001-E009)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E
+E001
+gDtipDE
+Campos específicos por tipo de Documento Electrónico
+A001
+G
+1-1
+E1. Campos que componen la Factura Electrónica FE (E002-E099)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E1
+E010
+gCamFE
+Campos que componen la FE
+E001
+G
+0-1
+Obligatorio si C002 = 1
+No informar si C002 ≠ 1

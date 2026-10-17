@@ -1,0 +1,89 @@
+1.9. En el campo rEnviConsDe del schema XML 9: siConsDE_v150.xsd (WS Consulta DE) se modifica el siguiente campo (Página 50)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+DSch01
+rEnviConsDeRequest
+Raíz
+-
+-
+-
+-
+Elemento Raíz
+1.10. En el grupo E6 Campos que componen la Nota de Remisión Electrónica (E500-E599) (Página 79)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E6
+E507
+cPreFle
+Costo del Flete
+E500
+N
+1-15p(0-8)
+0-1
+Precio del Flete para Situaciones particulares conforme al Art. 3° de la Resolución General N° 41/14
+1.11. En el Campos de datos del Timbrado (C001-C099) se modifica en la observación (Página 64)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+C
+C008
+dFeIniT
+Fecha inicio de vigencia del timbrado
+C001
+F
+10
+1-1
+Formato AAAA-MM-DD. Ejemplo
+2018-05-31.
+Para el KuDE el formato de la fecha de inicio de vigencia debe contener los guiones separadores y representarse con el formato DD-MM-AAAA. Ejemplo:
+31-05-2018
+2. VALIDACIONES
+2.1. D3. Datos que identifican al receptor del Documento Electrónico DE (D200 - D299) se modifican y elimina las siguientes validaciones y se agrega nueva validación: (Páginas 165, 166, 167, 189)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+46
+D202
+El tipo de operación no compatible con la naturaleza del receptor
+1300
+Si el tipo de documento no es autofactura (C002 ≠ 4) y si la naturaleza del receptor es No contribuyente (D201=2), el tipo de operación debe ser B2C (D202=2).
+Si la naturaleza del receptor es No contribuyente (D201=2), el tipo de operación debe ser B2C (D202=2) o B2F (D202=4).
+R
+70
+D220
+Descripción del departamento del receptor no corresponde al código
+1325
+Descripción del departamento del receptor no coincidente con lo informado en el campo D219
+R
+D208b
+Tipo de documento de identidad del receptor incorrecto para el tipo de operación
+1319
+El Tipo de documento de identidad del receptor no puede ser innominado (D208=5), cuando el tipo de operación es distinto a B2C (D202 ≠ 2)
+R
+D208e
+El adquiriente del comprobante de venta informado no se encuentra identificado. Favor verifique el dato ingresado.
+1331
+Si el tipo de documento electrónico es Nota de Crédito (C002 = 5) o Nota de Débito (C002 = 6), el tipo de documento de identidad del receptor no puede ser INNOMINADO (D208 ≠ 5)
+R

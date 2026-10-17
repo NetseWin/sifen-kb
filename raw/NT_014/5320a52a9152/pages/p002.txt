@@ -1,0 +1,146 @@
+GDE
+GENFE011
+dDTipIDRec
+Descripción del tipo de documento de identidad
+GENFE001
+A
+9-41
+0-1
+Obligatorio si existe el campo GENFE010
+1= “Cédula paraguaya”
+2= “Pasaporte”
+3= “Cédula extranjera”
+4= “Carnet de residencia”
+5= “Tarjeta Diplomática de exoneración fiscal”
+Si GENFE010=9 Se deberá informar el tipo de documento de identidad del receptor
+GDE
+GENFE012
+dNumIDRec
+Número de documento de identidad
+GENFE001
+A
+1-20
+0-1
+Obligatorio si GENFE004=2
+GDE
+GENFE013
+dNomRec
+Nombre o razón social del receptor del DTE
+GENFE001
+A
+4-255
+1-1
+GDE
+GENFE014
+dNomFanRec
+Nombre de fantasía
+GENFE001
+A
+4-255
+0-1
+Campo abierto
+GDE
+GENFE015
+dDirRec
+Dirección del receptor
+GENFE001
+A
+1-255
+0-1
+Campo abierto
+GDE
+GENFE016
+dNumCasRec
+Número de casa del receptor
+GENFE001
+N
+1-6
+0-1
+Campo obligatorio si se informa el campo GENFE015
+GDE
+GENFE017
+cDepRec
+Código del departamento del receptor
+GENFE001
+N
+1-2
+0-1
+Según XSD de Departamentos
+GDE
+GENFE018
+dDesDepRec
+Descripción del departamento del receptor
+GENFE001
+A
+6-16
+0-1
+Referente al campo GENFE017
+GDE
+GENFE019
+cDisRec
+Código del distrito del receptor
+GENFE001
+N
+1-4
+0-1
+Según Tabla 2.1 – Departamentos, Distritos Y Ciudades
+GDE
+GENFE020
+dDesDisRec
+Descripción del distrito del receptor
+GENFE001
+A
+1-30
+0-1
+Obligatorio si existe el campo GENFE019
+GDE
+GENFE021
+cCiuRec
+Código de la ciudad del receptor
+GENFE001
+N
+1-5
+0-1
+Según Tabla 2.1 – Departamentos, Distritos Y Ciudades
+GDE
+GENFE022
+dDesCiuRec
+Descripción de la ciudad del receptor
+GENFE001
+A
+1-30
+0-1
+Referente al campo GENFE021
+GDE
+GENFE023
+dTelRec
+Número de teléfono del receptor
+GENFE001
+A
+6-15
+0-1
+Debe incluir el prefijo de la ciudad si GENFE005= PRY
+GDE
+GENFE024
+dCelRec
+Número de celular del receptor
+GENFE001
+A
+10-20
+0-1
+GDE
+GENFE025
+dEmailRec
+Correo electrónico del receptor
+GENFE001
+A
+3-80
+0-1
+GDE
+GENFE026
+dCodCliente
+Código del cliente
+GENFE001
+A
+3-15
+0-1

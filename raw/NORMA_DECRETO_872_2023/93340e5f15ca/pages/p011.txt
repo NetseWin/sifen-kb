@@ -1,0 +1,16 @@
+SESQUICENTENARIO DE LA EPOPEYA NACIONAL 1864- 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+yds)
+DECRETO N° O T-4/
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-11-
+2. En operaciones comerciales B2C se deberá informar en la Factura Electrónica la identidad del cliente cuando la operación supere los siguientes montos:
+i) La suma de Q 35.000.000.- (treinta y cinco millones de guaraníes) o su equivalente en moneda extranjera, a partir del 1° de enero de 2024.
+ii) La suma de(cid:9) 7.000.000.- (siete millones de guaraníes) o su equivalente en moneda extranjera, a partir del 1° de enero de 2025.
+Sin perjuicio de que en operaciones con montos menores a lo establecido pueda ser identificado el receptor que así lo requiera.
+3. En operaciones comerciales en las cuales se reciban anticipos en dinero por los productos o servicios a ser enajenados o prestados, se deberá emitir la Factura Electrónica correspondiente por el monto recibido, aun cuando no se hubiere cerrado o pactado el precio final.
+En caso de que se acuerde o cierre el precio, se deberá realizar la liquidación final y emitir la Factura Electrónica correspondiente por la diferencia si existiere, asociándola a la Factura Electrónica que respalda el anticipo recibido.
+4. En operaciones comerciales con agentes diplomáticos o delegaciones oficiales extranjeras, debidamente acreditados en el país, en la factura electrónica se deberá consignar el número de la tarjeta diplomática de exoneración fiscal.
+5. En las facturas electrónicas, los impuestos deben ser calculados por ítems de mercadería o servicios, y los totales y subtotales deberán ser el resultado de la suma de los montos por ítems.
+6. En todos los casos en que se requiera ajuste de precios por redondeo se realizará sobre el monto total consignado en el comprobante de venta.

@@ -1,0 +1,134 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8
+E704
+dDncpG
+Código DNCP – Nivel General
+E700
+A
+8
+0-1
+Obligatorio si D202 = 3
+Informar se existe el código de la DNCP
+Colocar 0 (cero) a la izquierda para completar los espacios vacíos
+E8
+E705
+dDncpE
+Código DNCP – Nivel Especifico
+E700
+A
+3-4
+0-1
+Obligatorio si existe el campo E704)
+E8
+E706
+dGtin
+Código GTIN por producto
+E700
+N
+8,12,13,14
+0-1
+Informar si la mercadería tiene GTIN
+E8
+E707
+dGtinPq
+Código GTIN por paquete
+E700
+N
+8,12,13,14
+0-1
+Informar si el paquete tiene GTIN
+E8
+E708
+dDesProSer
+Descripción del producto y/o servicio
+E700
+A
+1-120
+1-1
+Equivalente a nombre del producto establecido en la RG 24/2019
+E8
+E709
+cUniMed
+Unidad de medida
+E700
+N
+1-5
+1-1
+Según Tabla 5 – Unidad de Medida
+Si D202 = 3 utilizar los datos del WS del link de la DNCP
+Utilizar el atributo “ID”
+E8
+E710
+dDesUniMed
+Descripción de la unidad de medida
+E700
+A
+1-10
+1-1
+Referente al campo E709
+Utilizar el atributo “Código”
+Ejemplo: UNI
+E8
+E711
+dCantProSer
+Cantidad del producto y/o servicio
+E700
+N
+1-10p(0-4)
+1-1
+E8
+E712
+cPaisOrig
+Código del país de origen del producto
+E700
+A
+3
+0-1
+Según XSD de Codificación de Países
+E8
+E713
+dDesPaisOrig
+Descripción del país de origen del producto
+E700
+A
+4-30
+0-1
+Obligatorio si existe el campo E712
+E8
+E714
+dInfItem
+Información de interés del emisor con respecto al ítem
+E700
+A
+1-500
+0-1
+E8
+E715
+cRelMerc
+Código de datos de relevancia de las mercaderías
+E700
+N
+1
+0-1
+Opcional si C002 = 7
+1=Tolerancia de quiebra
+2= Tolerancia de merma
+Según RG 41/14
+E8
+E716
+dDesRelMerc
+Descripción del código de datos de relevancia de las mercaderías
+E700
+A
+19-21
+0-1
+1=“Tolerancia de quiebra”
+2=“Tolerancia de merma”

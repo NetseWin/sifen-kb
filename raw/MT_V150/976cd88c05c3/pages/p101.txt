@@ -1,0 +1,120 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E10.3
+E961
+dTiVehTras
+Tipo de vehículo
+E960
+A
+4-10
+1-1
+Debe ser acorde al campo E903
+E10.3
+E962
+dMarVeh
+Marca
+E960
+A
+1-10
+1-1
+E10.3
+E967
+dTipIdenVeh
+Tipo de identificación del vehículo
+E960
+N
+1
+1-1
+1=Número de identificación del vehículo
+2=Número de matrícula del vehículo
+E10.3
+E963
+dNroIDVeh
+Número de identificación del vehículo
+E960
+A
+1-20
+0-1
+Debe informarse cuando el E967=1
+E10.3
+E964
+dAdicVeh
+Datos adicionales del vehículo
+E960
+A
+1-20
+0-1
+E10.3
+E965
+dNroMatVeh
+Número de matrícula del vehículo
+E960
+A
+6
+0-1
+Debe informarse cuando el E967=2
+E10.3
+E966
+dNroVuelo
+Número de vuelo
+E960
+A
+6
+0-1
+Obligatorio si E903 = 3
+No informar si E903 ≠ 3
+E10.4. Campos que identifican al transportista (persona física o jurídica) (E980-E999)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E10.4
+E980
+gCamTrans
+Campos que identifican al transportista
+E900
+G
+0-1
+Obligatorio si C002 = 7
+No informar si C002 = 4, 5, 6
+Opcional cuando E903=1 y E967=1
+E10.4
+E981
+iNatTrans
+Naturaleza del transportista
+E980
+N
+1
+1-1
+1= Contribuyente
+2= No contribuyente
+E10.4
+E982
+dNomTrans
+Nombre o razón social del transportista
+E980
+A
+4-60
+1-1
+E10.4
+E983
+dRucTrans
+RUC del transportista
+E980
+A
+3-8
+0-1
+Obligatorio si E981 = 1
+No informar si E981 ≠ 1

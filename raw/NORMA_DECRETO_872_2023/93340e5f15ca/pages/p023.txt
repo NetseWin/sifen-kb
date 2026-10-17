@@ -1,0 +1,16 @@
+SESJICENTENARIO DE LA EPOPEYA NACIONAL 1864- 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO No 2?;z-
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-23-
+CAPÍTULO VI
+EVENTOS
+SECCIÓN I
+EVENTOS DEL EMISOR
+Art. 30.- Evento de Cancelación. El facturador electrónico, en su condición de emisor, podrá solicitar la cancelación de los siguientes Documentos Tributarios Electrónicos conforme a lo siguiente:
+1. Factura Electrónica: La factura electrónica, en la cual no se haya concretado la operación comercial, podrá ser cancelada dentro del plazo que establezca la reglamentación, contado a partir de la fecha y hora de su aprobación por parte del SIFEN.
+Para la cancelación de una Factura Electrónica que tenga el registro de un Evento Automático por parte del SIFEN, se requerirá previamente la cancelación del Evento o Documento asociado.
+2. Factura Electrónica de Exportación: podrá ser cancelada hasta antes de haber oficializado el Despacho de Exportación. Las Facturas Electrónicas de Exportación comprendidas en un determinado despacho de exportación, sólo podrán ser canceladas por el emisor siempre y cuando se realice la anulación de este último, dentro del plazo que establezca la reglamentación.
+3. Otros Documentos Tributarios Electrónicos: La cancelación de cualquier otro Documento Tributario Electrónico, diferente a los señalados en los incisos precedentes, deberá realizarse dentro del plazo que establezca la reglamentación, contado a partir de la fecha y hora de su aprobación por parte del SIFEN.
+Una vez que el Documento Electrónico Tributario haya sido cancelado, se constituye en una situación definitiva impidiendo en consecuencia su posterior modificación, debiendo prevalecer inalterable e íntegro el Documento Electrónico Tributario cancelado. El Documento Electrónico Tributario

@@ -1,0 +1,81 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+203
+E985
+Tipo de documento de identidad del transportista no informado
+2307
+Se requiere informar el tipo de documento de identidad si la naturaleza del transportista es igual a NO contribuyente (E981=2)
+R
+204
+E985a
+Tipo de documento de identidad del transportista no requerido
+2308
+Si la naturaleza del transportista es igual a contribuyente (E981=1) el tipo de documento de identidad del transportista (E985) no debe ser informado
+R
+205
+E986
+Descripción del tipo de documento de identidad del transportista no informada
+2309
+Si se informa el código de tipo de documento de identidad del transportista (E985), es obligatorio indicar la descripción del mismo (E986)
+R
+206
+E986a
+Descripción del tipo de documento de identidad del transportista no corresponde al código
+2310
+Descripción del tipo de documento de identidad del transportista (E986) no coincidente con lo informado en el campo E985
+R
+207
+E987
+Número de documento de identidad del transportista no informado
+2311
+Si se informa el código de tipo de documento de identidad del transportista (E985), el número de dicho documento es requerido
+R
+208
+E989
+Descripción de la nacionalidad del transportista no informada
+2312
+Si se informa el código de nacionalidad del transportista (E988), es obligatorio indicar la descripción (E989) del mismo
+R
+209
+E989a
+Descripción de la nacionalidad del transportista no corresponde al código
+2313
+Descripción de la nacionalidad del transportista (E989) no coincidente con lo informado en el campo E988
+R
+F. Campos que describen los subtotales y totales de la transacción documentada (F001-F099)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+210
+F001
+Grupo de los campos que describen los subtotales y totales de la transacción documentada es obligatorio para el tipo de documento electrónico seleccionado
+2350
+Si el tipo de documento electrónico seleccionado es distinto a Nota de Remisión Electrónica (C002≠7), es obligatorio informar el grupo de campos que describen los subtotales y totales de la transacción documentada
+R
+211
+F001a
+Grupo de los campos que describen los subtotales y totales de la transacción documentada no es permitido para el tipo de documento electrónico seleccionado
+2351
+El grupo de los campos que describen los subtotales y totales de la transacción documentada no es permitido para el tipo de documento electrónico Nota de Remisión Electrónica (C002=7)
+R
+212
+F002
+Subtotal de operaciones exentas de IVA no informado
+2352
+Si se informan operaciones exentas, es obligatorio reportar el subtotal de dichas operaciones
+Si el campo E731=3 debe existir F002
+R
+213
+F002a
+Cálculo del subtotal de la operación exenta incorrecto
+2353
+Error en el cálculo del subtotal de la operación exenta.
+Calculo debe ser igual a la suma de todas las ocurrencias de EA008 cuando E731=3
+R

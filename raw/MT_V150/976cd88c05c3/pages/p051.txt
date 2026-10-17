@@ -1,0 +1,113 @@
+CRSch03
+dCodResLot
+Código de resultado de procesamiento del lote
+CRSch01
+N
+4
+1-1
+Definido en el tópico correspondiente del capítulo 12 referente al lote
+CRSch04
+dMsgResLot
+Mensaje de resultado de procesamiento del lote
+CRSch01
+A
+1-255
+1-1
+Definido en el tópico correspondiente del capítulo 12 referente al lote
+CRSch05
+gResProcLote
+Grupo Resultado de Procesamiento del Lote
+CRSch01
+G
+0-50
+CRSch050
+id
+CDC del DE procesado
+CRSch05
+A
+44
+1-1
+CRSch051
+dEstRes
+Estado del resultado
+CRSch05
+A
+8-30
+1-1
+Aprobado
+Aprobado con observación
+Rechazado
+CRSch052
+dProtAut
+Número de transacción
+CRSch05
+N
+10
+0-1
+Generado para el DE del lote consultado si dCodResLot=0362
+CRSch053
+gResProc
+Grupo Mensaje de Resultado
+CRSch05
+G
+1-100
+Si es error solo se presentará el primero.
+Se pueden tener hasta 100 mensajes en caso de aprobación con observaciones.
+CRSch054
+dCodRes
+Código de resultado de procesamiento
+CRSch05
+N
+4
+1-1
+Definido en el tópico correspondiente del capítulo 12 referente a cada DE
+CRSch055
+dMsgRes
+Mensaje de resultado de procesamiento
+CRSch05
+A
+1-255
+1-1
+Definido en el tópico correspondiente del capítulo 12 referente a cada DE
+9.4. WS consulta DE – siConsDE
+Función:
+Devuelve el resultado de la consulta de un DE por su CDC
+Proceso:
+Síncrono
+Método:
+SiConsDE
+9.4.1. Definición del protocolo que consume este servicio
+El Request que consumirá este servicio estará construido en XML, según el Schema expuesto a continuación.
+Schema XML 9: siConsDE_v150.xsd (WS Consulta DE)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+DSch01
+rEnviConsDe
+Raíz
+-
+-
+-
+-
+Elemento Raíz
+DSch02
+dId
+Identificador de control de envío
+DSch01
+N
+1-15
+1-1
+Número secuencial autoincremental, para identificación del mensaje enviado. La responsabilidad de generar y controlar este número es exclusiva del contribuyente.
+DSch03
+dCDC
+CDC del DE consultado
+DSch01
+C
+44
+1-1
+CDC del DE que se requiere la consulta en la base de datos de SIFEN

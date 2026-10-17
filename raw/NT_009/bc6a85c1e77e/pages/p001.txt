@@ -1,0 +1,48 @@
+NOTA TÉCNICA N° 009
+Fecha: 09/09/2021
+Cambios desde la fecha 08/09/2021 al 09/09/2021
+Referencia: Correcciones y ajustes sobre el MT versión 150
+1. Formato de campos XML
+1.1. En el Campos que describen los ítems de la operación (E700-E899) se modifica el siguiente campo: (Página 85)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8
+E701
+dCodInt
+Código interno
+E700
+A
+1-50
+1-1
+Código interno de identificación de la mercadería o servicio de responsabilidad del emisor. No se pueden tener ítems distintos de mercadería o servicio con el mismo código interno en su catastro de productos o servicios. Este código se puede repetir en el DE siempre que el producto o servicio sea el mismo.
+E8
+E708
+dDesProSer
+Descripción del producto y/o servicio
+E700
+A
+1-2000
+1-1
+Equivalente a nombre del producto establecido en la RG 24/2019
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Sara Ramírez
+28/05/2021
+Carlos Mendoza
+22/06/2021
+últimas correcciones de códigos
+Sara Ramírez
+09/09/2021
+Dictamen DPTT Nº 127/2021 y parecer de DPF vía correo de fecha 08/09/2021
+Conforme al Ticket 253918 , se amplia la longitud del campo E708

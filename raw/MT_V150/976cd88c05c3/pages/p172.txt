@@ -1,0 +1,62 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+101
+E506a
+Fecha futura de emisión de la factura no informada para el tipo de documento electrónico
+2605
+Si el motivo de emisión es Traslado por venta (E501=1) y no se informan documentos asociados (H001), es obligatorio el campo E506.
+R
+E7. Campos que describen la condición de la operación (E600–E699)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+102
+E600
+Para el tipo de documento electrónico seleccionado es obligatorio informar la condición de la operación
+1500
+Si el tipo de documento electrónico seleccionado es Factura Electrónica o Autofactura Electrónica (C002=1 o C002=4), es obligatorio informar la condición de la operación (E600)
+R
+103
+E600a
+Para el tipo de documento electrónico seleccionado no se requiere informar la condición de la operación
+1501
+Si el tipo de documento electrónico seleccionado es distinto a Factura Electrónica y Autofactura Electrónica (C002≠1 y C002≠4), la condición de la operación no debe ser informada (E600)
+R
+104
+E601
+Condición de la operación inválida para el tipo de documento electrónico
+1503
+Si el tipo de documento es Autofactura Electrónica (C002=4) es obligatorio que la condición de la operación sea al contado (E601=1)
+R
+105
+E602
+Descripción de la condición de la operación no corresponde al código
+1502
+Descripción de la condición de la operación no coincidente con lo informado en el campo E601
+R
+E7.1. Campos que describan la forma de pago de la operación al contado o del monto de la entrega inicial (E605-E619)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+106
+E605
+El grupo de campos que describen la forma de pago de la operación al contado o del monto de la entrega inicial es obligatorio
+1550
+Si la condición de la operación seleccionada es contada (E601=1), es obligatorio informar el grupo de los campos que describen la forma de pago de la operación al contado o del monto de la entrega inicial (E605)
+R
+107
+E605a
+El grupo de campos que describen la forma de pago de la operación al contado o del monto de la entrega inicial (crédito con cuota inicial) es obligatorio
+1551
+Si la condición de la operación seleccionada es crédito (E601=2), y existe monto de entrega inicial (E645), es obligatorio informar el grupo de los campos que describen la forma de pago de la operación al contado o del monto de la entrega inicial (E605)
+R

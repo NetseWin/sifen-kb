@@ -1,0 +1,16 @@
+SESCIICENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° (cid:9) 4, 9
+/•
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-15-
+SECCIÓN III
+COMPROBANTES ELECTRÓNICOS
+Art. 14.- Comprobante Electrónico de Ingreso IRP. Es el documento electrónico emitido por las personas físicas contribuyentes del IRP, que no se encuentran obligadas a emitir facturas ni inscriptas en otros impuestos, para respaldar ingresos por la enajenación ocasional de bienes muebles e inmuebles y por la obtención de utilidades, dividendos o excedentes afectados al referido impuesto.
+El Comprobante Electrónico de Ingresos IRP utilizado en los casos señalados no podrá ser utilizado para respaldar IVA Crédito. Sin embargo, podrá ser utilizado para sustentar egresos por parte del comprador o adquirente de acuerdo con las disposiciones que regulan los impuestos a las rentas vigentes.
+Art. 15.- Comprobante Electrónico de Donación. Es el documento electrónico emitido por las Entidades consideradas de beneficio público para respaldar una donación recibida en especie o dinero.
+El Comprobante Electrónico de Donación no podrá ser utilizado para respaldar IVA Crédito. Sin embargo, podrá ser utilizado para sustentar egresos por parte del donante de acuerdo con las disposiciones que regulan los impuestos a las rentas vigentes.
+Art. 16.- Comprobante Electrónico de Importación. Es el documento electrónico emitido para respaldar las operaciones de importación de bienes.
+El Comprobante Electrónico de Importación será emitido por el importador, basado en las informaciones del despacho de importación oficializado, en el plazo y forma que establezca la reglamentación.
+czy

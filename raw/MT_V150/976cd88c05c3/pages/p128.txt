@@ -1,0 +1,103 @@
+Evento automático por interoperabilidad: Evento asociación de anulación de la Retención
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GEA
+GERA001
+rGeVeRetAnu
+Raíz Gestión de Eventos de retención anulación
+GDE007
+-
+-
+-
+Elemento raíz
+GEA
+GERA002
+Id
+CDC del DE/DTE
+GERA001
+A
+44
+1-1
+Corresponde al CDC del DTE asociado
+GEA
+GERA003
+dNumTimRet
+Número de timbrado del documento de retención
+GERA001
+N
+8
+1-1
+GEA
+GERA004
+dEstRet
+Establecimiento del documento de retención
+GERA001
+A
+3
+1-1
+GEA
+GERA005
+dPunExpRet
+Punto de expedición del documento de retención
+GERA001
+A
+3
+1-1
+GEA
+GERA006
+dNumDocRet
+Número del documento de la retención
+GERA001
+A
+7
+1-1
+GEA
+GERA007
+dCodConRet
+Identificador de la retención
+GERA001
+A
+40
+1-1
+GEA
+GERA008
+dFeEmiRet
+Fecha de emisión de la retención
+GERA001
+F
+19
+1-1
+GEA
+GERA009
+dFecAnRet
+Fecha de anulación de la retención
+GERA001
+F
+19
+1-1
+Evento automático por interoperabilidad: Evento transferencia de créditos fiscales
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GEA
+GECF001
+rGeVeCCFF
+Raíz Gestión de Eventos de créditos fiscales
+GDE007
+-
+-
+-
+Elemento raíz

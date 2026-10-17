@@ -1,0 +1,16 @@
+SESWIICENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° g7Z ,
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-4-
+POR TANTO, en ejercicio de sus atribuciones constitucionales,
+EL PRESIDENTE DE LA REPÚBLICA DEL PARAGUAY
+DECRETA:
+Art. 1°.- Reglaméntase la emisión de comprobantes de ventas y otros documentos tributarios electrónicos a través del Sistema Integrado de Facturación Electrónica Nacional (SIFEN).
+SIFEN se define como el sistema a través del cual se emiten, reciben, validan y aprueban los documentos electrónicos y sus eventos asociados, se almacenan los documentos tributarios electrónicos y se disponen los servicios de consultas de estos.
+Art. 2°.- A los efectos del presente Decreto se emplearán las siguientes definiciones, siglas y acrónimos, de acuerdo con el alcance que se detalla a continuación:
+1. B2B: Operación comercial realizada entre personas físicas o jurídicas (emisor o receptor del Documento Electrónico), incluida la empresa unipersonal, inscriptas en el Registro Único de Contribuyentes (RUC). 2. B2C: Operación comercial realizada entre un emisor persona física o jurídica y un receptor consumidor final persona física, sea contribuyente o no.
+3. B2E: Operación comercial de exportación de bienes y/o mercaderías, realizada entre una persona física o jurídica con RUC como emisor y una persona física o jurídica del exterior como receptor.
+4. B2F: Operación comercial de servicio realizada entre una persona física o jurídica como emisor y una persona física o jurídica del exterior como receptor.
+5. B2G: Operación comercial realizada entre una persona física o jurídica

@@ -1,0 +1,87 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+A
+A004
+dFecFirma
+Fecha de la firma
+A001
+F
+19
+1-1
+La fecha y hora de la firma digital debe ser anterior a la fecha y hora de transmisión al SIFEN
+El certificado digital debe estar vigente al momento de la firma digital del DE
+Fecha y hora en el formato
+AAAA-MM-DDThh:mm:ss
+El plazo límite de transmisión del DE al SIFEN para la aprobación normal es de 72 h contadas a partir de la fecha y hora de la firma digital.
+A
+A005
+dSisFact
+Sistema de facturación
+A001
+N
+1
+1-1
+1=Sistema de facturación del contribuyente
+2=SIFEN solución gratuita
+B. Campos inherentes a la operación de Documentos Electrónicos (B001-B099)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+B
+B001
+gOpeDE
+Campos inherentes a la operación de DE
+A001
+G
+1-1
+B
+B002
+iTipEmi
+Tipo de emisión
+B001
+N
+1
+1-1
+1= Normal
+2= Contingencia
+B
+B003
+dDesTipEmi
+Descripción del tipo de emisión
+B001
+A
+6-12
+1-1
+Referente al campo B002
+1= “Normal”
+2= “Contingencia”
+B
+B004
+dCodSeg
+Código de seguridad
+B001
+N
+9
+1-1
+Código generado por el emisor de manera aleatoria para asegurar la confidencialidad de la consulta pública del DE
+B
+B005
+dInfoEmi
+Información de interés del emisor respecto al DE
+B001
+A
+1-3000
+0-1

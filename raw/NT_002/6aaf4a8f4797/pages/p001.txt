@@ -1,0 +1,74 @@
+NOTA TÉCNICA N° 2
+Fecha: 16/07/2020
+Cambios desde la fecha: 14/10/2019 al 16/07/2020
+Referencia: Correcciones y ajustes sobre el MT versión 150
+1. FORMATO
+1.1. Se modifican los siguientes campos:
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D3
+D208
+iTipIDRec
+Tipo de documento de identidad del receptor
+D200
+N
+1
+0-1
+Obligatorio si D201 = 2 y D202 ≠ 4
+No informar si D201 = 1 o D202=4
+1= Cédula paraguaya
+2= Pasaporte
+3= Cédula extranjera
+4= Carnet de residencia
+5= Innominado
+6=Tarjeta Diplomática de exoneración fiscal
+9= Otro
+D3
+D210
+dNumIDRec
+Número de documento de identidad
+D200
+A
+1-20
+0-1
+Obligatorio si D201 = 2 y D202 ≠ 4
+No informar si D201 = 1 o D202=4
+En caso de DE innominado, completar con 0 (cero)
+Páginas: 71, 72
+2. VALIDACIONES
+2.1. Se eliminan las siguientes validaciones:
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+63
+D208d
+El tipo de documento de identidad del receptor no es requerido
+1322
+Si la naturaleza del receptor es Contribuyente (D201=1) o el tipo de operación es igual a B2F (D202=4), el tipo de documento de identidad no debe ser informado
+R
+66
+D210a
+El número de documento de identidad del receptor no es requerido
+1323
+Si la naturaleza del receptor es contribuyente (D201=1) o el tipo de operación es igual a B2F (D202=4), el número de documento de identidad no debe ser informado
+R
+Páginas: 166, 167
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Amanda González
+16/07/2020
+Carlos Mendoza

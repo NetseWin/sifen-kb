@@ -1,0 +1,42 @@
+NOTA TÉCNICA N° 5
+Fecha: 09/02/2021
+Cambios desde la fecha: 09/02/2021 al 09/02/2021
+Referencia: Correcciones y ajustes sobre el MT versión 150
+1. FORMATO
+1.1. Se modifican los siguientes campos:
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D3
+D204
+dDesPaisRe
+Descripción del país receptor
+D200
+A
+4-50
+1-1
+E10.3
+E965
+dNroMatVeh
+Número de matrícula del vehículo
+E960
+A
+6-7
+0-1
+Debe informarse cuando el E967=2
+Páginas: 71, 100.
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Sara Ramirez
+09/02/2021
+Carlos Mendoza

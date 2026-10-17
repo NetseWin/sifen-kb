@@ -1,0 +1,13 @@
+SES.JICENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° '2"2
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-17-
+Art. 20.- Nota de Remisión Electrónica. Es el documento electrónico emitido para sustentar el traslado de mercaderías dentro del territorio nacional indicando el motivo de su emisión.
+Está obligada a expedir Nota de Remisión Electrónica toda persona física y jurídica, propietaria o responsable de los bienes o mercaderías en el siguiente orden:
+1. El propietario, el prestador del servicio de transporte, el despachante de aduanas o el poseedor de los bienes o mercaderías al inicio del traslado. 2. El prestador del servicio de transporte cuando se trate de bienes- o mercaderías pertenecientes a sujetos no obligados a expedir Comprobantes de Venta.
+En las operaciones de importación y exportación se debe emitir la Nota de Remisión Electrónica como documento de control complementario a los procesos aduaneros que amparan el traslado de las mercaderías dentro del territorio nacional desde su ingreso y hasta los recintos aduaneros, o su salida del país, según el caso.
+La DNIT podrá igualmente disponer la utilización de una Nota de Remisión Electrónica simplificada para el traslado de ciertas mercaderías dentro del territorio nacional.
+La reglamentación establecerá los requisitos y condiciones a los que deberán ajustarse el traslado de mercaderías que aún no han sido nacionalizadas (transporte de mercancías en tránsito internacional), desde un territorio aduanero a otro, por cualquier motivo y en el caso de mercaderías que se encuentran en tránsito internacional.
+La Nota de Remisión Electrónica deberá ser emitida, transmitida y obtenida su aprobación como Documento Tributario Electrónico previo al traslado de las

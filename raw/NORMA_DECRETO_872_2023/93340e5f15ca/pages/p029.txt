@@ -1,0 +1,12 @@
+SESUICENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° g12.
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-29-
+2. Poseer un sistema informático de facturación que permita la emisión, recepción y conservación de los Documentos Tributarios Electrónicos, y de sus eventos asociados, conforme a lo establecido en el presente Decreto y su reglamentación.
+3. Solicitar la autorización y timbrado para los Documentos Electrónicos a través del Sistema Marangatu, utilizando para el efecto su Clave de Acceso Confidencial de Usuario, para lo cual deberán estar al día en el cumplimiento de sus obligaciones tributarias y contar con RUC activo. 4. Solicitar y obtener su habilitación al SIFEN como facturador electrónico de Documento Electrónico.
+5. Obtener el Código de Seguridad del contribuyente (CSC) para la generación del QR a ser incorporado en los KuDE asociados a sus Documentos Electrónicos.
+Los contribuyentes facturadores electrónicos voluntarios a partir de su habilitación, podrán emitir los Documentos Electrónicos; así como, seguir emitiendo documentos tributarios por otros medíos no electrónicos, hasta el plazo que señale la DNIT.
+La DNIT pondrá a disposición de los contribuyentes facturadores electrónicos habilitados un ambiente de pruebas en el SIFEN, de uso opcional, a fin de garantizar la correcta y normal operación de sus sistemas de facturación.
+Art. 46.- Designación de facturadores electrónicos. La DNIT podrá designar de manera gradual a contribuyentes como facturadores electrónicos, los cuales a partir de la fecha en que esta indique ya no podrán emitir comprobantes y otros documentos con incidencia tributaria por otros medios distintos al electrónico, salvo aquellos casos de contingencia, conforme a las condiciones que se establezca en la reglamentación.

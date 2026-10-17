@@ -1,0 +1,28 @@
+SESQ (cid:9) DE LA EPOPEYA NACIONAL 1864- 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° (cid:9)
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-8-
+CAPÍTULO I
+TIPOS DE DOCUMENTOS TRIBUTARIOS ELECTRÓNICOS Y VALIDEZ TRIBUTARIA
+Art. 3°.- Tipos de Documentos Electrónicos. Los documentos que se emitirán electrónicamente son los siguientes:
+1. Comprobantes de Ventas Electrónicos:
+a. Factura Electrónica.
+b. Factura Cambiaria Electrónica.
+c. Factura Electrónica de Exportación.
+d. Autofactura Electrónica.
+e. Boleta Resimple Electrónica.
+f. Boleta Electrónica de Entrada a Espectáculo Público.
+2. Documentos Complementarios Electrónicos:
+a. Nota de Crédito Electrónica.
+b. Nota de Débito Electrónica.
+3. Comprobantes Electrónicos
+a. Comprobante Electrónico de Ingreso IRP.
+b. Comprobante Electrónico de Donación.
+c. Comprobante Electrónico de Importación.
+d. Comprobante de Retención Electrónico.
+e. Comprobante de Percepción Electrónico.
+4. Recibo Electrónico de Dinero.
+5. Nota de Remisión Electrónica.
+La DNIT podrá implementar de manera gradual la utilización de estos Documentos Electrónicos, así como incorporar otros que por su naturaleza requieran un tratamiento similar de operación electrónica.

@@ -1,0 +1,72 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+243
+H002
+Tipo de documento asociado obligatorio para el tipo de documento electrónico
+2416
+Si el tipo de documento electrónico recibido es Autofactura (C002=4), el tipo de documento asociado debe ser constancia electrónica (H002=3)
+R
+244
+H002a
+Tipo de documento asociado no requerido para el tipo de documento electrónico
+2434
+Si el tipo de documento electrónico recibido es Factura electrónica, Nota de crédito, Nota de débito o Nota de remisión (C002=1,5,6 o 7), el tipo de documento asociado no puede ser constancia electrónica (H002 ≠ 3)
+R
+247
+H002c
+CDC no requerido para el tipo de documento asociado
+2419
+Cuando el tipo de documento asociado es impreso no se debe informar el CDC del DTE (H004)
+R
+250
+H002
+CDC no informado
+2416
+Cuando el tipo de documento asociado es electrónico es obligatorio informar el CDC del DTE
+R
+245
+H003
+Descripción del tipo de documento asociado no corresponde al código
+2401
+Descripción del tipo de documento asociado no coincidente con lo informado en el campo H002
+R
+246
+H004
+Número de CDC del DTE referenciado no informado
+2402
+Si el tipo de documento asociado seleccionado es igual a Electrónico (H002=1), es obligatorio informar el número de CDC del DTE referenciado
+R
+247
+H004a
+Número de CDC del DTE referenciado inexistente
+2403
+El CDC del documento asociado informado es inexistente
+R
+248
+H004b
+El CDC informado corresponde a un DTE cancelado
+2404
+El DTE referenciado se encuentra cancelado en SIFEN
+R
+249
+H004c
+Número de CDC no requerido para el tipo de documento asociado
+2418
+Si el tipo de documento asociado es impreso o Constancia electrónica (H002=2 o H002=3), no se debe informar el CDC (H004)
+R
+250
+H004d
+Sumatoria de los documentos asociados supera el monto total del documento electrónico referenciado
+2417
+La sumatoria de cada Total general de la operación (F014) de la (s) Nota(s) de Crédito(s) (actual o pre-existentes) no puede(n) superar al Total general de la operación de la Factura electrónica asociada
+R
+251
+H004e
+Tipo de transacción de la FE asociada, es incorrecto
+2437
+Cuando el tipo de documento electrónico es Factura electrónica (C002=1) y el documento asociado es otra Factura electrónica (H004 inicia con 01) necesariamente el tipo de transacción de la FE asociada debe ser Anticipo (D011=9)
+R

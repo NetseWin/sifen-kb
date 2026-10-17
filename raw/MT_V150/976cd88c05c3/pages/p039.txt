@@ -1,0 +1,132 @@
+<KeyValue>
+<RSAKeyValue>
+<Modulus>
+<Exponent>
+Los DE utilizan el subconjunto del estándar de firma digital definido según W3C, http://www.w3.org/TR/xmldsig-core/, conforme a lo expuesto en el Schema XML1.
+Cada Documento Electrónico deberá ser firmado por el contribuyente emisor abarcando el grupo de información A001, con sus respectivos subgrupos, identificado por el Atributo “Id” cuyo valor será el CDC (Código de Control).
+Véase la Tabla de Formato de Campos de un Documento Electrónico (DE). El mismo literal único (CDC) precedido por el caracter “#” deberá ser informado en el atributo URI del tag Reference.
+Schema XML 1: xmldsig-core-schema- v150.xsd (Estándar de la Firma Digital)
+ID
+Campo
+Descripción
+Nodo Padre
+Ocurrencia
+Observaciones
+XS01
+Signature
+-
+-
+Raíz
+XS02
+SinnedInfo
+G
+XS01
+1-1
+Grupo de información de la firma
+XS03
+CanonicalizationMethod
+G
+XS02
+1-1
+Grupo del método canónico
+XS04
+Algorithm
+A
+XS03
+1-1
+Atributo Algorithm de CanonicalizationMethod
+https://www.w3.org/TR/2001/REC-xml-c14n-20010315
+XS05
+SignatureMethod
+G
+XS02
+1-1
+Grupo del método de firma
+XS06
+Algorithm
+A
+XS05
+1-1
+Atributo Algorithm de SignatureMethod: Sha256RSA
+http://www.w3.org/2001/04/xmldsig-more#rsa-sha256
+XS07
+Reference
+G
+XS02
+1-1
+Grupo Reference
+XS08
+URI
+A
+XS07
+1-1
+Atributo del Tag Reference que identifica los datos que se están firmandos
+XS10
+Transforms
+G
+XS07
+1-1
+Grupo Algorithm Transforms
+XS12
+Transforms
+G
+XS10
+2-2
+Grupo del Transform
+XS13
+Algorithm
+A
+XS12
+2-2
+Atributos válidos Algorithm de Transform:
+https://www.w3.org/TR/xmldsig-core1/#sec-EnvelopedSignature
+http://www.w3.org/2001/10/xml-exc-c14n#
+XS14
+XPath
+E
+XS12
+0-n
+XPath
+XS15
+DigestMethod
+G
+XS07
+1-1
+Grupo del método del DigestMethod
+XS16
+Algortihm
+A
+XS15
+1-1
+Atributo del algoritmo utilizado para el DigestMethod:
+https://www.w3.org/TR/2002/REC-xmlenc-core-20021210/Overview.html#sha256
+XS17
+DigestValue
+E
+XS07
+1
+Digest Value (HASH SHA256)
+XS18
+SignatureValue
+G
+XS01
+1-1
+Grupo del Signature Value
+XS19
+KeyInfo
+G
+XS01
+1-1
+Grupo del KeyInfo
+XS20
+X509Data
+G
+XS19
+1-1
+Grupo X509
+XS21
+X509Certificate
+E
+XS20
+1-1
+Certificado Digital X509.v3

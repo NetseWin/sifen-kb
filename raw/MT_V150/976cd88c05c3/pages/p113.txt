@@ -1,0 +1,18 @@
+11. Gestión de eventos
+Entiéndase por evento toda ocurrencia o suceso registrado en SIFEN por el cual se asigna una marca, se modifica o afecta el estado de un Documento Electrónico o Documento Tributario Electrónico y puede darse a lo largo del ciclo de vida de este. Puede darse de manera previa o posterior a la aprobación del DTE, dependiendo de su naturaleza.
+A manera de ejemplo de eventos se tiene los siguientes:
+• Cancelación
+• Devolución y Ajuste de precios (evento automático por la emisión notas de crédito o débito electrónicas)
+• Disconformidad de un DE o DTE por parte del receptor
+Los eventos pueden ser de dos tipos:
+• De registro AUTOMÁTICO generados por SIFEN: Ejemplo: evento de ajuste de una FE por la aprobación de una Nota de Crédito Electrónica asociada a la FE.
+• De registro REQUERIDO por el consumo de los Servicios Web dispuestos por SIFEN para los actores intervinientes: Ejemplo: Manifestaciones del receptor (disconformidad y desconocimiento de la operación).
+Dependiendo de quién lo solicite, los eventos se clasifican de la siguiente manera:
+11.1. Eventos realizados por el emisor
+Son aquellos eventos originados por el emisor, cuando surge alguna situación que modifica la secuencia numérica o el contenido del DE. El emisor cuenta con la facultad para efectuar los eventos que se citan a continuación:
+11.1.1. Inutilización de número de DE
+Es un evento solicitado por el emisor electrónico. Pueden darse tres situaciones:
+• Saltos en la numeración: Por algún error en el sistema de facturación del emisor, se produce un salto en la numeración. Dicha situación debe ser comunicada, reportando el tipo de DE y saltos en el rango de numeración, de manera a no alterar la correlatividad numérica.
+• Detección de errores técnicos (de llenado) en la emisión del DE.
+• Por rechazo del SIFEN: Cuando un DE ha sido rechazado por el SIFEN y su ajuste implique la modificación del CDC, indefectiblemente esa numeración no utilizada debe ser inutilizada
+Sugerencia: Para poder inutilizar un documento, se sugiere que dicho evento se realice antes de la entrega del comprobante, envío o salida de la mercadería y de la transmisión del DE al SIFEN.

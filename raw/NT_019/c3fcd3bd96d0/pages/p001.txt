@@ -1,0 +1,88 @@
+NOTA TÉCNICA N° 19
+Fecha: 17/11/2023
+Fecha puesta a disposición para el Ambiente de Test
+15/12/2023
+Fecha puesta a disposición para el Ambiente de Producción
+31/01/2024
+Referencia: Correcciones y ajustes sobre el MT versión 150
+1. Formato de Campos XML
+1.1 En Evento Notificación – Recepción DE/DTE (Formato del evento de Notificación – Recepción) se modifican los siguientes campos (Página 123)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+GER
+GEN001
+rGeVeNotRec
+Raíz Gestión de Eventos Notificación – Recepción DE o DTE
+GDE007
+G
+-
+-
+Elemento raíz
+GER
+GEN003
+dFecEmi
+Fecha de emisión del DE/DTE
+GEN001
+F
+19
+1-1
+Requerido para conteo de plazo de registro del evento del receptor en Notificación – Recepción DE (hasta 45 días desde la fecha de emisión)
+Fecha y hora en el formato AAAA-MM-DDThh:mm:ss
+1.2 En Evento Desconocimiento DE/DTE (Formato del evento de Desconocimiento DE/DTE) se modifican los siguientes campos (Página 125)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+GER
+GED001
+rGeVeDescon
+Raiz Gestión de Eventos Desconocimiento
+GDE007
+-
+-
+-
+Elemento raíz
+GER
+GED003
+dFecEmi
+Fecha de emisión del DE/DTE
+GED001
+F
+19
+1-1
+Requerido para conteo de plazo de registro del evento del receptor en Desconocimiento DE (hasta 45 días desde la fecha de emisión).
+Fecha y hora en el formato AAAA-MM-DDThh:mm:ss.
+2. Validaciones
+2.1 EN REGLAS DE VALIDACIÓN PARA NOTIFICACIÓN – RECEPCIÓN DE/DTE SE MODIFICAN LOS SIGUIENTES CAMPOS (Página 136)
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+GEN002b
+CDC del DTE ya cuenta con un evento previo de esta naturaleza
+4101
+Sobre el CDC de un DE/DTE se puede realizar hasta un evento de notificación - recepción
+R
+GEN003
+Fecha de emisión del DE/DTE ha superado el plazo para registro del evento
+4103
+El plazo del registro del evento Notificación – Recepción DE ha superado los 45 días contados a partir de la fecha de emisión
+AO
+GEN012
+Fecha de aprobación del DTE ha superado el plazo para registro del evento
+4114
+El plazo del registro del evento Notificación – Recepción DTE ha superado los 45 días contados a partir de la fecha de aprobación del DTE
+AO

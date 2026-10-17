@@ -1,0 +1,100 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GER
+GEN011
+dTotalGs
+Total general de la operación en Guaraníes
+GEN001
+N
+1-15p(0-8)
+1-1
+Evento Conformidad (Formato del evento de conformidad)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GER
+GCO001
+rGeVeConf
+Raiz Gestión de Eventos Conformidad
+GDE007
+-
+-
+-
+Elemento raíz
+GER
+GCO002
+Id
+CDC del DTE
+GCO001
+A
+44
+1-1
+Corresponde al CDC de un DTE
+GER
+GCO003
+iTipConf
+Tipo de Conformidad
+GCO001
+N
+1
+1-1
+1= Conformidad Total del DTE
+2= Conformidad Parcial del DTE, cuando la mercadería será entregada o servicio será prestado en una fecha posterior a la recepción del DE/DTE
+GER
+GCO004
+dFecRecep
+Fecha Estimada de Recepción
+GCO001
+F
+19
+0-1
+Obligatorio si el tipo de Conformidad es Conformidad Parcial del DTE (GCO003= 2)
+Evento Disconformidad (Formato del evento de Disconformidad)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GER
+GDI001
+rGeVeDisconf
+Raiz Gestión de Eventos Disconformidad
+GDE007
+-
+-
+-
+Elemento raíz
+GER
+GDI002
+Id
+CDC del DTE
+GDI001
+N
+44
+1-1
+Corresponde al CDC de un DTE
+GER
+GDI004
+mOtEve
+Motivo del Evento
+GDI001
+A
+5-500
+1-1

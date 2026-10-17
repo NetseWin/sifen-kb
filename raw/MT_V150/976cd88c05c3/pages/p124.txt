@@ -1,0 +1,110 @@
+11.5.2. FORMATO DE EVENTOS RECEPTOR
+Evento Notificación – Recepción DE/DTE (Formato del evento de Notificación – Recepción)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GER
+GEN001
+rGeVeNotRec
+Raíz Gestión de Eventos Notificación – Recepción DE o DTE
+GDE007
+G
+-
+-
+Elemento raíz
+GER
+GEN002
+Id
+Identificador del DE/DTE
+GEN001
+A
+44
+1-1
+Se informa el código de control (CDC) de un DE/DTE
+GER
+GEN003
+dFecEmi
+Fecha de emisión del DE/DTE
+GEN001
+F
+19
+1-1
+Requerido para conteo de plazo de registro del evento del receptor (hasta 45 días desde la fecha de emisión)
+Fecha y hora en el formato AAAA-MM-DDThh:mm:ss
+GER
+GEN004
+dFecRecep
+Fecha Recepción DE
+GEN001
+F
+19
+1-1
+Fecha en que el receptor recibió física o electrónicamente el documento electrónico. Fecha y hora en el formato AAAA-MM-DDThh:mm:ss
+GER
+GEN005
+iTipRec
+Tipo de Receptor
+GEN001
+N
+1
+1-1
+1=Contribuyente
+2=No Contribuyente
+GER
+GEN006
+dNomRec
+Nombre o Razón Social del Receptor del DE/DTE
+GEN001
+A
+4-60
+1-1
+GER
+GEN007
+dRucRec
+Ruc del Receptor
+GEN001
+A
+3-8
+0-1
+Requerido solo cuando el tipo de receptor es contribuyente (GEN005=1)
+No Informar si GEN005=2
+GER
+GEN008
+dDVRec
+Dígito verificador del RUC del contribuyente receptor
+GEN001
+N
+1
+0-1
+Requerido solo cuando el tipo de receptor es contribuyente (GEN005=1)
+No Informar si GEN005=2
+GER
+GEN009
+dTipIDRec
+Tipo de documento de identidad del receptor
+GEN001
+N
+1
+0-1
+No Informar si GEN005=1
+Requerido solo cuando el tipo de receptor es No Contribuyente (GEN005=2)
+1= Cédula paraguaya
+2= Pasaporte
+3= Cédula extranjera
+4= Carnet de residencia
+GER
+GEN010
+dNumID
+Número de documento de identidad
+GEN001
+A
+1-20
+0-1
+No Informar si GEN005=1
+Requerido solo cuando el tipo de receptor es No Contribuyente (GEN005=2)

@@ -1,0 +1,94 @@
+TABLA 3 – ACTIVIDADES ECONÓMICAS
+https://servicios.set.gov.py/eset-publico/consultarActividadEconomicaIService.do
+TABLA 4 – CODIFICACION DE PAISES
+Utilizaremos el estándar Internacional ISO 3166-1.
+Remitimos archivo en formato XSD con el estándar mencionado.
+Referencia: https://es.wikipedia.org/wiki/ISO_3166-1#C%C3%B3digos_ISO_3166-1
+TABLA 5 – CODIFICACION DE UNIDADES DE MEDIDA
+Código
+Representación
+Descripción
+87
+m
+Metros
+2366
+CPM
+Costo por Mil
+2329
+UI
+Unidad Internacional
+110
+M3
+Metros cúbicos
+77
+UNI
+Unidad
+86
+g
+Gramos
+89
+LT
+Litros
+90
+MG
+Miligramos
+91
+CM
+Centimetros
+92
+CM2
+Centimetros cuadrados
+93
+CM3
+Centimetros cubicos
+94
+PUL
+Pulgadas
+96
+MM2
+Milímetros cuadrados
+79
+kg/m²
+Kilogramos s/ metro cuadrado
+97
+AA
+Año
+98
+ME
+Mes
+99
+TN
+Tonelada
+100
+Hs
+Hora
+101
+Mi
+Minuto
+104
+DET
+Determinación
+103
+Ya
+Yardas
+108
+MT
+Metros
+109
+M2
+Metros cuadrados
+95
+MM
+Milímetros
+666
+Se
+Segundo
+102
+Di
+Día
+83
+kg
+Kilogramos
+88
+ML
+Mililitros

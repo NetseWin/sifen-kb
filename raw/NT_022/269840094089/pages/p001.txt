@@ -1,0 +1,32 @@
+NOTA TÉCNICA N° 22
+Fecha: 09/02/2024
+Fecha puesta a disposición para el Ambiente de Test
+09 de febrero de 2024
+Fecha puesta a disposición para el Ambiente de Producción
+09 de febrero de 2024
+Referencia:
+● Nueva validación para la imputación automática de las ventas al módulo RG90.
+1. Validación nueva
+1.1. Validaciones que identifican las obligaciones afectadas (D030-D040): (Páginas 162,163)
+D1.1. Campos que identifican las obligaciones afectadas (D030-D040)
+ID
+Mensaje de la validación
+Código
+Observación
+E
+D031a
+Código de la obligación afectada duplicado
+1222
+Cuando se informa el campo D031 no se permite repetir los códigos en el mismo documento.
+R
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Patricia Rolón
+24/01/2024
+Carlos Mendoza
+24/01/2024
+Elaboración del Documento.

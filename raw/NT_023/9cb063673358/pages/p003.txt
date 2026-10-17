@@ -1,0 +1,111 @@
+2.2. H. Campos que identifican al documento asociado (H001-H049) se modifica la siguiente validación. (Página 191)
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+H001
+Documento asociado es obligatorio para el tipo de documento electrónico seleccionado
+2400
+Si el tipo de documento electrónico seleccionado es igual a Autofactura, Nota de Crédito Electrónica, Nota de Débito Electrónica o Comprobante de Retención (C002=4, 5, 6 o 8), es obligatorio informar el grupo de campos que identifican al documento asociado
+R
+H004g
+El CDC asociado no corresponde al emisor del documento electrónico.
+2439
+Si el tipo de documento asociado es electrónico (H002=1) el CDC debe corresponder al emisor y/o RUC Fusionado del documento al cual se asocia.
+R
+H018
+El RUC Fusionado no corresponde al emisor del CDC asociado.
+2443
+Si se informa el campo H018 (dRucFus), este debe corresponder al RUC del emisor del CDC asociado informado en el campo H004 (dCdCDERef)
+R
+H018a
+El RUC Fusionado no requerido.
+2444
+Si el tipo de documento electrónico seleccionado es distinto a Nota de Crédito, Nota de Débito o Nota de Remisión (C002 ≠ 5, 6 o 7) el campo RUC Fusionado no debe ser informado.
+R
+3. CODIFICACIONES
+3. 1. Se amplía el listado de unidades de medidas (Páginas 211 y 212).
+TABLA 5 – CODIFICACIÓN DE UNIDADES DE MEDIDA
+CODIFICACIÓN DE UNIDADES DE MEDIDA
+Código
+Representación
+Descripción
+111
+4A
+Bovinas
+112
+Ci
+Curie
+113
+DOC
+Docena
+114
+GLL
+Galones (US) (3,7843 LT)
+115
+GRO
+Gruesas
+116
+E4
+Kilogramo Bruto
+117
+KT
+Kits
+118
+M5
+Microcurie
+119
+MCU
+Milicurie
+120
+MIL
+Millar
+121
+PAR
+Par
+122
+FOT
+Pies
+123
+FTK
+Pies Cuadradas
+124
+PCE
+Piezas
+125
+KLT
+Quilate
+126
+RM
+Resmas
+127
+RO
+Rollos
+128
+kWh
+1000 Kilowatt Hora
+129
+U(JGO)
+Mazos
+130
+DR
+Tambores
+131
+BX
+Caja
+132
+SET
+Juego
+133
+PK
+Paquete
+134
+BG
+Bolsa
+135
+DPC
+Docena Par
+136
+JR
+Pote

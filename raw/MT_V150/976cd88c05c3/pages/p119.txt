@@ -1,0 +1,33 @@
+Evento conclusivo
+13
+Desconocimiento DE o DTE
+Receptor
+Registro Requerido
+Evento informativo
+WS Sincrónico Eventos o Portal SIFEN
+Hasta 45 (cuarenta y cinco) días contados desde la fecha de emisión
+Todos los DE o DTE
+DTE o DE recepcionado
+WS/PORTAL
+14
+Devolución y Ajuste de precios
+SIFEN
+Registro
+Automático
+• Plazo límite definido por la SET • Plazo de prescripción
+FE
+• Emisión de una NCE o NDE (asociación) para una FE con situación Aprobada o Aprobado con observación (por extemporaneidad) en SIFEN • La FE asociada se encuentra en SIFEN con situación de Aprobado o Aprobado Extemporáneo La NCE o NDE indica el tipo de asociación (Devolución y Ajuste de precios)
+• Ajustar una operación de una FE Aprobada Por devolución y Ajuste de precios de una operación de una FE Aprobada
+Automático
+16
+Asociación
+SIFEN
+Registro
+Automático
+Emisión de un DE con otro DTE, pre-impreso, autoimpresor, comprobante virtual u otros documentos asociados (Asociación)
+Inmediato a la Aprobación en SIFEN de un DTE con indicación de otros documentos asociados o cuando existan informaciones provenientes del Marangatu o Tesaka
+Todos los DE, otros documentos emitidos por otra modalidad de facturación e interoperabilidad con sistemas de la SET
+• DTE asociado se encuentra en SIFEN con situación de Aprobado o Aprobado con observaciones o cuando el SIFEn reciba informaciones provenientes de los sistemas de la administración tributaria (Marangatu o Tesaka)
+• Ajustar una operación • Anular una operación
+Automático
+IMPORTANTE: Los eventos de Registro Requerido habilitados serán los que conciernen al emisor: de Cancelación de un DTE y la Inutilización de un rango de DE, y el evento automático de devolución y Ajuste de precios (disparados por la emisión de Notas de Créditos y Débitos Electrónicas) y los eventos del receptor: Notificación de recepción DE o DTE, Conformidad DTE, Disconformidad DTE, Desconocimiento DE o DTE

@@ -1,0 +1,99 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D3
+D201
+iNatRec
+Naturaleza del receptor
+D200
+N
+1
+1-1
+1= contribuyente
+2= no contribuyente
+D3
+D202
+iTiOpe
+Tipo de operación
+D200
+N
+1
+1-1
+1= B2B
+2= B2C
+3= B2G
+4= B2F
+(Esta última opción debe utilizarse solo en caso de servicios para empresas o personas físicas del exterior)
+D3
+D203
+cPaisRec
+Código de país del receptor
+D200
+A
+3
+1-1
+Según XSD de Codificación de Países
+D3
+D204
+dDesPaisRe
+Descripción del país receptor
+D200
+A
+4-30
+1-1
+Referente al campo D203
+D3
+D205
+iTiContRec
+Tipo de contribuyente receptor
+D200
+N
+1
+0-1
+Obligatorio si D201 = 1
+No informar si D201 = 2
+1= Persona Física
+2= Persona Jurídica
+D3
+D206
+dRucRec
+RUC del receptor
+D200
+A
+3-8
+0-1
+Obligatorio si D201 = 1
+No informar si D201 = 2
+D3
+D207
+dDVRec
+Dígito verificador del RUC del receptor
+D200
+N
+1
+0-1
+Obligatorio si existe el campo D206
+Según algoritmo módulo 11
+D3
+D208
+iTipIDRec
+Tipo de documento de identidad del receptor
+D200
+N
+1
+0-1
+Obligatorio si D201 = 2 y D202 ≠ 4
+No informar si D201 = 1 o D202=4
+1= Cédula paraguaya
+2= Pasaporte
+3= Cédula extranjera
+4= Carnet de residencia
+5= Innominado
+6=Tarjeta Diplomática de exoneración fiscal
+9= Otro

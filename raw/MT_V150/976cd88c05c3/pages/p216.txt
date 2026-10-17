@@ -1,0 +1,20 @@
+Término
+Significado
+Documentos Asociados
+Son los DE que pueden complementar a la factura electrónica: nota de crédito y nota de débito.
+Emisor
+Contribuyente que genera el archivo electrónico, lo firma electrónicamente y lo remite para solicitar la competente autorización de uso.
+ERP
+La planificación de recursos empresariales (ERP, por sus siglas en inglés) es la gestión integrada de los procesos de negocio básicos, a menudo en tiempo real y mediada por software y tecnología.
+Factura Electrónica
+Es el DTE que respalda la compra y venta de bienes y servicios. Consta de un archivo electrónico que atiende simultáneamente a las siguientes exigencias: - Es un documento electrónico - Tiene el formato XML de factura electrónica de acuerdo con las definiciones legales e infra legales. - Después de validado de acuerdo con las reglas fue aprobado y, en consecuencia, autorizado para fines fiscales.
+Facturador Electrónico
+Contribuyente autorizado por la Administración Tributaria para emitir y recibir DTE, y que en consecuencia adquiere la naturaleza de emisor y receptor.
+Firma Digital
+Firma electrónica certificada por un prestador acreditado, que ha sido creada usando medios que el titular mantiene bajo su exclusivo control, de manera que se vincule únicamente al mismo y a los datos a los que se refiere, permitiendo la detección posterior de cualquier modificación, verificando la identidad del titular e impidiendo que desconozca la integridad del documento y su autoría.
+KuDE
+Palabra compuesta por dos abreviaturas. La primera abreviatura Ku extraída de la palabra Kuatia, en guaraní que significa papel, más la segunda abreviatura DE, propia de Documento Electrónico.
+Ley Tributaria
+Ley No 125/1991 “Que establece el Nuevo Régimen Tributario” y sus modificaciones.
+Otros documentos tributarios electrónicos
+Son los DTE que respaldan operaciones con incidencia tributaria tales como: nota de remisión, autofacturas, y comprobantes de retención.

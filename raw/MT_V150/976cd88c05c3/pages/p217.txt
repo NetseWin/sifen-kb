@@ -1,0 +1,14 @@
+Término
+Significado
+Prestador de Servicios de Certificación (PSC)
+Entidad prestadora de servicios de certificación de firmas digitales autorizada por la Dirección General de Firma Digital y Comercio Electrónico del Ministerio de Industria y Comercio.
+Receptor
+Destinatario de la factura, pudiendo ser nacional o extranjero, persona natural o jurídica. Reglas de validación específicas deberán ser construidas para caso de nacionales.
+Representación Gráfica
+Expresión de los DE en formato físico o digital. Es la representación impresa del DE en formado susceptible de ser visualizado, remitido por correo electrónico o impreso de ser requerido. Incluye un código QR para facilitar su validación.
+RUC
+Registro Único del Contribuyente
+SIFEN
+Sistema de Facturación Electrónica Nacional; se encarga de recepcionar, autorizar, almacenar y disponer los servicios de consulta de los DTE.
+Sistema Marangatu
+Sistema de Gestión Tributaria Marangatu

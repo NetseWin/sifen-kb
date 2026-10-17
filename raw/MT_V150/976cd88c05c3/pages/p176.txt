@@ -1,0 +1,62 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+134
+E716
+Descripción del código de datos de relevancia de las mercaderías no corresponde al código
+1806
+La descripción del código de datos de relevancia de las mercaderías no coincidente con lo informado en el campo E715
+R
+135
+E717
+Se debe informar la cantidad o el porcentaje de quiebra o merma
+1808
+Cuando se informa el Código de datos de relevancia de mercaderías (E715) es obligatorio informar uno de los siguientes datos: la cantidad de quiebra o merma (E717) o el porcentaje de quiebra o merma (E718)
+R
+E8.1. Campos que describen el precio, tipo de cambio y valor total de la operación por ítem (E720-E729)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+136
+E720
+Grupo de los campos que describen los precios, descuentos y valor total por ítem es obligatorio
+1850
+El grupo de los campos que describen los precios, descuentos y valor total por ítem (E720) es obligatorio para todos los tipos de documentos electrónicos excepto para Nota Remisión Electrónica (C002=7)
+R
+137
+E720a
+Grupo de los campos que describen los precios, descuentos y valor total por ítem no requerido
+1851
+Si el tipo de documento electrónico seleccionado es igual a Nota de Remisión Electrónica (C002=7), el grupo de los campos que describen los precios, descuentos y valor total por ítem (E720) no debe ser informado
+R
+138
+E725
+Tipo de cambio por ítem no informado
+1854
+Si la condición del tipo de cambio es Por ítem (D017=2) es obligatorio informar el tipo de cambio
+R
+139
+E725a
+Tipo de cambio por ítem no requerido
+1855
+Si la condición del tipo de cambio es Global (D017=1), el tipo de cambio por ítem no debe ser informado
+R
+140
+E725b
+La moneda de la operación seleccionada no requiere tipo de cambio por ítem
+1856
+Si la moneda de la operación (D015) es igual a PYG, el tipo de cambio por ítem (E725) no debe existir
+R
+141
+E727
+Error en el cálculo del valor total bruto de la operación por ítem
+1859
+Cálculo del valor total bruto de la operación por ítem incorrecto
+E727 debe corresponder al cálculo aritmético E721 * E711
+R

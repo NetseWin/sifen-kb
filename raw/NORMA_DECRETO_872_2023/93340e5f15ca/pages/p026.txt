@@ -1,0 +1,16 @@
+SESCUCENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+N° 3-1'
+DECRETO
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-26-
+Art. 37.- Evento de Notificación de Recepción. El receptor del Documento Electrónico, contribuyente o no, podrá informar la recepción del documento en el plazo y condiciones establecidas en la reglamentación.
+Art. 38.- Evento de Consentimiento. En operaciones entre facturadores electrónicos, en las cuales se requiera emitir una Nota de Crédito Electrónica para documentar la devolución de bienes, descuento o ajuste en el precio y bonificación otorgada, el receptor de la Nota de Crédito deberá registrar el evento de consentimiento.
+En los casos en los cuales no se realice dicho evento, no será aprobado 'en SIFEN la Nota de Crédito Electrónica que corresponda.
+En la reglamentación se podrá establecer condiciones relacionadas a montos y plazos para el registro del Evento de Consentimiento.
+Art. 39.- Corrección de Eventos. El receptor, contribuyente o no, podrá realizar la corrección de sus eventos registrados respecto a un determinado Documento Tributario Electrónico con otro evento de similar naturaleza, en el plazo y forma que establezca en la reglamentación para el efecto.
+SECCIÓN III
+EVENTOS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL
+Art. 40.- Eventos Automáticos. El SIFEN generará eventos automáticos cuando se presenten las siguientes situaciones:
+1. Por Ajustes: Este evento se da al momento de emitir una Nota de Crédito Electrónica, una Nota de Debito Electrónica y una Factura Electrónica en relación con la Factura Electrónica de referencia. cr<v

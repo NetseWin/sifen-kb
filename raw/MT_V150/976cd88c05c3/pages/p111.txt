@@ -1,0 +1,98 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+H
+H014
+iTipCons
+Tipo de constancia
+H001
+N
+1
+0-1
+Obligatorio cuando H002 = 3
+No informar cuando H002 ≠ 3
+1= Constancia de no ser contribuyente
+2= Constancia de microproductores
+H
+H015
+dDesTipCons
+Descripción del tipo de constancia
+H001
+A
+30-34
+0-1
+Obligatorio si se informa H014
+Referente al campo H014
+1= “Constancia de no ser contribuyente”
+2=“Constancia de microproductores”
+H
+H016
+dNumCons
+Número de constancia
+H001
+N
+11
+0-1
+Obligatorio cuando H002 = 3 y H014 = 2
+No informar cuando H002 ≠ 3
+H
+H017
+dNumControl
+Número de control de la constancia
+H001
+A
+8
+0-1
+Obligatorio cuando H002 = 3 y H014 = 2
+No informar cuando H002 ≠ 3
+I. Información de la Firma Digital del DTE (I001-I049)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+I
+I001
+Signature
+Firma Digital del DTE
+AA001
+G
+1-1
+Según el estándar XML signature
+Debe ser firmado el grupo A (campo A001) que contiene los grupos de información del A hasta H
+J. Campos fuera de la Firma Digital (J001-J049)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+J
+J001
+gCamFuFD
+Campos fuera de la firma digital
+AA001
+G
+1-1
+J
+J002
+dCarQR
+Caracteres correspondientes al código QR
+J001
+A
+100-600
+1-1
+Debe ser validado contra la información incluida en el XML del DE, de acuerdo con lo especificado en el capítulo del QR del MT

@@ -1,0 +1,49 @@
+9. Descripción de los Servicios Web del SIFEN
+Ciertas validaciones son aplicadas igualitariamente a todos los DE y en todos los WS establecidos por el SIFEN, según se identifican en el capítulo de validaciones del presente Manual Técnico. Estas validaciones son empleadas en la secuencia que están dispuestas, así como, los procedimientos afectados.
+De forma independiente son aplicadas las validaciones particulares, ya sea en los DE como en los WS.
+9.1. WS recepción documento electrónico – siRecepDE
+Función:
+Recibir un DE
+Proceso:
+Sincrónico
+Método:
+SiRecepDE
+9.1.1. Definición del protocolo que consume este servicio
+El protocolo de entrada para este servicio es la estructura XML que contiene un DE firmado, según el detalle del siguiente cuadro:
+Schema XML 2: siRecepDE_v150.xsd (WS Recepción DE)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+ASch01
+rEnviDe
+Raíz
+-
+-
+-
+-
+Elemento raíz
+ASch02
+dId
+Identificador de control de envío
+ASch01
+N
+1-15
+1-1
+Número secuencial autoincremental, para identificación del archivo enviado. La responsabilidad de generar y controlar este número es exclusiva del contribuyente.
+ASch03
+xDe
+XML del DE transmitido
+ASch01
+XML
+-
+1-1
+Siguiendo las definiciones del formato del DE
+9.1.2. Descripción del procesamiento
+Servicio encargado de recibir un documento electrónico firmado digitalmente, en formato XML y construido según el esquema detallado en este Manual Técnico.
+Procesa las validaciones12 correspondientes y responde con un protocolo en XML, el resultado correspondiente.
+12 Las validaciones están detalladas en el capítulo 12 del presente Manual

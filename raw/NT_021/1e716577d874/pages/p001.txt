@@ -1,0 +1,36 @@
+NOTA TÉCNICA N° 21
+Fecha: 29/12/2023
+Fecha puesta a disposición para el Ambiente de Test
+01/01/2024
+Fecha puesta a disposición para el Ambiente de
+Producción
+01/01/2024
+Referencia: Correcciones y ajustes sobre el Manual Técnico versión 150
+1. Validaciones
+1.1. En Datos que identifican al receptor del Documento Electrónico DE (D200 - D299) se modifica la siguiente validación. (Página 166)
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+D208c
+Tipo de documento de identidad del receptor incorrecto para el total general de la operación en guaraníes
+1321
+Si el Tipo de transacción es distinto a Muestras
+médicas (D011≠13), El Tipo de documento de identidad del receptor no puede ser Innominado (D208≠5) cuando el total general de la operación en guaraníes (cuando la moneda es extranjera) o el total general de la operación (cuando la moneda es PYG) es mayor o igual a 35.000.000 (F023 >= 35000000 o F014 >= 35000000)
+R
+Observación: Conforme a lo dispuesto en el Artículo N° 6 del Decreto N° 872/2023
+Histórico del Documento
+AUTOR
+FECHA DE
+ELABORACIÓN
+REVISOR
+FECHA DE
+REVISIÓN
+PRINCIPALES ALTERACIONES
+Jonathan Garay
+20/12/2023
+Martha Rojas
+21/12/2023
+Elaboración del Documento,
+Formato de Campos y Validaciones

@@ -1,0 +1,46 @@
+1.2. Se agrega la siguiente descripción de Servicios Web del SIFEN:
+12.3.7. WS consulta masiva de RUC – rEnviConsArchivoRUCRequest
+12.3.7.1. Área de datos del WS
+ID
+Resultado de la Validación
+Código
+Obs
+E
+BO04
+Devuelve el archivo
+0520
+BO05
+No se encontró el archivo generado en el día
+0521
+BO06
+Se ha superado el límite de descargas del día
+0522
+BO07
+El RUC del certificado utilizado para firmar no coincide con el RUC de consulta
+0523
+12.1.1. Códigos de respuestas de las validaciones de los Servicios Web (Página 147)
+Inicio ID
+Inicio código de respuesta
+Fin ID
+Fin código de respuesta
+Tipo de Regla de Validación
+Apartado
+BO01
+0500
+BO20
+0559
+Área de datos del WS siConsRUC / Área de datos del WS rEnviConsArchivoRUCRequest
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Patricia Rolón
+23/09/2022
+Estructura del WS consulta masiva de RUC
+Jonathan Garay
+20/10/2022
+José Vernazza
+24/10/2022
+Formato de Campos y Validaciones del WS Service

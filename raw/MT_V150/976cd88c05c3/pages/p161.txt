@@ -1,0 +1,68 @@
+B. Campos inherentes a la operación comercial de los Documentos Electrónicos (B001 -B099)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+7
+B002
+Tipo de emisión inválido en esta etapa
+1050
+El tipo de emisión en contingencia (B002=2) no permitida en esta etapa
+R
+8
+B003
+Descripción del tipo de emisión no corresponde al código
+1051
+Descripción del tipo de emisión no coincidente a lo informado en el campo B002
+R
+C. Campos de datos del Timbrado (C001 - C099)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+9
+C003
+Descripción del tipo de documento electrónico no corresponde al código
+1100
+Descripción del tipo de documento electrónico no coincidente a lo informado en el campo C002
+R
+10
+C004
+Número de timbrado inválido
+1101
+Número de timbrado no corresponde al RUC ni al Tipo de Documento electrónico del contribuyente emisor
+R
+11
+C004a
+Número de timbrado no corresponde al medio de generación para facturación electrónica
+1102
+Medio de generación incorrecto en el sistema de Timbrado de Marangatu
+R
+12
+C004b
+El número de timbrado no se encuentra vigente a la fecha de emisión del comprobante
+1103
+Número de timbrado no vigente (D002 no se encuentre dentro del rango de las fechas de inicio y fin de vigencia del timbrado (C008 - C009)
+R
+13
+C004c
+El número de timbrado informado no se encuentra en estado ACTIVO
+1104
+El número de timbrado informado no se encuentra activo en la base de datos de timbrado en la fecha de emisión del DE (D002)
+R
+14
+C005
+Código de establecimiento incorrecto
+1105
+El código de establecimiento no corresponde al timbrado autorizado para el contribuyente
+R
+15
+C006
+Código de punto de expedición incorrecto
+1106
+El código de punto de expedición no corresponde al timbrado autorizado para el contribuyente
+R

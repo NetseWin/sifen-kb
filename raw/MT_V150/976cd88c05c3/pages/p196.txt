@@ -1,0 +1,56 @@
+13.4.1. Campos del encabezado del KuDE
+En esta sección de la estructura del KuDE se encuentran los siguientes campos:
+Espacio reservado para el logo del emisor (opcional)
+Datos del emisor:
+Nombre o razón social del emisor: D105
+Nombre fantasía: D106
+Descripción de actividad: D131
+Dirección: D107
+Descripción ciudad: D116
+Datos de timbrado:
+RUC del emisor: D101
+Timbrado Nº: C004
+Fecha de inicio de vigencia: C008
+Fecha de fin de vigencia:C009
+Número de documento: C007
+Datos generales:
+Fecha y hora de emisión: D002
+Descripción de condición de la operación: E602
+Número de cuotas: E644 (Para operaciones a crédito)
+Descripción de moneda de la operación: D016
+Tipo de cambio: D018
+Datos del receptor:
+RUC del contribuyente: D206 (si D201=1)
+Nº de Doc de Identidad: D210 (si D201=2)
+Nombre/razón social: D211
+Dirección: D213
+Teléfono: D214
+Correo electrónico: D216
+Descripción del tipo de transacción: D012
+Ejemplo de encabezado de KuDE de FE:
+RUC: 2365438-8
+Timbrado Nº 1000332
+Fecha de Inicio de Vigencia: 01/07/2018
+Fecha de Fin de Vigencia: 31/07/2019
+Factura Electrónica Nº 001-001-0000001
+Ciudad: Asunción
+KuDE DE FACTURA ELECTRÓNICA
+Marta Anahi Bordon Vidal
+Soluciones Informáticas
+Reparación de Equipos Informáticos
+Avenida González Vidal #1434
+Ciudad: Asunción
+LOGO
+Encabezado
+Fecha y hora de Emisión: AAAA-MM-DDThh:mm:ss
+Condición de Venta: Contado Crédito
+X
+Cuotas:
+Moneda: PYG
+Tipo de Cambio:
+RUC/Documento de Identidad Nº: 1131421-4
+Nombre o Razón Social: Belén Bosco
+Dirección: Mcal. López y Yegros
+Teléfono: 021 123 456
+Correo Electrónico: belbosco@gmail.com
+Tipo de Operación: Venta de Mercadería

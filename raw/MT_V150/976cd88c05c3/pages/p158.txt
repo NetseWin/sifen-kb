@@ -1,0 +1,42 @@
+12.3.4.2. Información de control de la llamada al WS
+No se realizan validaciones específicas para este método en la versión inicial 100, sin embargo, reservamos los códigos desde el 0400 al 0419 y las correspondientes identificaciones BK00 a BK19.
+12.3.4.3. Área de datos del WS
+ID
+Resultado de Validación
+Código
+Obs
+E
+BL01
+CDC inexistente
+0420
+BL02
+CDC Encontrado
+0421
+12.3.5. WS consulta de RUC – siConsRUC
+12.3.5.1. Mensaje de entrada del WS
+La primera validación corresponde al tamaño máximo permitido para el mensaje de Web Service, este no debe superar los (1000 KB). Su verificación es:
+• En el presente WS se devuelve el mensaje con código 0460.
+• En la configuración de red (firewall), en el caso que la conexión sea interrumpida sin la generación del mensaje de error con el código 0380.
+ID
+Resultado de la Validación
+Código
+Obs
+E
+BM01
+Mensaje de datos de entrada del WS siConsRUC superior a 1000 KB.
+0460
+R
+12.3.5.2. Información de control de la llamada al WS
+No se realizan validaciones específicas para este método en la versión inicial 100, sin embargo, reservamos los códigos desde el 0480 al 0499 y las correspondientes identificaciones BN01 a BN20.
+12.3.5.3. Área de datos del WS
+ID
+Resultado de Validación
+Código
+Obs
+E
+BO01
+RUC inexistente
+0500
+BO02
+RUC no tiene permiso para utilizar el WS
+0501

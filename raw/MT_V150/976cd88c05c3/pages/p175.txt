@@ -1,0 +1,74 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+127
+E644a
+Cantidad de cuotas no requerida
+1706
+Si la condición de la operación a crédito seleccionada es distinta a Cuota (E641≠2), la cantidad de cuotas (E644) no debe ser informada
+R
+E7.2.1 Campos que describen las cuotas (E650-E659)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+117
+E650
+Grupo de los campos que describen las cuotas es obligatorio
+1750
+Si la condición de la operación a crédito seleccionada es igual a Cuota (E641=2), es obligatorio informar el grupo de los campos que describen las cuotas (E650)
+R
+128
+E650a
+Grupo de los campos que describen las cuotas no requerido
+1751
+Si la condición de la operación a crédito seleccionada es distinta a Cuota (E641≠2), el grupo de los campos que describen las cuotas (E650) no debe ser informado
+R
+E8. Campos que describen los ítems de la operación (E700-E899)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+129
+E704
+Código de DNCP - Nivel General es obligatorio para el tipo de operación B2G
+1800
+Si el tipo de operación seleccionado es igual a B2G (D202=3), es obligatorio informar el Código DNCP – Nivel General (E704)
+R
+130
+E705
+Código de DNCP – Nivel Específico es obligatorio
+1801
+Si se informa el Código de DNCP – Nivel General (E704) es obligatorio informar el código de DNCP – Nivel Específico (E705)
+R
+131
+E710
+Descripción de la unidad de medida no corresponde al código
+1802
+Descripción de la unidad de medida no coincidente con lo informado en el campo E709
+R
+132
+E713
+Descripción del país de origen del producto no corresponde al código
+1804
+Descripción del país de origen del producto no coincidente con lo informado en el campo E712
+R
+132
+E715
+Código de datos de relevancia de las mercaderías no informado para el tipo de documento electrónico
+1805
+Si el tipo de documento es Nota de remisión electrónica (C002=7), es obligatorio informar E715
+R
+133
+E715
+Código de datos de relevancia de las mercaderías no requerido para el tipo de documento electrónico
+1807
+No se debe informar el código de datos de relevancia de las mercaderías cuando el tipo de documento electrónico es distinto a Nota de remisión (C002≠7)
+R

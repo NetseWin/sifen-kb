@@ -1,0 +1,13 @@
+281
+J002b
+URL de consulta de código QR es inválida
+2502
+La URL de consulta del código QR informada en la cadena de caracteres (J002) no es correcta
+R
+282
+J003
+Información adicional de interés para el emisor fue incluida en el DE
+2503
+La información adicional de interés para el emisor no debe ser enviada a SIFEN.
+El campo J003 fue incluido en el XML del DE
+R

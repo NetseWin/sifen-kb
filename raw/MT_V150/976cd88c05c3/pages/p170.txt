@@ -1,0 +1,67 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+82
+E300a
+Para el tipo de documento electrónico seleccionado, no se debe informar el grupo de campos que componen la AFE
+2551
+Para el tipo de documento electrónico informado (C002 ≠ 4), el grupo de campos que componen la AFE (E300) no debe informarse
+R
+83
+E304
+El vendedor no debe ser contribuyente
+2562
+Cuando el Tipo de documento de identidad del vendedor es Cédula de identidad o Pasaporte (E304=1 o E304=2), el vendedor no debe ser contribuyente (E306 no debe tener RUC o el estado del RUC debe ser CANCELADO o CANCELADO DEFINITIVO)
+R
+84
+E310
+El Departamento, el Distrito y la Ciudad del vendedor no están relacionados
+2553
+Debe haber relación entre el departamento (E310), el distrito (E312) y la ciudad (E314)
+R
+85
+E311
+Descripción del departamento del vendedor no corresponde al código
+2552
+Descripción del departamento no coincidente con lo informado en el campo E310
+R
+86
+E313b
+Descripción del código del distrito del vendedor no
+corresponde al código
+2561
+Descripción del código del distrito no coincidente con lo informado en el campo E312
+R
+87
+E315
+Descripción de la ciudad del vendedor no corresponde al código
+2555
+Descripción de la ciudad no coincidente con lo informado en el campo E314
+R
+88
+E317
+El Departamento, el Distrito y la Ciudad donde se realiza la transacción no están relacionados
+2557
+Debe haber relación entre el departamento (E317), el distrito (E319) y la ciudad (E321)
+R
+89
+E318
+Descripción del departamento no corresponde al código donde se realiza la transacción
+2556
+Descripción del departamento no coincidente con lo informado en el campo E317
+R
+90
+E320
+Descripción del distrito donde se realiza la transacción no corresponde al código
+2558
+Descripción del distrito donde se realiza la transacción no coincidente con lo informado en el campo E319
+R
+91
+E322
+Descripción de la ciudad no corresponde al código donde se realiza la transacción
+2559
+Descripción de la ciudad donde se realiza la transacción no coincidente con lo informado en el campo E321
+R

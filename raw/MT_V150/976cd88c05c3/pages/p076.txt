@@ -1,0 +1,118 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E1.1
+E025
+dFeCodCont
+Fecha de emisión del código de contratación por la DNCP
+E020
+F
+10
+1-1
+Fecha en el formato: AAAA-MM-DD. Esta fecha debe ser anterior a la fecha de emisión de la FE
+E4. Campos que componen la Autofactura Electrónica AFE (E300-E399)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E4
+E300
+gCamAE
+Campos que componen la Autofactura Electrónica
+E001
+G
+0-1
+Obligatorio si C002 = 4
+No informar si C002 ≠ 4
+E4
+E301
+iNatVen
+Naturaleza del vendedor
+E300
+N
+1
+1-1
+1= No contribuyente
+2= Extranjero
+E4
+E302
+dDesNatVen
+Descripción de la naturaleza del vendedor
+E300
+A
+10-16
+1-1
+Referente al campo E301.
+1= “No contribuyente”
+2= “Extranjero”
+E4
+E304
+iTipIDVen
+Tipo de documento de identidad del vendedor
+E300
+N
+1
+1-1
+1= Cédula paraguaya
+2= Pasaporte
+3= Cédula extranjera
+4= Carnet de residencia
+E4
+E305
+dDTipIDVen
+Descripción del tipo de documento de identidad del vendedor
+E300
+A
+9-20
+1-1
+Referente al campo E304
+1= “Cédula paraguaya”
+2= “Pasaporte”
+3= “Cédula extranjera”
+4= “Carnet de residencia”
+E4
+E306
+dNumIDVen
+Número de documento de identidad del vendedor
+E300
+A
+1-20
+1-1
+E4
+E307
+dNomVen
+Nombre y apellido del vendedor
+E300
+A
+4-60
+1-1
+E4
+E308
+dDirVen
+Dirección del vendedor
+E300
+A
+1-255
+1-1
+En caso de extranjeros, colocar la dirección en donde se realizó la transacción.
+Nombre de la calle principal
+E4
+E309
+dNumCasVen
+Número de casa del vendedor
+E300
+N
+1-6
+1-1
+Si no tiene numeración colocar 0 (cero)

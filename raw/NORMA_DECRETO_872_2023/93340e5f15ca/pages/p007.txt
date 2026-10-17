@@ -1,0 +1,14 @@
+SESCUCENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° (cid:9)
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-7-
+alto nivel de confianza, bajo su control exclusivo y estar vinculada con los datos firmados por la misma de modo tal que cualquier modificación ulterior de los mismos sea detectable.
+18. Formato XML: Es un metalenguaje que permite definir lenguajes de marcas desarrollado por el World Wide Web Consortium (W3C) utilizado para transmitir y almacenar datos en forma legible. 19. IRP: Impuesto a la Renta Personal.
+20. IVA: Impuesto al Valor Agregado.
+21. KuDE: Es la representación gráfica de un Documento Tributario Electrónico, en formato físico o digital.
+22. Reglamentación: Resolución de carácter general emitida por la DNIT, para garantizar la adecuada implementación del presente Decreto, la cual deberá ser complementada con la Documentación Técnica. 23. RUC: Registro Único de Contribuyentes.
+24. Sistema Marangatu: Sistema de Gestión Tributaria Marangatu. 25. Prestador cualificado de servicios de confianza: Es el que presta uno o varios servicios de confianza cualificados y al que el organismo de supervisión ha concedido la habilitación.
+26. Timbrado: Es el código numérico de autorización otorgado por la DNIT al contribuyente facturador electrónico, para la emisión de Documentos Electrónicos a fin de sustentar los hechos económicos que tienen efectos fiscales. La autorización se hará a través del Sistema Marangatu.
+27. Validación: Conjunto de reglas técnicas y de negocios aplicadas por el SIFEN al archivo electrónico de los Documentos Electrónicos y eventos, que tiene por objetivo verificar si el archivo cumple con todos los requisitos y las condiciones existentes en el modelo operativo del SIFEN.

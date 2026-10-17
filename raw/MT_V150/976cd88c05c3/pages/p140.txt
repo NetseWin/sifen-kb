@@ -1,0 +1,47 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+22
+GDI002b
+CDC del DTE inválido
+4201
+La estructura del CDC informado no corresponde (longitud y/o dígito verificador)
+R
+23
+GDI002c
+CDC inexistente o ha superado el plazo para registro del evento
+4202
+Cuando el CDC no se encuentra en la base de datos del SIFEN o el plazo del registro del evento es inválido:
+Regla para plazo inválido:
+*Si el primer evento del receptor que se pretende registrar es disconformidad, este no se puede realizar después de 45 días contados a partir de la fecha de emisión del DTE
+*Si no es el primer evento del receptor y el último evento realizado por el receptor no es una conformidad, la disconformidad no puede superar los 45 días contados a partir de la fecha de emisión del DTE.
+*Si no es el primer evento del receptor y el último evento realizado por el receptor es una conformidad, entonces la disconformidad (evento correctivo) no puede superar los 15 días contados a partir de la fecha de realización del evento de conformidad
+R
+24
+GDI002e
+No se puede registrar la disconformidad por CDC del DTE cancelado
+4204
+El CDC del DTE ya ha sido cancelado con anterioridad
+R
+11.6.6. REGLAS DE VALIDACIÓN PARA EL EVENTO DESCONOCIMIENTO DE/DTE
+N° Val
+ID
+Resultado de la Validación
+Código
+Observación
+E
+25
+GED002b
+CDC del DTE ya cuenta con un evento de esta naturaleza
+4251
+Sobre el CDC de un DTE se puede realizar hasta un evento de desconocimiento
+R
+26
+GED002c
+CDC del DTE inválido
+4252
+La estructura del CDC informado no corresponde (longitud y/o dígito verificador)
+R

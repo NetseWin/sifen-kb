@@ -1,0 +1,81 @@
+4. Se elimina la referencia y el cuadro que representa las relaciones que pueden darse entre eventos del receptor
+Referencia:
+Gris = encabezado
+Verde = puede realizarse luego del evento que se encuentra en el encabezado
+Rojo = no puede realizarse luego del evento que se encuentra en el encabezado
+DOCUMENTO ELECTRÓNICO
+DOCUMENTO TRIBUTARIO ELECTRÓNICO
+Notificación - Recepción
+Desconocimiento
+Notificación - Recepción
+Conformidad parcial
+Conformidad total
+Disconformidad
+Desconocimiento
+Notificación - Recepción DE
+Notificación - Recepción DE
+Notificación - Recepción DTE
+Notificación - Recepción DTE
+Notificación - Recepción DTE
+Notificación - Recepción DTE
+Notificación - Recepción DTE
+Conformidad parcial
+Conformidad parcial
+Conformidad parcial
+Conformidad parcial
+Conformidad parcial
+Conformidad parcial
+Conformidad parcial
+Conformidad total
+Conformidad total
+Conformidad total
+Conformidad total
+Conformidad total
+Conformidad total
+Conformidad total
+Disconformidad
+Disconformidad
+Disconformidad
+Disconformidad
+Disconformidad
+Disconformidad
+Disconformidad
+Desconocimiento DTE
+Desconocimiento DTE
+Desconocimiento DTE
+Desconocimiento DTE
+Desconocimiento DTE
+Desconocimiento DTE
+Desconocimiento DTE
+Inutilización de número
+Inutilización de número
+Inutilización de número
+Inutilización de número
+Inutilización de número
+Inutilización de número
+Inutilización de número
+5. Se incluye la siguiente descripción respecto al registro de eventos del receptor
+En el Sistema Integrado de Facturación Electrónica Nacional se podrá realizar el registro de cualquier evento del receptor siempre y cuando se encuentre dentro del plazo establecido para cada evento, quedando como válido e inalterable el último evento registrado.
+✓ Para los Documentos Electrónicos: El conteo del plazo de registro del evento comienza a partir de la fecha de emisión.
+✓ Para los Documentos Tributarios Electrónicos: El conteo del plazo de registro del evento comienza a partir de la fecha de aprobación.
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Jonathan Garay
+21/12/2022
+Martha Rojas
+10/03/2023
+Elaboración del Documento, Formato de Campos y Validaciones
+Jonathan Garay
+17/04/2023
+Martha Rojas
+24/04/2023
+Ajuste de criterios en las validaciones
+Rossana Mena
+17/11/2023
+Jonathan Garay
+17/11/2023
+Depuración y Ajuste de validaciones

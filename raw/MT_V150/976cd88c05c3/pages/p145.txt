@@ -1,0 +1,24 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+34
+GET028
+Tipo de identificación del vehículo requerido para el motivo Cambio de vehículo
+4321
+Cuando el motivo del evento es cambio de vehículo (GET003=4), es obligatorio informar el tipo de identificación del vehículo (GET028)
+R
+35
+GET029
+Tipo de identificación del vehículo no informado
+4322
+Se requiere el número de identificación del vehículo cuando el tipo de identificación del vehículo es 1 (GET028=1)
+R
+36
+GET030
+Número de matrícula del vehículo no informado
+4323
+Se requiere número de matrícula del vehículo cuando el tipo de identificación del vehículo es 2 (GET028=2)
+R

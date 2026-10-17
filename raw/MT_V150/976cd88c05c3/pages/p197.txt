@@ -1,0 +1,77 @@
+13.4.2. Campos que describen los ítems de la operación del KuDE
+En esta sección de la estructura del KuDE se encuentran los siguientes campos:
+Código del ítem
+Descripción del producto y/o servicio
+Descripción de la unidad de medida
+Cantidad
+Precio unitario
+Descuento del producto por ítem
+Descripción de la forma de afectación tributaria del IVA
+Descripción de la forma de afectación tributaria del IVA
+Descripción de la forma de afectación tributaria del IVA
+Campo E701-E707
+Campo E708
+Campo E710
+Campo E711
+Campo E721
+Campo EA002
+Campo E732 (0%)
+Campo E732 (5%)
+Campo E732 (10%)
+Ejemplo de ítems operación de KuDE (FE)
+Datos
+Operación
+Art
+Cod
+Descripción
+Unidad de medida
+Cantidad
+Precio Unitario
+Descuento
+Valor de Venta
+Exentas
+5%
+10%
+INF012
+Disco duro
+UNI
+1
+110.000
+0
+0
+110.000
+13.4.3. Campos que describen los subtotales y totales de la transacción documentada y liquidación de IVA
+En esta sección de la estructura del KuDE se encuentran los siguientes campos:
+Exentas
+5%
+10%
+Subtotal
+Campo F002
+Campo F004
+Campo F005
+Total de la operación:
+Campo F007
+Total en Guaraníes
+Campo F022
+Liquidación IVA:
+(5%): Campo F014
+(10%): Campo F015
+Total de IVA: Campo F016
+Ejemplo de subtotales y totales de KuDE (FE)
+SUBTOTAL:
+110.000
+TOTAL A PAGAR:
+110.000
+TOTAL EN GUARANIES
+110.000
+LIQUIDACIÓN IVA:
+(5%)
+(10%)
+10.000
+TOTAL IVA:
+10.000
+Subtotales
+Y totales
+13.4.4. Campos de información propia de la consulta en SIFEN de la SET
+Los campos de Información propios de la consulta en SIFEN
+• En el portal ingresar en Servicios y consultas

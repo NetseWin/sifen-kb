@@ -1,0 +1,58 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+F
+F036
+dLiqTotIVA5
+Liquidación total del IVA por redondeo a la tasa del 5%
+F001
+N
+1-15p(0-8)
+0-1
+Corresponde al cálculo del impuesto al IVA a la tasa del 5% sobre el valor del redondeo (Valor del redondeo/1,05), cuando la operación sea a la tasa del 5% (E734=5)
+No debe existir el campo si D013 ≠ 1 o D013≠5
+F
+F037
+dLiqTotIVA10
+Liquidación total del IVA por redondeo a la tasa del 10%
+F001
+N
+1-15p(0-8)
+0-1
+Corresponde al cálculo del impuesto al IVA a la tasa del 10% sobre el valor del redondeo (Valor del redondeo/1,1), cuando la operación sea a la tasa del 10% (E734=10)
+No debe existir el campo si D013 ≠ 1 o D013≠5
+F
+F026
+dIVAComi
+Liquidación total del IVA de la comisión
+F001
+N
+1-15p(0-8)
+0-1
+Se aplica la tasa del 10% para comisiones
+F
+F017
+dTotIVA
+Liquidación total del IVA
+F001
+N
+1-15p(0-8)
+0-1
+Corresponde al cálculo aritmético F015 (Liquidación del IVA al 10%) + F016(Liquidación del IVA al 5%) – F036 (redondeo al 5%) – F037 (redondeo al 10%) + F026 (Liquidación total del IVA de la comisión)
+No debe existir el campo si D013 ≠ 1 o D013≠5
+F
+F018
+dBaseGrav5
+Total base gravada al 5%
+F001
+N
+1-15p(0-8)
+0-1
+Suma de todas las ocurrencias de E735 (base gravada del IVA por ítem) cuando la operación sea a la tasa del 5% (E734=5).
+No debe existir el campo si D013 ≠ 1 o D013≠5

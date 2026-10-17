@@ -1,0 +1,6 @@
+Para aquellos casos en los que se introduzcan cambios que alteren la conformación del CDC, el emisor deberá inutilizar el número de comprobante previamente generado y emitir uno nuevo, lo cual igualmente supone su envío al receptor o comprador.
+6.6. Verificación de la existencia del DTE por parte del receptor
+En el modelo de aprobación posterior, el receptor de los DE, con el objeto de ejercer sus derechos tributarios (como respaldo documental de sus Declaraciones Juradas), se obliga a verificar la existencia y coincidencia de la Representación Gráfica del DTE (KuDE) con el DTE almacenado en el SIFEN.
+La verificación podrá realizarse por servicio web de consulta CDC, o mediante consulta en la página web que para sus efectos disponga la SET a través de SIFEN, a partir del código QR existente incorporado en el KuDE o por el llenado del CDC en la página. Al respecto, debe verificar en específico que:
+• El DE fue transmitido y obtuvo la aprobación como DTE, y
+• Que la información presente en el KuDE coincide plenamente con la información del DTE consultado.

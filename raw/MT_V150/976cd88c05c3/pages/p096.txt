@@ -1,0 +1,113 @@
+E9.4. Sector de Supermercados (E810-E819)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E9.4
+E810
+gGrupSup
+Grupo del sector supermercados
+E790
+G
+0-1
+E9.4
+E811
+dNomCaj
+Nombre del cajero
+E810
+A
+1-20
+0-1
+E9.4
+E812
+dEfectivo
+Efectivo
+E810
+N
+1-15p(0-4)
+0-1
+E9.4
+E813
+dVuelto
+Vuelto
+E810
+N
+1-6p(0-4)
+0-1
+E9.4
+E814
+dDonac
+Monto de la donación
+E810
+N
+1-6p(0-4)
+0-1
+E9.4
+E815
+dDesDonac
+Descripción de la donación
+E810
+A
+1-20
+0-1
+E9.5. Grupo de datos adicionales de uso comercial (E820-E829)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E9.5
+E820
+gGrupAdi
+Grupo de datos adicionales de uso comercial
+E790
+G
+0-1
+E9.5
+E821
+dCiclo
+Ciclo
+E820
+A
+1-15
+0-1
+E9.5
+E822
+dFecIniC
+Fecha de inicio de ciclo
+E820
+F
+10
+0-1
+Obligatorio si se informa el campo E811
+No completar si no se informa el campo E811
+Formato AAAA-MM-DD
+E9.5
+E823
+dFecFinC
+Fecha de fin de ciclo
+E820
+F
+10
+0-1
+Obligatorio si se informa el campo E812
+No completar si no se informa el campo E812
+Formato AAAA-MM-DD
+E9.5
+E824
+dVencPag
+Fecha de vencimiento para el pago
+E820
+F
+10
+0-3
+Formato AAAA-MM-DD

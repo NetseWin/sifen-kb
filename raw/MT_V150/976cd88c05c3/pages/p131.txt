@@ -1,0 +1,93 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GEA
+GEA002
+Id
+CDC del DTE asociado
+GEA001
+A
+44
+1-1
+Evento automático por SIFEN: Evento remisión
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GEA
+GERE001
+rGeVeRem
+Raíz Gestión de Eventos remisión
+GDE007
+-
+-
+-
+Elemento raíz
+GEA
+GERE002
+Id
+CDC del DTE asociado
+GERE001
+A
+44
+1-1
+Evento por actualización de datos: Datos del transporte
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GDE
+GET001
+rGeVeTr
+Raíz Gestión de Eventos por actualización de datos del transporte
+GDE007
+-
+-
+-
+Elemento raíz
+GDE
+GET002
+Id
+CDC del DTE
+GET001
+A
+44
+1-1
+GDE
+GET003
+dMotEv
+Motivo del evento
+GET001
+N
+1
+1-1
+1= Cambio del local de la entrega
+2= Cambio del chofer
+3= Cambio del transportista
+4= Cambio de vehículo
+GDE
+GET004
+cDepEnt
+Código del departamento del local de la entrega
+GET001
+N
+1-2
+0-1
+Obligatorio si GET003=1
+Según XSD de Departamentos

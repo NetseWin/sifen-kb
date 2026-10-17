@@ -1,0 +1,50 @@
+12.4. Validaciones del formato
+A. Campos firmados del Documento Electrónico (A001-A099)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+1
+A002
+CDC no correspondiente con las informaciones del XML
+1000
+El CDC no es compatible con las informaciones de los campos del XML (C002, D101, D102, C005, C006, C007, D103, D002, B002, B004, A003)
+R
+2
+A002a
+CDC duplicado
+1001
+Ya fue autorizado otro documento con coincidencia simultánea de contenido de los campos del CDC
+R
+3
+A002b
+Documento electrónico duplicado
+1002
+Ya fue autorizado otro documento con coincidencia simultánea de contenido de los campos del Timbrado: 1) Tipo de documento (C002)
+2) Número de Timbrado (C004) 3) Número de documento (C007) 4) Tipo de emisión (B002)
+5) Establecimiento (C005)
+6) Punto de Expedición (C006)
+7) Serie (C010) Si se informa
+R
+4
+A003
+DV del CDC inválido
+1003
+Valor incorrecto del dígito verificador informado según algoritmo módulo 11
+R
+5
+A004a
+La fecha y hora de la firma digital es adelantada
+1004
+La fecha y hora de la firma digital no debe ser posterior a la fecha y hora de SIFEN
+R
+6
+A004b
+Transmisión extemporánea del DE
+1005
+La transmisión del DE no debe exceder el tiempo de validación posterior parametrizado para el contribuyente, tomando como referencia la fecha y hora de la Firma Digital (A004)
+La SET podrá aplicar la sanción conforme a lo dispuesto en la reglamentación.
+Aprobado con observaciones (Extemporaneidad)
+AO

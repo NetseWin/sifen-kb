@@ -1,0 +1,78 @@
+NOTA TÉCNICA N° 11
+Fecha: 20/10/2022
+Cambios desde la fecha 23/09/2022 al 20/10/2022
+Referencia: Correcciones y ajustes sobre el MT versión 150
+1. WEB SERVICES
+1.1. Se incluye el siguiente Web Service:
+9.8. WS consulta masiva de RUC – rEnviConsArchivoRUCRequest
+Función:
+Devuelve el resultado de la consulta de los datos de razón social, si es facturador electrónico y estado del RUC de todos los contribuyentes existentes (excepto cancelados).
+Proceso:
+Síncrono
+Método:
+rEnviConsArchivoRUCRequest
+9.8.1. Definición del protocolo que consume este servicio
+El Request que consumirá este servicio estará construido en XML, según el Schema expuesto a Continuación: Schema XML 20: WS_ConsultaArchivoRuc.xsd
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+ESch01
+rEnviConsArchivoRUCRequest
+Raíz
+-
+-
+-
+-
+Elemento raíz
+ESch02
+rConsultaArchivo
+Contenedor de parámetros requeridos para la consulta.
+ESch01
+G
+-
+1-1
+Definido en el schema xml: siConsultaArchivoRuc.xsd
+Schema XML 21: siConsultaArchivoRuc.xsd
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+ESch03
+ConsultaDTE
+Raíz
+ESch02
+G
+-
+1-1
+Elemento raíz
+ESch04
+Id
+Identificador de control de envío.
+ESch03
+N
+1-15
+1-1
+Atributo. Número secuencial autoincremental, para identificación del mensaje enviado. La responsabilidad de generar y controlar este número es exclusiva del contribuyente.
+ESch05
+dRucFactElec
+RUC del facturador electrónico.
+ESch03
+A
+5-8
+1-1
+RUC no incluye el dígito verificador (DV).
+ESch06
+Signature
+Grupo de campos de firma
+ESch02
+G
+1-1

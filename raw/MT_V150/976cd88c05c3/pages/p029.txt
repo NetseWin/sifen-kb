@@ -1,0 +1,16 @@
+7. Características tecnológicas del formato
+En este capítulo se abordan las características tecnológicas de la facturación electrónica, que involucran la utilización de certificados digitales, el lenguaje utilizado para el intercambio de información, XML o lenguaje de marcado o extensible1, juntamente con los Servicios Web, esenciales para el intercambio seguro de los DE.
+También se identifican los Servicios Web contemplados en el modelo conceptual de comunicación, se establecen las definiciones acerca de la utilización del XML, así como los estándares de comunicación entre el SIFEN y los sistemas de los contribuyentes.
+7.1. Modelo conceptual de comunicación
+El SIFEN, disponibilizará los siguientes Servicios Web:
+• Recepción de DE
+• Recepción lotes de DE
+• Consulta resultado lote
+• Recepción evento
+• Consulta DE
+• Consulta RUC (por demanda)
+• Consulta DE a entidades u organismos externos autorizados (a futuro)
+Cada servicio se encuentra respaldado por un Servicio Web específico. El modelo de comunicación e interoperabilidad siempre iniciará en el sistema del contribuyente (sea de manera directa o prestado por un tercero), por medio del consumo del servicio correspondiente. Ver gráfica Nº 05
+FLUJO DE COMUNICACIÓN Cliente Sistema de FE Sistema de FE Facturas Servicios Sincrónicos Facturas Electrónicas SIFEN Servicios Asincrónicos Transacciones https Flujo de la Comunicación SETContribuyente
+Gráfica Nº 05: Flujo de comunicación
+1 https://es.wikipedia.org/wiki/Extensible_Markup_Language

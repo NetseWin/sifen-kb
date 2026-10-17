@@ -1,0 +1,87 @@
+Una vez establecida la conexión con el SIFEN se realizarán las validaciones iniciales13, la respuesta corresponde a un protocolo XML, donde se informa si superó o no las primeras validaciones.
+9.2.3. Protocolo de respuesta
+Corresponde al protocolo de procesamiento del DE y la definición de los Schemas XML 3 y XML 4.
+Schema XML 6: resRecepLoteDE_v150.xsd (Respuesta del WS Recepción Lote)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+BRSch01
+rResEnviLoteDe
+Raíz
+-
+-
+-
+-
+Elemento raíz
+BRSch02
+dFecProc
+Fecha y hora de recepción
+BRSch01
+D
+19
+1-1
+Formato: “AAAA-MM- DD-hh:mm:ss”
+BRSch03
+dCodRes
+Código del resultado de recepción
+BRSch01
+N
+4
+1-1
+Definido en el tópico correspondiente del capítulo 12
+BRSch04
+dMsgRes
+Mensaje del resultado de recepción
+BRSch01
+A
+1-255
+1-1
+Definido en el tópico correspondiente del capítulo 12
+BRSch05
+dProtConsLote
+Número de Lote
+BRSch01
+N
+1-15
+0-1
+Generado solamente si dCodRes=0300, Definido en el tópico correspondiente del capítulo 12
+BRSch06
+dTpoProces
+Tiempo medio de procesamiento en segundos
+BRSch01
+N
+1-5
+1-1
+Conforme a la sección correspondiente en el presente manual
+9.3. WS consulta resultado de lote DE – siResultLoteDE
+Función:
+Devuelve el resultado del proceso de cada uno de los DE del lote
+Proceso:
+Asíncrono
+Método:
+SiResultLoteDE
+9.3.1. Definición del protocolo que consume este servicio
+El Request que consumirá este servicio estará construido en XML, según el Schema expuesto a continuación:
+Schema XML 7: SiResultLoteDE_v150.xsd (WS Consulta Resultado de Lote)
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+CSch01
+rEnviConsLoteDe
+Raíz
+-
+-
+-
+-
+Elemento raíz
+13 Estas validaciones iniciales, están contenidas en el Capítulo 12 del presente Manual.

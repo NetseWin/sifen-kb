@@ -1,0 +1,13 @@
+SESUICENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° g.r 2
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-5-
+como emisor y un Organismo o Entidad del Estado (OEE) como receptor (empresas públicas, entes autárquicos, entidades descentralizadas y sociedades de economía mixta).
+6. Certificado Cualificado de Firma Electrónica: Un certificado de firma electrónica que ha sido expedido por un prestador cualificado de servicios de confianza y que cumple los requisitos establecidos en el artículo 43 de la Ley N° 6822/2021.
+7. Código de Control (CDC): Conjunto de informaciones numéricas asociadas a un Documento Electrónico, conformado por cuarenta y cuatro (44) dígitos numéricos que permiten identificar, de manera única, un documento electrónico o un documento tributario electrónico. 8. Código QR (QR): Código bidimensional generado por el sistema informático de los facturadores electrónicos, el cual deberá estar expuesto en el KuDE, a los efectos de realizar, a través de un programa o aplicación móvil de escaneo de QR, la consulta automática de los datos de los Documentos Tributarios Electrónicos en el SIFEN.
+9. Código de Seguridad del Contribuyente (CSC): Es un código secreto brindado a los facturadores electrónicos por la Dirección Nacional de Ingresos Tributarios, teniendo esta y el contribuyente el conocimiento exclusivo del CSC, el cual es utilizado por el emisor del documento electrónico para la generación del QR a fin de garantizar la autoría del KuDE.
+10. Dirección Nacional de Ingresos Tributarios (DNIT): Institución creada por Ley N° 7143/2023, que tiene a su cargo fijar normas generales para trámites administrativos, impartir instrucciones, dictar actos necesarios para la aplicación, gestión, percepción y fiscalización de tributos que se encuentren bajo su competencia.
+11. Documento Electrónico (DE): Es el documento emitido y suscripto con firma electrónica cualificada por un facturador electrónico que aún no ha sido aprobado por parte del SIFEN.
+GcJ

@@ -1,0 +1,93 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.2
+E732
+dDesAfecIVA
+Descripción de la forma de afectación tributaria del IVA
+E730
+A
+6-15
+1-1
+Referente al campo E731
+1= “Gravado IVA”
+2= “Exonerado (Art. 83- Ley 125/91)”
+3= “Exento”
+4= “Gravado parcial (Grav- Exento)”
+E8.2
+E733
+dPropIVA
+Proporción gravada de IVA
+E730
+N
+1-3p(0-8)
+1-1
+Corresponde al porcentaje (%) gravado
+Ejemplo:100, 50, 30, 0
+E8.2
+E734
+dTasaIVA
+Tasa del IVA
+E730
+N
+1-2
+1-1
+Corresponde al porcentaje (%) de la tasa expresado en números enteros
+0 (para E731 = 2 o 3)
+5 (para E731 = 1 o 4)
+10 (para E731 = 1 o 4)
+E8.2
+E735
+dBasGravIVA
+Base gravada del IVA por ítem
+E730
+N
+1-15p(0-8)
+1-1
+Si E731 = 1 o 4 este campo es igual al resultado del cálculo
+[EA008* (E733/100)] / 1,1 si la tasa es del 10%
+[EA008* (E733/100)] / 1,05 si la tasa es del 5%
+Si E731 = 2 o 3 este campo es igual 0
+E8.2
+E736
+dLiqIVAItem
+Liquidación del IVA por ítem
+E730
+N
+1-15p(0-8)
+1-1
+Corresponde al cálculo aritmético:
+E735 * (E734/100)
+Si E731 = 2 o 3 este campo es igual 0
+E8.4. Grupo de rastreo de la mercadería (E750-E760)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.4
+E750
+gRasMerc
+Grupo de rastreo de la mercadería
+E700
+G
+0-1
+E8.4
+E751
+dNumLote
+Número de lote
+E750
+A
+1-80
+0-1
+Obligados por la RG N° 24/2019 – Agroquímicos

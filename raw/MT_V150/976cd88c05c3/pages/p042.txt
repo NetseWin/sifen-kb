@@ -1,0 +1,32 @@
+7.10. Resumen de las Direcciones Electrónicas de los Servicios Web para Ambientes de Pruebas y Producción
+URL
+Ambiente
+https://sifen.set.gov.py/de/ws/sync/recibe.wsdl?wsdl
+Producción
+https://sifen.set.gov.py/de/ws/async/recibe-lote.wsdl?wsdl
+Producción
+https://sifen.set.gov.py/de/ws/eventos/evento.wsdl?wsdl
+Producción
+https://sifen.set.gov.py/de/ws/consultas/consulta-lote.wsdl?wsdl
+Producción
+https://sifen.set.gov.py/de/ws/consultas/consulta-ruc.wsdl?wsdl
+Producción
+https://sifen.set.gov.py/de/ws/consultas/consulta.wsdl?wsdl
+Producción
+https://sifen-test.set.gov.py/de/ws/sync/recibe.wsd?wsdl
+Test
+https://sifen-test.set.gov.py/de/ws/async/recibe-lote.wsdl?wsdl
+Test
+https://sifen-test.set.gov.py/de/ws/eventos/evento.wsdl?wsdl
+Test
+https://sifen-test.set.gov.py/de/ws/consultas/consulta.wsdl?wsdl
+Test
+https://sifen-test.set.gov.py/de/ws/consultas/consulta-lote.wsdl?wsdl
+Test
+https://sifen-test.set.gov.py/de/ws/consultas/consulta-ruc.wsdl?wsdl
+Test
+7.11. Servidor para sincronización externa de horario
+Las direcciones para acceder a los servidores NTP para sincronización de horario son:
+• aravo1.set.gov.py
+• aravo2.set.gov.py
+El acceso a los servicios, citados en los puntos 7.10 y 7.11, dependerá de la política de seguridad establecida por la SET. Por lo que, podrá limitar y/o restringir la utilización de los servicios por contribuyente, por direcciones IP u otros, de tal forma a asegurar la disponibilidad de los recursos según cada etapa del plan general del SIFEN.

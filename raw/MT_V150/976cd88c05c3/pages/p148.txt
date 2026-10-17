@@ -1,0 +1,127 @@
+12.1.1. Códigos de respuestas de las validaciones de los Servicios Web
+Inicio ID
+Inicio código de respuesta
+Fin ID
+Fin código de respuesta
+Tipo de Regla de Validación
+Apartado
+AA01
+0000
+0099
+AA100
+Certificado de Transmisión (Protocolo TLS)
+AB01
+0100
+AB20
+0119
+Forma del área de datos de los mensajes de entrada de los WS
+AC01
+0120
+AC20
+0139
+Certificado digital utilizado por el contribuyente para firmar
+AD01
+0140
+AD20
+0159
+Firma digital
+AE01
+0160
+AE20
+0179
+Validaciones genéricas sobre los mensajes de entrada de los WS
+AF01
+0180
+AR20
+0199
+Validaciones genéricas sobre los mensajes de control de llamada de los WS
+BA01
+0200
+BA20
+0219
+Mensaje de entrada del WS SiRecepDE
+BB01
+0220
+BB20
+0239
+Información de control de la llamada al WS SiRecepDE
+BC01
+0260
+BC20
+0259
+Área de datos del WS SiRecepDE
+BD01
+0270
+BD20
+0279
+Mensaje de entrada del WS SiRecepLoteDE
+BE01
+0280
+BE20
+0299
+Información de control de la llamada al WS SiRecepLoteDE
+BF01
+0300
+BF20
+0319
+Área de datos del WS SiRecepLoteDE
+BG01
+0320
+BG20
+0339
+Mensaje de entrada del WS SiResultLoteDE
+BH01
+0340
+BH20
+0359
+Información de control de la llamada al WS SiResultLoteDE
+BI01
+0360
+BI20
+0379
+Área de datos del WS SiResultLoteDE
+BJ01
+0380
+BJ20
+0399
+Mensaje de entrada del WS SiConsDE
+BK01
+0400
+BK20
+0419
+Información de control de la llamada al WS SiConsDE
+BL01
+0420
+BL20
+0439
+Área de datos del WS SiConsDE
+BM01
+0460
+BM20
+0479
+Mensaje de entrada del WS siConsRUC
+BN01
+0480
+BN20
+0499
+Información de control de la llamada al WS siConsRUC
+BO01
+0500
+BO20
+0559
+Área de datos del WS siConsRUC
+BS01
+0560
+BS20
+0579
+Mensaje de entrada del WS SiRecepEvento
+BT01
+0580
+BT20
+0599
+Información de control de la llamada al WS SiRecepEvento
+BU01
+0600
+BU20
+0619
+Área de datos del WS SiRecepEvento

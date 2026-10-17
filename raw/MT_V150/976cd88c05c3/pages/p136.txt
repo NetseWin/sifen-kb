@@ -1,0 +1,85 @@
+11.6.2. REGLAS DE VALIDACIÓN PARA INUTILIZACIÓN
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+9
+GEI002
+Número de timbrado inválido para el ambiente de pruebas.
+4051
+Cuando en ambiente de prueba es obligatorio el uso del timbrado de pruebas.
+R
+8
+GEI002a
+Número de timbrado no corresponde al contribuyente
+4052
+El número de timbrado no corresponde al RUC del contribuyente facturador electrónico
+R
+9
+GEI002b
+Número de timbrado no corresponde al medio de generación
+4053
+El número del timbrado no corresponde al medio de generación para factura electrónica
+R
+10
+GEI003
+Código de establecimiento inválido para el timbrado informado
+4054
+El código del establecimiento no corresponde a un timbrado del medio de generación para facturación electrónica
+R
+11
+GEI004
+El código del punto de expedición es inválido para el timbrado informado
+4055
+El código del punto de expedición no corresponde a un timbrado autorizado para el contribuyente
+R
+12
+GEI007
+Tipo de Documento no corresponde al Número de Timbrado
+4060
+El tipo de Documento no corresponde a un número de timbrado autorizado
+R
+13
+GEI005
+Existe DTE en el rango informado
+4065
+Para el rango solicitado existe DTE en SIFEN
+R
+14
+GEI005a
+Existe número inutilizado en el rango solicitado
+4066
+Dentro del rango solicitado para inutilización existen número de DE ya inutilizados en SIFEN
+R
+15
+GEI006
+Cantidad de números en el rango es inválida
+4067
+La cantidad máxima de números en el rango debe ser menor o igual a 1000 (GEI006 – GEI005 menor o igual a 1000)
+R
+16
+GEI006a
+Número final de rango es inválido
+4068
+El número del final de rango (GEI006) debe ser mayor que el número de inicio del rango (GEI005)
+R
+19
+GDE008
+Firmador no autorizado para realizar evento
+4069
+El RUC del certificado utilizado para firmar los eventos no corresponde al emisor/electrónico
+R
+20
+GDE008a
+Firma Digital inválida por certificado digital revocado
+4070
+El certificado digital que se utilizó para firmar el evento está revocado en la fecha de firma digital (GDE004)
+R
+21
+GDE004
+Fecha de firma digital del evento inválida
+4071
+La fecha de firma digital del evento no puede ser posterior a la Fecha de SIFEN
+R

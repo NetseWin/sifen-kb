@@ -1,0 +1,15 @@
+SESQUICENTENARIO DE LA EPOPEYA NACIONAL 1864 - 1870
+PRESIDENCIA DE LA REPÚBLICA DEL PARAGUAY
+MINISTERIO DE ECONOMÍA Y FINANZAS
+DECRETO N° (cid:9)
+POR EL CUAL SE REGLAMENTA LA EMISIÓN ELECTRÓNICA DE COMPROBANTES DE VENTA Y OTROS DOCUMENTOS TRIBUTARIOS, A TRAVÉS DEL SISTEMA INTEGRADO DE FACTURACIÓN ELECTRÓNICA NACIONAL (SIFEN).
+-16-
+Art. 17.- Comprobante Electrónico de Retención. Es el documento electrónico que acredita la retención de impuestos realizada por los Agentes de Retención, en cumplimiento de lo dispuesto en la normativa vigente.
+El mismo deberá expedirse en el momento en que se efectúa la retención y en los casos en que la reglamentación de los impuestos lo determine.
+Art. 18.- Comprobante Electrónico de Percepción. Es el documento electrónico que acredita la percepción de impuestos realizada por los Agentes de Percepción, en cumplimiento de lo dispuesto en la normativa vigente.
+El mismo deberá expedirse en el momento en que se efectúa la percepción del impuesto y en los casos en que la reglamentación de los impuestos lo determine.
+SECCIÓN IV
+OTROS DOCUMENTOS TRIBUTARIOS ELECTRÓNICOS
+Art. 19.- Recibo Electrónico de Dinero. Es el documento electrónico emitido para documentar el pago de las cuotas de las operaciones a crédito o a plazo, así como para documentar ingresos de dinero en los cuales no existe la obligación por parte del contribuyente de emitir otro tipo de documento tributario.
+En las operaciones a crédito o a plazo, el Recibo Electrónico de Dinero deberá estar asociado a la Factura Electrónica que respalda la operación.
+El Recibo Electrónico de Dinero no podrá ser utilizado para respaldar IVA Crédito. Sin embargo, podrá ser utilizado para sustentar egresos por parte del comprador o adquirente de acuerdo con las disposiciones que regulan los impuestos a las rentas vigentes.

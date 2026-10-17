@@ -1,0 +1,15 @@
+• KuDE de Factura Electrónica
+• KuDE de Factura de Exportación Electrónica
+• KuDE de Factura de Importación Electrónica
+• KuDE de Autofactura Electrónica
+• KuDE de Nota de Débito Electrónica
+• KuDE de Nota de Crédito Electrónica
+• KuDE de Nota de Remisión Electrónica
+La representación gráfica de cada documento electrónico puede contar con una o varias páginas enumeradas. Debiendo indicar para el caso de varias páginas el número de la página en relación con el total. Ejemplo: 2/5. Para el caso de los subtotales o totales debe indicarlos en la última página y el código QR debe ser impreso, al menos, en la primera página.
+13.4. Estructura del KuDE
+Independiente del formato, el KuDE estará compuesto por la siguiente estructura:
+• Campos del encabezado.
+• Campos que describen los ítems de la operación, los precios, descuentos y valor total por ítem e impuestos.
+• Campos subtotales y totales de la transacción documentada, totales de liquidación de IVA, total en guaraníes.
+• Campos de información propia de la consulta en SIFEN de la SET.
+• Código QR.

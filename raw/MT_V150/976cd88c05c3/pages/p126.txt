@@ -1,0 +1,99 @@
+Evento Desconocimiento DE/DTE (Formato del evento de Desconocimiento DE/DTE)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+GER
+GED001
+rGeVeDescon
+Raiz Gestión de Eventos Desconocimiento
+GDE007
+-
+-
+-
+Elemento raíz
+GER
+GED002
+Id
+CDC del DE/DTE
+GED001
+A
+44
+1-1
+Corresponde al CDC de un Kude o CDC de un DTE
+GER
+GED003
+dFecEmi
+Fecha de emisión del DE/DTE
+GED001
+F
+19
+1-1
+Requerido para conteo de plazo de registro del evento del receptor (hasta 45 días desde la fecha de emisión).
+Fecha y hora en el formato AAAA-MM-DDThh:mm:ss.
+GER
+GED004
+dFecRecep
+Fecha Recepción DE
+GED001
+F
+19
+1-1
+Fecha y hora en el formato AAAA-MM-DDThh:mm:ss.
+GER
+GED005
+iTipRec
+Tipo de Receptor
+GED001
+N
+1
+1-1
+1=Contribuyente
+2=No Contribuyente
+GER
+GED006
+dNomRec
+Nombre o Razón Social del Receptor del DE/DTE
+GED001
+A
+4-60
+1-1
+GER
+GED007
+dRucRec
+Ruc del Receptor
+GED001
+A
+3-8
+0-1
+Requerido solo cuando el tipo de receptor es Contribuyente (GED005=1)
+No Informar si GED005=2
+GER
+GED008
+dDVRec
+Dígito verificador del RUC del contribuyente receptor
+GED001
+N
+1
+0-1
+Requerido solo cuando el tipo de receptor es Contribuyente (GED005=1)
+No Informar si GED005=2
+GER
+GED009
+dTipIDRec
+Tipo de documento de identidad del receptor
+GED001
+N
+1
+0-1
+No Informar si GED005=1
+Requerido solo cuando el tipo de receptor es No Contribuyente (GED005=2)
+1= Cédula paraguaya
+2= Pasaporte
+3= Cédula extranjera
+4= Carnet de residencia

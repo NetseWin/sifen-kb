@@ -1,0 +1,104 @@
+E9.3. Sector de Seguros (E800-E809)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E9.3
+E800
+gGrupSeg
+Grupo del sector de seguros
+E790
+G
+0-1
+E9.3
+E801
+dCodEmpSeg
+Código de la empresa de seguros en la Superintendencia de Seguros
+E800
+A
+20
+0-1
+E9.3.1. Póliza de seguros (EA790-EA799)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E9.3.1
+EA790
+gGrupPolSeg
+Grupo de póliza de seguros
+E800
+G
+1-999
+E9.3.1
+EA791
+dPoliza
+Código de la póliza
+EA790
+A
+1-20
+1-1
+E9.3.1
+EA792
+dUnidVig
+Descripción de la unidad de tiempo de vigencia
+EA790
+A
+3-15
+1-1
+Ejemplo: hora, día, mes, año
+E9.3.1
+EA793
+dVigencia
+Vigencia de la póliza
+EA790
+N
+1-5p1
+1-1
+E9.3.1
+EA794
+dNumPoliza
+Número de la póliza
+EA790
+A
+1-25
+1-1
+E9.3.1
+EA795
+dFecIniVig
+Fecha de inicio de vigencia
+EA790
+F
+19
+0-1
+Según el formato
+AAAA-MM-DDThh:mm:ss
+E9.3.1
+EA796
+dFecFinVig
+Fecha de fin de vigencia
+EA790
+F
+19
+0-1
+Según el formato
+AAAA-MM-DDThh:mm:ss
+E9.3.1
+EA797
+dCodInt
+Código interno del ítem
+EA790
+A
+1-20
+0-1
+Como referencia al campo E701, si desea asociar la póliza al ítem

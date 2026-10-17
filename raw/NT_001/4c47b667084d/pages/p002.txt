@@ -1,0 +1,73 @@
+F
+F034
+dTotAntItem
+Total Anticipo por ítem
+F001
+N
+1-15p(0-8)
+1-1
+Sumatoria de todas las ocurrencias de anticipos por ítem por la cantidad del ítem (EA006*E711)
+F
+F035
+dTotAnt
+Total Anticipo global por ítem
+F001
+N
+1-15p(0-8)
+1-1
+Sumatoria de todas las ocurrencias de anticipos globales por ítem por la cantidad del ítem (EA007*E711)
+F
+F011
+dDescTotal
+Total Descuentos de la operación
+F001
+N
+1-15p(0-8)
+1-1
+Sumatoria de todos los descuentos (Global por Ítem y particular por ítem) de cada ítem (F009+F033)
+F
+F012
+dAnticipo
+Total Anticipos de la operación
+F001
+N
+1-15p(0-8)
+1-1
+Sumatoria de todos los Anticipos (Global por Ítem y particular por ítem) F034 + F035
+F
+F014
+dTotGralOpe
+Total Neto de la operación
+F001
+N
+1-15p(0-8)
+1-1
+Corresponde al cálculo aritmético F008-F013+F025
+B- Validaciones
+1- Las siguientes validaciones sufren modificaciones: ​ ​
+ID
+Mensaje de validación
+Código
+Observación
+E
+C004b
+El número de timbrado no se encuentra vigente a la fecha de emisión del comprobante
+1103
+Número de timbrado no vigente (D002 no es posterior a la fecha de inicio de vigencia del timbrado (C008)
+R
+EA004
+El descuento global sobre el precio unitario por ítem no coincidente con lo informado
+1862
+El descuento global sobre el precio unitario por ítem no coincide con lo informado en el porcentaje de descuento global sobre total de la operación (F010) Según la siguiente fórmula: [F010 * E721 / 100] Puede haber una variación de 0.8
+R
+F011
+Cálculo del descuento sobre el total de la operación incorrecto
+2364
+Error en el cálculo del descuento sobre el total de la operación Es la sumatoria de F009 y F033
+R
+F014
+Cálculo del total general de la operación incorrecto
+2365
+Error en el cálculo del total general de la operación Cuando C002=1, 5 o 6 el cálculo debe ser igual a F008-F013+F025
+R
+Páginas: 160, 176, 184

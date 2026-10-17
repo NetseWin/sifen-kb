@@ -1,0 +1,131 @@
+NOTA TÉCNICA N° 14
+Fecha: 20/03/2023
+Fecha puesta a disposición para el Ambiente de Test
+31 de Mayo del 2023
+Fecha puesta a disposición para el Ambiente de Producción
+08 de Agosto del 2023
+Referencia: Correcciones y ajustes sobre el MT versión 150
+1. Formato de Campos XML
+1.1 Se agrega el Grupo: Evento de Nominación de Factura Electrónica (Formato del evento de nominación).
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocu
+Observaciones
+GDE
+GENFE001
+rGEveNom
+Raíz Gestión de Eventos Nominación
+GDE007
+G
+-
+-
+Elemento raíz
+GDE
+GENFE002
+Id
+Identificador del DTE
+GENFE001
+A
+44
+1-1
+Se informa el código de control (CDC)
+GDE
+GENFE003
+mOtEve
+Motivo del Evento
+GENFE001
+A
+5-500
+1-1
+Campo abierto
+GDE
+GENFE004
+iNatRec
+Naturaleza del receptor
+GENFE001
+N
+1
+1-1
+1= contribuyente
+2= no contribuyente
+GDE
+GENFE027
+iTiOpe
+Tipo de operación
+GENFE001
+N
+1
+1-1
+1= B2B
+2= B2C
+4= B2F
+GDE
+GENFE005
+cPaisRec
+Código de país del receptor
+GENFE001
+A
+3
+1-1
+Según XSD de Codificación de Países
+GDE
+GENFE006
+dDesPaisRe
+Descripción del país receptor
+GENFE001
+A
+4-50
+1-1
+Referente al campo GENFE005
+GDE
+GENFE007
+iTiContRec
+Tipo de contribuyente receptor
+GENFE001
+N
+1
+0-1
+Obligatorio si GENFE004=1
+No informar si GENFE004=2
+1= Persona Física
+2= Persona Jurídica
+GDE
+GENFE008
+dRucRec
+RUC del receptor
+GENFE001
+A
+3-8
+0-1
+Obligatorio si GENFE004=1
+No informar si GENFE004=2
+GDE
+GENFE009
+dDVRec
+Dígito verificador del RUC del receptor
+GENFE001
+N
+1
+0-1
+Obligatorio si existe el campo GENFE008
+Según algoritmo módulo 11
+GDE
+GENFE010
+iTipIDRec
+Tipo de documento de identidad del receptor
+GENFE001
+N
+1
+0-1
+Obligatorio si GENFE004=2
+1=Cédula paraguaya
+2=Pasaporte
+3=Cédula extranjera
+4=Carnet de residencia
+5=Tarjeta Diplomática de exoneración fiscal
+9=Otro

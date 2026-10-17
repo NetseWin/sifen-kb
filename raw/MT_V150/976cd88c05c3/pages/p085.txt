@@ -1,0 +1,120 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E7.1.1
+E629
+dNumTarj
+Número de la tarjeta
+E620
+N
+4
+0-1
+Cuatro últimos dígitos de la tarjeta
+E7.1.2. Campos que describen el pago o entrega inicial de la operación con cheque (E630-E639)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E7.1.2
+E630
+gPagCheq
+Campos que describen el pago o entrega inicial de la operación con cheque
+E605
+G
+0-1
+Se activa si E606 = 2
+E7.1.2
+E631
+dNumCheq
+Número de cheque
+E630
+A
+8
+1-1
+Completar con 0 (cero) a la izquierda hasta alcanzar 8 (ocho) cifras
+E7.1.2
+E632
+dBcoEmi
+Banco emisor
+E630
+A
+4-20
+1-1
+E7.2. Campos que describen la operación a crédito (E640-E649)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E7.2
+E640
+gPagCred
+Campos que describen la operación a crédito
+E600
+G
+0-1
+Obligatorio si E601 = 2
+No informar si E601 ≠ 2
+E7.2
+E641
+iCondCred
+Condición de la operación a crédito
+E640
+N
+1
+1-1
+1= Plazo
+2= Cuota
+E7.2
+E642
+dDCondCred
+Descripción de la condición de la operación a crédito
+E640
+A
+5-6
+1-1
+1= “Plazo”
+2= “Cuota”
+E7.2
+E643
+dPlazoCre
+Plazo del crédito
+E640
+A
+2-15
+0-1
+Obligatorio si E641 = 1
+Ejemplo: 30 días, 12 meses
+E7.2
+E644
+dCuotas
+Cantidad de cuotas
+E640
+N
+1-3
+0-1
+Obligatorio si E641 = 2
+Ejemplo: 12, 24, 36
+E7.2
+E645
+dMonEnt
+Monto de la entrega inicial
+E640
+N
+1-15p(0-4)
+0-1

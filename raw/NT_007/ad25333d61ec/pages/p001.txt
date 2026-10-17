@@ -1,0 +1,41 @@
+NOTA TÉCNICA N° 007
+Fecha: 01/02/2022
+Cambios desde la fecha 01/02/2022al 01/02/2022
+Referencia: Correcciones y ajustes sobre el MT versión 150
+B. Campos inherentes a la operación de Documentos Electrónicos (B001-B099)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+B
+B001
+gOpeDE
+Campos inherentes a la operación de DE
+A001
+G
+1-1
+B
+B006
+dInfoFisc
+Información de interés del Fisco respecto al DE
+B001
+A
+1-3000
+0-1
+Esta información debe ser impresa en el KuDE. Cuando el tipo de documento es Nota de remisión (C002=7) es obligatorio informar el mensaje según el Art. 3 Inc. 7 de la Resolución general Nro. 41/2014 En caso de realizar Factura Exportación, en este campo en la FE se debe completar con los siguientes datos y en este orden de conformidad al Art 20 numeral 15 del Decreto N° 10797/2013: a) Tipo de Operación, b) Condición de Negociación, (CIF, FOB, otros.) c) País de Destino, d) Empresa Fletera o Exportador Nacional, e) Agente de Transporte, f) Instrucciones de Pago para el cliente (Beneficiario, Banco, N° de cuenta, Código SWIFT, Cartas de Crédito, otro). g) Número/s de Conocimiento/s de Embarque. h) Número/s de Manifiesto/s Internacional/es de Carga. i) Número de barcaza o remolcador, descripción y cantidad del bien transportado (en los casos de Flete Internacional), j) Las demás informaciones que sean fijadas por la Administración Tributaria, en normas de carácter general ".
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Sara Ramirez
+01/02/2022
+Martha Rojas
+24/02/2022
+Modificar el campo de interés del fisco incluyendo observaciones de Factura Exportador hasta tanto se defina el documento de Factura Electrónica de Exportador timbrado. Y reenumerar la nota técnica para su publicación.

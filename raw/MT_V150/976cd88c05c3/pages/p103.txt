@@ -1,0 +1,60 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E10.4
+E996
+dDVAg
+Dígito verificador del RUC del agente
+E980
+N
+1
+0-1
+Casos particulares según RG N° 41/14
+Según algoritmo módulo 11
+E10.4
+E997
+dDirAge
+Dirección del agente
+E980
+A
+1-255
+0-1
+Casos particulares según RG N° 41/14
+F. Campos que describen los subtotales y totales de la transacción documentada (F001-F099)
+En consideración a la Resolución 347 del 2014 (Secretaría de Defensa del Consumidor-SEDECO). Las reglas de redondeo aplican a múltiplos de 50 guaraníes de la siguiente manera:
+Ejemplos:
+Guaraníes
+Redondeo
+Monto Redondeado
+107.437
+37
+107.400
+47.789
+39
+47.750
+Observación: Para monedas extranjeras o cualquier otro cálculo que contenga decimales, las reglas de validación aceptarán redondeos de 50 céntimos (por encima o por debajo)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+F
+F001
+gTotSub
+Campos de subtotales y totales
+A001
+G
+0-1
+Obligatorio si C002 ≠ 7
+No informar si C002 = 7
+Cuando C002= 4, no informar F002, F003, F004, F005, F015, F016, F017, F018, F019, F020, F023, F025 y F026

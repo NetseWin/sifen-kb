@@ -1,0 +1,21 @@
+• Caracteres de formato de archivo, como line-feed, carriage return, tab, espacios entre etiquetas.
+• Prefijos en el namespace de las etiquetas.
+• No incluir etiquetas de campos que no contengan valor, sean estas numéricas, que contienen ceros, vacíos o blancos para campos del tipo alfanumérico. Están excluidos de esta regla todos aquellos campos identificados como obligatorios en los distintos formatos de archivo XML, la obligatoriedad de los mismos será plenamente detallada.
+• No utilizar valores negativos
+• El nombre de los campos es sensible a minúsculas y mayúsculas, por lo que deben ser comunicados de la misma forma en la que se visualiza en el presente manual técnico.
+• Ej: el grupo gOpeDE, es diferente a GopeDE, a gopede y a cualquier otra combinación distinta a la inicial.
+7.3. Contenedor de documento electrónico
+Un contenedor del DE es un archivo XML que contiene el DE, con su validación de recepción, por parte del SIFEN, así como cualquier evento, registrado que lo involucre.
+La estructura está definida en la sección 9.4, correspondiente al SW “SiConsDE”.
+7.4. Estándar de comunicación
+La comunicación entre los contribuyentes y la SET está basada en los Servicios Web disponibles por el SIFEN.
+El medio para establecer esta comunicación es la Internet, apoyado en la utilización del protocolo de seguridad TLS versión 1.2, con autenticación mutua. Esto garantiza una comunicación segura, considerando la identificación del cliente consumidor del servicio por medio de certificados digitales.
+El modelo de comunicación sigue el estándar de Servicios Web definido por el WS-I4 BasicProfile5.
+El intercambio de documentos o mensajes entre el SIFEN y el sistema de los contribuyentes, utiliza el estándar SOAP, versión 1.26, con intercambio de mensajes XML basados en Style/Encoding: Document/Literal.
+La llamada o Request a cualquiera de los Servicios Web del SIFEN, es realizada con el envío de un mensaje XML incluido en el campo soap:Body.
+Request de ejemplo utilizando SOAP:
+4Web Services Interoperability Organization (WS-I, http://www.ws-i.org/about/Default.aspx)
+5http://www.ws-i.org/Profiles/BasicProfile-1.0-2004-04-16.html
+6Web Services Interoperability Organization (WS-I, http://www.ws-i.org/about/Default.aspx)
+6http://www.ws-i.org/Profiles/BasicProfile-1.0-2004-04-16.html
+6https://www.w3.org/TR/soap12/

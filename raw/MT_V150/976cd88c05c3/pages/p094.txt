@@ -1,0 +1,109 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.5
+E785
+dCapac
+Capacidad máxima de pasajeros
+E770
+N
+1-3
+0-1
+Capacidad máxima de pasajeros sentados
+E8.5
+E786
+dCilin
+Cilindradas del motor
+E770
+A
+4
+0-1
+E9. Campos complementarios comerciales de uso específico (E790-E899)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E9
+E790
+gCamEsp
+Campos complementarios comerciales de uso específico
+E001
+G
+0-1
+E9.2. Sector Energía Eléctrica (E791-E799)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E9.2
+E791
+gGrupEner
+Grupo del sector de energía eléctrica
+E790
+G
+0-1
+E9.2
+E792
+dNroMed
+Número de medidor
+E791
+A
+1-50
+0-1
+E9.2
+E793
+dActiv
+Código de actividad
+E791
+N
+2
+0-1
+E9.2
+E794
+dCateg
+Código de categoría
+E791
+A
+3
+0-1
+E9.2
+E795
+dLecAnt
+Lectura anterior
+E791
+N
+1-11p2
+0-1
+E9.2
+E796
+dLecAct
+Lectura actual
+E791
+N
+1-11p2
+0-1
+E9.2
+E797
+dConKwh
+Consumo
+E791
+N
+1-11p2
+0-1
+Corresponde a la diferencia entre E785-E784

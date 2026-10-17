@@ -1,0 +1,64 @@
+Tabla J: Resumen de los eventos de SIFEN según los actores
+N°
+Evento
+Actor
+Tipo
+Transmisión
+Plazo
+Alcance DE
+Criterios
+Condiciones
+Acceso
+1
+Cancelación del DTE
+Emisor
+Registro Requerido
+Evento conclusivo
+WS Sincrónico Eventos
+Hasta 48 horas de la aprobación del DTE cuando es igual a FE.
+Hasta 168 horas de la aprobación del DTE cuando los documentos electrónicos (NCE, NDE, NRE, AFE) son distintos a FE
+Todos los DTE
+• DTE en SIFEN • Situación Aprobado o Aprobado con observación (por extemporaneidad) • Se requiere informar la justificativa de la Cancelación (campo texto libre) • Para un DTE que tenga otros DTEs asociados, se debe realizar la cancelación del último DTE hasta llegar al inicial.
+• Hubo errores en la emisión del DE • La mercadería no fue entregada al cliente • El servicio no ha sido realizado al cliente
+WS
+2
+Inutilización del número de DE
+Emisor
+Registro Requerido
+Evento conclusivo
+WS Sincrónico Eventos
+Dentro de los 15 (quince) primeros días del mes siguiente al acaecimiento del hecho, deberá comunicar la inutilización de la numeración del DE.
+Y hasta fecha límite de validez del timbrado (plazo del sistema)
+Todos los DE
+• Número del DE en el rango de inutilización no existe en base de datos de SIFEN • Inutilización por rango de hasta 1000 (parámetro de SIFEN) números de DE no utilizados • Se requiere informar la justificativa de la Inutilización (campo texto libre)
+• Saltos de Numeración • Decisión de la empresa de inutilización de un número de DE que puede haber sido rechazado por errores técnicos (Errores de llenado de forma del DE) y no ocurrió el hecho generador del impuesto y no hubo el envío del DE al Receptor
+WS
+10
+Notificación de recepción DE o DTE
+Receptor
+Registro Requerido
+Evento informativo
+WS Sincrónico Eventos o Portal SIFEN
+Hasta 45 (cuarenta y cinco) días contados desde la fecha de emisión
+Todos los DE o DTE
+DTE o DE recepcionado
+WS/PORTAL
+11
+Conformidad DTE
+Receptor
+Registro Requerido
+Evento conclusivo
+WS Sincrónico Eventos o Portal SIFEN
+Hasta 45 (cuarenta y cinco) días contados desde la fecha de emisión
+Todos los DTE
+DTE
+WS/PORTAL
+12
+Disconformidad DTE
+Receptor
+Registro Requerido
+WS Sincrónico Eventos o Portal SIFEN
+Hasta 45 (cuarenta y cinco) días contados desde la fecha de emisión
+Todos los DTE
+DTE
+WS/PORTAL

@@ -1,0 +1,75 @@
+E10.2. Campos que identifican el local de entrega de las mercaderías (E940-E959)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+184
+E940
+Grupo de los campos que identifican el local de entrega de las mercaderías es obligatorio
+2200
+Si el tipo de documento electrónico seleccionado es Nota de Remisión Electrónica (C002=7), es obligatorio informar el grupo de los campos que identifican el local de entrega de las mercaderías
+R
+185
+E940a
+Grupo de los campos que identifican el local de entrega de las mercaderías no es permitido para el tipo de documento electrónico seleccionado
+2201
+El grupo de campos que identifican el local de entrega de las mercaderías no es permitido para el tipo de documento Autofactura Electrónica, Nota de Débito Electrónica, Nota de Crédito Electrónica o Comprobante de Retención Electrónico (C002=4, 5, 6 o 8)
+R
+186
+E945
+El Departamento, el Distrito y la Ciudad del local de entrega no están relacionados
+2203
+Debe haber relación entre el departamento (E945), el distrito (E947) y la ciudad (E949)
+R
+187
+E946
+Descripción del departamento del local de entrega no corresponde al código
+2202
+Descripción del departamento del local de entrega no coincidente con lo informado en el campo E945
+R
+201
+E948
+Descripción del código del distrito del local de la entrega no informada
+2204
+Si se informa el código del distrito del local de entrega (E947), la descripción del mismo es obligatoria
+R
+188
+E948a
+Descripción del distrito del local de entrega no corresponde al código
+2205
+Descripción del distrito del local de entrega no coincidente con lo informado en el campo E947
+R
+168
+E949
+La ciudad del local de entrega no corresponde al departamento seleccionado
+2206
+El código de la ciudad del local de entrega (E949) debe corresponder al departamento seleccionado (E945)
+R
+169
+E949a
+La ciudad del local de entrega no corresponde al distrito seleccionado
+2207
+El código de la ciudad del local de entrega (E949) debe corresponder al distrito seleccionado (E947)
+No se aplica esta regla si no ha sido informado el distrito
+R
+189
+E950
+Descripción de la ciudad del local de entrega no corresponde al código
+2208
+Descripción de la ciudad del local de entrega no coincidente con lo informado en el campo E949
+R
+E10.3. Campos que identifican el vehículo de traslado de mercaderías (E960-E979)
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+190
+E960
+Grupo de los campos que identifican el vehículo de traslado de las mercaderías es obligatorio
+2250
+Si el tipo de documento electrónico seleccionado es Nota de Remisión Electrónica (C002=7), es obligatorio informar el grupo de los campos que identifican el vehículo de traslado de las mercaderías
+R

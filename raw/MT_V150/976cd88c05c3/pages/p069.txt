@@ -1,0 +1,141 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+D2
+D101
+dRucEm
+RUC del contribuyente emisor
+D100
+A
+3-8
+1-1
+Debe corresponder al RUC del certificado digital utilizado para firmar el DE
+D2
+D102
+dDVEmi
+Dígito verificador del RUC del contribuyente emisor
+D100
+N
+1
+1-1
+Según algoritmo módulo 11
+D2
+D103
+iTipCont
+Tipo de contribuyente
+D100
+N
+1
+1-1
+1= Persona Física
+2= Persona Jurídica
+D2
+D104
+cTipReg
+Tipo de régimen
+D100
+N
+1-2
+0-1
+Según Tabla 1 – Tipo de Régimen
+D2
+D105
+dNomEmi
+Nombre o razón social del emisor del DE
+D100
+A
+4-255
+1-1
+En caso de ambiente de prueba, debe contener obligatoriamente el literal "DE generado en ambiente de prueba - sin valor comercial ni fiscal"
+D2
+D106
+dNomFanEmi
+Nombre de fantasía
+D100
+A
+4-255
+0-1
+Debe corresponder a lo declarado en el RUC
+D2
+D107
+dDirEmi
+Dirección del local donde se emite el DE
+D100
+A
+1-255
+1-1
+Nombre de la calle principal. Debe corresponder a lo declarado en el RUC
+D2
+D108
+dNumCas
+Número de casa
+D100
+N
+1-6
+1-1
+Si no tiene numeración, colocar 0 (cero)
+Debe corresponder a lo declarado en el RUC
+D2
+D109
+dCompDir1
+Complemento de dirección 1
+D100
+A
+1-255
+0-1
+Nombre de la calle secundaria
+D2
+D110
+dCompDir2
+Complemento de dirección 2
+D100
+A
+1-255
+0-1
+Número de departamento/ piso/ local/ edificio/ depósito
+D2
+D111
+cDepEmi
+Código del departamento de emisión
+D100
+N
+1-2
+1-1
+Según XSD de Departamentos
+Debe corresponder a lo declarado en el RUC
+D2
+D112
+dDesDepEmi
+Descripción del departamento de emisión
+D100
+A
+6-16
+1-1
+Referente al campo D111
+Debe corresponder a lo declarado en el RUC
+D2
+D113
+cDisEmi
+Código del distrito de emisión
+D100
+N
+1-4
+0-1
+Según Tabla 2.1 – Distritos
+Debe corresponder a lo declarado en el RUC
+D2
+D114
+dDesDisEmi
+Descripción del distrito de emisión
+D100
+A
+1-30
+0-1
+Obligatorio si existe el campo D113
+Debe corresponder a lo declarado en el RUC

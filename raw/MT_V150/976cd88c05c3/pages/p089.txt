@@ -1,0 +1,57 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E8.1.1
+EA002
+dDescItem
+Descuento particular sobre el precio unitario por ítem (incluidos impuestos)
+EA001
+N
+1-15p(0-8)
+0-1
+Si no hay descuento por ítem completar con 0 (cero)
+E8.1.1
+EA003
+dPorcDesIt
+Porcentaje de descuento particular por ítem
+EA001
+N
+1-3p(0-8)
+0-1
+Debe existir si EA002 es mayor a 0 (cero)
+[EA002 * 100 / E721]
+E8.1.1
+EA004
+dDescGloItem
+Descuento global sobre el precio unitario por ítem (incluidos impuestos)
+EA001
+N
+1-15p(0-8)
+0-1
+Si se cuenta con un descuento global, debe ser aplicado (no es prorrateo) a cada uno de los ítems, independientemente que un ítem cuente con un descuento particular.
+E8.1.1
+EA006
+dAntPreUniIt
+Anticipo particular sobre el precio unitario por ítem (incluidos impuestos)
+EA001
+N
+1-15p(0-8)
+0-1
+Se debe informar en la misma denominación monetaria en la que se informó en la FE de anticipo asociada (D015 de la FE asociada)
+Si no hay anticipo por ítem completar con 0 (cero)
+E8.1.1
+EA007
+dAntGloPreUniIt
+Anticipo global sobre el precio unitario por ítem (incluidos impuestos)
+EA001
+N
+1-15p(0-8)
+0-1
+Si se cuenta con un anticipo global, debe ser aplicado a cada uno de los ítems, independientemente de que un ítem cuente con un anticipo particular.
+Si no hay anticipo global por ítem, completar con 0 (cero)

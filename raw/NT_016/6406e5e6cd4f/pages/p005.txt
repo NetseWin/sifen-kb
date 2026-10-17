@@ -1,0 +1,23 @@
+Certificado del PCSC revocado
+Certificado no firmado por el PCSC emisor del Certificado
+LCR del Certificado Transmisor
+No existe la dirección de la LCR (CRL DistributionPoint)
+LCR indisponible
+LCR invalida
+Certificado del transmisor revocado
+Certificado Raíz no pertenece al MIC
+No existe la extensión del RUC del emisor en el certificado
+Si el Certificado es de persona jurídica, el RUC debe estar informado en el campo SerialNumber en caso de ser del tipo de Persona Física el RUC, estará informado en el campo: SubjectAlternativeName
+Inconveniente temporal del SIFEN
+Páginas: 150.
+Histórico del Documento
+AUTOR
+FECHA DE ELABORACIÓN
+REVISOR
+FECHA DE REVISIÓN
+PRINCIPALES ALTERACIONES
+Norma Rojas
+05/06/2023
+DTICs
+08/08/2023
+Elaboración del documento

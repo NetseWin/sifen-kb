@@ -1,0 +1,76 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+F
+F002
+dSubExe
+Subtotal de la operación exenta
+F001
+N
+1-15p(0-8)
+0-1
+Si E731 = 3: Suma de todas las ocurrencias de EA008 (Valor total de la operación por ítem) cuando la operación sea exenta
+F
+F003
+dSubExo
+Subtotal de la operación exonerada
+F001
+N
+1-15p(0-8)
+0-1
+Si E731 = 2: Suma de todas las ocurrencias de EA008 (Valor total de la operación por ítem) cuando la operación sea exonerada
+F
+F004
+dSub5
+Subtotal de la operación con IVA incluido a la tasa 5%
+F001
+N
+1-15p(0-8)
+0-1
+Si E731 = 1 o 4: Suma de todas las ocurrencias de EA008 (Valor total de la operación por ítem) cuando la operación sea a la tasa del 5% (E734=5)
+No debe existir el campo si D013 ≠ 1
+F
+F005
+dSub10
+Subtotal de la operación con IVA incluido a la tasa 10%
+F001
+N
+1-15p(0-8)
+0-1
+Si E731 = 1 o 4: Suma de todas las ocurrencias de EA008 (Valor total de la operación por ítem) cuando la operación sea a la tasa del 10% (E734=10)
+No debe existir el campo si D013 ≠ 1
+F
+F008
+dTotOpe
+Total Bruto de la operación
+F001
+N
+1-15p(0-8)
+1-1
+Cuando D013 = 1, 3, 4 o 5 corresponde a la suma de los subtotales de la operación (F002, F003, F004 y F005)
+Cuando D013 = 2 corresponde a F006
+Cuando C002=4 corresponde a la suma de todas las ocurrencias de EA008 (Valor total de la operación por ítem)
+F
+F009
+dTotDesc
+Total descuento particular por ítem
+F001
+N
+1-15p(0-8)
+1-1
+Suma de todos los descuentos particulares por ítem (EA002)
+F
+F033
+dTotDescGlotem
+Total descuento global por ítem
+F001
+N
+1-15p(0-8)
+1-1
+Sumatoria de todas las ocurrencias de descuentos globales por ítem (EA004)

@@ -1,0 +1,66 @@
+N° Val
+ID
+Mensaje de la Validación
+Código
+Observación
+E
+55
+D206c
+El RUC se encuentra inactivo para el tipo de contribuyente receptor
+1307
+Si el tipo de contribuyente receptor es persona jurídica (D205=2), el RUC del receptor en Marangatu debe contar con un estado distinto a CANCELADO, CANCELADO DEFINITIVO o SUSPENSIÓN TEMPORAL
+R
+56
+D206d
+El RUC del receptor se encuentra inactivo para el tipo de operación
+1308
+Si el tipo de operación es B2B o B2G (D202 =1 o 3), el RUC del receptor en Marangatu debe contar con un estado distinto a CANCELADO, CANCELADO DEFINITIVO o SUSPENSIÓN TEMPORAL
+R
+57
+D206e
+RUC del Receptor inválido para el tipo de documento electrónico
+1317
+Si el tipo de documento es Autofactura (C002=4), el RUC del Receptor deber ser el mismo que el RUC del Emisor (D206= D101)
+R
+58
+D207
+Dígito Verificador del RUC del receptor incorrecto
+1309
+El Dígito Verificador ingresado no corresponde al módulo 11 del RUC
+R
+59
+D208
+Es obligatorio informar el tipo de documento de identidad del receptor
+1310
+Si la naturaleza del receptor es NO contribuyente (D201=2) y el tipo de operación es diferente a B2F (D202≠4), el tipo de documento de identidad debe ser informado
+R
+60
+D208a
+Tipo de documento de identidad del receptor inválido
+1311
+Si la naturaleza del receptor es contribuyente (D201=1), el tipo de documento de identidad del receptor (D208) no debe ser informado
+R
+61
+D208b
+Tipo de documento de identidad del receptor incorrecto para el tipo de operación
+1319
+El Tipo de documento de identidad del receptor no puede ser innominado (D208=5), cuando el tipo de operación es distinto a B2C (D202 ≠ 2)
+R
+62
+D208c
+Tipo de documento de identidad del receptor incorrecto para el total general de la operación en guaraníes
+1321
+Si el Tipo de transacción es distinto a Muestras médicas (D011≠13), el Tipo de documento de identidad del receptor no puede ser Innominado (D208≠5) cuando el total general de la operación en guaraníes (cuando la moneda es extranjera) o el total general de la operación (cuando la moneda es PYG) es mayor o igual a 60.000.000 (F023 >= 60000000 o F014 >= 60000000)
+R
+63
+D208d
+El tipo de documento de identidad del receptor no es requerido
+1322
+Si la naturaleza del receptor es Contribuyente (D201=1) o el tipo de operación es igual a B2F (D202=4), el tipo de documento de identidad no debe ser informado
+R
+60
+D209
+Descripción del tipo de documento de identidad del receptor no informada
+1312
+Si se informa el código de tipo de documento de identidad (D208), es obligatorio indicar la descripción correspondiente
+R

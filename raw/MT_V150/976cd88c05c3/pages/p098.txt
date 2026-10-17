@@ -1,0 +1,113 @@
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E10
+E907
+dNuManif
+Número de manifiesto o conocimiento de carga/ declaración de tránsito aduanero/ Carta de porte internacional
+E900
+A
+1-15
+0-1
+Campo abierto para informar la numeración de cualquiera de las opciones descriptas
+E10
+E908
+dNuDespImp
+Número de despacho de importación
+E900
+A
+16
+0-1
+Obligatorio si E501 = 5
+E10
+E909
+dIniTras
+Fecha estimada de inicio de traslado
+E900
+F
+10
+0-1
+Obligatorio si C002 = 7
+Opcional si C002 = 1
+Fecha en el formato: AAAA-MM-DD
+E10
+E910
+dFinTras
+Fecha estimada de fin de traslado
+E900
+F
+10
+0-1
+Obligatorio si existe el campo E909
+Fecha en el formato: AAAA-MM-DD
+E10
+E911
+cPaisDest
+Código del país de destino
+E900
+A
+3
+0-1
+Según XSD de Codificación de Países
+E10
+E912
+dDesPaisDest
+Descripción del país de destino
+E900
+A
+4-30
+0-1
+Obligatorio si existe el campo E911
+E10.1. Campos que identifican el local de salida de las mercaderías (E920-E939)
+Grupo
+ID
+Campo
+Descripción
+Nodo Padre
+Tipo Dato
+Longitud
+Ocurrencia
+Observaciones
+E10.1
+E920
+gCamSal
+Campos que identifican el local de salida de las mercaderías
+E900
+G
+0-1
+Obligatorio si C002 = 7
+Opcional si C002 = 1
+No informar si C002 = 4, 5, 6
+E10.1
+E921
+dDirLocSal
+Dirección del local de salida
+E920
+A
+1-255
+1-1
+Nombre de la calle principal
+E10.1
+E922
+dNumCasSal
+Número de casa de salida
+E920
+N
+1-6
+1-1
+Si no tiene numeración, colocar 0 (cero)
+E10.1
+E923
+dComp1Sal
+Complemento de dirección 1 salida
+E920
+A
+1-255
+0-1
+Nombre de la calle secundaria

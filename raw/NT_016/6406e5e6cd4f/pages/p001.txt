@@ -1,0 +1,54 @@
+NOTA TÉCNICA Nº 16
+Fecha: 14/08/2023
+Fecha puesta a disposición para el Ambiente de Test
+25 de Agosto del 2023
+Fecha puesta a disposición para el Ambiente de Producción
+22 de Septiembre del 2023
+Referencia: Correcciones y ajustes sobre el MT versión 150 sobre mejoras y adecuaciones necesarias relacionadas con la nueva Ley de servicios de confianza
+1. FORMATO
+1.1. Se modifican los siguientes campos y observaciones:
+Sección 7.6. Estándar de firma digital
+Schema XML 1: xmldsig-core-schema- v150.xsd (Estándar de la Firma Digital)
+ID
+Campo
+Descripción
+Nodo Padre
+Ocurrencia
+Observaciones
+XS02
+SignedInfo
+G
+XS01
+1-1
+Grupo de información de la firma
+XS03
+CanonicalizationMethod
+G
+XS02
+1-1
+Grupo del método de canonicalización
+XS04
+Algorithm
+A
+XS03
+1-1
+Atributo Algorithm de CanonicalizationMethod
+Atributos válidos:
+http://www.w3.org/TR/2001/REC-xml-c14n-20010315 (Inclusiva)
+http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments (Inclusiva con comentarios)
+http://www.w3.org/2001/10/xml-exc-c14n (Exclusiva)
+http://www.w3.org/2001/10/xml-exc-c14n#WithComments (Exclusiva con comentarios)
+XS05
+SignatureMethod
+G
+XS02
+1-1
+Tag del método de firma
+XS06
+Algorithm
+A
+XS05
+1-1
+Atributo Algorithm de SignatureMethod
+Atributos válidos:
+http://www.w3.org/2001/04/xmldsig-more#rsa-sha256 (RSA-SHA-256)

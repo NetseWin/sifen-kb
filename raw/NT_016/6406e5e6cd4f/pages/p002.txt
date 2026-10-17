@@ -1,0 +1,95 @@
+http://www.w3.org/2001/04/xmldsig-more#rsa-sha384 (RSA-SHA-384)
+http://www.w3.org/2001/04/xmldsig-more#rsa-sha512 (RSA-SHA-512)
+XS07
+Reference
+G
+XS02
+1-1
+Grupo de referencia de la firma
+XS08
+URI
+A
+XS07
+1-1
+Atributo URI del tag Reference que identifica el grupo de campos que están firmados
+XS10
+Transforms
+G
+XS07
+1-1
+Grupo de algoritmos de transformación
+XS12
+Transform
+G
+XS10
+1-1
+Tag del algoritmo de transformación
+XS13
+Algorithm
+A
+XS12
+1-1
+Atributo Algorithm del tag Transform
+Atributo válido:
+http://www.w3.org/2000/09/xmldsig#enveloped-signature (Enveloped Signature)
+XS15
+DigestMethod
+G
+XS07
+1-1
+Grupo del DigestMethod
+XS16
+Algortihm
+A
+XS15
+1-1
+Atributo Algorithm del tag DigestMethod
+Atributos válidos:
+http://www.w3.org/2001/04/xmlenc#sha256 (SHA-256)
+http://www.w3.org/2001/04/xmldsig-more#sha384 (SHA-384)
+http://www.w3.org/2001/04/xmlenc#sha512 (SHA-512)
+XS17
+DigestValue
+E
+XS07
+1
+Digest Value (Valor retornado por el algoritmo definido en XS16)
+XS18
+SignatureValue
+E
+XS01
+1-1
+Signature Value (Valor de la firma retornado por el algoritmo definido en XS06)
+XS19
+KeyInfo
+G
+XS01
+1-1
+Grupo del KeyInfo (Información de la clave)
+XS20
+X509Data
+G
+XS19
+1-1
+Grupo X509Data
+XS21
+X509Certificate
+E
+XS20
+1-1
+Certificado Cualificado de Firma Electrónica X509.v3
+Páginas: 38.
+1.2. Se eliminan los siguientes campos de la misma tabla
+ID
+Campo
+Descripción
+Nodo Padre
+Ocurrencia
+Observaciones
+XS14
+XPath
+E
+XS12
+0-n
+XPath
+1.3 Se modifican las siguientes observaciones
