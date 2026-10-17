@@ -50,7 +50,7 @@ python-preference = "only-managed"
 [tool.ruff]
 line-length = 110
 target-version = "py314"
-extend-exclude = ["sources", "raw", "build"]
+extend-exclude = ["sources", "raw", "build", "docs", "*.md"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP", "S506", "DTZ"]

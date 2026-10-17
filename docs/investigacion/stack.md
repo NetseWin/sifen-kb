@@ -171,7 +171,6 @@ Prototipo verificado [L]. Resultado: `0260`→`'0260'`, `NO`→`'NO'`, `yes`→`
 ```python
 NULL = "tag:yaml.org,2002:null"
 
-
 class KBLoader(yaml.SafeLoader):
     def compose_node(self, parent, index):
         if self.check_event(yaml.AliasEvent):
@@ -189,9 +188,9 @@ class KBLoader(yaml.SafeLoader):
             seen.add(key)
         return super().construct_mapping(node, deep=deep)
 
-
 KBLoader.yaml_implicit_resolvers = {
-    c: [(t, rx) for t, rx in rs if t == NULL] for c, rs in yaml.SafeLoader.yaml_implicit_resolvers.items()
+    c: [(t, rx) for t, rx in rs if t == NULL]
+    for c, rs in yaml.SafeLoader.yaml_implicit_resolvers.items()
 }
 KBLoader.add_implicit_resolver("tag:yaml.org,2002:bool", re.compile(r"^(?:true|false)$"), list("tf"))
 ```

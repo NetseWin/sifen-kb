@@ -281,361 +281,254 @@ from datetime import date, datetime
 from typing import Annotated, Literal
 from pydantic import BaseModel, ConfigDict, StringConstraints as S
 
-
-class M(BaseModel):  # extra="forbid": una clave inventada falla. Sin strip: el literal se conserva intacto.
+class M(BaseModel):   # extra="forbid": una clave inventada falla. Sin strip: el literal se conserva intacto.
     model_config = ConfigDict(extra="forbid", frozen=True, validate_default=True)
 
-
 # --- Identificadores (patrones a confirmar con el inventario de Fase 0) ---
-CORE = r"[A-Z][A-Z0-9_]*"  # alfabeto ÚNICO del DocId dentro de RowRef, CellRef y EffectId
-Sha256 = Annotated[str, S(pattern=r"^[0-9a-f]{64}$")]
-Sha12 = Annotated[str, S(pattern=r"^[0-9a-f]{12}$")]
-DocId = Annotated[
-    str, S(pattern=r"^(MT_V150|NT_\d{3}|XSD_DIR|XSD_RAR|CHECKSUM_MT|TABLA_GEO|(GUIA|COM|NORMA)_[A-Z0-9_]+)$")
-]
-Ctx = Literal["DE"]  # MVP; "EV-NOM", "EV-DES"… entran con sus entidades (Fase 2)
-SifenId = Annotated[str, S(pattern=r"^[A-Z][A-Za-z]{0,6}\d{1,3}[a-z]?$")]  # D208c, GENFE010, ASch03
-SifenCode = Annotated[str, S(pattern=r"^\d{4}$")]  # "0160", nunca 160
-FieldKey = Annotated[str, S(pattern=r"^field:[A-Z][A-Z-]*:\w+$")]  # field:DE:D208
-ValKey = Annotated[str, S(pattern=r"^val:[A-Z][A-Z-]*:\w+$")]  # val:DE:D208 (código 1310) ≠ el campo
-EffectId = Annotated[str, S(pattern=rf"^{CORE}#\d+$")]  # NT_024#1
-RowRef = Annotated[str, S(pattern=rf"^raw:{CORE}@[0-9a-f]{{12}}:p\d+:[^:#~]+(~\d+)?$")]
-CellRef = Annotated[str, S(pattern=rf"^raw:{CORE}@[0-9a-f]{{12}}:p\d+:[^:#~]+(~\d+)?#[a-z_]+$")]
+CORE      = r"[A-Z][A-Z0-9_]*"            # alfabeto ÚNICO del DocId dentro de RowRef, CellRef y EffectId
+Sha256    = Annotated[str, S(pattern=r"^[0-9a-f]{64}$")]
+Sha12     = Annotated[str, S(pattern=r"^[0-9a-f]{12}$")]
+DocId     = Annotated[str, S(pattern=r"^(MT_V150|NT_\d{3}|XSD_DIR|XSD_RAR|CHECKSUM_MT|TABLA_GEO|(GUIA|COM|NORMA)_[A-Z0-9_]+)$")]
+Ctx       = Literal["DE"]                 # MVP; "EV-NOM", "EV-DES"… entran con sus entidades (Fase 2)
+SifenId   = Annotated[str, S(pattern=r"^[A-Z][A-Za-z]{0,6}\d{1,3}[a-z]?$")]  # D208c, GENFE010, ASch03
+SifenCode = Annotated[str, S(pattern=r"^\d{4}$")]                          # "0160", nunca 160
+FieldKey  = Annotated[str, S(pattern=r"^field:[A-Z][A-Z-]*:\w+$")]         # field:DE:D208
+ValKey    = Annotated[str, S(pattern=r"^val:[A-Z][A-Z-]*:\w+$")]           # val:DE:D208 (código 1310) ≠ el campo
+EffectId  = Annotated[str, S(pattern=rf"^{CORE}#\d+$")]                    # NT_024#1
+RowRef    = Annotated[str, S(pattern=rf"^raw:{CORE}@[0-9a-f]{{12}}:p\d+:[^:#~]+(~\d+)?$")]
+CellRef   = Annotated[str, S(pattern=rf"^raw:{CORE}@[0-9a-f]{{12}}:p\d+:[^:#~]+(~\d+)?#[a-z_]+$")]
 #   Por CONTENIDO, no por posición: página PDF + clave de fila (el ID; "fechas" u otra clave declarada si la fila
 #   no tiene ID; ~n desambigua un ID repetido) + atributo. raw:NT_024@<sha12>:p2:D208c#observation
 #   El extractor mapea encabezados a atributos con una tabla probada: «Longitud»/«Long.» → length,
 #   «Ocurrencia»/«Ocu» → occurrence, «E» → severity, «…Ambiente de Test» → test, «…Producción» → prod.
-CaseRef = Annotated[str, S(pattern=r"^case:\d{4}-\d{2}-\d{2}-[a-z0-9-]+$")]
-Env = Literal["test", "prod"]
-
+CaseRef   = Annotated[str, S(pattern=r"^case:\d{4}-\d{2}-\d{2}-[a-z0-9-]+$")]
+Env       = Literal["test", "prod"]
 
 # --- Provenance / Evidence ---
-class PageRef(M):  # cita de prosa (sin fila de tabla)
+class PageRef(M):                      # cita de prosa (sin fila de tabla)
     doc: DocId
     rev: Sha12
     page_pdf: int
-    page_printed: int | None  # las NT citan la impresa (D208c: 166 impresa / 167 PDF)
-    quote: str  # test: normalize_text(quote) contenida en esa página de raw/
+    page_printed: int | None           # las NT citan la impresa (D208c: 166 impresa / 167 PDF)
+    quote: str                         # test: normalize_text(quote) contenida en esa página de raw/
+Evidence = RowRef | CellRef | PageRef  # RowRef: los literales de la versión = las celdas de esa fila, atributo por atributo
 
-
-Evidence = (
-    RowRef | CellRef | PageRef
-)  # RowRef: los literales de la versión = las celdas de esa fila, atributo por atributo
-
-
-class Interpretation(M):  # solo para afirmaciones interpretadas (nunca literales)
+class Interpretation(M):               # solo para afirmaciones interpretadas (nunca literales)
     by: Literal["tool", "llm", "human"]
-    run: str | None  # obligatorio si by == "llm" (validador): curation/runs/<sesión>.yaml
-    note: str | None = None  # razonamiento no normativo ("D011 ausente se trata como ≠ 13")
-
-
+    run: str | None                    # obligatorio si by == "llm" (validador): curation/runs/<sesión>.yaml
+    note: str | None = None            # razonamiento no normativo ("D011 ausente se trata como ≠ 13")
 # La atestación de revisión NO es un campo: es el merge humano a main protegido (J).
-
 
 # --- sources.manifest.yaml (raíz): lo escribe SOLO la herramienta; append-only; no forma parte de kb/ ---
 class SourceRevision(M):
-    doc: DocId
-    sha256: Sha256
-    md5: str
-    size: int
-    url: str  # dominio DNIT de la lista permitida: `source add` descarga él mismo
-    filename: str  # "NT_E_KUATIA_021_MT_V150+30.12.24.pdf"
-    portal_t: datetime | None  # ?t= del portal = SUBIDA; nunca publicación ni vigencia
+    doc: DocId; sha256: Sha256; md5: str; size: int
+    url: str                           # dominio DNIT de la lista permitida: `source add` descarga él mismo
+    filename: str                      # "NT_E_KUATIA_021_MT_V150+30.12.24.pdf"
+    portal_t: datetime | None          # ?t= del portal = SUBIDA; nunca publicación ni vigencia
     retrieved_at: datetime
-    origin: Literal["portal", "offline"]  # offline: copia que conserva la empresa (--file, nota obligatoria)
+    origin: Literal["portal", "offline"]   # offline: copia que conserva la empresa (--file, nota obligatoria)
     note: str | None = None
     # Fase 2: content_change: frozenset[Literal["identical_text", "furniture_only", "dates_changed", "rows_changed"]]
 
-
-class SourceCheck(M):  # lo escribe `sifen source check`
+class SourceCheck(M):                  # lo escribe `sifen source check`
     at: datetime
     scope: list[Literal["nt", "xsd", "tablas", "guias"]]
-    unregistered: list[str]  # URL con hash nuevo o enlaces nuevos; vacío ⇒ chequeo limpio
-
-
+    unregistered: list[str]            # URL con hash nuevo o enlaces nuevos; vacío ⇒ chequeo limpio
 # Horizonte de fuentes = fecha del último chequeo limpio (DERIVADO; lo muestran explain y status).
 
-
 # --- DocumentSource: documento lógico + revisión curada + calendario por ambiente ---
-class DateStatement(M):  # una fecha TAL COMO la declara una fuente concreta
-    value: date | None  # None = "a definir": versión prospectiva, nunca vigente
-    literal: str  # "01/01/2025"; validador: value == parse(literal) (None si dice "a definir")
-    stated_in: CellRef | PageRef  # celda de la tabla de fechas (atributo test/prod/fecha) o comunicado
+class DateStatement(M):                # una fecha TAL COMO la declara una fuente concreta
+    value: date | None                 # None = "a definir": versión prospectiva, nunca vigente
+    literal: str                       # "01/01/2025"; validador: value == parse(literal) (None si dice "a definir")
+    stated_in: CellRef | PageRef       # celda de la tabla de fechas (atributo test/prod/fecha) o comunicado
 
+class Schedule(M):                     # el ambiente lo da la ranura, no un campo
+    test: DateStatement | None         # "Fecha puesta a disposición para el Ambiente de Test"
+    prod: DateStatement | None         # "... de Producción"
 
-class Schedule(M):  # el ambiente lo da la ranura, no un campo
-    test: DateStatement | None  # "Fecha puesta a disposición para el Ambiente de Test"
-    prod: DateStatement | None  # "... de Producción"
-
-
-class Supersession(M):  # reemplazo declarado A NIVEL DE DOCUMENTO (no entre reglas)
-    doc: DocId
-    since: date  # NT 21: "VER NOTA TÉCNICA N° 24 DESDE EL 01/01/2025"
-    stated_in: PageRef  # oráculo: el fin derivado de lo que introdujo NT 21 debe ser `since`
-
+class Supersession(M):                 # reemplazo declarado A NIVEL DE DOCUMENTO (no entre reglas)
+    doc: DocId; since: date            # NT 21: "VER NOTA TÉCNICA N° 24 DESDE EL 01/01/2025"
+    stated_in: PageRef                 # oráculo: el fin derivado de lo que introdujo NT 21 debe ser `since`
 
 class LegalRef(M):
-    citation: str  # "Decreto 872/2023, art. 6" (no se consolida ni se interpreta)
+    citation: str                      # "Decreto 872/2023, art. 6" (no se consolida ni se interpreta)
     stated_in: Evidence
 
-
-class Effect(M):  # el "patch", declarativo y NO ejecutable
+class Effect(M):                       # el "patch", declarativo y NO ejecutable
     id: EffectId
-    verb_literal: str  # "se modifica", "se excluye" (encabezado, literal)
+    verb_literal: str                  # "se modifica", "se excluye" (encabezado, literal)
     action: Literal["add", "modify", "remove"]
-    target: (
-        FieldKey | ValKey | None
-    )  # None: fuera del modelo; si la fila citada trae ID, debe coincidir (test)
-    declared_scope: Literal["row"] | list[str]  # NT 23 §1.2 "se modifica … en la Longitud" → ["length"]
-    acknowledged_changes: list[str] = []  # con "row": toda columna cambiada salvo la observación, reconocida
+    target: FieldKey | ValKey | None   # None: fuera del modelo; si la fila citada trae ID, debe coincidir (test)
+    declared_scope: Literal["row"] | list[str]   # NT 23 §1.2 "se modifica … en la Longitud" → ["length"]
+    acknowledged_changes: list[str] = []         # con "row": toda columna cambiada salvo la observación, reconocida
     evidence: list[Evidence]
-    from_revision: Sha12 | None = None  # aparece en una re-subida que no cambió las fechas (G.3)
-    disposition: Literal["pending", "not_modeled"] | None = (
-        None  # None ⇒ aplicado: lo cita exactamente UNA versión
-    )
-    interpretation: Interpretation  # clasificar verbo, alcance y destino ES interpretación
-    note: str | None = None  # obligatoria con not_modeled
+    from_revision: Sha12 | None = None # aparece en una re-subida que no cambió las fechas (G.3)
+    disposition: Literal["pending", "not_modeled"] | None = None   # None ⇒ aplicado: lo cita exactamente UNA versión
+    interpretation: Interpretation     # clasificar verbo, alcance y destino ES interpretación
+    note: str | None = None            # obligatoria con not_modeled
 
-
-class DocumentSource(M):  # kb/documents/<DocId>.yaml
+class DocumentSource(M):               # kb/documents/<DocId>.yaml
     id: DocId
-    kind: Literal[
-        "manual",
-        "technical_note",
-        "xsd_bundle",
-        "codelist",
-        "checksum_list",
-        "guide",
-        "communication",
-        "legal",
-    ]
-    number: int | None = None  # identificador; NUNCA orden temporal
+    kind: Literal["manual", "technical_note", "xsd_bundle", "codelist", "checksum_list",
+                  "guide", "communication", "legal"]
+    number: int | None = None          # identificador; NUNCA orden temporal
     title: str
-    current_revision: Sha256  # revisión curada; debe existir en el manifiesto (test)
-    official_md5: str | None = None  # MT: DNIT lista 25EB165A…; el publicado es f48d7c82… → Issue
-    document_date: DateStatement | None  # "Fecha:" impresa; informativa (NT 25 tiene errata de año)
-    change_period: tuple[DateStatement, DateStatement] | None = None  # NT 001–011: "Cambios desde X al Y"
-    schedule: Schedule | None  # None: MT y NT 001–012 (no declaran vigencia)
+    current_revision: Sha256           # revisión curada; debe existir en el manifiesto (test)
+    official_md5: str | None = None    # MT: DNIT lista 25EB165A…; el publicado es f48d7c82… → Issue
+    document_date: DateStatement | None    # "Fecha:" impresa; informativa (NT 25 tiene errata de año)
+    change_period: tuple[DateStatement, DateStatement] | None = None   # NT 001–011: "Cambios desde X al Y"
+    schedule: Schedule | None          # None: MT y NT 001–012 (no declaran vigencia)
     superseded_by: Supersession | None = None
     effects: list[Effect] = []
     curation_scope: Literal["dates_only", "pilot", "full"]
 
-
 # --- Condiciones ---
 class Formalization(M):
-    expr: str | None  # subconjunto Python; polaridad FIJA: True ⇒ la validación se VIOLA
+    expr: str | None                   # subconjunto Python; polaridad FIJA: True ⇒ la validación se VIOLA
     level: Literal["full", "partial", "none"]
-    gaps: str | None  # obligatorio si level != "full": qué no captura
+    gaps: str | None                   # obligatorio si level != "full": qué no captura
     interpretation: Interpretation
-
 
 # --- Versiones materializadas (RuleVersion ≡ ValidationVersion) ---
 class VersionBase(M):
-    introduced_by: Literal["baseline"] | list[EffectId]  # 1..n efectos con el MISMO inicio por ambiente
-    based_on: Literal["baseline"] | list[EffectId] | None = (
-        None  # predecesora TEMPORAL en prod (None solo en la base)
-    )
-    kind: Literal["content", "tombstone"] = (
-        "content"  # tombstone: literales de la predecesora; conserva el código
-    )
-    evidence: list[Evidence]  # ≥ 1: la fila que la introduce (o la que la elimina)
-    open_questions: list[str] = []  # no vacío ⇒ aviso needs_review en toda salida
-
+    introduced_by: Literal["baseline"] | list[EffectId]   # 1..n efectos con el MISMO inicio por ambiente
+    based_on: Literal["baseline"] | list[EffectId] | None = None   # predecesora TEMPORAL en prod (None solo en la base)
+    kind: Literal["content", "tombstone"] = "content"     # tombstone: literales de la predecesora; conserva el código
+    evidence: list[Evidence]                              # ≥ 1: la fila que la introduce (o la que la elimina)
+    open_questions: list[str] = []                        # no vacío ⇒ aviso needs_review en toda salida
 
 class EnumValue(M):
-    code: str  # "6"
-    label: str  # "Tarjeta Diplomática de exoneración fiscal"; test: ⊂ observations
+    code: str                          # "6"
+    label: str                         # "Tarjeta Diplomática de exoneración fiscal"; test: ⊂ observations
 
-
-class FieldVersion(VersionBase):  # columnas LITERALES de la tabla, copiadas por `sifen draft`
-    group: str | None  # "D3"
-    parent: str | None  # "D200"
-    xml_name: str | None  # "iTipIDRec": atributo, no identidad
+class FieldVersion(VersionBase):       # columnas LITERALES de la tabla, copiadas por `sifen draft`
+    group: str | None                  # "D3"
+    parent: str | None                 # "D200"
+    xml_name: str | None               # "iTipIDRec": atributo, no identidad
     description: str | None
-    data_type: str | None  # Tabla B: XML, G, CG, CE…, A, N, F, B
-    length: str | None  # "1-15p(0-8)" tal cual; su parser a estructura llega en la Fase 3
-    occurrence: str | None  # "0-1"; occurs se DERIVA (parser trivial m-n)
-    observations: str | None  # "Obligatorio si D201 = 2 y D202 ≠ 4 …": literal; su regla vive en val:DE:D208
-    enumeration: list[EnumValue] | None = None  # interpretada desde observations
+    data_type: str | None              # Tabla B: XML, G, CG, CE…, A, N, F, B
+    length: str | None                 # "1-15p(0-8)" tal cual; su parser a estructura llega en la Fase 3
+    occurrence: str | None             # "0-1"; occurs se DERIVA (parser trivial m-n)
+    observations: str | None           # "Obligatorio si D201 = 2 y D202 ≠ 4 …": literal; su regla vive en val:DE:D208
+    enumeration: list[EnumValue] | None = None          # interpretada desde observations
     # xpath: DERIVADO de la instantánea XSD (contexto + xml_name + padre); ambigüedad ⇒ Issue
-
 
 class Field(M):
     key: FieldKey
     context: Ctx
     id: SifenId
-    versions: list[FieldVersion]  # orden libre: el orden temporal lo calcula el resolvedor
-
+    versions: list[FieldVersion]       # orden libre: el orden temporal lo calcula el resolvedor
 
 class ValidationVersion(VersionBase):
-    code: SifenCode | None  # puede cambiar (NT 18 reasignó 4313–4323)
-    severity: Literal["R", "AO", "A", "N"] | None  # por versión (GED003: AO→R); "N" existe (BC01/0260)
-    message: str | None  # literal
-    observation: str | None  # literal: la EVIDENCIA de la regla
-    condition: Formalization | None = None  # la INTERPRETACIÓN
+    code: SifenCode | None             # puede cambiar (NT 18 reasignó 4313–4323)
+    severity: Literal["R", "AO", "A", "N"] | None       # por versión (GED003: AO→R); "N" existe (BC01/0260)
+    message: str | None                # literal
+    observation: str | None            # literal: la EVIDENCIA de la regla
+    condition: Formalization | None = None              # la INTERPRETACIÓN
     legal_basis: list[LegalRef] = []
 
-
-class Validation(M):  # Rule ≡ Validation (ver F.2)
+class Validation(M):                   # Rule ≡ Validation (ver F.2)
     key: ValKey
     context: Ctx
     id: SifenId
-    subject_field: FieldKey | None  # D208c → field:DE:D208
+    subject_field: FieldKey | None     # D208c → field:DE:D208
     versions: list[ValidationVersion]
-
-
 # Índice código → validaciones: DERIVADO, N:M, con intervalos por ambiente y CON lápidas. Buscar un código
 # devuelve toda validación que alguna vez lo tuvo, resuelta en `at`, marcando si el código rige en esa fecha.
 
-
 # --- Issue, Case, corrida LLM, metadatos ---
-class IssueScope(M):  # dónde y cuándo afecta
+class IssueScope(M):                   # dónde y cuándo afecta
     subject: FieldKey | ValKey | EffectId | DocId
-    env: Env | None = None  # None = ambos
-    since: date | None = None  # ventana [since, until); None = sin límite
+    env: Env | None = None             # None = ambos
+    since: date | None = None          # ventana [since, until); None = sin límite
     until: date | None = None
 
-
-class Issue(M):  # kb/issues/ISS-NNNN.yaml
+class Issue(M):                        # kb/issues/ISS-NNNN.yaml
     id: Annotated[str, S(pattern=r"^ISS-\d{4}$")]
-    kind: Literal[
-        "source_conflict",
-        "undeclared_change",
-        "ambiguity",
-        "temporal",
-        "erratum",
-        "observed_vs_documented",
-        "code_collision",
-        "curation_error",
-    ]
+    kind: Literal["source_conflict", "undeclared_change", "ambiguity", "temporal",
+                  "erratum", "observed_vs_documented", "code_collision", "curation_error"]
     affects: list[IssueScope]
     statement: str
     evidence: list[Evidence | CaseRef]
-    blocking: bool  # True ⇒ "undetermined" para sus sujetos, SOLO dentro de su ventana y ambiente
-    policy: str | None  # qué se responde mientras tanto
-    corrects: list[str] = []  # curation_error/erratum: "val:DE:D208c@NT_021#1.observation" (G.3)
+    blocking: bool                     # True ⇒ "undetermined" para sus sujetos, SOLO dentro de su ventana y ambiente
+    policy: str | None                 # qué se responde mientras tanto
+    corrects: list[str] = []           # curation_error/erratum: "val:DE:D208c@NT_021#1.observation" (G.3)
     status: Literal["open", "resolved"]
     resolution: str | None = None
 
-
-class Case(M):  # frontmatter de cases/AAAA/*.md; el cuerpo es narrativa
+class Case(M):                         # frontmatter de cases/AAAA/*.md; el cuerpo es narrativa
     id: str
-    origin: Literal[
-        "observed", "synthetic"
-    ]  # synthetic solo en tests/fixtures/cases/; nunca cuenta como caso
-    env: Env
-    document_type: str
-    kb_snapshot: str
-    emitted_at: date | None  # dFeEmiDE
-    processed_at: date | None  # dFecProc de la respuesta de SIFEN
-    codes_received: list[SifenCode]  # NO exhaustivo: en el rechazo SIFEN informa el primer error (MT §12) [V]
+    origin: Literal["observed", "synthetic"]   # synthetic solo en tests/fixtures/cases/; nunca cuenta como caso
+    env: Env; document_type: str; kb_snapshot: str
+    emitted_at: date | None            # dFeEmiDE
+    processed_at: date | None          # dFecProc de la respuesta de SIFEN
+    codes_received: list[SifenCode]    # NO exhaustivo: en el rechazo SIFEN informa el primer error (MT §12) [V]
     entities: list[FieldKey | ValKey]  # deben existir
     status: Literal["open", "solved", "unexplained"]
     contradicts_kb: str | None = None  # ISS-…: un caso nunca edita una regla
-    sanitized: Literal[True]  # el loader rechaza un caso sin sanitizar
-
+    sanitized: Literal[True]           # el loader rechaza un caso sin sanitizar
 
 class FileHash(M):
-    path: str
-    sha256: Sha256
+    path: str; sha256: Sha256
 
-
-class CurationRun(M):  # curation/runs/<sesión>.yaml: lo arman HOOKS de Claude Code, no el agente
-    session_id: str
-    started_at: datetime
-    base_commit: str
-    tool: str
-    model: str  # "claude-code <versión>", modelo: qué expone la API de hooks [verificar]
+class CurationRun(M):                  # curation/runs/<sesión>.yaml: lo arman HOOKS de Claude Code, no el agente
+    session_id: str; started_at: datetime; base_commit: str
+    tool: str; model: str              # "claude-code <versión>", modelo: qué expone la API de hooks [verificar]
     prompt_path: str
-    instructions_sha256: Sha256  # CLAUDE.md + prompt de curación usados
-    inputs: list[FileHash]
-    outputs: list[FileHash]
-
+    instructions_sha256: Sha256        # CLAUDE.md + prompt de curación usados
+    inputs: list[FileHash]; outputs: list[FileHash]
 
 class Assumption(M):
-    id: str
-    text: str
-    status: Literal["unverified", "confirmed", "refuted"]
+    id: str; text: str; status: Literal["unverified", "confirmed", "refuted"]
 
-
-class KBMeta(M):  # kb/_meta.yaml (protegido: el LLM no lo edita)
-    baseline: tuple[DocId, Sha256]  # MT_V150 @ 976cd88c… (Issue: MD5 ≠ certificado)
-    coverage_from: date  # 2023-06-17: DECISIÓN = prod actual de NT 13 [V]; depende de A1 [VERIFICAR-DNIT]
-    horizon_grace_days: int  # 7: política, no garantía (NT 25 y 27 rigieron el día de su subida)
-    date_axis_default: Literal["processing", "emission"]  # processing = supuesto A2 [VERIFICAR-DNIT]
-    assumptions: list[Assumption]  # A1 (NT 001–012 rigieron antes de coverage_from), A2 (eje de fecha)
-
+class KBMeta(M):                       # kb/_meta.yaml (protegido: el LLM no lo edita)
+    baseline: tuple[DocId, Sha256]     # MT_V150 @ 976cd88c… (Issue: MD5 ≠ certificado)
+    coverage_from: date                # 2023-06-17: DECISIÓN = prod actual de NT 13 [V]; depende de A1 [VERIFICAR-DNIT]
+    horizon_grace_days: int            # 7: política, no garantía (NT 25 y 27 rigieron el día de su subida)
+    date_axis_default: Literal["processing", "emission"]   # processing = supuesto A2 [VERIFICAR-DNIT]
+    assumptions: list[Assumption]      # A1 (NT 001–012 rigieron antes de coverage_from), A2 (eje de fecha)
 
 # --- Salida del resolvedor (contrato de `explain --json`; no se almacena) ---
 Basis = Literal["baseline", "approx", "stated"]
 Boundary = tuple[date, Basis]
 
-
 class XsdCheck(M):
-    snapshot: Sha12
-    retrieved_at: date
+    snapshot: Sha12; retrieved_at: date
     status: Literal["match", "mismatch", "not_checked"]
-    anachronistic: bool  # at < retrieved_at: estructura posterior a la fecha consultada
-
+    anachronistic: bool                # at < retrieved_at: estructura posterior a la fecha consultada
 
 class Resolution(M):
-    key: FieldKey | ValKey | None  # None en modo índice
-    at: date
-    env: Env
+    key: FieldKey | ValKey | None      # None en modo índice
+    at: date; env: Env
     axis: Literal["processing", "emission"]
-    processing_date_source: Literal["response", "flag", "unknown"] | None  # solo con --xml
-    state: Literal[
-        "in_force", "removed", "not_yet_existing", "undetermined", "outside_coverage", "not_curated"
-    ]
-    reasons: list[
-        Literal[
-            "pending_effect",
-            "blocking_issue",
-            "revision_not_curated",
-            "beyond_horizon",
-            "processing_date_unknown",
-            "axis_split",
-            "test_date_missing",
-        ]
-    ]
+    processing_date_source: Literal["response", "flag", "unknown"] | None   # solo con --xml
+    state: Literal["in_force", "removed", "not_yet_existing", "undetermined",
+                   "outside_coverage", "not_curated"]
+    reasons: list[Literal["pending_effect", "blocking_issue", "revision_not_curated", "beyond_horizon",
+                          "processing_date_unknown", "axis_split", "test_date_missing"]]
     version: FieldVersion | ValidationVersion | None
     interval: tuple[Boundary | None, Boundary | None]  # [desde, hasta) DERIVADO; None = línea base / abierto
-    source: str  # efecto + documento + revisión sha12 + página
-    history: list[tuple[str, Boundary | None]]  # cada frontera con su base (exacta o aproximada)
-    upcoming: list[str]
-    pending_effects: list[EffectId]
-    open_issues: list[str]
-    mentions: list[str] = []  # solo not_curated: doc · rev · página, por fecha de prod desc.
+    source: str                                        # efecto + documento + revisión sha12 + página
+    history: list[tuple[str, Boundary | None]]         # cada frontera con su base (exacta o aproximada)
+    upcoming: list[str]; pending_effects: list[EffectId]; open_issues: list[str]
+    mentions: list[str] = []                           # solo not_curated: doc · rev · página, por fecha de prod desc.
     xsd: XsdCheck | None
-    warnings: list[str]  # no bloqueantes: inicio aproximado, horizonte en gracia, gap…
-    kb_snapshot: str  # git describe + último documento + alcance curado
-    sources_checked_at: date  # horizonte de fuentes
-
+    warnings: list[str]                                # no bloqueantes: inicio aproximado, horizonte en gracia, gap…
+    kb_snapshot: str                                   # git describe + último documento + alcance curado
+    sources_checked_at: date                           # horizonte de fuentes
 
 # --- Event / Service / Code: definidos, NO implementados en el MVP (Fase 4) ---
-class EventTypeVersion(VersionBase):  # NT 19 cambió cómo se cuentan los 45 días del receptor [V]
+class EventTypeVersion(VersionBase):   # NT 19 cambió cómo se cuentan los 45 días del receptor [V]
     actor: Literal["emisor", "receptor", "set", "automatico"]
-    deadline_literal: str | None  # "48 h", "168 h", "45 días" (también depende de la plataforma)
+    deadline_literal: str | None       # "48 h", "168 h", "45 días" (también depende de la plataforma)
+class EventType(M):  context: str; versions: list[EventTypeVersion]
 
+class ServiceVersion(VersionBase):     # NT 11 agregó un WS; NT 10 cambió una URL [V]
+    name: str; mode: Literal["sync", "async", "query"]; path_literal: str
+    limits_literal: str | None         # 10.000 KB (MT) frente a 1000 KB (Guía) ⇒ Issue
+class Service(M):  key: str; versions: list[ServiceVersion]
 
-class EventType(M):
-    context: str
-    versions: list[EventTypeVersion]
-
-
-class ServiceVersion(VersionBase):  # NT 11 agregó un WS; NT 10 cambió una URL [V]
-    name: str
-    mode: Literal["sync", "async", "query"]
-    path_literal: str
-    limits_literal: str | None  # 10.000 KB (MT) frente a 1000 KB (Guía) ⇒ Issue
-
-
-class Service(M):
-    key: str
-    versions: list[ServiceVersion]
-
-
-class Code(M):  # canónico SOLO para códigos sin fila de validación: 0364, 0422 (el MT dice 0421)
+class Code(M):      # canónico SOLO para códigos sin fila de validación: 0364, 0422 (el MT dice 0421)
     code: SifenCode
     kind: Literal["documented_outside_tables", "observed_only"]
     meaning: str
