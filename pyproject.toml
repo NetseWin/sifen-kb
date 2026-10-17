@@ -1,0 +1,64 @@
+[project]
+name = "sifen-kb"
+version = "0.1.0"
+description = "Base de conocimiento técnica de SIFEN (Paraguay): qué regla rige en cada fecha y ambiente, con evidencia literal y verificable de los documentos de DNIT."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.14,<3.15"
+authors = [{ name = "Hugo Maldonado" }]
+keywords = ["sifen", "e-kuatia", "dnit", "paraguay", "factura electronica", "knowledge base"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Natural Language :: Spanish",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Office/Business :: Financial :: Accounting",
+]
+dependencies = [
+    "pydantic>=2.12",
+    "pyyaml>=6.0.3",
+    "xmlschema>=4.3",
+]
+
+[project.urls]
+Repository = "https://github.com/NetseWin/sifen-kb"
+Issues = "https://github.com/NetseWin/sifen-kb/issues"
+
+[project.scripts]
+sifen = "sifen_kb.cli:main"
+
+[dependency-groups]
+ingest = [
+    "pdfplumber>=0.11.10",
+    "pypdfium2>=5.9",
+]
+dev = [
+    "pytest>=8.4",
+    "hypothesis>=6.140",
+    "ruff>=0.15",
+]
+
+[build-system]
+requires = ["uv_build>=0.9,<0.13"]
+build-backend = "uv_build"
+
+[tool.uv]
+default-groups = ["dev", "ingest"]
+python-preference = "only-managed"
+
+[tool.ruff]
+line-length = 110
+target-version = "py314"
+extend-exclude = ["sources", "raw", "build"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S506", "DTZ"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S", "DTZ"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
