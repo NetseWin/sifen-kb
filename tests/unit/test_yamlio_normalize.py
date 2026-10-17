@@ -65,6 +65,21 @@ def test_dump_uses_block_literal_for_long_text_and_keeps_unicode():
     assert load_kb_text(out)["flag"] == "true"
 
 
+def test_dump_ints_dates_and_long_urls_as_plain_scalars():
+    from datetime import UTC, datetime
+
+    url = "https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_024_MT_V150.pdf/abc?t=1734617000000"
+    out = dump_kb(
+        {"size": 5204470, "d": date(2025, 1, 1), "at": datetime(2026, 10, 17, 19, 5, tzinfo=UTC), "url": url}
+    )
+    assert "size: 5204470\n" in out
+    assert "d: 2025-01-01\n" in out
+    assert "at: 2026-10-17T19:05:00+00:00\n" in out
+    assert f"url: {url}\n" in out
+    assert "!!" not in out
+    assert is_canonical(out)
+
+
 @pytest.mark.parametrize(
     ("raw", "expected"),
     [

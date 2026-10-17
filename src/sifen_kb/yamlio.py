@@ -11,6 +11,7 @@
 from __future__ import annotations
 
 import re
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any
 
@@ -64,7 +65,8 @@ _install_minimal_resolvers(KBDumper)
 
 
 def _block_worthy(s: str) -> bool:
-    return "\n" in s or len(s) > 80 or " #" in s or ": " in s
+    # Prosa larga en bloque `|-`; identificadores y URLs largas (sin espacios) quedan en una línea.
+    return "\n" in s or (len(s) > 80 and " " in s) or " #" in s or ": " in s
 
 
 def _repr_str(dumper: yaml.SafeDumper, data: str) -> yaml.ScalarNode:
@@ -73,7 +75,15 @@ def _repr_str(dumper: yaml.SafeDumper, data: str) -> yaml.ScalarNode:
     return dumper.represent_scalar("tag:yaml.org,2002:str", data)
 
 
+def _repr_as_plain_text(dumper: yaml.SafeDumper, data: object) -> yaml.ScalarNode:
+    """Enteros, fechas y fechas-hora se vuelcan como escalar plano (el loader los lee como str)."""
+    text = data.isoformat() if isinstance(data, date | datetime) else str(data)
+    return dumper.represent_scalar("tag:yaml.org,2002:str", text)
+
+
 KBDumper.add_representer(str, _repr_str)
+for _t in (int, date, datetime):
+    KBDumper.add_representer(_t, _repr_as_plain_text)
 
 
 class _IndentedListDumper(KBDumper):

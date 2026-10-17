@@ -1,0 +1,15 @@
+# Regla general primero: en gitattributes gana el último patrón que coincide, así que las
+# excepciones (sources/, binarios, raw/) deben ir DESPUÉS de `* text=auto eol=lf`.
+* text=auto eol=lf
+
+# Fuentes oficiales: bytes exactos. Sin esto, core.autocrlf convertiría LF<->CRLF y el sha256 de
+# un XSD cambiaría entre Windows y Linux (docs/arquitectura.md §D.2). Conservan el diff de texto.
+sources/** -text
+
+# Binarios oficiales
+*.pdf binary
+*.rar binary
+*.xlsx binary
+
+# Evidencia textual generada: LF siempre (la regenera `sifen extract` y se compara byte a byte en CI)
+raw/** text eol=lf

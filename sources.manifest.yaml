@@ -1,0 +1,327 @@
+revisions:
+  - doc: CHECKSUM_MT
+    sha256: d6aa4660e0a96e1b70e196373ed1a0cac8c71e9666f2192daba7f52d03e1ddd1
+    md5: eb7a541bfef4a5267aaeaa3855f5b010
+    size: 173594
+    url: https://www.dnit.gov.py/documents/20123/420592/Listado+Checksum+MD5+de+las+versiones+del+Manual+Tecnico.pdf/303ee6ab-fb9e-e708-9234-acf9e602f18a?t=1687362295755
+    filename: Listado Checksum MD5 de las versiones del Manual Tecnico.pdf
+    portal_t: 2023-06-21T15:44:55.755000Z
+    retrieved_at: 2026-10-17T19:03:55Z
+    origin: portal
+    path: sources/CHECKSUM_MT/d6aa4660e0a9.pdf
+  - doc: MT_V150
+    sha256: 976cd88c05c31041ee86db1667e1b426e2d9ddf675d941973d5918cbdc5427c6
+    md5: f48d7c820a14723ec14e66bfcb02e0df
+    size: 5204470
+    url: https://www.dnit.gov.py/documents/20123/420592/Manual+T%C3%A9cnico+Versi%C3%B3n+150.pdf/e706f7c7-6d93-21d4-b45b-5d22d07b2d22?t=1687362295907
+    filename: Manual Técnico Versión 150.pdf
+    portal_t: 2023-06-21T15:44:55.907000Z
+    retrieved_at: 2026-10-17T19:03:56Z
+    origin: portal
+    path: sources/MT_V150/976cd88c05c3.pdf
+  - doc: NORMA_DECRETO_872_2023
+    sha256: 93340e5f15caa0c2d016e2fb19eeb24d226dbda3c46370ac7266aecc3e8d9dde
+    md5: aafd8a01814856409cf8d5345dd80d30
+    size: 25302050
+    url: https://www.dnit.gov.py/documents/20123/559197/Decreto+N%C2%B0+872-23.pdf/c86edb49-54e2-367c-8626-13390cea60b1?t=1704212315637
+    filename: Decreto N° 872-23.pdf
+    portal_t: 2024-01-02T16:18:35.637000Z
+    retrieved_at: 2026-10-17T19:03:58Z
+    origin: portal
+    path: sources/NORMA_DECRETO_872_2023/93340e5f15ca.pdf
+  - doc: NT_001
+    sha256: 4c47b667084dce5ee790b764af09c9b224c6cd0473555282ff07c18146a7e008
+    md5: f3a953e53c4571402e0e07519ffc9985
+    size: 168074
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_001_MT_V150.pdf/c4d2ab8e-632b-dc8f-d3f6-6a144a3a3d9c?t=1687364545680
+    filename: NT_E_KUATIA_001_MT_V150.pdf
+    portal_t: 2023-06-21T16:22:25.680000Z
+    retrieved_at: 2026-10-17T19:04:03Z
+    origin: portal
+    path: sources/NT_001/4c47b667084d.pdf
+  - doc: NT_002
+    sha256: 6aaf4a8f4797442049d771a2984a2519dd46b45633f22be1c55ae869b0d20e87
+    md5: a96a93fc0aed2c30d957a7f8e8016805
+    size: 266016
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_002_MT_V150.pdf/b3656789-f42a-e578-4141-45046e452f41?t=1687364545841
+    filename: NT_E_KUATIA_002_MT_V150.pdf
+    portal_t: 2023-06-21T16:22:25.841000Z
+    retrieved_at: 2026-10-17T19:04:04Z
+    origin: portal
+    path: sources/NT_002/6aaf4a8f4797.pdf
+  - doc: NT_003
+    sha256: 3d27fa591b59a56c7f03cf17340c67b359dfebed23c14c8dff655998ebfc03e8
+    md5: f158bb5c6617cb6c264f033fe7e93bf6
+    size: 320468
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_003_MT_V150.pdf/dd4689ee-164a-29b3-9c3f-44cbef55bcf5?t=1687364545998
+    filename: NT_E_KUATIA_003_MT_V150.pdf
+    portal_t: 2023-06-21T16:22:25.998000Z
+    retrieved_at: 2026-10-17T19:04:05Z
+    origin: portal
+    path: sources/NT_003/3d27fa591b59.pdf
+  - doc: NT_004
+    sha256: 185619ec4badc431187cdfd79e4095161e52665a164595a5ab33862db1507c58
+    md5: 82d2b35fe714a5c4205594e6cd5b80ae
+    size: 126584
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_004_MT_V150.pdf/97868c1a-ef6f-af63-025b-515e9564997e?t=1687364546153
+    filename: NT_E_KUATIA_004_MT_V150.pdf
+    portal_t: 2023-06-21T16:22:26.153000Z
+    retrieved_at: 2026-10-17T19:04:06Z
+    origin: portal
+    path: sources/NT_004/185619ec4bad.pdf
+  - doc: NT_005
+    sha256: 6889f1fc4f2e3300292f93bf3165449d31258c274d53b9269c00d352920d51d5
+    md5: b3c3d1593d534df6de8a27f7f1085f07
+    size: 131372
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_005_MT_V150.pdf/098e75de-e878-7bcd-49ec-55c33a45a0a7?t=1687364546324
+    filename: NT_E_KUATIA_005_MT_V150.pdf
+    portal_t: 2023-06-21T16:22:26.324000Z
+    retrieved_at: 2026-10-17T19:04:07Z
+    origin: portal
+    path: sources/NT_005/6889f1fc4f2e.pdf
+  - doc: NT_006
+    sha256: 44db68fbdcc1bbfbc48e72d92ddf80bd3f42424b9c9a0add92becc44c38e2da1
+    md5: 86a5333e31253632daea6ee5555767de
+    size: 205466
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_006_MT_V150+.pdf/9554f3e6-ffb6-17b6-bd53-4e4c87a8800d?t=1687364546470
+    filename: NT_E_KUATIA_006_MT_V150 .pdf
+    portal_t: 2023-06-21T16:22:26.470000Z
+    retrieved_at: 2026-10-17T19:04:08Z
+    origin: portal
+    path: sources/NT_006/44db68fbdcc1.pdf
+  - doc: NT_007
+    sha256: ad25333d61ec5a74b4832da392c0d89112d9d40dc3adb14bab028cabfe200846
+    md5: dd907e913a6d675e3446d6ca0927899d
+    size: 122986
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_007_MT_V150.pdf/d6b31757-8906-a326-4e92-f9ec4b5d7706?t=1687364546603
+    filename: NT_E_KUATIA_007_MT_V150.pdf
+    portal_t: 2023-06-21T16:22:26.603000Z
+    retrieved_at: 2026-10-17T19:04:09Z
+    origin: portal
+    path: sources/NT_007/ad25333d61ec.pdf
+  - doc: NT_008
+    sha256: 2b1c2f0b25e92e16b88d170611e3384b318e495242fe5731f906f8770f2e40e8
+    md5: 310da39f0b70270afd9b0e37eefed62c
+    size: 238682
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_008_MT_V150.pdf/81fba389-0f27-e757-88c3-ec7b3dbab90b?t=1687364546734
+    filename: NT_E_KUATIA_008_MT_V150.pdf
+    portal_t: 2023-06-21T16:22:26.734000Z
+    retrieved_at: 2026-10-17T19:04:10Z
+    origin: portal
+    path: sources/NT_008/2b1c2f0b25e9.pdf
+  - doc: NT_009
+    sha256: bc6a85c1e77eeee29a7acefae91dd0e5cd1e4157e638ed32c527962bfe7e61aa
+    md5: b7688d308fc6ddec0fde0f3e658df891
+    size: 189975
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_009_MT_V150.pdf/c268a447-11e3-ee1e-b4d5-8d83dd408401?t=1687364546900
+    filename: NT_E_KUATIA_009_MT_V150.pdf
+    portal_t: 2023-06-21T16:22:26.900000Z
+    retrieved_at: 2026-10-17T19:04:12Z
+    origin: portal
+    path: sources/NT_009/bc6a85c1e77e.pdf
+  - doc: NT_010
+    sha256: d261165c512c6b248598e98685f307f88da50f0ecc28cb25d94157d4a9cad711
+    md5: 6af576889b7d8484d1b3ceefc8a0c9b5
+    size: 364035
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_010_MT_V150.pdf/d64a693b-6c63-86e1-ec6a-d4fe5ec4eeea?t=1687364547196
+    filename: NT_E_KUATIA_010_MT_V150.pdf
+    portal_t: 2023-06-21T16:22:27.196000Z
+    retrieved_at: 2026-10-17T19:04:12Z
+    origin: portal
+    path: sources/NT_010/d261165c512c.pdf
+  - doc: NT_011
+    sha256: 6abf95164f4eba6dfc6790e9f9361fe5d1545b83fba561ac130ff89afabc6224
+    md5: 848568c30f2f62540fd52ef5c036a3fb
+    size: 712886
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_011_MT_V150.pdf/faada1a3-f158-90fe-795a-c7f30e61fb84?t=1687364547032
+    filename: NT_E_KUATIA_011_MT_V150.pdf
+    portal_t: 2023-06-21T16:22:27.032000Z
+    retrieved_at: 2026-10-17T19:04:13Z
+    origin: portal
+    path: sources/NT_011/6abf95164f4e.pdf
+  - doc: NT_012
+    sha256: 3f9243e48a0a27f7283b08f8534d33a2189060012895eb8adabf19ff04e142e7
+    md5: 67296a0075e60072efcbe38e84ff5cf3
+    size: 666187
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_012_MT_V150.pdf/28807b7c-a7ee-9033-ab3f-75a0fcd52091?t=1687364547383
+    filename: NT_E_KUATIA_012_MT_V150.pdf
+    portal_t: 2023-06-21T16:22:27.383000Z
+    retrieved_at: 2026-10-17T19:04:14Z
+    origin: portal
+    path: sources/NT_012/3f9243e48a0a.pdf
+  - doc: NT_013
+    sha256: 5e9e85ec22f1d1081da69ea61e4b1fdf4f2ee2a57d88b0549b3b4c4f2b378af3
+    md5: 36ac1cdc38b150d016f6b008a68e28e3
+    size: 781625
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_013_MT_V150.pdf/ba73ec3b-5901-ae28-5d8c-9bed5632ab89?t=1687364547529
+    filename: NT_E_KUATIA_013_MT_V150.pdf
+    portal_t: 2023-06-21T16:22:27.529000Z
+    retrieved_at: 2026-10-17T19:04:16Z
+    origin: portal
+    path: sources/NT_013/5e9e85ec22f1.pdf
+  - doc: NT_014
+    sha256: 5320a52a9152e8c7707dbb92e360487242c1910747f4177ceb9cbdc0c87985de
+    md5: fe19abec04134ef626bcd337305d3a67
+    size: 239043
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_014_MT_V150X.pdf/dbbb0294-8678-357a-1657-bcd0318077f9?t=1706200657282
+    filename: NT_E_KUATIA_014_MT_V150X.pdf
+    portal_t: 2024-01-25T16:37:37.282000Z
+    retrieved_at: 2026-10-17T19:04:17Z
+    origin: portal
+    path: sources/NT_014/5320a52a9152.pdf
+  - doc: NT_015
+    sha256: d41ae8e7d1fdbcf6f72bb276f3903e8b7a111797dd25f1e342abb402b60cb09a
+    md5: eba7e1caebc4982ed1ca869b89e5b139
+    size: 1193329
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_015_MT_V150.pdf/f7f54b14-d4a8-d7c1-0549-804da511187e?t=1692655153604
+    filename: NT_E_KUATIA_015_MT_V150.pdf
+    portal_t: 2023-08-21T21:59:13.604000Z
+    retrieved_at: 2026-10-17T19:04:18Z
+    origin: portal
+    path: sources/NT_015/d41ae8e7d1fd.pdf
+  - doc: NT_016
+    sha256: 6406e5e6cd4f9475ce786a674b401040a5e44655c6b786739ae2ef304c49df4a
+    md5: 8ff148af171994cb9dfeb49a8395eacf
+    size: 260262
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_016_MT_V150.pdf/fbb16776-262b-7330-e609-f509304413d4?t=1692977785955
+    filename: NT_E_KUATIA_016_MT_V150.pdf
+    portal_t: 2023-08-25T15:36:25.955000Z
+    retrieved_at: 2026-10-17T19:04:19Z
+    origin: portal
+    path: sources/NT_016/6406e5e6cd4f.pdf
+  - doc: NT_017
+    sha256: 21112d7c0a1a19ce94b875c5d734273cd07992c1383429f7dedf9d119591b55c
+    md5: 3feb6ae4de443bd9f34380b3bdb9b8ba
+    size: 202528
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_017_MT_V150.pdf/6e3ccc6a-49eb-96fd-b2b6-86405bb2c4c5?t=1692977786216
+    filename: NT_E_KUATIA_017_MT_V150.pdf
+    portal_t: 2023-08-25T15:36:26.216000Z
+    retrieved_at: 2026-10-17T19:04:20Z
+    origin: portal
+    path: sources/NT_017/21112d7c0a1a.pdf
+  - doc: NT_018
+    sha256: 96079a30c8c19e82fb630eba1487dc16dd6744ffda63abcf8124972049edd840
+    md5: c1eb4754065a9f20fb3b6e865ebd4bfc
+    size: 363790
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_018_MT_V150-+Junio.pdf/2ace18c4-5c03-c339-7f5c-bed6d5b5eb5e?t=1717710699642
+    filename: NT_E_KUATIA_018_MT_V150- Junio.pdf
+    portal_t: 2024-06-06T21:51:39.642000Z
+    retrieved_at: 2026-10-17T19:04:21Z
+    origin: portal
+    path: sources/NT_018/96079a30c8c1.pdf
+  - doc: NT_019
+    sha256: c3fcd3bd96d0c11ab51add6c1ce4323ea2b1da6627d9c61091ab016318045cb4
+    md5: 35ff5ffb6b471672f96b8be55068a303
+    size: 170457
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_019_MT_V150.pdf/23bd2a28-9449-f31d-3d46-7f037706880d?t=1700253533804
+    filename: NT_E_KUATIA_019_MT_V150.pdf
+    portal_t: 2023-11-17T20:38:53.804000Z
+    retrieved_at: 2026-10-17T19:04:22Z
+    origin: portal
+    path: sources/NT_019/c3fcd3bd96d0.pdf
+  - doc: NT_020
+    sha256: 0d877d1fb16aa1db5676619816dd9ef0643aadd6c28dbd2001fe988b35db7523
+    md5: 6dd7daebb60b4b6fb2d6cac2f1c6adbe
+    size: 58969
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_020_MT_V150.pdf/f9a47078-748e-db87-bf2f-e6826ef048b9?t=1700253534040
+    filename: NT_E_KUATIA_020_MT_V150.pdf
+    portal_t: 2023-11-17T20:38:54.040000Z
+    retrieved_at: 2026-10-17T19:04:23Z
+    origin: portal
+    path: sources/NT_020/0d877d1fb16a.pdf
+  - doc: NT_021
+    sha256: 1e716577d874b4ce2f70947016cd4426069d53434ff1c59b1b1b69eb2eba94c8
+    md5: 973b0ec5706974db9c864814c0069ad8
+    size: 424568
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_021_MT_V150+30.12.24.pdf/ab12f22b-42a2-9bd4-e3a0-7141d9e4b8d0?t=1735592286335
+    filename: NT_E_KUATIA_021_MT_V150 30.12.24.pdf
+    portal_t: 2024-12-30T20:58:06.335000Z
+    retrieved_at: 2026-10-17T19:04:24Z
+    origin: portal
+    path: sources/NT_021/1e716577d874.pdf
+  - doc: NT_022
+    sha256: 269840094089b2b39b352b228c9c482eb4b65e0e3ef3c7e6863f0a046c739b1b
+    md5: d720fc2d385e597b9ff30b957574d20e
+    size: 134954
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_022_MT_V150.pdf/c7795a15-03be-caac-b664-692853c0f442?t=1709739358545
+    filename: NT_E_KUATIA_022_MT_V150.pdf
+    portal_t: 2024-03-06T15:35:58.545000Z
+    retrieved_at: 2026-10-17T19:04:25Z
+    origin: portal
+    path: sources/NT_022/269840094089.pdf
+  - doc: NT_023
+    sha256: 9cb063673358891eb867674c5f8f7a10487512b86c5ae5fc4d0ce438a95c0b03
+    md5: ee1d9be3e3bcdc8994e20f60f8ed3c3d
+    size: 193243
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_023_MT_V150.pdf/9580922b-5dd5-60f9-4857-ae66a757898f?t=1724967650006
+    filename: NT_E_KUATIA_023_MT_V150.pdf
+    portal_t: 2024-08-29T21:40:50.006000Z
+    retrieved_at: 2026-10-17T19:04:26Z
+    origin: portal
+    path: sources/NT_023/9cb063673358.pdf
+  - doc: NT_024
+    sha256: ccc2d1550e9227898e690a6025e9ab7ee1f47225dbab36acf8dda3bcb5570b9b
+    md5: 9d48f42dce946f4dc3f43c1305fb99b0
+    size: 316585
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_024_MT_V150.pdf/8f8c0fc6-ee49-74b6-469d-0f79c18065ed?t=1734614145050
+    filename: NT_E_KUATIA_024_MT_V150.pdf
+    portal_t: 2024-12-19T13:15:45.050000Z
+    retrieved_at: 2026-10-17T19:04:27Z
+    origin: portal
+    path: sources/NT_024/ccc2d1550e92.pdf
+  - doc: NT_025
+    sha256: 3950e171f161fe360adda7e04dcd7ff2676b842b6e5f8da5c13fd974e8f916d2
+    md5: 1ec189c4c0f7a7a6cc1c5b13721a6b8a
+    size: 209889
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_025_MT_V150.pdf/c6ad5e7d-bf0a-2be9-e5a0-a2a948ea1bc1?t=1745856915027
+    filename: NT_E_KUATIA_025_MT_V150.pdf
+    portal_t: 2025-04-28T16:15:15.027000Z
+    retrieved_at: 2026-10-17T19:04:28Z
+    origin: portal
+    path: sources/NT_025/3950e171f161.pdf
+  - doc: NT_026
+    sha256: 5ed252f144275c6c9d6ff47fc14021b173c912c4b92ba3572b36c327167119bc
+    md5: fc15ce20adbe5294faf2a9852d485469
+    size: 152348
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_026_MT_V150.pdf/605010d6-22fe-b732-24ab-c6e9d7868b4f?t=1749487559733
+    filename: NT_E_KUATIA_026_MT_V150.pdf
+    portal_t: 2025-06-09T16:45:59.733000Z
+    retrieved_at: 2026-10-17T19:04:30Z
+    origin: portal
+    path: sources/NT_026/5ed252f14427.pdf
+  - doc: NT_027
+    sha256: 3ff6fbbf9f54d938a777c8a98f0b18555af6b21014e2bc5349c7bfe56e2bb37d
+    md5: 4431fbe48f761a4cdeaba450baaf3419
+    size: 171022
+    url: https://www.dnit.gov.py/documents/20123/420595/NT_E_KUATIA_027_MT_V150.pdf/e5376c97-64cf-3fe0-e962-b6f22c8c207a?t=1773076266295
+    filename: NT_E_KUATIA_027_MT_V150.pdf
+    portal_t: 2026-03-09T17:11:06.295000Z
+    retrieved_at: 2026-10-17T19:04:31Z
+    origin: portal
+    path: sources/NT_027/3ff6fbbf9f54.pdf
+  - doc: XSD_RAR
+    sha256: 6df48074babb305ec559b564b1756ee8563a974e5c00b85e341e06e9c29f7bfd
+    md5: 5588f4d99becf5d96b5fd70cd8b2987a
+    size: 2116
+    url: https://www.dnit.gov.py/documents/20123/420592/Estructura_DE+xsd.rar/e956aaac-69b3-e132-6c2a-6fa039728be5?t=1687362293703
+    filename: Estructura_DE xsd.rar
+    portal_t: 2023-06-21T15:44:53.703000Z
+    retrieved_at: 2026-10-17T19:04:33Z
+    origin: portal
+    path: sources/XSD_RAR/6df48074babb.rar
+  - doc: XSD_DIR
+    sha256: cdd1f03f1d29c4e219449fd935578e024b2613b7c731b26eca2df70e43a59ac7
+    md5: 236a930dafebaaa45d40d7156b69e575
+    size: 4125
+    url: https://ekuatia.set.gov.py/sifen/xsd/
+    filename: SHA256SUMS
+    retrieved_at: 2026-10-17T19:04:34Z
+    origin: portal
+    path: sources/XSD_DIR/2026-10-17
+checks:
+  - at: 2026-10-17T19:05:38Z
+    scope:
+      - nt
+      - xsd
+      - manual
+    unregistered: []
