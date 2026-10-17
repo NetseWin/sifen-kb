@@ -91,7 +91,17 @@ Este PR **puede mergearse antes de curar** las versiones: desde ese momento, tod
 uv run sifen draft NT_028#1
 ```
 
-Crea la versión nueva de la entidad apuntada con los literales copiados de las celdas de `raw/` y hereda de la **predecesora temporal en producción** (`based_on`) las columnas que la fila de la NT no trae. Lo que hay que completar a mano, y que es **interpretación**:
+Crea la versión nueva de la entidad apuntada con los literales copiados de las celdas de `raw/` y hereda de la **predecesora temporal en producción** (`based_on`) las columnas que la fila de la NT no trae. `--dry-run` muestra el resultado sin escribir.
+
+Si la entidad todavía no existe en `kb/`, primero se crea su **versión base** desde la fila del Manual Técnico (la línea base de `kb/_meta.yaml`):
+
+```bash
+uv run sifen draft val:DE:D208c --baseline raw:MT_V150@976cd88c05c3:p167:D208c
+```
+
+El literal que se copia es `RawRow.literal`: en el MT, sin el texto en rojo (su leyenda dice que el rojo es eliminación); en una NT, la celda completa, porque el color de una NT no tiene semántica fiable (en NT 21 y 24 el rojo marca texto vigente). La acción sale siempre del verbo del encabezado.
+
+Lo que hay que completar a mano, y que es **interpretación**:
 
 - **`condition`** de una validación: `expr` en el DSL (polaridad fija: verdadera cuando la validación se **viola**; `exists()` para campos opcionales; `and`/`or`/`not` en minúsculas), `level` (`full`, `partial`, `none`) y, si no es `full`, `gaps` con lo que no captura. Las constantes deben estar en el literal (`7000000` ↔ `7.000.000`).
 - **`enumeration`** de un campo, si la observación enumera valores con su etiqueta.

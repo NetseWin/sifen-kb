@@ -72,7 +72,24 @@ def build_parser() -> argparse.ArgumentParser:
     dr = sub.add_parser(
         "draft", help="copia celdas de raw/ a kb/: <DocId> (calendario) o <EffectId> (versión)"
     )
-    dr.add_argument("target", help="NT_024 o NT_024#1")
+    dr.add_argument(
+        "target", help="NT_024, NT_024#1 o, con --baseline, la clave de la entidad (val:DE:D208c)"
+    )
+    dr.add_argument(
+        "--baseline",
+        metavar="ROWREF",
+        help="crea la entidad TARGET con su versión base copiada de esta fila del MT "
+        "(p. ej. raw:MT_V150@976cd88c05c3:p167:D208c)",
+    )
+    dr.add_argument(
+        "--update-revision",
+        dest="update_revision",
+        action="store_true",
+        help="con un DocId: mueve current_revision a la última revisión del manifiesto y copia sus fechas",
+    )
+    dr.add_argument(
+        "--dry-run", dest="dry_run", action="store_true", help="muestra el resultado sin escribir"
+    )
     dr.set_defaults(func=_lazy("draft:cmd_draft"))
 
     ck = sub.add_parser("check", help="esquema, formato, integridad, evidencia y cobertura")
