@@ -69,9 +69,11 @@ Decisiones ante ambigüedades del diseño (lectura conservadora; ver también el
 1. Guardián de cobertura, granularidad: una mención del término T en la NT D está reconocida si D tiene
    un efecto (cualquier `disposition`) cuyo destino es una entidad cuyo vocabulario contiene T, o un
    efecto `pending` sin destino (el resolvedor ya lo trata como pendiente de toda clave mencionada).
-   Un `not_modeled` sin destino no reconoce nada. NO se exime una mención por estar dentro de la fila de
-   otra entidad: si la observación de D208c en NT 24 nombra D208 y F014, NT 24 necesita efectos
-   (típicamente `not_modeled` con nota) sobre `field:DE:D208` y `field:DE:F014`. Una NT registrada sin
+   Un `not_modeled` sin destino no reconoce nada. **Regla laxa acotada (decisión del usuario,
+   2026-10-17):** una mención DENTRO del texto de una fila que cita un efecto aplicado o `pending` de D
+   queda reconocida (si la observación de D208c en NT 24 nombra D208 y F014, no hacen falta efectos sobre
+   esos campos); las menciones en prosa o en filas no citadas siguen exigiendo un efecto, y un cambio
+   real a otra entidad aparece como fila propia con su ID (lo atrapa el libro de cambios). Una NT registrada sin
    ficha que menciona el vocabulario es un error. Se lee la revisión MÁS RECIENTE del manifiesto (como
    `mentions`). Solo documentos `NT_ddd`. El libro de cambios exige un efecto sobre la entidad de cada
    fila cambiada (si está curada); su acción deducida por color NO se usa (el color de una NT no tiene
@@ -226,6 +228,8 @@ BASE_REF_ENV = "SIFEN_BASE_REF"
 DEFAULT_BASE_REFS: tuple[str, ...] = ("main", "origin/main")
 
 _NT_DOC = re.compile(r"^NT_\d{3}$")
+_MIN_ROW_LINE = 20
+"""Largo mínimo de un renglón de celda que el guardián quita de la página (ver `check_coverage`)."""
 _PAGE_FILE = re.compile(r"^p(\d+)\.txt$")
 _KB_LAYOUT = re.compile(
     r"^kb/(?:_meta\.yaml|documents/[^/]+\.yaml|(?:fields|validations)/[^/]+/[^/]+\.yaml|issues/[^/]+\.yaml)$"
@@ -987,6 +991,40 @@ def check_coverage(kb: KB) -> list[Finding]:
             (e.target in keys) or (e.disposition == "pending" and e.target is None) for e in doc.effects
         )
 
+    def cited_rows(doc: DocumentSource | None, rev12: str) -> list[RawRow]:
+        """Filas de esta revisión que cita un efecto aplicado o `pending` del documento (decisión 1)."""
+        rows: list[RawRow] = []
+        for e in doc.effects if doc is not None else []:
+            if e.disposition == "not_modeled":
+                continue
+            for ref in _row_refs(e.evidence):
+                row, _err = raw.resolve(ref.split("#")[0])
+                if row is not None and row.sha12 == rev12:
+                    rows.append(row)
+        return rows
+
+    def outside_cited_rows(text: str, page: int, rows: list[RawRow]) -> str:
+        """Texto normalizado de la página sin el texto de las filas citadas que la ocupan.
+
+        Se quita cada celda completa (una vez) y, si la celda no está entera en la página (fila partida o
+        celdas combinadas), cada renglón de al menos `_MIN_ROW_LINE` caracteres. Un renglón corto no se
+        quita: podría borrar una mención ajena ("R" dentro de "iTipIDRec"); en la duda, la mención queda
+        visible y el guardián la exige (nunca al revés).
+        """
+        out = normalize_text(text)
+        for row in rows:
+            if page not in (row.pages or [row.page]):
+                continue
+            for attr, cell in row.cells.items():
+                if cell and cell in out:
+                    out = out.replace(cell, " ", 1)
+                    continue
+                for line in row.raw_cells.get(attr, "").split("\n"):
+                    piece = normalize_text(line)
+                    if len(piece) >= _MIN_ROW_LINE and piece in out:
+                        out = out.replace(piece, " ", 1)
+        return out
+
     for doc_id in sorted({r.doc for r in kb.manifest.revisions if _NT_DOC.match(r.doc)}):
         latest = kb.latest_revision(doc_id)
         if latest is None:
@@ -999,8 +1037,9 @@ def check_coverage(kb: KB) -> list[Finding]:
             out.warning(w, f"{doc_id}: la revisión {rev12} no tiene raw/: cobertura no comprobada")
             continue
         hits: dict[str, list[int]] = defaultdict(list)
+        rows = cited_rows(doc, rev12)
         for n in pages:
-            text = raw.page(doc_id, rev12, n) or ""
+            text = outside_cited_rows(raw.page(doc_id, rev12, n) or "", n, rows)
             for t, pat in patterns.items():
                 if pat.search(text):
                     hits[t].append(n)

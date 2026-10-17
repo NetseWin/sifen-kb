@@ -4,7 +4,8 @@ La KB de prueba (`spec()`) es mínima pero COHERENTE: fuentes con hash real en `
 `raw/` sintético (filas, páginas e `index.json`), libro de cambios, y `val:DE:D208c` en tres versiones
 (MT V150 ≥ 60 M → NT 21 ≥ 35 M → NT 24 ≥ 7 M) con los campos D208 y F014 que lee su condición. Como la
 observación de D208c nombra D208 y F014, cada NT reconoce esas menciones con efectos `not_modeled`
-(guardián de cobertura). NADA de esto es evidencia real: los PDF son marcadores.
+(redundantes con la regla laxa acotada del guardián, que ya las exime por estar dentro de la fila citada
+por NT_0xx#1; los tests de cobertura los quitan). NADA de esto es evidencia real: los PDF son marcadores.
 
 El fixture limpio es el «caso que pasa» de todas las comprobaciones (`test_clean_fixture_passes`); cada
 test siembra un error con una mutación del `spec` y verifica que su comprobación lo detecta.
@@ -868,9 +869,39 @@ def test_enum_labels_in_observations(tmp_path: Path) -> None:
 
 
 # === guardián de cobertura =========================================================================
+def prose_mention(s: dict[str, Any], doc: str, text: str) -> None:
+    """Agrega a la página 2 de la NT una frase en prosa, fuera de toda fila."""
+    s["raw"][doc]["pages"][2] += "\n" + text
+
+
 def test_unrecognized_mention(tmp_path: Path) -> None:
-    kb = make(tmp_path, lambda s: drop_effect(s, "NT_024#3"))
+    def mutate(s: dict[str, Any]) -> None:
+        drop_effect(s, "NT_024#3")
+        prose_mention(s, "NT_024", "Para el total de la operación ver el campo F014.")
+
+    kb = make(tmp_path, mutate)
     assert has(found(kb, "cobertura"), "NT_024 menciona F014", "field:DE:F014")
+
+
+def test_mention_inside_cited_row_is_recognized(tmp_path: Path) -> None:
+    """Regla laxa acotada: D208 y F014 solo aparecen en la observación de D208c, fila que cita NT_0xx#1."""
+
+    def mutate(s: dict[str, Any]) -> None:
+        for doc in ("NT_021", "NT_024"):
+            drop_effect(s, f"{doc}#2")
+            drop_effect(s, f"{doc}#3")
+
+    assert found(make(tmp_path, mutate), "cobertura") == []
+
+
+def test_mention_inside_row_cited_only_by_not_modeled_is_not_exempt(tmp_path: Path) -> None:
+    """Una fila citada solo por un `not_modeled` no exime: si NT_024#1 deja de citar la fila, F014 aparece."""
+
+    def mutate(s: dict[str, Any]) -> None:
+        drop_effect(s, "NT_024#3")
+        effect(s, "NT_024#1").update(disposition="not_modeled", note="[fixture]")
+
+    assert has(found(make(tmp_path, mutate), "cobertura"), "NT_024 menciona F014")
 
 
 def test_untargeted_pending_recognizes_mentions(tmp_path: Path) -> None:
@@ -1514,8 +1545,9 @@ def test_seeded_errors_detected(tmp_path: Path) -> None:
         # 2. cambio fuera del alcance declarado (NT 24 declara [observation, legal_basis] y cambia el mensaje)
         effect(s, "NT_024#1")["declared_scope"] = ["observation", "legal_basis"]
         _change_message(s, "NT_024", 2, "Mensaje nuevo [fixture]")
-        # 3. mención no reconocida (NT 24 nombra F014 y nada lo reconoce)
+        # 3. mención no reconocida (NT 24 nombra F014 en prosa y nada lo reconoce)
         drop_effect(s, "NT_024#3")
+        prose_mention(s, "NT_024", "Para el total de la operación ver el campo F014.")
         # 4. cambio de severidad sin reconocer con alcance row (NT 21: R → AO)
         raw_row(s, "NT_021", "D208c")["cells"]["severity"] = "AO"
         versions(s)[1]["severity"] = "AO"

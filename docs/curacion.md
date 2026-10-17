@@ -81,7 +81,7 @@ effects:
 - `declared_scope` lo declara la NT: "se modifica … en la Longitud" es `[length]`; si reproduce la fila entera, `row`, y toda columna que cambió (salvo la observación) va en `acknowledged_changes`.
 - `target` es la entidad afectada; si la fila citada trae ID, debe coincidir (un test lo verifica). `null` solo con `disposition`.
 - `disposition: pending` mientras no se haya curado; `not_modeled` (con `note` obligatoria) para menciones que el MVP no modela.
-- Toda mención del vocabulario curado (IDs, códigos, `xml_name`) en la NT debe quedar reconocida por algún efecto; el guardián de cobertura lo comprueba.
+- Toda mención del vocabulario curado (IDs, códigos, `xml_name`) en la NT debe quedar reconocida por algún efecto; el guardián de cobertura lo comprueba. Una mención **dentro de una fila que ya cita un efecto aplicado o `pending`** cuenta como reconocida (la observación de D208c nombra D011, D208, F014 y F023 sin modificarlos); las menciones en prosa o en filas no citadas necesitan su propio efecto (`not_modeled` con nota si el MVP no las modela).
 
 Este PR **puede mergearse antes de curar** las versiones: desde ese momento, toda consulta afectada muestra el efecto pendiente (`pending_effect`).
 
