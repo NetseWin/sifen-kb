@@ -1,0 +1,30 @@
+id: NT_902
+kind: technical_note
+number: 902
+title: Nota Técnica N° 902 [HIP]
+current_revision: 15739cc640f496c9aa96638dd111f2bea55964486f13e6b951b535359c2119e7
+document_date:
+  value: 2027-08-02
+  literal: 02/08/2027
+  stated_in: raw:NT_902@15739cc640f4:p1:fechas#fecha
+schedule:
+  test:
+    value: 2027-09-01
+    literal: 01/09/2027
+    stated_in: raw:NT_902@15739cc640f4:p1:fechas#test
+  prod:
+    value: 2027-10-01
+    literal: 01/10/2027
+    stated_in: raw:NT_902@15739cc640f4:p1:fechas#prod
+effects:
+  - id: NT_902#1
+    verb_literal: Se elimina la siguiente validación
+    action: remove
+    target: val:DE:D208c
+    declared_scope: row
+    evidence:
+      - raw:NT_902@15739cc640f4:p1:D208c
+    interpretation:
+      by: human
+      note: '[HIP] fixture'
+curation_scope: pilot

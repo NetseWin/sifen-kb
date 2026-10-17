@@ -1,0 +1,15 @@
+key: field:DE:D208
+context: DE
+id: D208
+versions:
+  - introduced_by: baseline
+    evidence:
+      - raw:MT_V150@acb2499a93b3:p166:D208
+    group: D3
+    parent: D200
+    xml_name: iTipIDRec
+    description: Tipo de documento de identidad del receptor
+    data_type: N
+    length: 1
+    occurrence: 0-1
+    observations: '[fixture] Obligatorio si D201 = 2 y D202 ≠ 4'

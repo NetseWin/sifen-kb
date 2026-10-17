@@ -1,0 +1,31 @@
+id: NT_901
+kind: technical_note
+number: 901
+title: Nota Técnica N° 901 [HIP]
+current_revision: 439b24135f1951d7235268773b9d1f02fd832d590f03a535fda96633751d445b
+document_date:
+  value: 2027-01-15
+  literal: 15/01/2027
+  stated_in: raw:NT_901@439b24135f19:p1:fechas#fecha
+schedule:
+  test:
+    value: 2027-02-01
+    literal: 01/02/2027
+    stated_in: raw:NT_901@439b24135f19:p1:fechas#test
+  prod:
+    value: 2027-04-01
+    literal: 01/04/2027
+    stated_in: raw:NT_901@439b24135f19:p1:fechas#prod
+effects:
+  - id: NT_901#1
+    verb_literal: Se modifica la Observación de la siguiente validación
+    action: modify
+    target: val:DE:D208c
+    declared_scope:
+      - observation
+    evidence:
+      - raw:NT_901@439b24135f19:p2:D208c
+    interpretation:
+      by: human
+      note: '[HIP] fixture'
+curation_scope: pilot

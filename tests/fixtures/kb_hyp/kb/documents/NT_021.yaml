@@ -1,0 +1,38 @@
+id: NT_021
+kind: technical_note
+number: 21
+title: Nota Técnica N° 21 [fixture]
+current_revision: f467981a797dacd610167d54f13a3a893edbe90db2bf9790f6ca48b16b0ee128
+document_date:
+  value: 2023-12-29
+  literal: 29/12/2023
+  stated_in: raw:NT_021@f467981a797d:p1:fechas#fecha
+schedule:
+  test:
+    value: 2024-01-01
+    literal: 01/01/2024
+    stated_in: raw:NT_021@f467981a797d:p1:fechas#test
+  prod:
+    value: 2024-01-01
+    literal: 01/01/2024
+    stated_in: raw:NT_021@f467981a797d:p1:fechas#prod
+superseded_by:
+  doc: NT_024
+  since: 2025-01-01
+  stated_in:
+    doc: NT_021
+    rev: f467981a797d
+    page_pdf: 1
+    quote: VER NOTA TÉCNICA N° 24 DESDE EL 01/01/2025
+effects:
+  - id: NT_021#1
+    verb_literal: Se modifica la siguiente validación
+    action: modify
+    target: val:DE:D208c
+    declared_scope: row
+    evidence:
+      - raw:NT_021@f467981a797d:p2:D208c
+    interpretation:
+      by: human
+      note: '[HIP] fixture'
+curation_scope: pilot

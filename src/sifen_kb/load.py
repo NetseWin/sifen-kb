@@ -56,6 +56,11 @@ class KB:
     _effects: dict[str, tuple[DocumentSource, Effect]] = field(default_factory=dict)
     _raw: RawStore | None = None
 
+    def reindex(self) -> KB:
+        """Reconstruye el índice de efectos desde `documents` (tras armar o modificar una KB en memoria)."""
+        self._effects = {e.id: (d, e) for d in self.documents.values() for e in d.effects}
+        return self
+
     # --- acceso -----------------------------------------------------------------------------
     @property
     def raw(self) -> RawStore:

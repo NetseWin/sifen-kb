@@ -1,0 +1,75 @@
+revisions:
+  - doc: MT_V150
+    sha256: acb2499a93b3cd58011d101dce7fc92e515594d7563273a6dfe61978143c1317
+    md5: a580e981665dc2c79dc520a7d8e8a7af
+    size: 144210
+    url: https://fixture.invalid/kb_hyp/Manual_Tecnico_Version_150.pdf
+    filename: Manual_Tecnico_Version_150.pdf
+    portal_t: 2019-09-30T00:00:00
+    retrieved_at: 2026-10-17T10:00:00
+    origin: portal
+    path: sources/MT_V150/acb2499a93b3.pdf
+  - doc: NT_021
+    sha256: f467981a797dacd610167d54f13a3a893edbe90db2bf9790f6ca48b16b0ee128
+    md5: fc96bb7b53af2ffe6007575a790dcbc0
+    size: 162567
+    url: https://fixture.invalid/kb_hyp/NT_E_KUATIA_021_MT_V150.pdf
+    filename: NT_E_KUATIA_021_MT_V150.pdf
+    portal_t: 2024-12-30T00:00:00
+    retrieved_at: 2026-10-17T10:01:00
+    origin: portal
+    path: sources/NT_021/f467981a797d.pdf
+    note: |-
+      Revisión inicial: la de 2024 con marca de agua (fixture).
+  - doc: NT_024
+    sha256: 3c345a4412bc80bc7099f96a64af5c3a087be3aca837430814cca238d3257fb9
+    md5: 92dea8d08bdb2efb80562c0fbdf26711
+    size: 115412
+    url: https://fixture.invalid/kb_hyp/NT_E_KUATIA_024_MT_V150.pdf
+    filename: NT_E_KUATIA_024_MT_V150.pdf
+    portal_t: 2024-12-19T00:00:00
+    retrieved_at: 2026-10-17T10:02:00
+    origin: portal
+    path: sources/NT_024/3c345a4412bc.pdf
+  - doc: NT_901
+    sha256: a164e57654f7c2651bff6058db0a614981e41bae9e86086961fae86c6126a776
+    md5: 7776330a4fb13bd7648026c413db5126
+    size: 141316
+    url: https://fixture.invalid/kb_hyp/NT_E_KUATIA_901.pdf
+    filename: NT_E_KUATIA_901.pdf
+    portal_t: 2027-01-18T00:00:00
+    retrieved_at: 2027-01-18T12:00:00
+    origin: portal
+    path: sources/NT_901/a164e57654f7.pdf
+    note: '[HIP]'
+  - doc: NT_901
+    sha256: 439b24135f1951d7235268773b9d1f02fd832d590f03a535fda96633751d445b
+    md5: 9442ea913ed2e50fa0b1ae1453e83a23
+    size: 117307
+    url: https://fixture.invalid/kb_hyp/NT_E_KUATIA_901.pdf
+    filename: NT_E_KUATIA_901.pdf
+    portal_t: 2027-02-20T00:00:00
+    retrieved_at: 2027-02-20T12:00:00
+    origin: portal
+    path: sources/NT_901/439b24135f19.pdf
+    note: |-
+      [HIP] Re-subida: prórroga de producción.
+  - doc: NT_902
+    sha256: 15739cc640f496c9aa96638dd111f2bea55964486f13e6b951b535359c2119e7
+    md5: cbc010fcb7ccf7553c06bc13ff37f12d
+    size: 105491
+    url: https://fixture.invalid/kb_hyp/NT_E_KUATIA_902.pdf
+    filename: NT_E_KUATIA_902.pdf
+    portal_t: 2027-08-02T00:00:00
+    retrieved_at: 2027-08-03T12:00:00
+    origin: portal
+    path: sources/NT_902/15739cc640f4.pdf
+    note: '[HIP]'
+checks:
+  - at: 2027-12-31T00:00:00
+    scope:
+      - nt
+      - xsd
+      - tablas
+      - manual
+    unregistered: []

@@ -1,0 +1,88 @@
+# Golden temporal del escenario [HIP] de docs/arquitectura.md §G.5 sobre tests/fixtures/kb_hyp/.
+# Lo ejecuta tests/test_golden_temporal.py. Formato (§K.5):
+#   {key, at, env, kb?, processed_at?, verdicts?, expect}     resolución (o G.4 si hay processed_at)
+#   {key, diff: [desde, hasta], expect}                        diff entre versiones (anti-R3)
+# kb: hyp (por defecto) | hyp_rev2_pendiente | corte:AAAA-MM-DD (corte de la KB base de este archivo).
+# expect: state, reasons (si falta: ninguno), introduced_by, kind, code, severity, interval_from,
+#   interval_to, upcoming_includes, upcoming_excludes, upcoming_empty, warnings_includes,
+#   open_issues_includes, pending_effects, history, verdict, emission_verdict, processing_verdict,
+#   boundary, changed, within_declared_scope. Una clave desconocida hace fallar la fila.
+# Completitud (§K.5): cada frontera tiene una fila el día anterior y otra el día del cambio, en cada
+# ambiente donde las fechas difieran (lo verifica test_golden_hyp_completeness).
+# Las filas G5-n reproducen la fila n de la tabla de G.5 en su versión [HIP].
+
+# --- Cobertura (coverage_from = 2023-06-17) ----------------------------------------------------------
+- {id: cov-before, key: "val:DE:D208c", at: "2023-06-16", env: prod, expect: {state: outside_coverage, introduced_by: baseline, warnings_includes: ["fuera de cobertura"]}}
+- {id: cov-day, key: "val:DE:D208c", at: "2023-06-17", env: prod, expect: {state: in_force, introduced_by: baseline, interval_from: baseline, interval_to: "2024-01-01"}}
+
+# --- NT_021#1 (test = prod = 2024-01-01) -------------------------------------------------------------
+- {key: "val:DE:D208c", at: "2023-12-31", env: prod, expect: {state: in_force, introduced_by: baseline, upcoming_includes: ["NT_021#1 · versión · desde 2024-01-01"]}}
+- {key: "val:DE:D208c", at: "2024-01-01", env: prod, expect: {state: in_force, introduced_by: [NT_021#1], interval_from: "2024-01-01", interval_to: "2025-01-01"}}
+- {key: "val:DE:D208c", at: "2023-12-31", env: test, expect: {state: in_force, introduced_by: baseline}}
+- {key: "val:DE:D208c", at: "2024-01-01", env: test, expect: {state: in_force, introduced_by: [NT_021#1]}}
+# Oráculo de la marca de agua: el fin derivado de NT_021#1 es superseded_by.since (2025-01-01).
+- {id: watermark, key: "val:DE:D208c", at: "2024-06-01", env: prod, expect: {state: in_force, introduced_by: [NT_021#1], interval_to: "2025-01-01"}}
+
+# --- NT_024#1 (test = prod = 2025-01-01) -------------------------------------------------------------
+- {key: "val:DE:D208c", at: "2024-12-31", env: prod, expect: {state: in_force, introduced_by: [NT_021#1], upcoming_includes: ["NT_024#1 · versión · desde 2025-01-01 (declarada)"]}}
+- {key: "val:DE:D208c", at: "2025-01-01", env: prod, expect: {state: in_force, introduced_by: [NT_024#1], code: "1321", severity: R}}
+
+# --- NT_901#1 [HIP]: test 2027-02-01; prod 2027-04-01 (prorrogada; antes 2027-03-01) ------------------
+- {key: "val:DE:D208c", at: "2027-01-31", env: test, expect: {state: in_force, introduced_by: [NT_024#1], upcoming_includes: ["NT_901#1 · versión · desde 2027-02-01"]}}
+- {key: "val:DE:D208c", at: "2027-02-01", env: test, expect: {state: in_force, introduced_by: [NT_901#1]}}
+- {id: G5-07, key: "val:DE:D208c", at: "2027-02-15", env: test, expect: {state: in_force, introduced_by: [NT_901#1], interval_from: "2027-02-01", interval_to: "2027-09-01"}}
+- {id: G5-08, key: "val:DE:D208c", at: "2027-02-15", env: prod, expect: {state: in_force, introduced_by: [NT_024#1], interval_to: "2027-04-01", upcoming_includes: ["NT_901#1 · versión · desde 2027-04-01 (declarada) · ver ISS-0001"], warnings_includes: ["ISS-0001 (temporal, resuelto)", "declaraba 01/03/2027"]}}
+- {id: G5-11, key: "val:DE:D208c", at: "2027-03-15", env: prod, expect: {state: in_force, introduced_by: [NT_024#1]}}
+- {key: "val:DE:D208c", at: "2027-03-31", env: prod, expect: {state: in_force, introduced_by: [NT_024#1]}}
+- {key: "val:DE:D208c", at: "2027-04-01", env: prod, expect: {state: in_force, introduced_by: [NT_901#1], code: "1321", severity: R}}
+
+# --- Revisión 2 de NT_901 registrada y sin curar (documento del 2027-01-15) -------------------------
+- {id: G5-09, kb: hyp_rev2_pendiente, key: "val:DE:D208c", at: "2027-03-15", env: prod, expect: {state: undetermined, reasons: [revision_not_curated], introduced_by: [NT_901#1], warnings_includes: ["no está curada"]}}
+- {id: G5-10, kb: hyp_rev2_pendiente, key: "val:DE:D208c", at: "2026-10-17", env: prod, expect: {state: in_force, introduced_by: [NT_024#1], upcoming_includes: ["NT_901#1 · versión · desde 2027-03-01"]}}
+- {kb: hyp_rev2_pendiente, key: "val:DE:D208c", at: "2027-01-14", env: prod, expect: {state: in_force, introduced_by: [NT_024#1]}}
+- {kb: hyp_rev2_pendiente, key: "val:DE:D208c", at: "2027-01-15", env: prod, expect: {state: undetermined, reasons: [revision_not_curated], introduced_by: [NT_024#1]}}
+- {kb: hyp_rev2_pendiente, key: "val:DE:D208c", at: "2027-01-14", env: test, expect: {state: in_force, introduced_by: [NT_024#1]}}
+- {kb: hyp_rev2_pendiente, key: "val:DE:D208c", at: "2027-01-15", env: test, expect: {state: undetermined, reasons: [revision_not_curated], introduced_by: [NT_024#1]}}
+# Sin raw/ de la revisión nueva no se sabe qué menciona: bloquea también las demás claves.
+- {kb: hyp_rev2_pendiente, key: "field:DE:D208", at: "2027-01-14", env: prod, expect: {state: in_force, introduced_by: baseline}}
+- {kb: hyp_rev2_pendiente, key: "field:DE:D208", at: "2027-01-15", env: prod, expect: {state: undetermined, reasons: [revision_not_curated], introduced_by: baseline}}
+
+# --- NT_902#1 [HIP], lápida: test 2027-09-01; prod 2027-10-01 ----------------------------------------
+- {key: "val:DE:D208c", at: "2027-08-31", env: test, expect: {state: in_force, introduced_by: [NT_901#1]}}
+- {key: "val:DE:D208c", at: "2027-09-01", env: test, expect: {state: removed, introduced_by: [NT_902#1], kind: tombstone}}
+- {id: G5-12, key: "val:DE:D208c", at: "2027-09-15", env: test, expect: {state: removed, introduced_by: [NT_902#1], upcoming_empty: true}}
+- {id: G5-13, key: "val:DE:D208c", at: "2027-09-15", env: prod, expect: {state: in_force, introduced_by: [NT_901#1], interval_to: "2027-10-01", upcoming_includes: ["NT_902#1 · eliminación · desde 2027-10-01"]}}
+- {key: "val:DE:D208c", at: "2027-09-30", env: prod, expect: {state: in_force, introduced_by: [NT_901#1]}}
+- {key: "val:DE:D208c", at: "2027-10-01", env: prod, expect: {state: removed, introduced_by: [NT_902#1]}}
+- {id: G5-14, key: "val:DE:D208c", at: "2027-10-05", env: prod, expect: {state: removed, introduced_by: [NT_902#1], code: "1321", interval_to: null, warnings_includes: ["recibir 1321 contradice la KB"]}}
+
+# --- Horizonte del fixture: 2027-12-31 + 7 días de gracia --------------------------------------------
+- {key: "val:DE:D208c", at: "2028-01-07", env: prod, expect: {state: removed, introduced_by: [NT_902#1], warnings_includes: ["fuentes verificadas el 2027-12-31"]}}
+- {id: G5-20, key: "val:DE:D208c", at: "2028-01-08", env: prod, expect: {state: undetermined, reasons: [beyond_horizon], introduced_by: [NT_902#1], warnings_includes: ["más allá del horizonte"]}}
+
+# --- Cortes: lo que una KB de entonces podía decir ----------------------------------------------------
+- {id: G5-06, kb: "corte:2023-12-20", key: "val:DE:D208c", at: "2024-06-01", env: prod, expect: {state: undetermined, reasons: [beyond_horizon], introduced_by: baseline, upcoming_empty: true}}
+- {id: G5-20-corte, kb: "corte:2026-10-17", key: "val:DE:D208c", at: "2027-01-01", env: prod, expect: {state: undetermined, reasons: [beyond_horizon], introduced_by: [NT_024#1], interval_to: null}}
+- {kb: "corte:2026-10-17", key: "val:DE:D208c", at: "2026-10-24", env: prod, expect: {state: in_force, introduced_by: [NT_024#1], warnings_includes: ["fuentes verificadas el 2026-10-17"]}}
+- {kb: "corte:2026-10-17", key: "val:DE:D208c", at: "2026-10-25", env: prod, expect: {state: undetermined, reasons: [beyond_horizon], introduced_by: [NT_024#1]}}
+# Un corte posterior al documento pero anterior a su vigencia lo conserva: la versión es futura.
+- {kb: "corte:2027-01-20", key: "val:DE:D208c", at: "2027-01-20", env: prod, expect: {state: in_force, introduced_by: [NT_024#1], upcoming_includes: ["NT_901#1 · versión · desde 2027-04-01"], upcoming_excludes: ["NT_902#1"]}}
+
+# --- Historial (G5-15 [HIP]) ---------------------------------------------------------------------------
+- {id: G5-15, key: "val:DE:D208c", at: "2027-12-31", env: prod, expect: {state: removed, introduced_by: [NT_902#1], history: ["línea base", "NT_021#1", "NT_024#1", "NT_901#1", "NT_902#1"]}}
+
+# --- G.4: emisión frente a procesamiento (veredictos de un XML con F014 = 6.000.000, D208 = 5) --------
+# verdicts declara el resultado del evaluador por versión: ≥ 7 M no viola, ≥ 5 M viola.
+- {id: G5-16, key: "val:DE:D208c", at: "2027-03-31", processed_at: "2027-04-01", env: prod, verdicts: {"NT_024#1": false, "NT_901#1": true}, expect: {state: undetermined, reasons: [axis_split], introduced_by: [NT_901#1], emission_verdict: false, processing_verdict: true, verdict: null}}
+- {id: G5-17, key: "val:DE:D208c", at: "2027-03-31", processed_at: null, env: prod, verdicts: {"NT_024#1": false, "NT_901#1": true}, expect: {state: undetermined, reasons: [processing_date_unknown], introduced_by: [NT_024#1], emission_verdict: false, verdict: null, boundary: "2027-04-01"}}
+- {id: G5-18, key: "val:DE:D208c", at: "2027-03-31", processed_at: "2027-04-01", env: prod, verdicts: {"NT_024#1": true, "NT_901#1": true}, expect: {state: in_force, introduced_by: [NT_901#1], verdict: true}}
+- {key: "val:DE:D208c", at: "2027-01-31", processed_at: "2027-02-01", env: test, verdicts: {"NT_024#1": false, "NT_901#1": true}, expect: {state: undetermined, reasons: [axis_split], introduced_by: [NT_901#1], emission_verdict: false, processing_verdict: true}}
+# Sin frontera entre la emisión y el horizonte: cualquier fecha de procesamiento da lo mismo.
+- {key: "val:DE:D208c", at: "2027-10-02", processed_at: null, env: prod, verdicts: {}, expect: {state: removed, introduced_by: [NT_902#1], verdict: false, boundary: null}}
+
+# --- Diff v2 → v3 (G5-19 [HIP]): cambian observation y condition, dentro de declared_scope [observation]
+- {id: G5-19, key: "val:DE:D208c", diff: ["NT_024#1", "NT_901#1"], expect: {changed: [condition, observation], within_declared_scope: true}}
+
+# --- Otras claves ------------------------------------------------------------------------------------
+- {key: "field:DE:D208", at: "2027-06-01", env: test, expect: {state: in_force, introduced_by: baseline}}
+- {key: "1400", at: "2027-01-01", env: prod, expect: {state: not_curated, warnings_includes: ["vigencia no resuelta"]}}

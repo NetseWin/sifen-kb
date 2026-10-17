@@ -1,0 +1,30 @@
+id: NT_024
+kind: technical_note
+number: 24
+title: Nota Técnica N° 24 [fixture]
+current_revision: 3c345a4412bc80bc7099f96a64af5c3a087be3aca837430814cca238d3257fb9
+document_date:
+  value: 2024-12-17
+  literal: 17/12/2024
+  stated_in: raw:NT_024@3c345a4412bc:p1:fechas#fecha
+schedule:
+  test:
+    value: 2025-01-01
+    literal: 01/01/2025
+    stated_in: raw:NT_024@3c345a4412bc:p1:fechas#test
+  prod:
+    value: 2025-01-01
+    literal: 01/01/2025
+    stated_in: raw:NT_024@3c345a4412bc:p1:fechas#prod
+effects:
+  - id: NT_024#1
+    verb_literal: Se modifica la siguiente validación
+    action: modify
+    target: val:DE:D208c
+    declared_scope: row
+    evidence:
+      - raw:NT_024@3c345a4412bc:p2:D208c
+    interpretation:
+      by: human
+      note: '[HIP] fixture'
+curation_scope: pilot

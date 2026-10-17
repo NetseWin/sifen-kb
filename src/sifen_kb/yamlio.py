@@ -58,7 +58,8 @@ _install_minimal_resolvers(KBLoader)
 
 
 class KBDumper(yaml.SafeDumper):
-    pass
+    def ignore_aliases(self, data: Any) -> bool:  # noqa: D102 - el loader rechaza anchors y alias
+        return True
 
 
 _install_minimal_resolvers(KBDumper)

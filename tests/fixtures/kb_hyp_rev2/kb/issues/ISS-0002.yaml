@@ -1,0 +1,10 @@
+id: ISS-0002
+kind: ambiguity
+affects:
+  - subject: val:DE:D208c
+statement: |-
+  [fixture] La prosa asocia F023 a moneda extranjera y F014 a PYG; la condición formaliza el paréntesis (F023 >= X o F014 >= X).
+evidence:
+  - raw:NT_024@3c345a4412bc:p2:D208c#observation
+blocking: false
+status: open
