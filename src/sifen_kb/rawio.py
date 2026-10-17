@@ -60,6 +60,14 @@ Texto vigente de una celda: `RawRow.current(attr)` quita los tramos "deleted" de
 normaliza (la misma regla que el libro de cambios de pdf_to_md). `cells` conserva TODO el texto
 impreso, también el tachado.
 
+**El literal que copia y verifica la KB es `RawRow.literal(attr)`, no `current`.** El color solo
+tiene leyenda en el MT V150 (amarillo = modificación, verde = adición, rojo = eliminación): ahí
+`literal == current`. En las NT el resaltado no tiene semántica fiable (docs/arquitectura.md §I.4;
+docs/investigacion/sifen.md §5): en NT 21 y NT 24 el rojo marca «Si el Tipo de transacción es
+distinto a Muestras médicas (D011≠13)», «o igual» y el «=» de «>=», y ese texto SIGUE VIGENTE. Por
+eso en una NT `literal == cells[attr]` (todo el texto impreso) y la acción sale del verbo del
+encabezado, nunca del color.
+
 Atributos: campos (FIELD_HEADERS) group, id, xml_name, description, parent, data_type, length,
 occurrence, observations, version; validaciones (VALIDATION_HEADERS) num, id, message, code,
 observation, severity, v; fechas (DATE_ATTRS) fecha, test, prod.
@@ -143,6 +151,8 @@ ROW_FIELDS: tuple[str, ...] = (
     "marks",
 )
 LEDGER_DIR = "_ledger"
+COLOR_LEGEND_DOC = "MT_V150"
+"""Único documento cuya leyenda da semántica al color (ver `RawRow.literal`)."""
 
 
 def header_key(literal: str) -> str:
@@ -188,6 +198,14 @@ class RawRow:
         ):
             text = text[: m["start"]] + text[m["end"] :]
         return normalize_text(text)
+
+    def literal(self, attr: str) -> str:
+        """Literal de la celda que copia `sifen draft` y verifica `sifen check`.
+
+        En el MT V150 (único documento con leyenda de colores) es `current(attr)`; en cualquier
+        otro documento, `cells[attr]` completo: el color de una NT no elimina texto.
+        """
+        return self.current(attr) if self.doc == COLOR_LEGEND_DOC else self.cells[attr]
 
 
 def rev_dir(root: Path, doc: str, sha12: str) -> Path:
