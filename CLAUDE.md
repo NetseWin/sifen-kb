@@ -2,6 +2,8 @@
 
 Base de conocimiento de SIFEN (Paraguay): qué regla rige en cada fecha y ambiente, con evidencia de los documentos oficiales de DNIT. Diseño en `docs/arquitectura.md`; uso de la CLI en `docs/uso.md`.
 
+**Si vas a continuar el DESARROLLO del proyecto (no a consultarlo), lee primero `docs/HANDOFF.md`**: estado, decisiones tomadas con el usuario y próximos pasos.
+
 1. Ante cualquier código, validación, campo, `xml_name` o documento (`NT_0xx`) de SIFEN, ejecuta primero
    `uv run sifen explain <término> --json [--at AAAA-MM-DD] [--env prod|test]`. No respondas reglas SIFEN de memoria.
 2. Para un rechazo con XML usa `--xml RUTA` y pide la respuesta de SIFEN (`--response RUTA`) o su fecha de
