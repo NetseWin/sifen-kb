@@ -69,7 +69,9 @@ def build_parser() -> argparse.ArgumentParser:
     xt.add_argument("--check", action="store_true", help="regenera en memoria y compara byte a byte con raw/")
     xt.set_defaults(func=_lazy("extract:cmd_extract"))
 
-    dr = sub.add_parser("draft", help="copia celdas de raw/ a kb/: <DocId> (calendario) o <EffectId> (versión)")
+    dr = sub.add_parser(
+        "draft", help="copia celdas de raw/ a kb/: <DocId> (calendario) o <EffectId> (versión)"
+    )
     dr.add_argument("target", help="NT_024 o NT_024#1")
     dr.set_defaults(func=_lazy("draft:cmd_draft"))
 

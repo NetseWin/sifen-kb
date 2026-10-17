@@ -99,7 +99,10 @@ def write_text(path: Path, text: str) -> None:
 
 
 def write_index(root: Path, doc: str, sha12: str, index: dict[str, Any]) -> None:
-    write_text(rev_dir(root, doc, sha12) / "index.json", json.dumps(index, ensure_ascii=False, sort_keys=True, indent=1) + "\n")
+    write_text(
+        rev_dir(root, doc, sha12) / "index.json",
+        json.dumps(index, ensure_ascii=False, sort_keys=True, indent=1) + "\n",
+    )
 
 
 def write_rows(root: Path, doc: str, sha12: str, rows: list[dict[str, Any]]) -> None:

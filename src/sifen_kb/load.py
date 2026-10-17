@@ -33,7 +33,9 @@ def find_root(start: Path | None = None) -> Path:
     """Sube desde `start` (o el cwd) hasta encontrar `pyproject.toml` + `kb/` o `sources.manifest.yaml`."""
     p = (start or Path.cwd()).resolve()
     for c in (p, *p.parents):
-        if (c / "pyproject.toml").exists() and ((c / "kb").is_dir() or (c / "sources.manifest.yaml").exists()):
+        if (c / "pyproject.toml").exists() and (
+            (c / "kb").is_dir() or (c / "sources.manifest.yaml").exists()
+        ):
             return c
     return p
 
