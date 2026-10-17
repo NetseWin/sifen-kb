@@ -1,0 +1,66 @@
+sifen-kb — avisos
+=================
+
+1. Qué cubre la licencia MIT
+
+   La licencia MIT del archivo LICENSE cubre el CÓDIGO y la DOCUMENTACIÓN propia de este
+   repositorio (src/, tests/, docs/, README.md, CONTRIBUTING.md, SECURITY.md, CLAUDE.md,
+   .claude/, .github/, curation/prompts/, los archivos de configuración del proyecto y,
+   con la salvedad del punto 4, kb/).
+
+2. Documentos oficiales de DNIT (sources/)
+
+   Los archivos de sources/ y su registro (sources.manifest.yaml) son documentos públicos
+   oficiales de la Dirección Nacional de Ingresos Tributarios (DNIT, Paraguay) sobre SIFEN:
+   el Manual Técnico, las Notas Técnicas, los esquemas XSD, los listados (checksums MD5,
+   tablas) y las normas que DNIT publica en su portal.
+
+   - Se redistribuyen SIN MODIFICACIÓN y con fines de trazabilidad: cada archivo conserva sus
+     bytes originales y se nombra por su hash, de modo que cualquiera pueda comprobar que es
+     el que DNIT publicó.
+   - NO están cubiertos por la licencia MIT de este proyecto. Su titular y su autoridad son
+     de DNIT. Quien los reutilice debe atenerse a los términos que DNIT establezca para ellos.
+   - Ante cualquier diferencia entre este repositorio y el portal oficial, rige el portal
+     oficial de DNIT.
+
+3. Texto extraído (raw/)
+
+   El contenido de raw/ es una EXTRACCIÓN AUTOMÁTICA del texto y de las tablas de los
+   documentos de sources/. Se genera con `sifen extract`, es determinista y se verifica en
+   CI, pero no es el documento oficial: puede contener defectos de extracción (los
+   conocidos se registran en extraction/fixes.yaml). Los derechos sobre el contenido
+   extraído siguen siendo los del documento de origen.
+
+4. Base de conocimiento (kb/)
+
+   Es el trabajo de curación de este proyecto: organiza y cita el contenido de los
+   documentos oficiales, con literales copiados por herramienta y verificados contra
+   raw/. La estructura, la interpretación (condiciones formalizadas, clasificación de
+   efectos, Issues) y los comentarios propios son del proyecto, están marcados como tales,
+   los revisa una persona y se publican bajo la licencia MIT; no son una fuente oficial. Los
+   literales que se copian de los documentos oficiales (mensajes, observaciones, fechas)
+   siguen siendo contenido de DNIT y quedan fuera de la licencia MIT, como el resto del
+   texto de DNIT.
+
+5. Origen del extractor
+
+   El extractor de PDF de src/sifen_kb/pdf/ integra código de `pdf_to_md`, un proyecto
+   previo del mismo autor (Hugo Maldonado), distribuido bajo licencia MIT: lectura del
+   árbol de etiquetas del PDF, reconstrucción de tablas y detección de filas eliminadas
+   (marcadas en rojo). Con él, 6 085 de 6 085 celdas críticas del Manual Técnico quedaron
+   verificadas por dos métodos independientes.
+
+6. Sin afiliación
+
+   Este proyecto es independiente: no está afiliado, patrocinado ni respaldado por DNIT, por
+   la Subsecretaría de Estado de Tributación (SET) ni por ninguna otra entidad del Estado
+   paraguayo. "SIFEN", "e-Kuatia" y los demás nombres citados pertenecen a sus titulares y
+   se usan solo para identificar los documentos y sistemas a los que se refiere el trabajo.
+
+7. Sin garantía ni asesoramiento
+
+   Esto NO es asesoramiento legal ni tributario. La información puede estar incompleta,
+   desactualizada o equivocada; el proyecto declara en cada respuesta qué sabe y qué no
+   (estados, horizonte de fuentes, pendientes), pero no sustituye la lectura del documento
+   oficial ni la consulta a DNIT o a un profesional. El software se ofrece "tal cual", según
+   la licencia MIT.

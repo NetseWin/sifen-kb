@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Reportar una vulnerabilidad o un secreto expuesto (privado)
+    url: https://github.com/NetseWin/sifen-kb/security/advisories/new
+    about: No abras un Issue público. Usa el aviso de seguridad privado de GitHub (ver SECURITY.md).

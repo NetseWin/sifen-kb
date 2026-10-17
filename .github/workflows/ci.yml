@@ -1,0 +1,81 @@
+name: CI
+
+# Un workflow y un job Linux, en cada PR y en cada push a main (docs/arquitectura.md §L).
+# Windows no corre en CI en el MVP: la corrida local en Windows se adjunta al PR (§T.1).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      # Versión fija de uv: la misma con que se desarrolla (lock universal, mismo intérprete en todas partes).
+      UV_VERSION: "0.12.10"
+      # Binario fijado de gitleaks (no se usa gitleaks-action: exige licencia en organizaciones).
+      GITLEAKS_VERSION: "8.30.1"
+      GITLEAKS_SHA256_LINUX_X64: "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"
+    steps:
+      - name: Checkout (historial completo)
+        # fetch-depth 0: test_past_changes_justified compara contra la base de main y gitleaks recorre el historial.
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Instalar uv
+        uses: astral-sh/setup-uv@v10.3.0
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Sincronizar el entorno (falla si uv.lock no corresponde a pyproject.toml)
+        # Python 3.14 según .python-version, gestionado por uv; grupos dev e ingest por defecto.
+        run: uv sync --locked
+
+      - name: Lint (ruff check)
+        run: uv run ruff check .
+
+      - name: Formato (ruff format --check)
+        run: uv run ruff format --check .
+
+      - name: kb/ en formato canónico (sifen fmt --check)
+        run: uv run sifen fmt --check
+
+      - name: raw/ regenerado == versionado (sifen extract --check)
+        run: uv run sifen extract --check
+
+      - name: Pruebas (pytest)
+        run: uv run pytest -q
+
+      - name: Secretos (gitleaks, binario fijado)
+        run: |
+          set -euo pipefail
+          archive="gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          curl -sSfL --retry 3 --retry-delay 2 -o "${RUNNER_TEMP}/${archive}" \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/${archive}"
+          echo "${GITLEAKS_SHA256_LINUX_X64}  ${RUNNER_TEMP}/${archive}" | sha256sum --check --strict -
+          mkdir -p "${RUNNER_TEMP}/gitleaks"
+          tar -xzf "${RUNNER_TEMP}/${archive}" -C "${RUNNER_TEMP}/gitleaks" gitleaks
+          "${RUNNER_TEMP}/gitleaks/gitleaks" git --redact --no-banner
+
+      - name: Alcance del PR (pr-scope; solo en pull_request)
+        # Un PR de conocimiento no toca código, CI ni configuración; sources/ solo admite adiciones;
+        # no se agregan *.p12 *.pfx *.key *.pem *.jks. El título del PR admite la etiqueta extractor-recopy.
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: uv run python -m sifen_kb.prscope "origin/${BASE_REF}"

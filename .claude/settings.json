@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "deny": [
+      "Edit(/sources/**)",
+      "Edit(/sources.manifest.yaml)",
+      "Edit(/raw/**)",
+      "Edit(/extraction/**)",
+      "Edit(/build/**)",
+      "Edit(/kb/_meta.yaml)",
+      "Edit(/.claude/**)",
+      "Edit(/CLAUDE.md)",
+      "Edit(/curation/runs/**)",
+      "Read(**/*.p12)",
+      "Read(**/*.pfx)",
+      "Read(**/*.key)",
+      "Read(**/*.pem)",
+      "Read(**/*.jks)",
+      "Read(private/**)",
+      "Bash(git push *)",
+      "Bash(git -C * push*)",
+      "Bash(git -c * push*)",
+      "Bash(git merge *)",
+      "Bash(git -C * merge *)",
+      "Bash(gh pr merge *)",
+      "Bash(gh api *)",
+      "Bash(gh release *)",
+      "Bash(uv run sifen source add *)",
+      "Bash(sifen source add *)",
+      "Bash(*sifen source add*)",
+      "Bash(*sifen_kb.cli source add*)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run --quiet --project \"${CLAUDE_PROJECT_DIR}\" python -m sifen_kb.hooklog SessionStart",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run --quiet --project \"${CLAUDE_PROJECT_DIR}\" python -m sifen_kb.hooklog PostToolUse",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,115 @@
+name: Release
+
+# Release manual de la KB (docs/arquitectura.md §J y §L): tag anotado kb-AAAA.MM.DD y una GitHub Release con
+# sources.manifest.yaml adjunto, SOLO si el último commit de main que tocó kb/ trae el trailer `Reviewed-by:`
+# (la atestación de revisión humana de todo merge de contenido normativo).
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: tag y release
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Checkout de main (historial completo)
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Verificar el trailer Reviewed-by del último commit que tocó kb/
+        id: guard
+        run: |
+          set -euo pipefail
+          # --first-parent: con un merge a main, el commit que cuenta es el de merge (donde va el trailer),
+          # no los commits de la rama del PR.
+          kb_commit="$(git log --first-parent -1 --format=%H -- kb/)"
+          if [ -z "${kb_commit}" ]; then
+            echo "::error::Ningún commit de main toca kb/: no hay contenido que publicar."
+            exit 1
+          fi
+          reviewers="$(git log -1 --format='%(trailers:key=Reviewed-by,valueonly)' "${kb_commit}" | sed '/^$/d')"
+          if [ -z "${reviewers}" ]; then
+            echo "::error::El último commit de main que tocó kb/ (${kb_commit}) no trae el trailer 'Reviewed-by:'. No se crea el release."
+            git log -1 --format='%h %s' "${kb_commit}"
+            exit 1
+          fi
+          delimiter="REVIEWERS_$(openssl rand -hex 12)"
+          {
+            echo "kb_commit=${kb_commit}"
+            echo "reviewers<<${delimiter}"
+            echo "${reviewers}"
+            echo "${delimiter}"
+          } >> "${GITHUB_OUTPUT}"
+          echo "Último commit que tocó kb/: ${kb_commit}"
+          echo "Reviewed-by: ${reviewers}"
+
+      - name: Calcular el tag y comprobar que no existe
+        id: tag
+        run: |
+          set -euo pipefail
+          tag="kb-$(TZ=America/Asuncion date +%Y.%m.%d)"
+          if git rev-parse -q --verify "refs/tags/${tag}" >/dev/null; then
+            echo "::error::El tag ${tag} ya existe. Los tags no se mueven ni se reemplazan."
+            exit 1
+          fi
+          echo "tag=${tag}" >> "${GITHUB_OUTPUT}"
+
+      - name: Crear y publicar el tag anotado
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+          KB_COMMIT: ${{ steps.guard.outputs.kb_commit }}
+          REVIEWERS: ${{ steps.guard.outputs.reviewers }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          msg_file="${RUNNER_TEMP}/tag-message.txt"
+          {
+            echo "Release ${TAG} de la KB de SIFEN"
+            echo
+            echo "Último commit que tocó kb/: ${KB_COMMIT}"
+            while IFS= read -r line; do
+              echo "Reviewed-by: ${line}"
+            done <<< "${REVIEWERS}"
+          } > "${msg_file}"
+          git tag -a "${TAG}" -F "${msg_file}" HEAD
+          git push origin "refs/tags/${TAG}"
+
+      - name: Crear la GitHub Release con sources.manifest.yaml adjunto
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+          KB_COMMIT: ${{ steps.guard.outputs.kb_commit }}
+          REVIEWERS: ${{ steps.guard.outputs.reviewers }}
+        run: |
+          set -euo pipefail
+          notes="${RUNNER_TEMP}/release-notes.md"
+          {
+            echo "Snapshot de la KB: \`${TAG}\` (commit \`$(git rev-parse --short HEAD)\`)."
+            echo
+            echo "- Último commit que tocó \`kb/\`: \`${KB_COMMIT}\`"
+            while IFS= read -r line; do
+              echo "- Reviewed-by: ${line}"
+            done <<< "${REVIEWERS}"
+            echo "- Se adjunta \`sources.manifest.yaml\`: revisiones de las fuentes oficiales (sha256, md5, URL) y chequeos del portal de DNIT, con el horizonte de fuentes."
+            echo
+            echo "Los documentos de \`sources/\` son de DNIT y no están cubiertos por la licencia MIT (ver NOTICE). Esto no es asesoramiento legal ni tributario."
+          } > "${notes}"
+          gh release create "${TAG}" sources.manifest.yaml \
+            --verify-tag \
+            --title "${TAG}" \
+            --notes-file "${notes}"
