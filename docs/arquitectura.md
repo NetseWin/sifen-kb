@@ -471,12 +471,19 @@ class Case(M):                         # frontmatter de cases/AAAA/*.md; el cuer
 class FileHash(M):
     path: str; sha256: Sha256
 
+class RunOutput(M):                    # salida de una corrida: FileHash + procedencia explícita
+    path: str; sha256: Sha256
+    source: Literal["hook", "backfill"] | None = None   # ausente = hook (los registros legados siguen válidos y byte-idénticos)
+    reason: str | None = None          # obligatorio con backfill: por qué se registró retrospectivamente
+    recorded_at: datetime | None = None  # obligatorio con backfill: cuándo se registró (UTC)
+    # validador: reason/recorded_at solo existen con source: backfill; extra="forbid" se mantiene
+
 class CurationRun(M):                  # curation/runs/<sesión>.yaml: lo arman HOOKS de Claude Code, no el agente
     session_id: str; started_at: datetime; base_commit: str
     tool: str; model: str              # "claude-code <versión>", modelo: qué expone la API de hooks [verificar]
     prompt_path: str
     instructions_sha256: Sha256        # CLAUDE.md + prompt de curación usados
-    inputs: list[FileHash]; outputs: list[FileHash]
+    inputs: list[FileHash]; outputs: list[RunOutput]
 
 class Assumption(M):
     id: str; text: str; status: Literal["unverified", "confirmed", "refuted"]
@@ -836,7 +843,7 @@ Una sola tabla define quién hace qué. **Sin humano** (herramienta, nunca Claud
 | Redactar un caso | Claude, sanitizado | Sí | Frontmatter |
 | Merge de contenido normativo | Solo una persona | — | Trailer `Reviewed-by:` |
 
-**Reproducibilidad y metadata.** Los borradores del LLM no se regeneran; revisados y mergeados, **son** el canónico. Lo reproducible es la verificación. La bitácora no la escribe el agente: hooks de Claude Code la arman en `curation/runs/<sesión>.yaml` —`SessionStart` registra sesión, fecha, commit base y hash de CLAUDE.md y del prompt; `PostToolUse` sobre `Edit`/`Write` agrega cada ruta tocada con su sha256 [verificar la API de hooks y qué datos expone en la versión instalada]—. Un validador exige `run` en toda interpretación `by: llm`, y `test_llm_runs_cover_outputs` exige que todo archivo de `kb/` con una interpretación nueva figure en las salidas de una corrida del mismo PR; un archivo editado en una sesión de Claude no puede declarar `by: human` para una interpretación nueva.
+**Reproducibilidad y metadata.** Los borradores del LLM no se regeneran; revisados y mergeados, **son** el canónico. Lo reproducible es la verificación. La bitácora no la escribe el agente: hooks de Claude Code la arman en `curation/runs/<sesión>.yaml` —`SessionStart` registra sesión, fecha, commit base y hash de CLAUDE.md y del prompt; `PostToolUse` sobre `Edit`/`Write` agrega cada ruta tocada con su sha256 [verificar la API de hooks y qué datos expone en la versión instalada]—. Un validador exige `run` en toda interpretación `by: llm`, y `test_llm_runs_cover_outputs` exige que todo archivo de `kb/` con una interpretación nueva figure en las salidas de una corrida del mismo PR; un archivo editado en una sesión de Claude no puede declarar `by: human` para una interpretación nueva. Cuando una sesión editó la KB con herramientas que no disparan los hooks (por ejemplo MCP), las salidas se registran a posteriori con el modo manual `Backfill` (`python -m sifen_kb.hooklog Backfill`, con `session_id`, `paths` y un `reason` obligatorio): la corrida debe existir ya —nunca se crea un encabezado retrospectivo— y cada salida queda marcada con `source: backfill`, su motivo y el instante del registro, visibles en el propio archivo; `sifen check` los informa en un hallazgo `info` por corrida. Es un registro explícito y legible para quien revisa, no un evento de hook disfrazado.
 
 **Automatización por fases.** Fase 2: `source check` semanal que abre un *issue*, y generador del esqueleto de efectos. Fase 4: el detector abre un PR con `sources/`, `raw/` y el esqueleto. Fase 5: Claude redacta el borrador del PR; el único merge automático admitido es el de una re-subida cuyo texto extraído es **idéntico**, hecho por una cuenta bot con una excepción explícita en la regla de rama (el `deny` de push solo se relaja para esa cuenta, nunca en las sesiones de Claude).
 

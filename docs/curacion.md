@@ -168,3 +168,14 @@ Para ampliar el alcance curado (pasar una validación de `not_curated` a curada)
 | Merge de contenido normativo | Solo una persona (trailer `Reviewed-by:`). |
 
 Los controles no dependen de que el agente obedezca: `permissions.deny` (no puede editar `sources/`, `raw/`, `kb/_meta.yaml`, `.claude/` ni `CLAUDE.md`; no puede hacer `git push`, `git merge`, `gh pr merge`, `gh api` ni `sifen source add`; no lee certificados), los hooks que registran la sesión, las pruebas de evidencia, `pr-scope` y la protección de `main`. Un archivo editado en una sesión de Claude no puede declarar `by: human` para una interpretación nueva (`test_llm_runs_cover_outputs`). Bash sigue siendo una vía no cubierta del todo por las reglas de permisos; por eso las sesiones de curación no deben tener credenciales de push ni acceso a certificados.
+
+### Registrar a posteriori lo que el hook no capturó (backfill)
+
+Si una sesión editó archivos con herramientas que no disparan los hooks (por ejemplo, herramientas MCP), la bitácora quedó incompleta y `sifen check` falla (`corridas_llm`). Es legítimo registrar esas salidas a posteriori, pero de forma **explícita y visible**: no edites `curation/runs/<sesión>.yaml` a mano; usa el modo `Backfill` con un motivo que explique por qué se registró retrospectivamente:
+
+```bash
+echo '{"session_id": "<sesión>", "cwd": "'"$PWD"'", "paths": ["kb/..."], "reason": "por qué se registró retrospectivamente"}' \
+  | uv run python -m sifen_kb.hooklog Backfill
+```
+
+La corrida debe existir ya (el backfill nunca crea su encabezado) y cada salida queda con `source: backfill`, el motivo y el instante del registro: quien revisa el diff ve que es un registro retrospectivo y por qué, y `sifen check` lo informa en un hallazgo `info` por corrida. Un archivo ya registrado por un hook no se toca (su entrada es la evidencia del hecho); uno ya registrado con backfill se actualiza. Si una ruta no es registrable (fuera del repo, en `curation/runs/` o `.git/`, inexistente), no se registra ninguna y el comando termina con error.
