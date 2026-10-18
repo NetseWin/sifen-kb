@@ -2,7 +2,7 @@
 
 Base de conocimiento técnica, versionada y verificable de **SIFEN** (facturación electrónica de Paraguay, e-Kuatia): qué regla de validación rige en cada **fecha** y en cada **ambiente** (test o producción), con la cita literal del documento oficial de DNIT que la respalda.
 
-> **Estado.** El dominio piloto (receptor e identidad) ya está **curado** (32 documentos con ficha, 10 campos, 12 validaciones; en revisión en el PR de conocimiento `kb/piloto-receptor`) y la CLI está **implementada** (`explain`, `status`, `source`, `extract`, `draft`, `check`, `fmt`). Las salidas de este README son reales, ejecutadas contra esta rama (`e7d0f2c`, 2026-10-18).
+> **Estado.** El dominio piloto (receptor e identidad) está **curado y verificado** (32 documentos con ficha, 10 campos, 12 validaciones) y la CLI está **implementada** (`explain`, `status`, `source`, `extract`, `draft`, `check`, `fmt`). Las salidas de este README son reales, ejecutadas contra el commit `e7d0f2c` (2026-10-18).
 
 ## El problema
 
@@ -165,7 +165,7 @@ build/                    artefactos generados (no versionado)
 ## Alcance actual y limitaciones
 
 - **Corpus registrado** (consulta del portal el 2026-10-17): Manual Técnico v150 y su listado de checksums MD5, Notas Técnicas 001–027, Decreto 872/2023, el RAR oficial de XSD y una instantánea de los 47 XSD publicados.
-- **Piloto receptor e identidad, curado** (campos `C002`, `D011`, `D015`, `D201`, `D202`, `D208`, `D209`, `D210`, `F014`, `F023` y sus validaciones `D208`–`D210b`; 32 documentos con ficha, 10 campos y 12 validaciones, con un único Issue bloqueante abierto, ISS-0003; en revisión en el PR #3, `kb/piloto-receptor`). El resto del DE (tablas completas del Manual, condición de operación, eventos, servicios web, codificaciones) está en el roadmap de `docs/arquitectura.md` §U. Fuera del piloto, `explain` responde `not_curated` con las menciones, no con una regla.
+- **Piloto receptor e identidad, curado** (campos `C002`, `D011`, `D015`, `D201`, `D202`, `D208`, `D209`, `D210`, `F014`, `F023` y sus validaciones `D208`–`D210b`; 32 documentos con ficha, 10 campos y 12 validaciones, con un único Issue bloqueante abierto, ISS-0003). El resto del DE (tablas completas del Manual, condición de operación, eventos, servicios web, codificaciones) está en el roadmap de `docs/arquitectura.md` §U. Fuera del piloto, `explain` responde `not_curated` con las menciones, no con una regla.
 - **Cobertura temporal.** Las respuestas temporales se garantizan desde `coverage_from` (propuesta: 2023-06-17, la primera NT con calendario). Antes de esa fecha, `outside_coverage`. Las NT 001–012 no declaran vigencia: se ordenan por la fecha del documento y el inicio se marca como aproximado.
 - **Eje de fecha.** `--at` significa fecha de **procesamiento** (supuesto A2, pendiente de confirmar con DNIT). Con un XML se resuelven la fecha de emisión y la de procesamiento.
 - **Horizonte de fuentes.** El chequeo del portal es manual en el MVP. Si pasó el horizonte, la respuesta lo dice y, vencida la gracia, queda `undetermined`: una NT posterior podría regir.

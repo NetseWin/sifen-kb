@@ -6,7 +6,7 @@ quien usa la KB. Este documento trae una plantilla para cada uno.
 | Ítem | Qué decides o haces tú | Cuándo |
 |---|---|---|
 | T.8 Evaluación ciega | Escribir 15 preguntas y su clave de respuestas **antes** de ver salidas de `sifen explain` | Antes de mergear el PR de conocimiento |
-| T.11 Costo de curación | Fijar el tiempo máximo aceptable de curación por NT | Antes de curar (Fase 0) |
+| T.11 Costo de curación | Fijar el tiempo máximo aceptable de curación por NT | El diseño lo pedía antes de curar (Fase 0); **no se hizo a tiempo**: fijarlo ahora, antes de decidir si se escala más allá del piloto (ver la nota de T.11) |
 | T.12 Valor | Cronometrar tres rechazos del dominio piloto, con la KB y con el flujo manual | Después del merge |
 
 ---
@@ -71,6 +71,13 @@ Total: __/15 · Reglas históricas presentadas como vigentes: __ · `in_force` i
 La arquitectura (§U, regla de recorte) pide fijar **antes de curar** cuánto tiempo de revisión humana por NT
 es aceptable. Si al cerrar la Fase 1 el costo real lo supera, la KB **no escala** al DE completo: se congela como
 índice de menciones + calendarios + entidades curadas por demanda.
+
+> **Nota de trazabilidad (2026-10-18).** El umbral **no se fijó antes de curar el piloto**, como pedía el diseño:
+> el piloto receptor/identidad ya está curado y este campo sigue vacío. No se reconstruye retroactivamente como
+> si se hubiera decidido antes. Queda como decisión **pendiente del usuario**, que debe tomarse **ahora**, antes
+> de decidir si la KB escala más allá del piloto. El costo real del piloto se puede medir y comparar con ese
+> umbral, pero el umbral elegido ahora es una decisión **posterior** al piloto y así debe constar cuando se
+> registre.
 
 - Umbral elegido: **____ minutos de revisión humana por NT** (sugerencia para empezar: 30–60 min para una NT
   de 1–5 páginas).

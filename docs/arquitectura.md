@@ -378,7 +378,7 @@ class DocumentSource(M):               # kb/documents/<DocId>.yaml
     document_date: DateStatement | None    # "Fecha:" impresa; informativa (NT 25 tiene errata de año)
     change_period: tuple[DateStatement, DateStatement] | None = None   # NT 001–011: "Cambios desde X al Y"
     schedule: Schedule | None          # None: MT y NT 001–012 (no declaran vigencia)
-    superseded_by: Supersession | None = None
+    superseded_by: Supersession | None = None   # solo con un PageRef verificable; la marca de agua de NT 21 NO lo usa (decisión 7)
     effects: list[Effect] = []
     curation_scope: Literal["dates_only", "pilot", "full"]
 
@@ -563,7 +563,7 @@ En el MVP no existen los contextos de eventos: las menciones de `iTipIDRec` en l
 | Cruzada | ocurrencia XSD frente al campo | Se calcula desde una instantánea con hash, contra la versión vigente en su `retrieved_at` | Todo desacuerdo tiene Issue |
 | Observada | "SIFEN devolvió 1321 el 2025-01-03" | `Case` sanitizado, `origin: observed` | Si contradice la resolución, exige Issue |
 
-**Conceptos descartados por no tener caso real hoy** (y qué los justificaría): `effective_to`/`is_current` almacenados (nunca: son derivables); un campo de fechas anteriores (`superseded`/`date_history`): la prórroga es una revisión nueva + la edición del calendario + un Issue `temporal` con ambas fechas, y el único caso real conocido —producción de NT 13 el 21/05/2023 según una fuente secundaria frente al 17/06/2023 del PDF [P]— entra como Issue, porque una fuente secundaria no puede citarse como `stated_in`; relación `replaces` entre reglas (ninguna NT declara un reemplazo **entre reglas**; D208b → D208f es una sospecha y va como Issue; la marca de agua de NT 21 es un reemplazo **de documento**, modelado como `superseded_by`); fechas por efecto (las 27 NT fechan por documento [V]; `from_revision` cubre el único caso límite); convivencia de dos versiones aceptadas (ninguna NT la usa [V]); vigencia por valor de enumeración (las NT reproducen la lista completa; sí haría falta para el XLSX geográfico); dimensión de alcance aparte (el tipo de documento ya está en la condición: D208e, `C002 = 5,6,7`); `presence` (ver arriba); `content_change` (Fase 2, en el manifiesto); `schema_version` (Fase 4); `confidence` (nunca).
+**Conceptos descartados por no tener caso real hoy** (y qué los justificaría): `effective_to`/`is_current` almacenados (nunca: son derivables); un campo de fechas anteriores (`superseded`/`date_history`): la prórroga es una revisión nueva + la edición del calendario + un Issue `temporal` con ambas fechas, y el único caso real conocido —producción de NT 13 el 21/05/2023 según una fuente secundaria frente al 17/06/2023 del PDF [P]— entra como Issue, porque una fuente secundaria no puede citarse como `stated_in`; relación `replaces` entre reglas (ninguna NT declara un reemplazo **entre reglas**; D208b → D208f es una sospecha y va como Issue; la marca de agua de NT 21 se pensó como un reemplazo **de documento**, modelado como `superseded_by` — *diseño previo, supersedido por la decisión 7 del usuario (2026-10-17): la marca es gráfica y no está en texto verificable de `raw/`, así que la KB real no usa `superseded_by` para NT 21; el fin de NT_021#1 se deriva del inicio de NT_024#1 y lo fija el oráculo golden «watermark»*); fechas por efecto (las 27 NT fechan por documento [V]; `from_revision` cubre el único caso límite); convivencia de dos versiones aceptadas (ninguna NT la usa [V]); vigencia por valor de enumeración (las NT reproducen la lista completa; sí haría falta para el XLSX geográfico); dimensión de alcance aparte (el tipo de documento ya está en la condición: D208e, `C002 = 5,6,7`); `presence` (ver arriba); `content_change` (Fase 2, en el manifiesto); `schema_version` (Fase 4); `confidence` (nunca).
 
 ---
 
@@ -751,7 +751,7 @@ Línea de tiempo derivada:
 | Versión | Introducida por | Contenido | Producción desde | Test desde | Hasta (prod, derivado) |
 |---|---|---|---|---|---|
 | v0 | baseline MT v150 | ≥ 60 M | línea base | línea base | 2024-01-01 |
-| v1 | NT_021#1 | ≥ 35 M | 2024-01-01 | 2024-01-01 | 2025-01-01 (= `superseded_by` de NT 21) |
+| v1 | NT_021#1 | ≥ 35 M | 2024-01-01 | 2024-01-01 | 2025-01-01 (diseño previo: `superseded_by` de NT 21; en la KB real, derivado del inicio de NT_024#1, sin `superseded_by`) |
 | v2 | NT_024#1 | ≥ 7 M | 2025-01-01 | 2025-01-01 | 2027-04-01 [HIP] |
 | v3 [HIP] | NT_901#1 | ≥ 5 M | 2027-04-01 (antes 2027-03-01) | 2027-02-01 | 2027-10-01 |
 | v4 [HIP] | NT_902#1 | lápida `tombstone` | 2027-10-01 | 2027-09-01 | — |
@@ -1157,7 +1157,7 @@ La arquitectura "funciona" si **todo** lo siguiente se cumple y lo puede verific
 
 **Avanza si:** el entregable 0 responde `explain 1321` con las tres menciones ordenadas por fecha de producción; el entregable 1 reproduce las filas reales 1–5 y el oráculo; el extractor da 100 % en las *golden pages* (o se adopta el *fallback* explícito); el XSD carga sin red; los hashes de `raw/` coinciden en Windows y Linux; el inventario del piloto está cerrado.
 
-**Fase 1 — MVP (S).** **Avanza si:** la DoD se cumple al 100 %, el costo de curación por NT no supera el umbral fijado en la Fase 0 y ningún concepto del modelo quedó sin usar con datos reales (un uso [HIP] no cuenta; lo que sobró se elimina antes de escalar). **Regla de recorte:** si al cerrar la Fase 1 el costo supera el umbral, la KB se congela como entregable 0 (índice + calendarios) más entidades curadas por demanda —los códigos que realmente aparecen—, en lugar de escalar al DE completo.
+**Fase 1 — MVP (S).** **Avanza si:** la DoD se cumple al 100 %, el costo de curación por NT no supera el umbral fijado en la Fase 0 (*en el piloto ese umbral no se fijó a tiempo: queda como decisión pendiente del usuario, posterior al piloto; ver `docs/evaluacion.md` T.11*) y ningún concepto del modelo quedó sin usar con datos reales (un uso [HIP] no cuenta; lo que sobró se elimina antes de escalar). **Regla de recorte:** si al cerrar la Fase 1 el costo supera el umbral, la KB se congela como entregable 0 (índice + calendarios) más entidades curadas por demanda —los códigos que realmente aparecen—, en lugar de escalar al DE completo.
 
 **Fase 2 — Segundo dominio y operación.** Condición de operación/crédito (E6xx: `gPaConEIni` 0-999, E605a/E605b, 1551) con el caso del pedido corregido; GENFE010 (contexto `EV-NOM`) y GED003 (severidad, `EV-DES`) como primeras entidades de eventos; DSL con grupos repetidos; sanitizador y regla gitleaks de CSC; `validate`, `timeline-diff`, `render` y `build`; `source check` semanal programado que abre un *issue*; generador del esqueleto de efectos; clasificación `content_change` de re-subidas; basedpyright; CI Windows. **Avanza si:** `model.py` solo tuvo cambios aditivos; pasa una segunda evaluación ciega; una NT o re-subida (real o simulada) se procesó siguiendo solo README, CLAUDE.md y el prompt de curación, sin cambios de código.
 
