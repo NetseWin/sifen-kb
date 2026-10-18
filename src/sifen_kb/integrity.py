@@ -1753,10 +1753,12 @@ def _load_run(path: Path) -> CurationRun | str:
 def check_llm_runs(kb: KB, base: BaseSnapshot | str | None = None) -> list[Finding]:
     """Corridas de curación (§J, `test_llm_runs_cover_outputs`).
 
-    Siempre: `by: llm` ⇒ `curation/runs/<run>.yaml` existe y lista el archivo en `outputs`. Con la base
-    de `main`: una interpretación `by: llm` NUEVA cita una corrida de ESTE cambio (agregada o
-    modificada respecto de la base), y un archivo que una corrida de este cambio editó no estrena una
-    interpretación `by: human`.
+    Siempre: `by: llm` ⇒ `curation/runs/<run>.yaml` existe y lista el archivo en `outputs`. Un output
+    registrado con `source: backfill` cubre igual que uno de hook, y cada corrida con outputs
+    retroactivos agrega UN hallazgo `info` (cuántos y por qué) para que quien revisa lo vea en
+    `sifen check --report`. Con la base de `main`: una interpretación `by: llm` NUEVA cita una corrida
+    de ESTE cambio (agregada o modificada respecto de la base), y un archivo que una corrida de este
+    cambio editó no estrena una interpretación `by: human`.
     """
     out = _Out("corridas_llm")
     sites = _interpretation_sites(kb)
@@ -1776,6 +1778,19 @@ def check_llm_runs(kb: KB, base: BaseSnapshot | str | None = None) -> list[Findi
             out.error(rel, f"{owner}: la corrida {rel_of(p)} no lista {rel} entre sus outputs")
     runs_dir = kb.root / RUNS_DIR
     run_files = sorted(runs_dir.glob("*.yaml")) if runs_dir.is_dir() else []
+    for p in sorted({*cache, *run_files}, key=str):
+        run = cache.setdefault(p, _load_run(p))
+        if isinstance(run, str):
+            continue  # el problema ya se informó (o la corrida no está citada: se ignora)
+        back = [o for o in run.outputs if o.source == "backfill"]
+        if not back:
+            continue
+        n = len(back)
+        out.info(
+            rel_of(p),
+            f"{n} output{'s' if n != 1 else ''} registrado{'s' if n != 1 else ''} retroactivamente (backfill): "
+            + "; ".join(f"{o.path} ({o.reason})" for o in back),
+        )
     relevant = any(it.by == "llm" for _, _, it in sites) or (
         run_files and any(it.by == "human" for _, _, it in sites)
     )
@@ -2427,6 +2442,9 @@ def render_report(kb: KB, base: BaseSnapshot | str | None, findings: list[Findin
     lines += ["", "## Cambios al pasado"]
     past = [f for f in findings if f.check == "pasado"]
     lines += [f"- [{_SEV_TXT[f.severity]}] {f.where}: {f.message}" for f in past] or ["(ninguno)"]
+    lines += ["", "## Bitácora de curación (corridas LLM)"]
+    runs = [f for f in findings if f.check == "corridas_llm"]
+    lines += [f"- [{_SEV_TXT[f.severity]}] {f.where}: {f.message}" for f in runs] or ["(ninguno)"]
     lines += ["", "## Pendientes"]
     pend = [
         (d.id, e)

@@ -418,6 +418,34 @@ class FileHash(M):
     sha256: Sha256
 
 
+class RunOutput(M):
+    """Salida de una corrida de curación con procedencia explícita (`source`).
+
+    `source` ausente o `hook` ⇒ el registro lo escribió el hook PostToolUse en el momento del hecho
+    (los archivos legados sin `source` siguen siendo válidos y se reescriben byte a byte iguales).
+    `backfill` ⇒ se registró retrospectivamente y exige `reason` (por qué se registró a posteriori) y
+    `recorded_at` (cuándo se registró). `reason`/`recorded_at` sin `backfill` no existen: una entrada
+    de hook no puede hacerse pasar por un registro manual ni al revés.
+    """
+
+    path: str
+    sha256: Sha256
+    source: Literal["hook", "backfill"] | None = None
+    reason: str | None = None
+    recorded_at: datetime | None = None
+
+    @model_validator(mode="after")
+    def _check_provenance(self) -> RunOutput:
+        if self.source == "backfill":
+            if self.reason is None or not self.reason.strip():
+                raise ValueError("source: backfill exige `reason` (motivo no vacío)")
+            if self.recorded_at is None:
+                raise ValueError("source: backfill exige `recorded_at` (cuándo se registró)")
+        elif self.reason is not None or self.recorded_at is not None:
+            raise ValueError("`reason` y `recorded_at` solo existen con source: backfill")
+        return self
+
+
 class CurationRun(M):
     """curation/runs/<sesión>.yaml: lo arman hooks de Claude Code, no el agente."""
 
@@ -429,7 +457,7 @@ class CurationRun(M):
     prompt_path: str | None = None
     instructions_sha256: Sha256 | None = None
     inputs: list[FileHash] = []
-    outputs: list[FileHash] = []
+    outputs: list[RunOutput] = []
 
 
 class Assumption(M):

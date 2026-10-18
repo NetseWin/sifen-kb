@@ -1365,6 +1365,50 @@ def test_new_llm_interpretation_needs_a_run_of_this_change(tmp_path: Path) -> No
     assert errors_of(check_llm_runs(make(tmp_path, human_after_old_run, name="c"), base=base)) == []
 
 
+def _backfilled(path: str, reason: str = "la sesión no disparó el hook") -> dict[str, Any]:
+    return {
+        "path": path,
+        "sha256": "0" * 64,
+        "source": "backfill",
+        "reason": reason,
+        "recorded_at": "2026-10-18T10:00:00Z",
+    }
+
+
+def test_backfilled_output_satisfies_the_run_and_is_reported(tmp_path: Path) -> None:
+    def mutate(s: dict[str, Any]) -> None:
+        _llm(s)
+        s["runs"]["s1"] = _run(["kb/documents/NT_024.yaml"]) | {
+            "outputs": [_backfilled("kb/documents/NT_024.yaml")]
+        }
+
+    kb = make(tmp_path, mutate, name="a")
+    assert found(kb, "corridas_llm") == []  # un output registrado con backfill también cubre la corrida
+    infos = [f for f in check_llm_runs(kb, base=NOBASE) if "backfill" in f.message]
+    assert len(infos) == 1  # un solo hallazgo info por corrida, visible para quien revisa
+    assert (infos[0].severity, infos[0].where) == ("info", "curation/runs/s1.yaml")
+    assert has(infos, "1 output registrado retroactivamente", "la sesión no disparó el hook")
+    report = integrity.render_report(kb, NOBASE, check_llm_runs(kb, base=NOBASE))
+    assert "la sesión no disparó el hook" in report
+
+
+def test_backfill_info_is_one_finding_per_run_with_every_reason(tmp_path: Path) -> None:
+    def mutate(s: dict[str, Any]) -> None:
+        s["runs"]["s1"] = _run(["kb/documents/NT_024.yaml"]) | {
+            "outputs": [
+                _backfilled("kb/documents/NT_024.yaml", "motivo A"),
+                _backfilled("kb/documents/NT_021.yaml", "motivo B"),
+                {"path": "kb/fields/DE/D208.yaml", "sha256": "0" * 64},
+            ]
+        }
+
+    infos = [f for f in check_llm_runs(make(tmp_path, mutate), base=NOBASE) if "backfill" in f.message]
+    assert len(infos) == 1
+    assert has(infos, "2 outputs registrados retroactivamente")
+    assert has(infos, "motivo A") and has(infos, "motivo B")
+    assert all(f.severity == "info" for f in infos)
+
+
 # === pasado justificado =============================================================================
 @pytest.fixture
 def base(tmp_path: Path) -> BaseSnapshot:

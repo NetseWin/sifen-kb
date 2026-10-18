@@ -4,6 +4,7 @@ Los hooks de `.claude/settings.json` ejecutan, con el JSON del evento por stdin:
 
     uv run python -m sifen_kb.hooklog SessionStart
     uv run python -m sifen_kb.hooklog PostToolUse        # matcher: Edit|Write|MultiEdit
+    uv run python -m sifen_kb.hooklog Backfill           # manual: NO es un hook (ver más abajo)
 
 y este módulo arma `curation/runs/<session_id>.yaml` (modelo `CurationRun`). La bitácora NO la
 escribe el agente: es evidencia de qué instrucciones y qué archivos tocó una sesión de Claude.
@@ -17,6 +18,10 @@ https://code.claude.com/docs/en/hooks; todos los eventos traen los campos comune
                   de una sesión retomada se conserva) y `model` (puede faltar: entonces se omite)
 - `PostToolUse`:  `tool_name` (Edit | Write | MultiEdit | NotebookEdit) y `tool_input.file_path`
                   (`tool_input.notebook_path` para NotebookEdit). `tool_response` no se usa.
+- `Backfill`:      `session_id`, `cwd`, `paths` (lista de rutas, relativas al `cwd` o absolutas, dentro
+                  del repo) y `reason` (motivo del registro retrospectivo; obligatorio). `tool_name` NO
+                  se usa ni se acepta como criterio: el backfill es un acto humano explícito, no un
+                  evento de herramienta.
 
 Qué escribe cada evento:
 
@@ -28,17 +33,28 @@ Qué escribe cada evento:
 - `PostToolUse`: agrega a `outputs` la ruta tocada (relativa a la raíz del repo, con `/`) con el
   sha256 actual del archivo; la entrada previa del mismo path se reemplaza en su lugar. Se ignoran
   las rutas fuera del repo, `.git/`, la propia bitácora y los archivos que ya no existen.
+- `Backfill`: registro manual y explícito de salidas que los hooks NO capturaron (por ejemplo, ediciones
+  hechas en una sesión con herramientas MCP ajenas a los hooks). La corrida debe EXISTIR (nunca crea el
+  encabezado a posteriori), el `reason` es obligatorio y cada entrada queda con `source: backfill`, el
+  motivo y `recorded_at` (UTC, sin microsegundos): la procedencia es visible en el propio archivo. Un
+  path ya registrado por un hook conserva SU entrada (se omite y se informa: la evidencia del hook no se
+  reescribe); un path ya registrado con backfill se actualiza (sha256, motivo e instante). Si una ruta no
+  es registrable no se registra NINGUNA.
 
 `instructions_sha256` = sha256 de los bytes de CLAUDE.md seguidos de los del prompt de curación
 (sin separador; un archivo ausente no aporta bytes). Se reproduce a mano con:
 
     cat CLAUDE.md curation/prompts/curar_entidad.md | sha256sum
 
-Garantía de no bloqueo: un hook roto no puede frenar la sesión. `main()` devuelve SIEMPRE 0, no
-escribe nada por stdout (en `SessionStart` lo que sale por stdout se inyecta como contexto de
-Claude) y reporta cualquier problema por stderr. Los hooks de una misma tanda pueden correr en
-paralelo, por eso la actualización de un archivo se hace bajo un lock de archivo en el directorio
-temporal del sistema y con escritura atómica (`os.replace`).
+Garantía de no bloqueo: un hook roto no puede frenar la sesión. `main()` devuelve SIEMPRE 0 para
+`SessionStart`/`PostToolUse`, no escribe nada por stdout (en `SessionStart` lo que sale por stdout se
+inyecta como contexto de Claude) y reporta cualquier problema por stderr. Los hooks de una misma tanda
+corren en paralelo, por eso la actualización de un archivo se hace bajo un lock de archivo en el
+directorio temporal del sistema y con escritura atómica (`os.replace`).
+
+`Backfill` NO es un hook y no goza de esa garantía: es manual y falla ruidoso — devuelve 1 con el
+problema por stderr y sin tocar la bitácora si algo no es registrable; con éxito devuelve 0 e imprime
+por stderr un resumen corto de lo registrado y lo omitido.
 """
 
 from __future__ import annotations
@@ -55,14 +71,15 @@ import time
 from collections.abc import Iterator, Sequence
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, TextIO
+from typing import Any, NamedTuple, TextIO
 
-from sifen_kb.model import CurationRun, FileHash
+from sifen_kb.model import CurationRun, FileHash, RunOutput
 from sifen_kb.yamlio import load_kb_file, write_kb_file
 
 SESSION_START = "SessionStart"
 POST_TOOL_USE = "PostToolUse"
-_EVENTS = {"sessionstart": SESSION_START, "posttooluse": POST_TOOL_USE}
+BACKFILL = "Backfill"
+_EVENTS = {"sessionstart": SESSION_START, "posttooluse": POST_TOOL_USE, "backfill": BACKFILL}
 
 RUNS_DIR = "curation/runs"
 INSTRUCTIONS_PATH = "CLAUDE.md"
@@ -254,7 +271,7 @@ def on_post_tool_use(payload: dict[str, Any], root: Path, now: datetime) -> Path
     rel = _touched_path(payload, root)
     if rel is None:
         return None
-    entry = FileHash(path=rel, sha256=sha256_file(root / rel))
+    entry = RunOutput(path=rel, sha256=sha256_file(root / rel))
     with _file_lock(path):
         path.parent.mkdir(parents=True, exist_ok=True)
         run = read_run(path) if path.exists() else new_run(session_id, payload, root, now)
@@ -269,15 +286,118 @@ def on_post_tool_use(payload: dict[str, Any], root: Path, now: datetime) -> Path
     return path
 
 
+# --- backfill (registro manual, no es un evento de hook) --------------------------------------------
+class BackfillResult(NamedTuple):
+    """Resultado de un backfill: la corrida tocada, los paths registrados y los omitidos (ya tenían entrada de hook)."""
+
+    path: Path
+    registered: list[str]
+    skipped: list[str]
+
+
+def _backfill_rel(raw: object, root: Path, payload: dict[str, Any]) -> str:
+    """Ruta registrable (relativa al repo, con `/`), o `HookLogError` explicando por qué no lo es."""
+    if not isinstance(raw, str) or not raw:
+        raise HookLogError(f"ruta inválida en `paths`: {raw!r}")
+    p = Path(raw)
+    if not p.is_absolute():
+        cwd = payload.get("cwd")
+        p = (Path(cwd) if isinstance(cwd, str) and cwd else root) / p
+    try:
+        rel = p.resolve().relative_to(root).as_posix()
+    except OSError, ValueError:
+        raise HookLogError(f"la ruta {raw!r} está fuera del repositorio") from None
+    if rel == ".git" or rel.startswith(_IGNORED_PREFIXES):
+        raise HookLogError(f"la ruta {rel} no se puede registrar ({RUNS_DIR}/ o .git/)")
+    if not (root / rel).is_file():
+        raise HookLogError(f"la ruta {rel} no existe o no es un archivo")
+    return rel
+
+
+def on_backfill(payload: dict[str, Any], root: Path, now: datetime) -> BackfillResult:
+    """Registro manual y explícito de salidas que los hooks no capturaron (modo `Backfill`).
+
+    Reglas: la corrida debe EXISTIR (un backfill nunca crea la bitácora a posteriori), `reason` es
+    obligatorio, `tool_name` no se considera y cada path debe existir dentro del repo (fuera de
+    `curation/runs/` y `.git/`). Un path ya registrado por un hook conserva SU entrada (se omite y se
+    informa); un path ya registrado con backfill se actualiza. Si un path no es registrable no se
+    registra NINGUNO: esto no es un hook, es un acto manual que falla ruidoso.
+    """
+    session_id = payload.get("session_id")
+    path = run_path(root, session_id)
+    if path is None or not isinstance(session_id, str):
+        raise HookLogError("Backfill sin `session_id` utilizable: no se registra nada")
+    reason = payload.get("reason")
+    if not isinstance(reason, str) or not reason.strip():
+        raise HookLogError("Backfill sin `reason`: el registro retrospectivo exige un motivo explícito")
+    raw_paths = payload.get("paths")
+    if not isinstance(raw_paths, list) or not raw_paths:
+        raise HookLogError("Backfill sin `paths`: se espera una lista no vacía de rutas")
+    if not path.is_file():
+        raise HookLogError(f"{path}: la corrida no existe; el backfill nunca crea la bitácora a posteriori")
+    rels: list[str] = []
+    problems: list[str] = []
+    for raw in raw_paths:
+        try:
+            rel = _backfill_rel(raw, root, payload)
+        except HookLogError as e:
+            problems.append(str(e))
+            continue
+        if rel not in rels:
+            rels.append(rel)
+    if problems:
+        raise HookLogError("Backfill rechazado, no se registró nada: " + "; ".join(problems))
+    stamp = now.replace(microsecond=0)  # UTC sin microsegundos: el instante del registro, no del hecho
+    registered: list[str] = []
+    skipped: list[str] = []
+    with _file_lock(path):
+        run = read_run(path)
+        outputs = list(run.outputs)
+        for rel in rels:
+            entry = RunOutput(
+                path=rel, sha256=sha256_file(root / rel), source="backfill", reason=reason, recorded_at=stamp
+            )
+            for i, old in enumerate(outputs):
+                if old.path != rel:
+                    continue
+                if old.source == "backfill":
+                    outputs[i] = entry
+                    registered.append(rel)
+                else:  # entrada de hook: la evidencia del hecho no se reescribe
+                    skipped.append(rel)
+                break
+            else:
+                outputs.append(entry)
+                registered.append(rel)
+        if registered:
+            write_run(path, run.model_copy(update={"outputs": outputs}))
+    return BackfillResult(path, registered, skipped)
+
+
+def _report_backfill(res: BackfillResult, stderr: TextIO) -> None:
+    """Resumen corto del backfill por stderr (el stdout queda limpio, igual que en los hooks)."""
+    reg = ", ".join(res.registered) or "ninguno"
+    skip = ", ".join(res.skipped) or "ninguno"
+    print(
+        f"hooklog: backfill {res.path.name}: registrados: {reg}; omitidos (ya registrados por un hook): {skip}",
+        file=stderr,
+    )
+
+
+# --- despacho ---------------------------------------------------------------------------------------
 def process(event: str, payload: dict[str, Any], now: datetime | None = None) -> Path | None:
     """Despacha un evento. Devuelve el archivo de la bitácora tocado (None si no había nada que registrar)."""
     kind = normalize_event(event)
     if kind is None:
-        raise HookLogError(f"evento desconocido: {event!r} (se esperaba SessionStart o PostToolUse)")
+        raise HookLogError(
+            f"evento desconocido: {event!r} (se esperaba SessionStart, PostToolUse o Backfill)"
+        )
     stamp = (now or datetime.now(UTC)).replace(microsecond=0)
     root = resolve_root(payload)
     if kind == SESSION_START:
         return on_session_start(payload, root, stamp)
+    if kind == BACKFILL:
+        return on_backfill(payload, root, stamp).path
     return on_post_tool_use(payload, root, stamp)
 
 
@@ -302,24 +422,37 @@ def _utf8(stream: TextIO) -> None:
 
 
 def main(argv: Sequence[str] | None = None, stdin: TextIO | None = None, stderr: TextIO | None = None) -> int:
-    """Siempre devuelve 0: un hook roto no debe bloquear la sesión. Nada por stdout."""
+    """Los eventos de hook devuelven SIEMPRE 0 (un hook roto no bloquea la sesión) y no escriben por
+    stdout. El modo manual `Backfill` falla ruidoso: devuelve 1 y explica el problema por stderr."""
     stdin = stdin if stdin is not None else sys.stdin
     stderr = stderr if stderr is not None else sys.stderr
     if stdin is sys.stdin:
         _utf8(stdin)
     if stderr is sys.stderr:
         _utf8(stderr)
+    args = list(sys.argv[1:] if argv is None else argv)
+    event = args[0] if args else None
+    loud = isinstance(event, str) and normalize_event(event) == BACKFILL  # el modo manual es explícito
     try:
-        args = list(sys.argv[1:] if argv is None else argv)
         payload = _read_payload(stdin)
-        event = args[0] if args else payload.get("hook_event_name")
         if not isinstance(event, str) or not event:
-            raise HookLogError("falta el evento (argumento SessionStart|PostToolUse o `hook_event_name`)")
+            event = payload.get("hook_event_name")
+            loud = isinstance(event, str) and normalize_event(event) == BACKFILL
+        if not isinstance(event, str) or not event:
+            raise HookLogError(
+                "falta el evento (argumento SessionStart|PostToolUse|Backfill o `hook_event_name`)"
+            )
+        if loud:
+            _report_backfill(on_backfill(payload, resolve_root(payload), datetime.now(UTC)), stderr)
+            return 0
         process(event, payload)
     except HookLogError as e:
         print(f"hooklog: {e}", file=stderr)
+        return 1 if loud else 0
     except Exception as e:
-        print(f"hooklog: error inesperado ({type(e).__name__}: {e}); la sesión continúa", file=stderr)
+        tail = "" if loud else "; la sesión continúa"
+        print(f"hooklog: error inesperado ({type(e).__name__}: {e}){tail}", file=stderr)
+        return 1 if loud else 0
     return 0
 
 

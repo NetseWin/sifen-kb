@@ -18,6 +18,7 @@ from sifen_kb.hooklog import (
     instructions_digest,
     main,
     normalize_event,
+    on_backfill,
     process,
     resolve_root,
     run_path,
@@ -29,6 +30,7 @@ NOW = datetime(2026, 10, 17, 19, 30, 45, 123456, tzinfo=UTC)
 CLAUDE_MD = "# SIFEN KB — reglas para Claude\n\n1. Usa `sifen explain`.\n"
 PROMPT_MD = "# Curar una entidad\n\nLiterales solo con `sifen draft`.\n"
 KB_FILE = "kb/validations/DE/D208c.yaml"
+REASON = "la sesión editó con herramientas MCP y el hook no registró la salida"
 
 
 def git(repo: Path, *args: str) -> str:
@@ -81,6 +83,16 @@ def post_payload(repo: Path, file_path: str, session_id: str = "sess-1", tool: s
     }
 
 
+def backfill_payload(repo: Path, paths: list, **extra: object) -> dict:
+    return {
+        "session_id": "sess-1",
+        "cwd": str(repo),
+        "paths": paths,
+        "reason": REASON,
+        **extra,
+    }
+
+
 def load_run(path: Path) -> CurationRun:
     return CurationRun.model_validate(load_kb_file(path))
 
@@ -94,6 +106,8 @@ def load_run(path: Path) -> CurationRun:
         ("session-start", "SessionStart"),
         ("PostToolUse", "PostToolUse"),
         ("post-tool-use", "PostToolUse"),
+        ("Backfill", "Backfill"),
+        ("back-fill", "Backfill"),
         ("PreToolUse", None),
         ("", None),
     ],
@@ -322,9 +336,165 @@ def test_post_tool_use_parallel_hooks_do_not_lose_entries(repo):
     assert sorted(o.path for o in outputs) == sorted(f.relative_to(repo).as_posix() for f in files)
 
 
+def test_post_tool_use_entries_stay_hook_entries_without_source(repo):
+    process("SessionStart", start_payload(repo), now=NOW)
+    f = write(repo, KB_FILE, "v: 1\n")
+    path = process("PostToolUse", post_payload(repo, str(f)), now=NOW)
+    text = path.read_text(encoding="utf-8")
+    assert "source" not in text and "reason" not in text and "recorded_at" not in text
+    [o] = load_run(path).outputs
+    assert (o.source, o.reason, o.recorded_at) == (None, None, None)
+
+
+def test_post_tool_use_replaces_a_backfilled_entry_with_a_hook_entry(repo):
+    process("SessionStart", start_payload(repo), now=NOW)
+    f = write(repo, KB_FILE, "v: 1\n")
+    on_backfill(backfill_payload(repo, [KB_FILE]), repo, NOW)
+    f.write_text("v: 2\n", encoding="utf-8", newline="\n")
+    path = process("PostToolUse", post_payload(repo, str(f)), now=NOW)
+    [o] = load_run(path).outputs
+    assert (o.source, o.reason, o.recorded_at) == (None, None, None)
+    assert o.sha256 == hashlib.sha256(b"v: 2\n").hexdigest()
+
+
 def test_unknown_event_is_an_error(repo):
     with pytest.raises(HookLogError):
         process("PreToolUse", start_payload(repo))
+
+
+# --- Backfill: registro manual y explícito de salidas que el hook no capturó -----------------------
+def test_backfill_registers_paths_with_provenance(repo):
+    process("SessionStart", start_payload(repo), now=NOW)
+    a = write(repo, KB_FILE, "v: 1\n")
+    write(repo, "kb/documents/NT_024.yaml", "id: NT_024\n")
+    path = process("Backfill", backfill_payload(repo, [str(a), "kb/documents/NT_024.yaml"]), now=NOW)
+    assert path == repo / "curation" / "runs" / "sess-1.yaml"
+    run = load_run(path)
+    assert [o.source for o in run.outputs] == ["backfill", "backfill"]
+    assert all(o.reason == REASON for o in run.outputs)
+    assert all(o.recorded_at == NOW.replace(microsecond=0) for o in run.outputs)
+    assert run.outputs[0].sha256 == hashlib.sha256(a.read_bytes()).hexdigest()
+    assert is_canonical(path.read_text(encoding="utf-8"))
+
+
+def test_backfill_never_creates_the_run_header(repo):
+    write(repo, KB_FILE, "v: 1\n")
+    code, err = run_main(["Backfill"], json.dumps(backfill_payload(repo, [KB_FILE])))
+    assert code == 1 and err.startswith("hooklog:")
+    assert "no existe" in err
+    assert not (repo / "curation" / "runs" / "sess-1.yaml").exists()
+
+
+@pytest.mark.parametrize("reason", [None, "", "   ", 42])
+def test_backfill_requires_an_explicit_reason(repo, reason):
+    process("SessionStart", start_payload(repo), now=NOW)
+    write(repo, KB_FILE, "v: 1\n")
+    run_file = repo / "curation" / "runs" / "sess-1.yaml"
+    before = run_file.read_bytes()
+    payload = backfill_payload(repo, [KB_FILE])
+    if reason is None:
+        del payload["reason"]
+    else:
+        payload["reason"] = reason
+    code, err = run_main(["Backfill"], json.dumps(payload))
+    assert code == 1 and "reason" in err
+    assert run_file.read_bytes() == before
+
+
+def test_backfill_leaves_a_hook_entry_untouched(repo):
+    process("SessionStart", start_payload(repo), now=NOW)
+    f = write(repo, KB_FILE, "v: 1\n")
+    path = process("PostToolUse", post_payload(repo, str(f)), now=NOW)
+    sha_del_hook = hashlib.sha256(b"v: 1\n").hexdigest()
+    f.write_text(
+        "v: 2\n", encoding="utf-8", newline="\n"
+    )  # si el backfill la re-registrara, el sha cambiaría
+    write(repo, "kb/documents/NT_024.yaml", "id: NT_024\n")
+    res = on_backfill(backfill_payload(repo, [KB_FILE, "kb/documents/NT_024.yaml"]), repo, NOW)
+    assert (res.registered, res.skipped) == (["kb/documents/NT_024.yaml"], [KB_FILE])
+    outputs = load_run(path).outputs
+    assert (outputs[0].source, outputs[0].reason, outputs[0].sha256) == (None, None, sha_del_hook)
+    assert outputs[1].source == "backfill"
+
+
+def test_backfill_updates_a_previously_backfilled_path(repo):
+    process("SessionStart", start_payload(repo), now=NOW)
+    f = write(repo, KB_FILE, "v: 1\n")
+    on_backfill(backfill_payload(repo, [KB_FILE], reason="motivo 1"), repo, NOW)
+    f.write_text("v: 2\n", encoding="utf-8", newline="\n")
+    later = datetime(2026, 10, 18, 8, 0, 0, tzinfo=UTC)
+    res = on_backfill(backfill_payload(repo, [KB_FILE], reason="motivo 2"), repo, later)
+    assert (res.registered, res.skipped) == ([KB_FILE], [])
+    [o] = load_run(res.path).outputs
+    assert o.sha256 == hashlib.sha256(b"v: 2\n").hexdigest()
+    assert (o.reason, o.recorded_at) == ("motivo 2", later)
+
+
+def test_backfill_ignores_tool_name(repo):
+    process("SessionStart", start_payload(repo), now=NOW)
+    f = write(repo, KB_FILE, "v: 1\n")
+    payload = backfill_payload(repo, [str(f)], tool_name="Read", tool_input={"file_path": str(f)})
+    assert on_backfill(payload, repo, NOW).registered == [KB_FILE]
+
+
+@pytest.mark.parametrize(
+    "case",
+    [
+        "outside_repo",
+        "runs_dir",
+        "git_dir",
+        "missing_file",
+        "directory",
+        "empty_paths",
+        "not_a_path",
+        "mixed",
+    ],
+)
+def test_backfill_rejects_unregistrable_paths(repo, tmp_path, case):
+    process("SessionStart", start_payload(repo), now=NOW)
+    write(repo, KB_FILE, "v: 1\n")
+    run_file = repo / "curation" / "runs" / "sess-1.yaml"
+    before = run_file.read_bytes()
+    outside = write(tmp_path, "otro/archivo.yaml", "x: 1\n")
+    paths: list = [KB_FILE]
+    if case == "outside_repo":
+        paths = [str(outside)]
+    elif case == "runs_dir":
+        paths = [str(write(repo, "curation/runs/otra.yaml", "x: 1\n"))]
+    elif case == "git_dir":
+        paths = [str(repo / ".git" / "HEAD")]
+    elif case == "missing_file":
+        paths = [str(repo / "kb" / "no_existe.yaml")]
+    elif case == "directory":
+        paths = [str(repo / "curation")]
+    elif case == "empty_paths":
+        paths = []
+    elif case == "not_a_path":
+        paths = [42]
+    elif case == "mixed":
+        paths = [KB_FILE, str(outside)]  # si una ruta falla, no se registra NINGUNA
+    code, err = run_main(["Backfill"], json.dumps(backfill_payload(repo, paths)))
+    assert code == 1 and err.startswith("hooklog:")
+    assert run_file.read_bytes() == before
+
+
+def test_backfill_succeeds_and_summarizes_registered_and_skipped(repo, capsys):
+    process("SessionStart", start_payload(repo), now=NOW)
+    f = write(repo, KB_FILE, "v: 1\n")
+    process("PostToolUse", post_payload(repo, str(f)), now=NOW)  # entrada de hook: se omite
+    write(repo, "kb/documents/NT_024.yaml", "id: NT_024\n")
+    code, err = run_main(
+        ["Backfill"], json.dumps(backfill_payload(repo, [KB_FILE, "kb/documents/NT_024.yaml"]))
+    )
+    assert code == 0
+    assert "kb/documents/NT_024.yaml" in err and KB_FILE in err and "omitido" in err
+    assert capsys.readouterr().out == ""
+
+
+def test_main_backfill_with_garbage_stdin_exits_1(capsys):
+    code, err = run_main(["Backfill"], "esto no es json")
+    assert code == 1 and "hooklog:" in err
+    assert capsys.readouterr().out == ""
 
 
 # --- main: nunca falla, nunca escribe por stdout --------------------------------------------------
@@ -413,3 +583,20 @@ def test_module_entrypoint_creates_run(repo):
     )
     assert (cp.returncode, cp.stdout, cp.stderr) == (0, "", "")
     assert load_run(repo / "curation" / "runs" / "e2e.yaml").session_id == "e2e"
+
+
+def test_module_entrypoint_backfill_exits_1_on_error(repo):
+    src = Path(hooklog.__file__).resolve().parents[1]
+    env = {**os.environ, "PYTHONPATH": str(src)}
+    cp = subprocess.run(
+        [sys.executable, "-m", "sifen_kb.hooklog", "Backfill"],
+        input=json.dumps(backfill_payload(repo, [KB_FILE], reason="")),
+        capture_output=True,
+        text=True,
+        cwd=repo,
+        env=env,
+        check=False,
+    )
+    assert cp.returncode == 1
+    assert cp.stdout == ""
+    assert cp.stderr.startswith("hooklog:")
