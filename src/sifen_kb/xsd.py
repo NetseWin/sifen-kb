@@ -10,8 +10,10 @@ Piezas:
   otros por URL HTTPS absoluta (`https://ekuatia.set.gov.py/sifen/xsd/DE_Types_v150.xsd`) y solo
   `xmldsig-core-schema.xsd` por ruta relativa; un `uri_mapper` redirige toda URL del portal a la copia
   local, cualquier otra URL remota es un error y `allow="sandbox"` + `defuse="always"` cierran el resto.
-- `XsdIndex`: declaraciones de elementos por nombre local (ruta, padre, ocurrencia, tipo, facetas) y
-  `check_occurrence` (la "Ocurrencia" del Manual Técnico frente a `minOccurs`/`maxOccurs`).
+- `XsdIndex`: declaraciones de elementos por nombre local (ruta, padre, ocurrencia, tipo, facetas),
+  `check_occurrence` (la "Ocurrencia" del Manual Técnico frente a `minOccurs`/`maxOccurs`) y
+  `check_enumeration` (los códigos que documentan el MT/NT frente a los que ACEPTA el tipo del XSD;
+  decisión 8 del usuario, 2026-10-17: dos dimensiones separadas, sin consolidar ni inventar etiquetas).
 - `validate_xml`: errores de esquema con ruta. SIFEN informa solo el primer error; aquí salen varios.
 - `read_values`, `read_emission_date`, `read_processing_date`: lectura de solo lectura de un XML real
   (`defuse="always"`, sin red; el archivo nunca se modifica ni se escribe).
@@ -289,6 +291,48 @@ class OccurrenceCheck(NamedTuple):
     detail: str
 
 
+class EnumerationCheck(NamedTuple):
+    """Códigos documentados (MT/NT) frente a los valores que acepta el tipo del XSD."""
+
+    status: Literal["match", "mismatch", "not_checked"]
+    accepted: tuple[str, ...] | None
+    """Valores aceptados: TODOS si `exhaustive`; si no, solo los documentados que el tipo acepta."""
+    exhaustive: bool
+    only_documented: tuple[str, ...]
+    only_accepted: tuple[str, ...]
+    detail: str
+
+
+MAX_ENUM_DIGITS = 4
+"""Tope de dígitos para enumerar los valores de un tipo numérico sin `xs:enumeration` (0…9999)."""
+_MAX_LISTED = 20
+"""Valores aceptados que se listan en `detail` (el campo `accepted` los trae todos)."""
+
+
+def _max_lexical_width(st: XsdSimpleType) -> int | None:
+    """Ancho máximo de la forma léxica según `totalDigits`, `length`/`maxLength` o los patrones; None
+    si nada lo acota. El ancho de un patrón se calcula sobre su traducción a `re` de Python (la que usa
+    `xmlschema` para validar); los anclajes no ocupan ancho."""
+    f = _facets_of(st)
+    widths = [w for w in (f.total_digits, f.length, f.max_length) if w is not None]
+    compiled = getattr(getattr(st, "patterns", None), "patterns", None) or ()
+    for p in compiled:
+        try:
+            import re._parser as sre  # interno de CPython; si cambia, el patrón no acota (no se enumera)
+
+            _, high = sre.parse(p.pattern).getwidth()
+        except Exception:  # noqa: BLE001 - cualquier fallo = sin cota conocida
+            continue
+        if high < 2**16:
+            widths.append(high)
+    return min(widths) if widths else None
+
+
+def _is_numeric(st: XsdSimpleType) -> bool:
+    primitive = getattr(st, "primitive_type", None)
+    return _local(getattr(primitive, "name", None)) == "decimal"
+
+
 _OCCURRENCE = re.compile(r"^(\d+)\s*[-\u2013]\s*(\d+|n)$", re.IGNORECASE)
 
 
@@ -387,6 +431,8 @@ class XsdIndex:
 
     def __init__(self, schema: XMLSchema) -> None:
         self._by_name: dict[str, list[ElementDecl]] = {}
+        self._simple: dict[str, XsdSimpleType | None] = {}
+        """xpath -> tipo simple de la declaración (para `check_enumeration`)."""
         target = schema.target_namespace or ""
         for qname, root in schema.maps.elements.items():
             namespace = qname[1:].partition("}")[0] if qname.startswith("{") else ""
@@ -416,6 +462,7 @@ class XsdIndex:
             facets=_facets_of(el.type),
         )
         self._by_name.setdefault(name, []).append(decl)
+        self._simple.setdefault(decl.xpath, _simple_type_of(el.type))
         t = el.type
         content = getattr(t, "content", None)
         if t is None or not isinstance(content, XsdGroup) or id(t) in types_in_path or depth >= MAX_DEPTH:
@@ -468,6 +515,54 @@ class XsdIndex:
         return OccurrenceCheck(
             "mismatch", f"{where}: manual {manual_lit} frente a XSD {xsd_lit} ({decls[0].xpath})"
         )
+
+    def check_enumeration(
+        self, xml_name: str, parent: str | None, documented: Sequence[str]
+    ) -> EnumerationCheck:
+        """Compara los códigos que documentan el MT/NT con los valores que ACEPTA el tipo del XSD.
+
+        Valores aceptados: los `xs:enumeration` del tipo si los tiene; si no, en un tipo numérico cuya
+        forma léxica está acotada a `MAX_ENUM_DIGITS` dígitos (`totalDigits`, longitud o patrón), los
+        enteros no negativos en forma canónica (sin ceros a la izquierda ni signo) que valida el tipo
+        (`tiTiDE` = «1|[4-7]|9|10» → 1, 4, 5, 6, 7, 9, 10). Si no se puede enumerar, solo se verifica que
+        cada código documentado sea aceptado (`exhaustive=False`). Nunca se infieren etiquetas: solo
+        códigos. `match` exige documentados ⊆ aceptados y, si la enumeración es completa, la igualdad.
+        """
+        where = f"{parent}/{xml_name}" if parent else xml_name
+        decls = self.lookup(xml_name, parent)
+        if not decls:
+            return EnumerationCheck(
+                "not_checked", None, False, (), (), f"{where} no está declarado en el XSD"
+            )
+        types = {id(self._simple.get(d.xpath)) for d in decls}
+        st = self._simple.get(decls[0].xpath)
+        if len(types) > 1:
+            return EnumerationCheck(
+                "not_checked", None, False, (), (), f"{where}: el XSD declara tipos distintos según la ruta"
+            )
+        if st is None:
+            return EnumerationCheck("not_checked", None, False, (), (), f"{where}: sin tipo simple en el XSD")
+        docs = tuple(dict.fromkeys(documented))
+        enumeration = tuple(str(v) for v in (getattr(st, "enumeration", None) or ()))
+        width = _max_lexical_width(st)
+        if enumeration:
+            accepted: tuple[str, ...] = enumeration
+            exhaustive, how = True, "xs:enumeration"
+        elif _is_numeric(st) and width is not None and width <= MAX_ENUM_DIGITS:
+            accepted = tuple(c for c in map(str, range(10**width)) if st.is_valid(c))
+            exhaustive, how = True, f"enteros de hasta {width} dígitos que valida el tipo"
+        else:
+            accepted = tuple(c for c in docs if st.is_valid(c))
+            exhaustive, how = False, "tipo no enumerable: solo se prueban los documentados"
+        only_doc = tuple(c for c in docs if not st.is_valid(c))
+        only_acc = tuple(a for a in accepted if a not in docs) if exhaustive else ()
+        status: Literal["match", "mismatch"] = "mismatch" if only_doc or only_acc else "match"
+        type_name = _local(getattr(st, "name", None)) or "(anónimo)"
+        shown = ", ".join(accepted[:_MAX_LISTED]) + (
+            f" … (+{len(accepted) - _MAX_LISTED})" if len(accepted) > _MAX_LISTED else ""
+        )
+        detail = f"{where} ({type_name}; {how}): aceptados {shown or '(ninguno)'}"
+        return EnumerationCheck(status, accepted, exhaustive, only_doc, only_acc, detail)
 
 
 # --- Lectura segura de XML ---------------------------------------------------------------------------

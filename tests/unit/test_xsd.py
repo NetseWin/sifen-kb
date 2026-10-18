@@ -255,6 +255,51 @@ def test_check_occurrence_detail_mentions_both_sides(mini_index: XsdIndex) -> No
     assert "/rMini/DE/gDatGralOpe/gDatRec/dNomRec" in result.detail
 
 
+# --- Enumeración: documentado (MT/NT) frente a aceptado (XSD), decisión 8 del usuario (2026-10-17) ---------
+def test_check_enumeration_pattern_is_enumerated_exhaustively(mini_index: XsdIndex) -> None:
+    ok = mini_index.check_enumeration("iTipIDRec", "gDatRec", ["1", "2", "3", "4", "5", "6", "9"])
+    assert (ok.status, ok.accepted, ok.exhaustive) == ("match", ("1", "2", "3", "4", "5", "6", "9"), True)
+    bad = mini_index.check_enumeration("iTipIDRec", "gDatRec", ["1", "2", "3", "4", "5", "6", "7"])
+    assert (bad.status, bad.only_documented, bad.only_accepted) == ("mismatch", ("7",), ("9",))
+    assert "aceptados 1, 2, 3, 4, 5, 6, 9" in bad.detail
+
+
+def test_check_enumeration_uses_xs_enumeration(mini_index: XsdIndex) -> None:
+    c = mini_index.check_enumeration("cMoneOpe", "gOpeCom", ["PYG"])
+    assert (c.status, c.accepted, c.only_accepted, c.exhaustive) == (
+        "mismatch",
+        ("PYG", "USD"),
+        ("USD",),
+        True,
+    )
+
+
+def test_check_enumeration_unbounded_type_only_tests_documented_codes(mini_index: XsdIndex) -> None:
+    """`tiTipTra` (1–13 por minInclusive/maxInclusive, sin cota de dígitos): no se enumera; solo se
+    prueba cada código documentado y nada cuenta como «solo en el XSD»."""
+    c = mini_index.check_enumeration("iTipTra", "gOpeCom", ["1", "13", "14"])
+    assert (c.status, c.exhaustive, c.accepted, c.only_documented, c.only_accepted) == (
+        "mismatch",
+        False,
+        ("1", "13"),
+        ("14",),
+        (),
+    )
+    assert mini_index.check_enumeration("iTipTra", "gOpeCom", ["1", "13"]).status == "match"
+
+
+def test_check_enumeration_not_declared(mini_index: XsdIndex) -> None:
+    c = mini_index.check_enumeration("iNoExiste", "gDatRec", ["1"])
+    assert (c.status, c.accepted) == ("not_checked", None)
+
+
+def test_real_itide_documented_vs_accepted(real_index: XsdIndex) -> None:
+    """C002 (ISS-0013): el MT documenta 1–8; la instantánea acepta 1, 4–7, 9 y 10 (patrón «1|[4-7]|9|10»)."""
+    c = real_index.check_enumeration("iTiDE", "gTimb", [str(n) for n in range(1, 9)])
+    assert c.accepted == ("1", "4", "5", "6", "7", "9", "10") and c.exhaustive
+    assert (c.status, c.only_documented, c.only_accepted) == ("mismatch", ("2", "3", "8"), ("9", "10"))
+
+
 # --- Validación con rutas -------------------------------------------------------------------------------------
 def test_validate_xml_valid(mini_schema: Any) -> None:
     assert validate_xml(mini_schema, MINI / "mini_valido.xml") == []
