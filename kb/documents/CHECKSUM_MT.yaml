@@ -1,0 +1,5 @@
+id: CHECKSUM_MT
+kind: checksum_list
+title: Listado Checksum MD5 de las versiones del Manual Tecnico
+current_revision: d6aa4660e0a96e1b70e196373ed1a0cac8c71e9666f2192daba7f52d03e1ddd1
+curation_scope: dates_only

@@ -1,0 +1,30 @@
+key: field:DE:F023
+context: DE
+id: F023
+versions:
+  - introduced_by: baseline
+    group: F
+    parent: F001
+    xml_name: dTotalGs
+    description: Total general de la operación en Guaraníes
+    data_type: N
+    length: 1-15p(0-8)
+    occurrence: 0-1
+    observations: |-
+      Si D015 ≠ PYG y D017 = 1, corresponde al cálculo aritmético: F014 * D018 Si D015 ≠ PYG y D017 = 2, corresponde a la suma de todas las ocurrencias de EA009 Este campo no debe existir si D015=PYG No informar si D015 = PYG Cuando C002=4 corresponde a F014
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p107:F023
+  - introduced_by:
+      - NT_008#1
+    based_on: baseline
+    group: F
+    parent: F001
+    xml_name: dTotalGs
+    description: Total general de la operación en Guaraníes
+    data_type: N
+    length: 1-15p(0-8)
+    occurrence: 0-1
+    observations: |-
+      Si D015 ≠ PYG y D017 = 1, corresponde al cálculo aritmético: F014 * D018 Si D015 ≠ PYG y D017 = 2, corresponde a la suma de todas las ocurrencias de EA009 Este campo no debe existir si D015=PYG No informar si D015 = PYG
+    evidence:
+      - raw:NT_008@2b1c2f0b25e9:p1:F023

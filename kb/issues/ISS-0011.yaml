@@ -1,0 +1,15 @@
+id: ISS-0011
+kind: ambiguity
+affects:
+  - subject: val:DE:D208c
+    since: 2024-01-01
+statement: |-
+  En la fila D208c (1321) de NT 21 y de NT 24 están resaltados en rojo «Si el Tipo de transacción es distinto a Muestras médicas (D011≠13),», «o igual» y el «=» de los dos «>=», y en amarillo la «E» de «El Tipo» (en el MT V150 es «el», en minúscula) y los montos. La curación inicial tomó todo el texto como vigente (celda completa). Indicios de la lectura rojo = eliminado (como en la leyenda del MT y en NT 2, 8, 10 y 23): la «E» pasa a mayúscula justo donde empezaría la oración si se quita la cláusula previa; y el Decreto 872/2023, art. 6, numeral 2, que ambas NT citan, dice «supere» y no exceptúa las muestras médicas (ISS-0012). Con esa lectura la regla sería: innominado prohibido cuando el monto es mayor a 35.000.000 (NT 21) o 7.000.000 (NT 24), sin la excepción D011 = 13. Los veredictos difieren solo con el monto exactamente igual al umbral o con D011 = 13.
+evidence:
+  - raw:NT_021@1e716577d874:p1:D208c#observation
+  - raw:NT_024@ccc2d1550e92:p1:D208c#observation
+  - raw:MT_V150@976cd88c05c3:p167:D208c#observation
+blocking: false
+policy: |-
+  Decisión del usuario (2026-10-17): en NT 21 y NT 24 el rojo también es contenido eliminado; la regla efectiva es «mayor a» 35.000.000 (NT 21) y 7.000.000 (NT 24), sin la excepción D011≠13. No bloqueante; la consulta a DNIT puede seguir en paralelo y una respuesta oficial contraria se registra con trazabilidad. Aplicado: las versiones NT_021#1 y NT_024#1 se re-materializaron con sifen draft desde el literal efectivo («mayor a», sin la excepción D011≠13) y sus condiciones usan «>» sin D011. Este Issue queda como trazabilidad de que las NT no reproducen la leyenda del Manual.
+status: open

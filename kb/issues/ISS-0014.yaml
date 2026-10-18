@@ -1,0 +1,16 @@
+id: ISS-0014
+kind: ambiguity
+affects:
+  - subject: NT_023#5
+  - subject: NT_023#6
+  - subject: NT_023#7
+statement: |-
+  NT 23 §2.1 encabeza con «se modifica la siguiente validación» tres filas que no existen en el MT V150 ni en ninguna NT anterior y que están enteras en verde (agregado según la leyenda del MT): D208f (1333), D210b (1334) y D208g (1335). El color coincide con la acción curada (`add`) pero no con el verbo literal del encabezado. Se curan como altas (NT_023#5, NT_023#6, NT_023#7).
+evidence:
+  - raw:NT_023@9cb063673358:p2:D208f
+  - raw:NT_023@9cb063673358:p2:D210b
+  - raw:NT_023@9cb063673358:p2:D208g
+blocking: false
+policy: |-
+  Decisiones del usuario 9 y 10 (2026-10-17, regla «mixta» del marcado): color ≠ verbo literal pero = acción curada ⇒ Issue no bloqueante de trazabilidad que nombra cada efecto. D208f, D210b y D208g responden in_force desde NT 23; las relaciones posibles con reglas anteriores siguen en ISS-0002, ISS-0003 e ISS-0004.
+status: open

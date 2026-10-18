@@ -1,0 +1,28 @@
+key: field:DE:F014
+context: DE
+id: F014
+versions:
+  - introduced_by: baseline
+    group: F
+    parent: F001
+    xml_name: dTotGralOpe
+    description: Total Neto de la operación
+    data_type: N
+    length: 1-15p(0-8)
+    occurrence: 1-1
+    observations: Corresponde al cálculo aritmético F008 - F013 + F025
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p105:F014
+  - introduced_by:
+      - NT_001#1
+    based_on: baseline
+    group: F
+    parent: F001
+    xml_name: dTotGralOpe
+    description: Total Neto de la operación
+    data_type: N
+    length: 1-15p(0-8)
+    occurrence: 1-1
+    observations: Corresponde al cálculo aritmético F008-F013+F025
+    evidence:
+      - raw:NT_001@4c47b667084d:p2:F014

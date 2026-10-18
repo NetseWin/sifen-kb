@@ -1,0 +1,14 @@
+id: ISS-0007
+kind: erratum
+affects:
+  - subject: NT_025
+statement: |-
+  NT 25 dice «Fecha: 23/04/2024», pero sus fechas de puesta a disposición son 28/04/2025 (test y producción) y su Histórico del Documento registra elaboración y revisión el 23/04/2025: probable errata de año en la fecha del documento (370 días entre la fecha impresa y la de test).
+evidence:
+  - raw:NT_025@3950e171f161:p1:fechas#fecha
+  - raw:NT_025@3950e171f161:p1:fechas#test
+  - raw:NT_025@3950e171f161:p1:fechas#prod
+blocking: false
+policy: |-
+  document_date es informativa y se conserva tal como la imprime DNIT (23/04/2024); la vigencia sale del calendario (2025-04-28 en ambos ambientes). NT 25 no toca entidades del piloto.
+status: open

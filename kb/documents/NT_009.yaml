@@ -1,0 +1,30 @@
+id: NT_009
+kind: technical_note
+number: 9
+title: Nota Técnica N° 9
+current_revision: bc6a85c1e77eeee29a7acefae91dd0e5cd1e4157e638ed32c527962bfe7e61aa
+document_date:
+  value: 2021-09-09
+  literal: 09/09/2021
+  stated_in:
+    doc: NT_009
+    rev: bc6a85c1e77e
+    page_pdf: 1
+    quote: |-
+      Fecha: 09/09/2021
+change_period:
+  - value: 2021-09-08
+    literal: 08/09/2021
+    stated_in:
+      doc: NT_009
+      rev: bc6a85c1e77e
+      page_pdf: 1
+      quote: Cambios desde la fecha 08/09/2021 al 09/09/2021
+  - value: 2021-09-09
+    literal: 09/09/2021
+    stated_in:
+      doc: NT_009
+      rev: bc6a85c1e77e
+      page_pdf: 1
+      quote: Cambios desde la fecha 08/09/2021 al 09/09/2021
+curation_scope: dates_only

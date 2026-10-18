@@ -1,0 +1,40 @@
+key: val:DE:D210a
+context: DE
+id: D210a
+subject_field: field:DE:D210
+versions:
+  - introduced_by: baseline
+    code: 1323
+    severity: R
+    message: El número de documento de identidad del receptor no es requerido
+    observation: |-
+      Si la naturaleza del receptor es contribuyente (D201=1) o el tipo de operación es igual a B2F (D202=4), el número de documento de identidad no debe ser informado
+    condition:
+      expr: (D201 == 1 or D202 == 4) and exists(D210)
+      level: full
+      interpretation:
+        by: llm
+        run: a067d55b-d757-498d-a601-f946db1a3acc
+        note: |-
+          Se viola cuando D210 está presente y el receptor es contribuyente o la operación es B2F.
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p168:D210a
+  - introduced_by:
+      - NT_002#4
+    based_on: baseline
+    kind: tombstone
+    code: 1323
+    severity: R
+    message: El número de documento de identidad del receptor no es requerido
+    observation: |-
+      Si la naturaleza del receptor es contribuyente (D201=1) o el tipo de operación es igual a B2F (D202=4), el número de documento de identidad no debe ser informado
+    condition:
+      expr: (D201 == 1 or D202 == 4) and exists(D210)
+      level: full
+      interpretation:
+        by: llm
+        run: a067d55b-d757-498d-a601-f946db1a3acc
+        note: |-
+          Se viola cuando D210 está presente y el receptor es contribuyente o la operación es B2F.
+    evidence:
+      - raw:NT_002@6aaf4a8f4797:p1:D210a

@@ -1,0 +1,57 @@
+id: NT_001
+kind: technical_note
+number: 1
+title: Nota Técnica N° 1
+current_revision: 4c47b667084dce5ee790b764af09c9b224c6cd0473555282ff07c18146a7e008
+document_date:
+  value: 2019-10-14
+  literal: 14-10-2019
+  stated_in:
+    doc: NT_001
+    rev: 4c47b667084d
+    page_pdf: 1
+    quote: |-
+      Fecha: 14-10-2019
+change_period:
+  - value: 2019-09-10
+    literal: 10-09-2019
+    stated_in:
+      doc: NT_001
+      rev: 4c47b667084d
+      page_pdf: 1
+      quote: Cambios desde la fecha 10-09-2019 al 14-10-2019
+  - value: 2019-10-14
+    literal: 14-10-2019
+    stated_in:
+      doc: NT_001
+      rev: 4c47b667084d
+      page_pdf: 1
+      quote: Cambios desde la fecha 10-09-2019 al 14-10-2019
+effects:
+  - id: NT_001#1
+    verb_literal: se realizó una verificación de las fórmulas utilizadas
+    action: modify
+    target: field:DE:F014
+    declared_scope:
+      - observations
+    evidence:
+      - raw:NT_001@4c47b667084d:p2:F014
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        El encabezado (sección A-2, p. 1) habla de las fórmulas: el alcance declarado es la columna Observaciones. La fila citada es la del campo F014 (tabla de campos, primera aparición del ID en la página).
+  - id: NT_001#2
+    verb_literal: Las siguientes validaciones sufren modificaciones
+    action: modify
+    target: field:DE:C002
+    declared_scope: []
+    evidence:
+      - raw:NT_001@4c47b667084d:p2:F014~2
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mención, no cambio: NT 1 modifica la validación F014 (2365), fuera del piloto, cuya observación nombra C002 («Cuando C002=1, 5 o 6»). NT 1 no modifica el campo C002.
+curation_scope: pilot

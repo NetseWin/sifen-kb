@@ -1,0 +1,22 @@
+key: val:DE:D209a
+context: DE
+id: D209a
+subject_field: field:DE:D209
+versions:
+  - introduced_by: baseline
+    code: 1313
+    severity: R
+    message: |-
+      Descripción del tipo de documento de identidad del receptor no corresponde al código
+    observation: |-
+      La descripción del tipo de documento de identidad del receptor no coincidente con lo informado en el campo D208
+    condition:
+      expr: null
+      level: none
+      gaps: |-
+        Exige comparar el texto de D209 con la descripción que corresponde al código de D208 según la tabla de las Observaciones del campo D209 (1= «Cédula paraguaya» … 6= «Tarjeta Diplomática de exoneración fiscal»; con D208 = 9, texto libre). El DSL no compara textos contra una tabla de correspondencias.
+      interpretation:
+        by: llm
+        run: a067d55b-d757-498d-a601-f946db1a3acc
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p168:D209a

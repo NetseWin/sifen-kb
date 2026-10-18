@@ -1,0 +1,15 @@
+id: ISS-0002
+kind: undeclared_change
+affects:
+  - subject: val:DE:D208b
+  - subject: val:DE:D208f
+statement: |-
+  NT 23 agrega D208f (1333) con el mismo mensaje y la misma observación que D208b (1319) («El Tipo de documento de identidad del receptor no puede ser innominado (D208=5), cuando el tipo de operación es distinto a B2C (D202 ≠ 2)»). NT 10 ya había eliminado D208b (NT_010#6, ISS-0008), de modo que D208f podría ser una reintroducción de la misma regla con otro ID y otro código, pero ningún documento oficial lo declara: no hay reemplazo, reintroducción ni continuación formal.
+evidence:
+  - raw:NT_023@9cb063673358:p2:D208f
+  - raw:NT_010@d261165c512c:p3:D208b
+  - raw:MT_V150@976cd88c05c3:p167:D208b
+blocking: false
+policy: |-
+  Decisión del usuario (2026-10-17): no bloqueante. D208b responde removed desde NT 10 (también después de NT 23) y D208f es una entidad independiente (not_yet_existing antes de NT 23, in_force desde NT 23). Los historiales no se fusionan; el Issue solo deja constancia de la relación posible y no declarada.
+status: open

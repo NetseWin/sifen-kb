@@ -1,0 +1,19 @@
+id: NT_017
+kind: technical_note
+number: 17
+title: Nota Técnica N° 17
+current_revision: 21112d7c0a1a19ce94b875c5d734273cd07992c1383429f7dedf9d119591b55c
+document_date:
+  value: 2023-08-14
+  literal: 14/08/2023
+  stated_in: raw:NT_017@21112d7c0a1a:p1:fechas#fecha
+schedule:
+  test:
+    value: 2023-08-24
+    literal: 24 de Agosto del 2023
+    stated_in: raw:NT_017@21112d7c0a1a:p1:fechas#test
+  prod:
+    value: 2023-08-25
+    literal: 25 de Agosto del 2023
+    stated_in: raw:NT_017@21112d7c0a1a:p1:fechas#prod
+curation_scope: dates_only

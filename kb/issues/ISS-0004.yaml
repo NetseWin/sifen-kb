@@ -1,0 +1,14 @@
+id: ISS-0004
+kind: undeclared_change
+affects:
+  - subject: val:DE:D210a
+  - subject: val:DE:D210b
+statement: |-
+  NT 2 elimina D210a (1323, «El número de documento de identidad del receptor no es requerido»: contribuyente o B2F). NT 23 agrega D210b (1334) con el mismo mensaje y la observación sin la parte B2F («Si la naturaleza del receptor es contribuyente (D201=1) el número de documento de identidad no debe ser informado»), sin declarar relación con D210a. Posible reintroducción de la regla con otro ID y otro código.
+evidence:
+  - raw:NT_002@6aaf4a8f4797:p1:D210a
+  - raw:NT_023@9cb063673358:p2:D210b
+blocking: false
+policy: |-
+  No bloqueante: D210a responde removed (lápida de NT 2) y D210b in_force desde NT 23; ambas muestran este Issue, porque responder solo «eliminada» ante un 1323 induciría a error en el diagnóstico. No se fusionan sin declaración de DNIT.
+status: open

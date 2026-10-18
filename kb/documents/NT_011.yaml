@@ -1,0 +1,30 @@
+id: NT_011
+kind: technical_note
+number: 11
+title: Nota Técnica N° 11
+current_revision: 6abf95164f4eba6dfc6790e9f9361fe5d1545b83fba561ac130ff89afabc6224
+document_date:
+  value: 2022-10-20
+  literal: 20/10/2022
+  stated_in:
+    doc: NT_011
+    rev: 6abf95164f4e
+    page_pdf: 1
+    quote: |-
+      Fecha: 20/10/2022
+change_period:
+  - value: 2022-09-23
+    literal: 23/09/2022
+    stated_in:
+      doc: NT_011
+      rev: 6abf95164f4e
+      page_pdf: 1
+      quote: Cambios desde la fecha 23/09/2022 al 20/10/2022
+  - value: 2022-10-20
+    literal: 20/10/2022
+    stated_in:
+      doc: NT_011
+      rev: 6abf95164f4e
+      page_pdf: 1
+      quote: Cambios desde la fecha 23/09/2022 al 20/10/2022
+curation_scope: dates_only

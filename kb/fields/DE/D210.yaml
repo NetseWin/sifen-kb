@@ -1,0 +1,45 @@
+key: field:DE:D210
+context: DE
+id: D210
+versions:
+  - introduced_by: baseline
+    group: D3
+    parent: D200
+    xml_name: dNumIDRec
+    description: Número de documento de identidad
+    data_type: A
+    length: 1-20
+    occurrence: 0-1
+    observations: |-
+      Obligatorio si D201 = 2 y D202 ≠ 4 No informar si D201 = 1 o D202=4 En caso de DE innominado, completar con 0 (cero)
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p73:D210
+  - introduced_by:
+      - NT_002#2
+    based_on: baseline
+    group: D3
+    parent: D200
+    xml_name: dNumIDRec
+    description: Número de documento de identidad
+    data_type: A
+    length: 1-20
+    occurrence: 0-1
+    observations: |-
+      Obligatorio si D201 = 2 y D202 ≠ 4 En caso de DE innominado, completar con 0 (cero)
+    evidence:
+      - raw:NT_002@6aaf4a8f4797:p1:D210
+  - introduced_by:
+      - NT_023#2
+    based_on:
+      - NT_002#2
+    group: D3
+    parent: D200
+    xml_name: dNumIDRec
+    description: Número de documento de identidad
+    data_type: A
+    length: 1-20
+    occurrence: 0-1
+    observations: |-
+      Obligatorio si D201 = 2 No informar si D201 = 1 En caso de DE innominado, completar con 0 (cero)
+    evidence:
+      - raw:NT_023@9cb063673358:p1:D210

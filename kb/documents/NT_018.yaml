@@ -1,0 +1,19 @@
+id: NT_018
+kind: technical_note
+number: 18
+title: Nota Técnica N° 18
+current_revision: 96079a30c8c19e82fb630eba1487dc16dd6744ffda63abcf8124972049edd840
+document_date:
+  value: 2023-11-17
+  literal: 17/11/2023
+  stated_in: raw:NT_018@96079a30c8c1:p1:fechas#fecha
+schedule:
+  test:
+    value: 2023-12-01
+    literal: 01 de diciembre de 2023
+    stated_in: raw:NT_018@96079a30c8c1:p1:fechas#test
+  prod:
+    value: 2024-01-08
+    literal: 08 de enero de 2024
+    stated_in: raw:NT_018@96079a30c8c1:p1:fechas#prod
+curation_scope: dates_only

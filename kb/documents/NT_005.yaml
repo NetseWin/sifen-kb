@@ -1,0 +1,32 @@
+id: NT_005
+kind: technical_note
+number: 5
+title: Nota Técnica N° 5
+current_revision: 6889f1fc4f2e3300292f93bf3165449d31258c274d53b9269c00d352920d51d5
+document_date:
+  value: 2021-02-09
+  literal: 09/02/2021
+  stated_in:
+    doc: NT_005
+    rev: 6889f1fc4f2e
+    page_pdf: 1
+    quote: |-
+      Fecha: 09/02/2021
+change_period:
+  - value: 2021-02-09
+    literal: 09/02/2021
+    stated_in:
+      doc: NT_005
+      rev: 6889f1fc4f2e
+      page_pdf: 1
+      quote: |-
+        Cambios desde la fecha: 09/02/2021 al 09/02/2021
+  - value: 2021-02-09
+    literal: 09/02/2021
+    stated_in:
+      doc: NT_005
+      rev: 6889f1fc4f2e
+      page_pdf: 1
+      quote: |-
+        Cambios desde la fecha: 09/02/2021 al 09/02/2021
+curation_scope: dates_only

@@ -1,0 +1,20 @@
+key: val:DE:D208a
+context: DE
+id: D208a
+subject_field: field:DE:D208
+versions:
+  - introduced_by: baseline
+    code: 1311
+    severity: R
+    message: Tipo de documento de identidad del receptor inválido
+    observation: |-
+      Si la naturaleza del receptor es contribuyente (D201=1), el tipo de documento de identidad del receptor (D208) no debe ser informado
+    condition:
+      expr: D201 == 1 and exists(D208)
+      level: full
+      interpretation:
+        by: llm
+        run: a067d55b-d757-498d-a601-f946db1a3acc
+        note: Se viola cuando el receptor es contribuyente y D208 está presente.
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p167:D208a

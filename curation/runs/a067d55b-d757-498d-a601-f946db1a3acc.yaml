@@ -20,3 +20,143 @@ outputs:
     sha256: 9f281decc75d2a36320f3a17b5ebc6c0fb0af0371dc8f9d42620ff1f6bc57b91
   - path: src/sifen_kb/mentions.py
     sha256: 8d3a6b799b5a9688075a17239df14f2e1440b3ec2271c57785a97c5eb38c5e97
+  - path: docs/evaluacion.md
+    sha256: 8528d70e464801ec3961850d7f95702e0a536a2a5195fcd97f6c8ecdfebebcae
+  - path: tests/unit/test_extract_fixes.py
+    sha256: 8872473f64e88400b06b059878e15b97e548cf7d77c80660baa5468a19be089b
+  - path: tests/extraction/test_golden_piloto.py
+    sha256: d5aa54693645329555a7dc6539258bb725b105848e20bae7d0766ab7970f698f
+  - path: tests/extraction/test_raw_contract.py
+    sha256: 71563e17dd0fb7e4e6aedb23c2398942c2e28c8d83cdf0a61b13b2d17404fbfb
+  - path: src/sifen_kb/rawio.py
+    sha256: fc4e8bbc7f58e563300717495fa519e086b372c39da3893661e5dc911f2b614d
+  - path: tests/unit/test_rawio_literal.py
+    sha256: bad47825d1b1a07d28227226643b9570df9118eebb271c26d662a69de02ad04c
+  - path: tests/extraction/test_extract_determinism.py
+    sha256: 9438184862f857be23637e7322cb882bf51dcf1fb6536c652a4b7e4dcff73056
+  - path: src/sifen_kb/draft.py
+    sha256: 8c13a6d74543fe7174f6af10e2a093d94381d0c35d2256dca93928c1e6532aad
+  - path: src/sifen_kb/extract.py
+    sha256: f3e4019571e8b790fadab4e1bf0d1dd6c8cfb37d8203ba1f32738f192e419683
+  - path: tests/unit/test_draft.py
+    sha256: da8fb9ad0c1207c8125a8200cfd6786c40db9f8ac5c244c50c70b36d5732042e
+  - path: src/sifen_kb/integrity.py
+    sha256: be6dd25ef1345d3e55d7fc5a8e304a242a4b36ed6411b3c4ef01881d77da8873
+  - path: src/sifen_kb/cli.py
+    sha256: 657a91d34fefef8ca6cd98dba9975d7cb1461899de9a10e9871c37e844c7c56b
+  - path: docs/curacion.md
+    sha256: 8f59edebb3ee47f8ae5726e4d54705ccdbc718b8569d94773ccc11fe69fd39bd
+  - path: tests/unit/test_integrity.py
+    sha256: a5ce236ebb2af82176eeeebbf374ccd148a0c68c5c05599d44c0c16fb4c86647
+  - path: src/sifen_kb/explain.py
+    sha256: f10a42411ff34e1ab7e056713190ef32370db62bd72a7878c71967dfd684e399
+  - path: .github/workflows/ci.yml
+    sha256: 4bd0acb5aacfabd4a62af0b7754c1259c2c50ff6a87b57615ce6e42d8a8689b7
+  - path: src/sifen_kb/load.py
+    sha256: 2402da8c1887ed095b0c0c6d05fb6f0b3d991c6d7b6ee775412cf731cba48777
+  - path: tests/unit/test_load.py
+    sha256: 2e31a86d27edc0e7b84668bcdc744cdfe05ebaa565590291aaec63faf0735987
+  - path: tests/unit/test_explain.py
+    sha256: b8629adc483344ee070624ea5ccba98305a7d51d5a183d691c7b77affbb2ea71
+  - path: src/sifen_kb/xsd.py
+    sha256: fe497fbe02898c5a6eac0a0f57dff92c73c627e7ec7309abe2978ed9b6b5cf04
+  - path: kb/documents/NT_002.yaml
+    sha256: 82a691dfdfdb69f124e5b452060b6e0fdb8d50df94c38379863fe64630eab9df
+  - path: kb/documents/NT_001.yaml
+    sha256: 0e3578f5230b10360ef7b1a60c5f3abc67f5e5d3e379b0ee7f600379b351a50c
+  - path: kb/documents/NT_003.yaml
+    sha256: 81384492eb9d27823080a71d8b872b4c27fc2e91a8548100b9eb5f3385be49f9
+  - path: kb/documents/NT_006.yaml
+    sha256: 51ae28a8652f0e8189dfd3d0adb87f05f3738c077ecbf3bab8edeee30db4959a
+  - path: kb/documents/NT_007.yaml
+    sha256: 476395cd6ae99df2b52bb4993859e54bbeea2273b7d39e639737ee08b050ade4
+  - path: kb/documents/NT_008.yaml
+    sha256: 1c1d51b6b4a126869fd5159f4eaa898ee413ece0c474d3c6dec46a8a873f4fc0
+  - path: kb/documents/NT_012.yaml
+    sha256: daf124fc2827b931679f84cc4b3efbe8d3c9dc02b5ffbce7cfd4fc45e16df4ad
+  - path: kb/documents/NT_010.yaml
+    sha256: d1abf91f36a5d6c6ada86c1f644b04235835f2e5096dff6e85103c316f760287
+  - path: kb/documents/NT_014.yaml
+    sha256: 7561e9675cf496d8d77c7b98cf622eaa4d609b92d73aa12efc886cd8d74d6bae
+  - path: kb/documents/NT_020.yaml
+    sha256: 78e627592b98149825d9f0d4853b2879ddc1194cc2a427b6c57d636aaa4738cf
+  - path: kb/documents/NT_026.yaml
+    sha256: 2bde883cb9c5fda615d394276c72a852546ab99045227102c46aacdfe2b751db
+  - path: kb/documents/NT_027.yaml
+    sha256: cb1a9b4882486eed59190514fd1dbf7f09006403e322cbe901105626b2773824
+  - path: kb/documents/NT_021.yaml
+    sha256: e54998416f1b203a4c5ebb48e2efb9b07bf7c0f480fde561f6318b29c866db55
+  - path: kb/documents/NT_024.yaml
+    sha256: b15e67ba90d4a2185dd40efca81b7fc67551802aeb5b011faab20864e8187996
+  - path: kb/documents/NT_023.yaml
+    sha256: 113f3a5bd8d2d43f4975a8096f5b6742f356d999e580b87304b89831dc0708e8
+  - path: kb/documents/MT_V150.yaml
+    sha256: 216f456998d618f0cefebf2a061e61b4bce33758e3ab9232c7c3b8a5b1c668ed
+  - path: kb/fields/DE/C002.yaml
+    sha256: ebf471bcc62453da79092db3e8afe0965db5135d5a3783eb17cdb96cf2e8feb8
+  - path: kb/fields/DE/D011.yaml
+    sha256: c1a0f8c178a9010fda69f170b202bb942803af99469d06192726da36923e9c18
+  - path: kb/fields/DE/D201.yaml
+    sha256: df7965b5bceeabe883ec5d599b08804ba81afb44f1678f4ebdb6723f7b95c421
+  - path: kb/fields/DE/D202.yaml
+    sha256: d16d3a44719d91c821f7526bdf2fe428230f7097526058b4c26da78321bb9dd8
+  - path: kb/fields/DE/D208.yaml
+    sha256: 34ba8b962e040392359f416c4d97f94eb71859418ef228b8b53c92a181c39a46
+  - path: kb/fields/DE/D210.yaml
+    sha256: 2a25892e1ef6042ee6dbd6f674b09677bde8a3c2098facd6e7169020e3f1054e
+  - path: kb/validations/DE/D208.yaml
+    sha256: 8b81d9811f5c3d9a293c10b91196ba05e5a2646f9947dfd4dfd7ea5e902bd432
+  - path: kb/validations/DE/D208a.yaml
+    sha256: 099512b6363a1f121733acea76bcceeb17b1d276e9b163e8fb09020b56de4b31
+  - path: kb/validations/DE/D208b.yaml
+    sha256: 4919e128c4f597873f7ad50886ff8308b76fb594344a6788ec9b57b437b73a56
+  - path: kb/validations/DE/D208c.yaml
+    sha256: 87e99f52b31911241dd9cc0e9b734014f75640b9eaf37e3827f85d8fcf60d83f
+  - path: kb/validations/DE/D208d.yaml
+    sha256: 77ae9bd6267be2062c8c0f2254fae766f3b57b19a21038091d68d63dcd39c5a2
+  - path: kb/validations/DE/D209a.yaml
+    sha256: 397d065340159c473192ab81d41ecd63254aa6becffc21b030297c023d82699a
+  - path: kb/validations/DE/D210.yaml
+    sha256: 904a632f6eba396f32157d031d6c919c490373515f27c435833d6d083d302c8f
+  - path: kb/validations/DE/D210a.yaml
+    sha256: 81ebc9686a95d6e96228b7098894b9b59823eef24217ca99bd2f2e86942901a6
+  - path: kb/validations/DE/D208e.yaml
+    sha256: cabbd389d411c365bc27115c5e9e285f7e4f55e106751844f79aee1e23c29d2b
+  - path: kb/validations/DE/D208f.yaml
+    sha256: 3921e193c6bcff70345f6783802ddf212e5362fb71a69070c43954a10e78c0aa
+  - path: kb/validations/DE/D208g.yaml
+    sha256: aedf862c0aec858a8a2ca34e37f4338ec402c78fe651fb3988d0260f93d6491d
+  - path: kb/validations/DE/D210b.yaml
+    sha256: 11053960322f9abb17d5cd3884f6874bbc3ecf949b09daf700fb901b5bc3e776
+  - path: kb/issues/ISS-0001.yaml
+    sha256: 9ae418aa53a091c854a36785fa6c6c75a8df2d8157903c5074b0b1d138ab00d0
+  - path: kb/issues/ISS-0002.yaml
+    sha256: f6f73217a568e245de8961f42b42178540a056b540dd81426c558a587bb1961f
+  - path: kb/issues/ISS-0003.yaml
+    sha256: 2256742de0fb357fef43a17604016503420dbe388d9535374da4afdb9f9519e7
+  - path: kb/issues/ISS-0004.yaml
+    sha256: 3024457d14f3e6643c4a9cbd3de49a7e3af258428a9e76d33c139e686d9720af
+  - path: kb/issues/ISS-0005.yaml
+    sha256: 49388aa85ec004551da138f3b6129952bdf80b565e6cf73c84358ceabf6d498d
+  - path: kb/issues/ISS-0006.yaml
+    sha256: c11673b60adc6ea1a83f8741c11db6d058a9d6cc0ef3633922c6c302440fbaa0
+  - path: kb/issues/ISS-0007.yaml
+    sha256: a619c8dc85175f051822c844da31f87faa658b4c2d9bc5ecb3024bb798f54b96
+  - path: kb/issues/ISS-0008.yaml
+    sha256: d6cb61e42add34776e42eb3839974ef6f595a1fa407448114c29f8817e67f6cd
+  - path: kb/issues/ISS-0009.yaml
+    sha256: 91cf573f66e34e7a3f917eba7e9b25a3c8962ed673f4f8380212d3bc8994d15d
+  - path: kb/issues/ISS-0010.yaml
+    sha256: 5ea0901b61bc53dd43ff27be0070bf0d574785beb4eb2b4b74e2c1b8672f003b
+  - path: kb/issues/ISS-0011.yaml
+    sha256: 548f60618bb39a57de1de671bb8af9df141b82f1355b729b0b0fb4b90437994f
+  - path: kb/issues/ISS-0012.yaml
+    sha256: cab6c70a80a551a77dee3585343c213efb86bae5c7fff1e1363b9047f3dfc157
+  - path: kb/issues/ISS-0013.yaml
+    sha256: 762d61d4bc57ba637035c14ec92a9ba0628f7695295149eae68a7ee1dd9a006a
+  - path: tests/golden/temporal.yaml
+    sha256: 00e48f7d45aae1b241d93654afc86e81712ef9a4feeaeb48d1089b8cecb8be6f
+  - path: docs/traspaso-curacion-piloto.md
+    sha256: 9f09621892c3b0a8a44490749af0ce61d51c6484e165dcacf25cffdd4cf6b322
+  - path: docs/HANDOFF.md
+    sha256: d7410186fafc168e8c79dbf9452615115791ba9a454b8c2f1d3a7b8fed461934

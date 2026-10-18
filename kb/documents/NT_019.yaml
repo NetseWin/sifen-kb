@@ -1,0 +1,19 @@
+id: NT_019
+kind: technical_note
+number: 19
+title: Nota Técnica N° 19
+current_revision: c3fcd3bd96d0c11ab51add6c1ce4323ea2b1da6627d9c61091ab016318045cb4
+document_date:
+  value: 2023-11-17
+  literal: 17/11/2023
+  stated_in: raw:NT_019@c3fcd3bd96d0:p1:fechas#fecha
+schedule:
+  test:
+    value: 2023-12-15
+    literal: 15/12/2023
+    stated_in: raw:NT_019@c3fcd3bd96d0:p1:fechas#test
+  prod:
+    value: 2024-01-31
+    literal: 31/01/2024
+    stated_in: raw:NT_019@c3fcd3bd96d0:p1:fechas#prod
+curation_scope: dates_only

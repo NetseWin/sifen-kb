@@ -1,0 +1,13 @@
+session_id: a54b6965-2dcc-43c3-99e8-a12ec1666e63
+started_at: 2026-10-17T22:08:33Z
+base_commit: 8e86a454dcde1736db496dc358e65897a07a7998
+tool: claude-code
+model: claude-opus-5-5
+prompt_path: curation/prompts/curar_entidad.md
+instructions_sha256: afd87e068ca1ceadee98e50efbd092c7840adb9dcdaec016edf3a148c706c16e
+inputs:
+  - path: CLAUDE.md
+    sha256: 5365f27b360317a4cb80defce6021fbe654beef29b003374c9e5916f6de51e2c
+  - path: curation/prompts/curar_entidad.md
+    sha256: 49ec8075a2f76b7c6265a23f0cda7b0b6850e52073a82373288aa7f670db9ece
+outputs: []
