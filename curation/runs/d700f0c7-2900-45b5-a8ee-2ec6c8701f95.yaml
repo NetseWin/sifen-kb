@@ -10,4 +10,6 @@ inputs:
     sha256: 5365f27b360317a4cb80defce6021fbe654beef29b003374c9e5916f6de51e2c
   - path: curation/prompts/curar_entidad.md
     sha256: 49ec8075a2f76b7c6265a23f0cda7b0b6850e52073a82373288aa7f670db9ece
-outputs: []
+outputs:
+  - path: curation/prompts/curar_entidad.md
+    sha256: 6e290bab069c07b23ab94ec7566408a82506d95688fe9513ce20b12686e055eb

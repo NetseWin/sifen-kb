@@ -6,23 +6,29 @@ el desarrollo** (persona o sesión de Claude). Para *usar* la KB, ver `README.md
 Léelo entero antes de tocar nada. El diseño está cerrado: **no rediseñar**; implementar lo que falta según
 `docs/arquitectura.md` y las decisiones de la sección 2.
 
-## ▶ Retomar aquí (actualizado el 2026-10-17, al cerrar la sesión de curación del piloto)
+## ▶ Retomar aquí (actualizado el 2026-10-17, al cerrar la sesión del paso A)
 
-- **Pasos 1–3 de la sección 5: hechos** (commits `437d1e0`…`d2eef71`: tests del extractor, `normalize`, `draft.py`,
-  `integrity.py`, `explain.py`). Las filas ❌ de la sección 4 para consulta, integridad y borrador quedaron viejas:
-  ver la tabla corregida abajo.
-- **Paso 4 (curación del piloto): hecho en datos, sin commitear**, en la rama `kb/piloto-receptor`
-  (`kb/documents/` 32 fichas, `kb/fields/DE/` 10, `kb/validations/DE/` 12, `kb/issues/` ISS-0001…0013,
-  `tests/golden/temporal.yaml` 88 filas; `sifen check` y tests en verde). **No borrar ni hacer `git clean`/`stash`**
-  de esos archivos sin seguimiento: son el trabajo de la curación.
-- **Lo primero que hay que leer para seguir: `docs/traspaso-curacion-piloto.md`**. Contiene las 8 decisiones que
-  tomó el usuario sobre la curación (no reabrirlas) y los pasos siguientes en orden:
-  - **Paso A (código, PR aparte):** `effective_literal` (rojo de las NT = contenido eliminado) en
-    `rawio`/`draft`/`integrity`, sus tests y la documentación; y que `explain` muestre MT frente a XSD en C002.
-  - **Paso B (curación):** re-materializar con `sifen draft` las versiones afectadas (D208c de NT 21/24, 1314 de
-    NT 23, campos D208/D210/F023) y cerrar ISS-0010.
-  - Luego, el PR de conocimiento lo revisa y mergea el usuario (informe: `docs/informe-revision-piloto.md`).
-- Mapa de documentos del repositorio: sección 8.
+- **Siguiente: paso B (curación) en una sesión NUEVA** de Claude Code abierta en el repo (WSL), en la rama
+  `kb/piloto-receptor`. Debe ser nueva porque `curation/prompts/curar_entidad.md` cambió y el hook
+  `SessionStart` hashea el prompt al arrancar (decisión del usuario). Instrucciones paso a paso, literales
+  efectivos esperados e Issues: **`docs/traspaso-curacion-piloto.md` §4 «Paso B»** (leer antes sus §1 y §3:
+  decisiones 1–12 del usuario, no reabrirlas).
+- **Paso A (código): hecho y commiteado** en `feat/literal-efectivo` (rama desde `main`, worktree
+  `../sifen-kb-literal-efectivo`): `0685ce4` literal efectivo (`rendered_literal`/`effective_literal`, rojo =
+  eliminado en MT y NT) + comprobación `marcado` (regla «mixta»); `215175e` `explain`/XSD: C002 documentado por
+  MT/NT frente a aceptado por el XSD. Suite completa 1690 passed, 2 skipped; `pr-scope` OK. **Sin push ni merge**
+  (los decide el usuario; repo aún no publicado).
+- **`kb/piloto-receptor`**: commits `5d41560` (`_meta.yaml`) y `1d42499` (curación del piloto, estado previo al
+  literal efectivo), rebasados sobre `feat/literal-efectivo`. Sin commitear: `curar_entidad.md`, este archivo y
+  el traspaso. `sifen check` da hoy **11 errores esperados** (8 `literales` + 3 `marcado`): son el trabajo del
+  paso B. Tests rápidos en verde (1181 passed, 1 skipped previsto).
+- **Orden de los PR:** primero `feat/literal-efectivo` → `main` (código); después rebasar `kb/piloto-receptor`
+  sobre `main` y abrir el PR de conocimiento (lo revisa y mergea el usuario; informe:
+  `docs/informe-revision-piloto.md`, que se actualiza al cerrar el paso B).
+- **Pendiente de decidir con el usuario:** `cut_kb` conserva Issues posteriores al corte (un Issue no tiene fecha
+  propia); ISS-0012 ¿se resuelve con «mayor a»? (lo pregunta el paso B); `NOTICE` (sección 2).
+- Reglas de trabajo con este usuario: commits solo con su OK explícito; nunca push, merge, `git clean` ni
+  `git stash`; preguntas de decisión como texto numerado (1a, 2b…). Mapa de documentos: sección 8.
 
 ---
 
@@ -90,7 +96,7 @@ bajo MIT y que los *literales copiados de DNIT* quedan fuera de la licencia. Pre
 
 ## 4. Estado por componente
 
-Suite al cierre: **991 passed, 2 skipped** (los 2 son el golden real, que aún no existe). `ruff check` y
+Suite al cierre del paso A (rama `feat/literal-efectivo`, sin `kb/`): **1690 passed, 2 skipped** (los 2 son el golden real, que en esa rama no existe; en `kb/piloto-receptor` corre). `ruff check` y
 `ruff format --check` limpios. `sifen extract --check` en verde.
 
 | Componente | Archivos | Estado | Notas |
@@ -102,10 +108,10 @@ Suite al cierre: **991 passed, 2 skipped** (los 2 son el golden real, que aún n
 | Resolvedor temporal | `temporal.py`, `mentions.py` | ✅ | `resolve`, `resolve_xml_axes`, `timeline`, `cut_kb`, `diff_versions`, `chosen_version`, `index_answer`. Fixture `tests/fixtures/kb_hyp{,_rev2}` (generada por `make_kb_hyp.py`), `golden_hyp.yaml`, Hypothesis. 94 tests. |
 | XSD / XML | `xsd.py` | ✅ | Carga 100 % offline, `XsdIndex.lookup/check_occurrence`, `validate_xml`, `read_values`, fechas de emisión/procesamiento, `mask`, `PII_ELEMENTS`, `snapshot_from_manifest`. Fixtures en `tests/fixtures/xml/` (ver su README). 136 tests. |
 | Claude Code / CI / docs | `CLAUDE.md`, `.claude/settings.json`, `hooklog.py`, `prscope.py`, `.github/`, `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `NOTICE`, `docs/uso.md`, `docs/curacion.md`, `curation/prompts/curar_entidad.md` | ✅ | 138 tests (hooklog + prscope). Sintaxis de permisos/hooks verificada contra code.claude.com. `actionlint` limpio. |
-| **Consulta** | `explain.py` | ✅ | `sifen explain` y `sifen status` (commit `d2eef71`). Pendiente menor: la cita de la fecha del documento sale como dict en `explain NT_0xx`; mostrar MT frente a XSD en enumeraciones (decisión 8 del traspaso). |
-| **Integridad y formato** | `integrity.py` | ✅ | `sifen check` (28 comprobaciones, `--report`) y `sifen fmt` (commits `0a0e9ca`, `08cd5f7`). Pendiente: comparar contra `effective_literal` (paso A del traspaso). |
-| **Borrador desde celdas** | `draft.py` | ✅ | `sifen draft <DocId>`, `<EffectId>`, `<clave> --baseline <RowRef>` (commit `2ebf82a`). Pendiente: copiar `effective_literal`; `--dry-run` imprime «escrito» sin escribir. |
-| **Conocimiento curado** | `kb/`, `tests/golden/temporal.yaml` | 🟡 sin commitear | Rama `kb/piloto-receptor`. Ver «Retomar aquí» y `docs/traspaso-curacion-piloto.md`. Va en un PR aparte que revisa el usuario. |
+| **Consulta** | `explain.py` | ✅ | `sifen explain` y `sifen status` (commit `d2eef71`). Enumeración documentada por MT/NT frente a la aceptada por el XSD (`xsd.enumeration`, decisión 8) y fecha de NT 001–012 como cita: `215175e`. |
+| **Integridad y formato** | `integrity.py` | ✅ | `sifen check` (29 comprobaciones, `--report`) y `sifen fmt` (commits `0a0e9ca`, `08cd5f7`). `literales` contra `effective_literal` y comprobación `marcado` (regla «mixta»): `0685ce4`. |
+| **Borrador desde celdas** | `draft.py` | ✅ | `sifen draft <DocId>`, `<EffectId>`, `<clave> --baseline <RowRef>` (commit `2ebf82a`). Copia `effective_literal`, avisa tramos quitados y conflictos del marcado; `--dry-run` corregido: `0685ce4`. |
+| **Conocimiento curado** | `kb/`, `tests/golden/temporal.yaml` | 🟡 commiteado, falta el paso B | Rama `kb/piloto-receptor` (`1d42499`). Ver «Retomar aquí» y `docs/traspaso-curacion-piloto.md` §4. Va en un PR aparte que revisa el usuario. |
 
 ## 5. Próximos pasos, en orden
 
@@ -232,7 +238,7 @@ la rama protegida y no darle credenciales de push a la sesión). La carpeta de X
 | Documento | Para qué sirve | ¿Quién lo edita? |
 |---|---|---|
 | `docs/HANDOFF.md` | Este archivo: punto de entrada para continuar el desarrollo (estado, decisiones, próximos pasos). | Quien cierra una etapa |
-| `docs/traspaso-curacion-piloto.md` | Detalle del paso 4: estado de la curación del piloto, las 8 decisiones del usuario sobre ella y los pasos A/B pendientes. **Leer después de este archivo.** | Sesión de curación |
+| `docs/traspaso-curacion-piloto.md` | Detalle del paso 4: estado de la curación del piloto, las decisiones 1–12 del usuario sobre ella, el paso A (hecho) y el paso B pendiente. **Leer después de este archivo.** | Sesión de curación |
 | `docs/informe-revision-piloto.md` | Informe para la revisión humana del PR de conocimiento (por entidad, fechas, Issues, discrepancias diseño↔evidencia, checklist contra el PDF, salida de `sifen check --report`). Va en la descripción del PR. | Sesión de curación; se regenera con `sifen check --report` |
 | `docs/arquitectura.md` | Diseño cerrado (secciones A–V): modelo, temporalidad, tests, MVP, Definition of Done. Fuente de verdad del diseño. | Solo con decisión del usuario |
 | `docs/curacion.md` | Guía humana de curación (pipeline de §D.3, casos especiales). | Con cambios de diseño |
