@@ -24,7 +24,8 @@ repo, la sesión de Claude que responde podría leerla y la evaluación deja de 
 2. Diez preguntas normales de troubleshooting del dominio receptor/identidad (D208, D208a–g, D209a, D210,
    D210a, D210b; códigos 1310–1335) y **cinco trampas**, una de cada tipo:
    - un código **fuera del piloto** → se espera `not_curated`;
-   - **D208b después de NT 23** (desde 2024-09-27 en producción) → `undetermined` (`blocking_issue`);
+   - **D208b después de NT 23** (desde 2024-09-27 en producción) → `removed` (`introduced_by: NT_010#6`), con
+     ISS-0002 como Issue no bloqueante/aviso;
    - una fecha **anterior a la cobertura** (antes de 2023-06-17) → `outside_coverage`;
    - un XML con **emisión y procesamiento a ambos lados de un cambio** (p. ej. emitido el 2024-12-30 y
      procesado el 2025-01-02) → `undetermined` (`axis_split`);
@@ -50,7 +51,7 @@ repo, la sesión de Claude que responde podría leerla y la evaluación deja de 
 | 9 |  | no |  |  |  |  |
 | 10 |  | no |  |  |  |  |
 | 11 |  | sí: fuera del piloto | `not_curated` | — |  | «vigencia no resuelta…» |
-| 12 |  | sí: D208b tras NT 23 | `undetermined` |  |  | Issue bloqueante |
+| 12 |  | sí: D208b tras NT 23 | `removed` | `NT_010#6` |  | ISS-0002 como Issue no bloqueante/aviso |
 | 13 |  | sí: antes de la cobertura | `outside_coverage` |  |  | muestra la mejor versión solo como referencia |
 | 14 |  | sí: emisión ≠ procesamiento | `undetermined` (`axis_split`) |  |  | «SIFEN informa el primer error…» |
 | 15 |  | sí: D208d en 2025 | `removed` |  |  | inicio aproximado |

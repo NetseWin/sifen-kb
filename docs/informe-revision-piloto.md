@@ -30,7 +30,7 @@ Corrida de curación `curation/runs/ce4ca541-bb4f-49d4-8e9f-5430b10e6d63.yaml`. 
 
 Lo que sigue (secciones 1–13) describe el estado actual, incluidos los cambios de este paso B.
 
-## 1. Resumen de lo que hay que decidir (lo más importante primero)
+## 1. Resumen de lo que había que decidir (todo decidido y aplicado; se conserva por trazabilidad)
 
 1. **`corridas_llm`: resuelto con backfill explícito (antes, 16 errores en `sifen check`).** La sesión del paso B editó las fichas con herramientas MCP (`mcp__custom-tools__edit`/`write`), no con Edit/Write de Claude Code: el hook `PostToolUse` (matcher `Edit|Write|MultiEdit`) no registró `outputs` en `curation/runs/ce4ca541-….yaml` (`outputs: []`) y la comprobación de la corrida falla (§12.8, §13; detalle en `docs/traspaso-curacion-piloto.md` §4, B.6). **Decisión del usuario (2026-10-18): opción 1b′.** Un registro retrospectivo hecho con el mecanismo actual sería indistinguible de eventos nativos (la bitácora no tiene campo de origen), así que primero va un PR de código independiente (`feat/bitacora-procedencia`) que agrega a cada salida un origen explícito (`hook`/`backfill`, con motivo y fecha del registro) y un modo `Backfill` en `hooklog`; después la corrida `ce4ca541` se registra como `backfill`, visible en la propia bitácora. Ampliar el matcher y los `deny` a las herramientas MCP queda para otro PR de código. **Hecho:** `feat/bitacora-procedencia` commiteado (`6e0c377`) e integrado en esta rama (rebase); 19 salidas `source: backfill` en las tres corridas del paso B (15 en `ce4ca541`, 1 en `6b58d45f`, 3 en `6767ad7f`; atribución en la nota de procedencia de la cabecera); `sifen check` → 0 errores. El informe no se registró (procedencia mixta).
 2. **ISS-0012 (D208c/1321): resuelto** (decisión del usuario 2026-10-18). Con el literal efectivo (decisión 3), NT 21 y NT 24 dicen «mayor a» (equivalente al «supere» del Decreto 872/2023) y tampoco conservan la excepción D011 = 13: no queda una diferencia material propia. La cláusula D011≠13 que sigue en rojo en el literal visible depende de la lectura del color y la traza solo ISS-0011.
@@ -107,20 +107,20 @@ NT con calendario (celda `raw:NT_0xx@<rev>:p1:fechas#test|prod`):
 | NT | Fecha del documento | Test | Producción | Revisión | Alcance |
 |---|---|---|---|---|---|
 | NT_013 | «20/03/2023» → 2023-03-20 | «21 de Abril del 2023» → 2023-04-21 | «17 de Junio del 2023» → 2023-06-17 | 5e9e85ec22f1 | dates_only |
-| NT_014 | «20/03/2023» → 2023-03-20 | «31 de Mayo del 2023» → 2023-05-31 | «08 de Agosto del 2023» → 2023-08-08 | 5320a52a9152 | pilot |
+| NT_014 | «20/03/2023» → 2023-03-20 | «31 de Mayo del 2023» → 2023-05-31 | «08 de Agosto del 2023» → 2023-08-08 | 5320a52a9152 | dates_only |
 | NT_015 | «14/08/2023» → 2023-08-14 | «21 de Agosto del 2023» → 2023-08-21 | «21 de Septiembre del 2023» → 2023-09-21 | d41ae8e7d1fd | dates_only |
 | NT_016 | «14/08/2023» → 2023-08-14 | «25 de Agosto del 2023» → 2023-08-25 | «22 de Septiembre del 2023» → 2023-09-22 | 6406e5e6cd4f | dates_only |
 | NT_017 | «14/08/2023» → 2023-08-14 | «24 de Agosto del 2023» → 2023-08-24 | «25 de Agosto del 2023» → 2023-08-25 | 21112d7c0a1a | dates_only |
 | NT_018 | «17/11/2023» → 2023-11-17 | «01 de diciembre de 2023» → 2023-12-01 | «08 de enero de 2024» → 2024-01-08 | 96079a30c8c1 | dates_only |
 | NT_019 | «17/11/2023» → 2023-11-17 | «15/12/2023» → 2023-12-15 | «31/01/2024» → 2024-01-31 | c3fcd3bd96d0 | dates_only |
-| NT_020 | «17/11/2023» → 2023-11-17 | «15 de diciembre de 2023» → 2023-12-15 | «31 de enero del 2024» → 2024-01-31 | 0d877d1fb16a | pilot |
+| NT_020 | «17/11/2023» → 2023-11-17 | «15 de diciembre de 2023» → 2023-12-15 | «31 de enero del 2024» → 2024-01-31 | 0d877d1fb16a | dates_only |
 | NT_021 | «29/12/2023» → 2023-12-29 | «01/01/2024» → 2024-01-01 | «01/01/2024» → 2024-01-01 | 1e716577d874 | pilot |
 | NT_022 | «09/02/2024» → 2024-02-09 | «09 de febrero de 2024» → 2024-02-09 | «09 de febrero de 2024» → 2024-02-09 | 269840094089 | dates_only |
 | NT_023 | «27/08/2024» → 2024-08-27 | «30 de agosto de 2024» → 2024-08-30 | «27 de setiembre de 2024» → 2024-09-27 | 9cb063673358 | pilot |
 | NT_024 | «17/12/2024» → 2024-12-17 | «01/01/2025» → 2025-01-01 | «01/01/2025» → 2025-01-01 | ccc2d1550e92 | pilot |
 | NT_025 | «23/04/2024» → 2024-04-23 (errata, ISS-0007) | «28/04/2025» → 2025-04-28 | «28/04/2025» → 2025-04-28 | 3950e171f161 | dates_only |
-| NT_026 | «06/06/2025» → 2025-06-06 | «09/06/2025» → 2025-06-09 | «16/06/2025» → 2025-06-16 | 5ed252f14427 | pilot |
-| NT_027 | «09/03/2026» → 2026-03-09 | «09/03/2026» → 2026-03-09 | «09/03/2026» → 2026-03-09 | 3ff6fbbf9f54 | pilot |
+| NT_026 | «06/06/2025» → 2025-06-06 | «09/06/2025» → 2025-06-09 | «16/06/2025» → 2025-06-16 | 5ed252f14427 | dates_only |
+| NT_027 | «09/03/2026» → 2026-03-09 | «09/03/2026» → 2026-03-09 | «09/03/2026» → 2026-03-09 | 3ff6fbbf9f54 | dates_only |
 
 NT sin calendario (PageRef con la frase «Fecha: …» / «Cambios desde …» de la página 1):
 
@@ -234,9 +234,9 @@ Otros
 - [ ] `curation_scope: dates_only` en las NT con solo efectos `not_modeled` (decisión 5): `pilot` queda en MT_V150 y NT 1, 2, 8, 10, 21, 23, 24.
 - [ ] Sin `superseded_by` en NT_021 (marca de agua no textual).
 
-## 12. Defectos de código o de diseño detectados (no se corrigieron en este PR)
+## 12. Defectos de código o de diseño detectados (los corregidos quedan marcados; el resto, follow-ups)
 
-1. `sifen draft <DocId> --dry-run` imprime «kb/documents/NT_023.yaml: escrito» aunque no escribe (mensaje engañoso; comprobado: no creó el archivo).
+1. `sifen draft <DocId> --dry-run` imprimía «kb/documents/NT_023.yaml: escrito» aunque no escribe (mensaje engañoso; comprobado: no creaba el archivo). **Corregido en el paso A** (`feat/literal-efectivo`, commit `0685ce4`): ahora dice «se escribiría». No es un defecto abierto.
 2. `Supersession.stated_in` solo admite PageRef y `citas` exige la cita en el texto de `raw/`: una marca de agua gráfica (NT 21) no se puede citar, así que `superseded_by` y el oráculo `reemplazo` no son aplicables a la KB real.
 3. `sifen explain NT_0xx` (texto) muestra el `stated_in` PageRef de la fecha del documento como un dict de Python («(informativa; {'doc': 'NT_010', …})»). Cosmético.
 4. `test_golden_real_completeness` solo exigía fronteras de versiones; **corregido en el paso A** (`feat/literal-efectivo`): la completitud ahora exige también los bordes de las ventanas de los Issues bloqueantes abiertos (`boundary_gaps`, `tests/test_golden_temporal.py`).

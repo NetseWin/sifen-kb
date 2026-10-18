@@ -14,7 +14,8 @@ Léelo entero antes de tocar nada. El diseño está cerrado: **no rediseñar**; 
   PR obligatorio, check `checks` en verde, sin force-push ni borrado, también para administradores). PR #1
   (`feat/literal-efectivo`) y PR #2 (`feat/bitacora-procedencia`) integrados con merge commit (`aa76b37`,
   `c8a6bca`); CI en verde. **PR #3** (`kb/piloto-receptor`, conocimiento) abierto: **lo revisa y mergea el
-  usuario** (merge commit, `Reviewed-by:`). Después: el paso C del traspaso (§4) desde `main` limpio.
+  usuario** (merge commit, `Reviewed-by:`). Después siguen los próximos pasos reales de la sección 5: T.8,
+  revisión humana contra los PDF renderizados, merge del PR #3, follow-ups de código y primera release.
 - **Autonomía (decisión del usuario, 2026-10-18):** la sesión decide sola lo técnico y de proceso (ramas,
   rebases, verificaciones, bitácoras, docs, commits de trabajo en ramas de feature) y consulta solo lo normativo
   de SIFEN, push/merge/PR/publicación, lo destructivo o irreversible, credenciales, cambios de alcance o de
@@ -46,7 +47,7 @@ Léelo entero antes de tocar nada. El diseño está cerrado: **no rediseñar**; 
 - **Paso A (código): hecho y commiteado** en `feat/literal-efectivo` (worktree `../sifen-kb-literal-efectivo`):
   `0685ce4` literal efectivo + comprobación `marcado`; `215175e` C002 documentado por MT/NT frente al XSD.
 - **Pendiente de decidir con el usuario:** `cut_kb` conserva Issues posteriores al corte (un Issue no tiene fecha
-  propia); `NOTICE` (sección 2).
+  propia). El `NOTICE` ya está decidido (2026-10-18, opción 1a: publicar tal cual; sección 2).
 - Reglas de trabajo con este usuario: commits de trabajo en ramas de feature sin pedir permiso (autonomía de
   arriba); nunca push, merge ni `git clean` sin su OK; `git stash` solo para preservar trabajo, con respaldo previo; preguntas de decisión como texto numerado (1a, 2b…). Mapa de
   documentos: sección 8.
@@ -78,8 +79,9 @@ Léelo entero antes de tocar nada. El diseño está cerrado: **no rediseñar**; 
 | Nombre | Repo `sifen-kb`, paquete `sifen_kb`, CLI `sifen`. |
 | Estilo de trabajo | Si algo depende del usuario, **preguntarle**; no tomar decisiones que no corresponden. |
 
-**Pendiente de confirmar con el usuario:** `NOTICE` declara que la *estructura e interpretación* de `kb/` están
-bajo MIT y que los *literales copiados de DNIT* quedan fuera de la licencia. Preguntarle si está de acuerdo.
+**Decidido (2026-10-18, opción 1a: publicar tal cual):** `NOTICE` declara que la *estructura e interpretación* de
+`kb/` están bajo MIT y que los *literales copiados de DNIT* quedan fuera de la licencia. *(Estado histórico
+superado: esta nota figuraba como «pendiente de confirmar con el usuario»; ya no lo está.)*
 
 ## 3. Entorno y comandos
 
@@ -119,14 +121,15 @@ bajo MIT y que los *literales copiados de DNIT* quedan fuera de la licencia. Pre
 
 ## 4. Estado por componente
 
-Suite al cierre del paso A (rama `feat/literal-efectivo`, sin `kb/`): **1690 passed, 2 skipped** (los 2 son el golden real, que en esa rama no existe; en `kb/piloto-receptor` corre). `ruff check` y
+Suite al cierre del paso B (rama `kb/piloto-receptor`): **1833 passed, 1 skipped** (el previsto:
+`tests/unit/test_explain.py:929`). `ruff check` y
 `ruff format --check` limpios. `sifen extract --check` en verde.
 
 | Componente | Archivos | Estado | Notas |
 |---|---|---|---|
 | Contratos base | `model.py`, `normalize.py`, `yamlio.py`, `load.py`, `cli.py` | ✅ | Modelos de §F; YAML restringido (`KBLoader`: todo escalar es `str`); `KB` con índices derivados y `reindex()`; CLI argparse con 8 comandos cableados. |
 | Fuentes | `sources.py`, `sources.manifest.yaml`, `sources/` | ✅ | 32 revisiones: MT_V150, NT_001–027, CHECKSUM_MT, NORMA_DECRETO_872_2023, XSD_RAR, XSD_DIR (47 XSD en `sources/XSD_DIR/2026-10-17/`). Un `source check` limpio (horizonte 2026-10-17). 44 tests. |
-| Evidencia `raw/` | `extract.py`, `extract_tables.py`, `extract_ledger.py`, `rawio.py`, `pdf/**`, `extraction/fixes.yaml` | ✅ código / ⚠️ tests | `raw/` completo: 30 documentos, 302 páginas, 1 180 filas (509 campos y 445 validaciones del MT; fila `fechas` de NT 013–027), libro de cambios NT→MT en `raw/_ledger/changes.jsonl` (211). 326 tests vendorizados en `tests/extraction/`. **Faltan** los tests nuevos (sección 5, paso 1). |
+| Evidencia `raw/` | `extract.py`, `extract_tables.py`, `extract_ledger.py`, `rawio.py`, `pdf/**`, `extraction/fixes.yaml` | ✅ | `raw/` completo: 30 documentos, 302 páginas, 1 180 filas (509 campos y 445 validaciones del MT; fila `fechas` de NT 013–027), libro de cambios NT→MT en `raw/_ledger/changes.jsonl` (211). 326 tests vendorizados en `tests/extraction/`. Tests nuevos hechos y en verde: `test_golden_piloto.py`, `test_raw_contract.py`, `test_extract_determinism.py` y unitarios de `apply_fixes`/`parse_fixes`/`RawRow.current`. |
 | DSL de condiciones | `dsl.py` | ✅ | `parse`/`evaluate` (Kleene)/`fields`/`constants`/`unparse`/`literal_contains_constant`. Sin `eval`. 232 tests. |
 | Resolvedor temporal | `temporal.py`, `mentions.py` | ✅ | `resolve`, `resolve_xml_axes`, `timeline`, `cut_kb`, `diff_versions`, `chosen_version`, `index_answer`. Fixture `tests/fixtures/kb_hyp{,_rev2}` (generada por `make_kb_hyp.py`), `golden_hyp.yaml`, Hypothesis. 94 tests. |
 | XSD / XML | `xsd.py` | ✅ | Carga 100 % offline, `XsdIndex.lookup/check_occurrence`, `validate_xml`, `read_values`, fechas de emisión/procesamiento, `mask`, `PII_ELEMENTS`, `snapshot_from_manifest`. Fixtures en `tests/fixtures/xml/` (ver su README). 136 tests. |
@@ -138,76 +141,43 @@ Suite al cierre del paso A (rama `feat/literal-efectivo`, sin `kb/`): **1690 pas
 
 ## 5. Próximos pasos, en orden
 
-1. **Tests nuevos del extractor** (`tests/extraction/`):
-   - `test_golden_piloto.py`: filas del MT (validaciones D208–D210a; campos D201, D202, D208, D209, D210, D011,
-     D015, C002, F014, F023), D208c en NT_021 (35.000.000) y NT_024 (7.000.000), fechas de NT_021, NT_023 y
-     NT_024. Verificar contra el PDF, no contra la memoria.
-   - `test_raw_contract.py`: campos obligatorios de cada fila (`rawio`), cada ref resuelve a una sola fila,
-     sha256/chars de `index.json` coinciden con `pNNN.txt`, el texto de cada celda está en su página normalizada.
-   - `test_extract_determinism.py`: dos corridas con distinto `PYTHONHASHSEED` → mismos bytes; extracción por
-     tramos == corrida única.
-   - Unitarios de `apply_fixes`, `parse_fixes`, `RawRow.current`.
-2. **`integrity.py` + `draft.py`** (núcleo de la garantía de evidencia):
-   - `cmd_fmt` (`--check`): canonicidad de `kb/**/*.yaml` y del manifiesto (`yamlio.is_canonical`).
-   - `cmd_check` (`--json`): errores de carga + todas las comprobaciones de §K.3 y §K.4 como funciones
-     reutilizables por los tests: hash de fuentes (`sources.verify_sources`), literales == celda normalizada,
-     fila citada == ID de la entidad (y celda de código == `code`), destino de efectos == ID de la fila,
-     citas de prosa contenidas en la página, fechas == celda del encabezado correcto y `value == parse(literal)`,
-     constantes del DSL ⊂ literal (`dsl.literal_contains_constant`), etiquetas de enumeración ⊂ observaciones,
-     **guardián de cobertura** (toda mención del vocabulario del piloto en las 27 NT reconocida por un efecto;
-     usar también `raw/_ledger/changes.jsonl` como oráculo), biyección efecto↔versión, `based_on` = predecesora
-     temporal, diff ⊆ `declared_scope` (+ `acknowledged_changes`), cambio interpretado ⇒ cambió el literal,
-     inicio único por ambiente, integridad referencial temporal, colisiones de código declaradas, fechas sanas
-     (test ≤ prod; > 90 días doc→test exige Issue `erratum`), pasado justificado contra `main`
-     (`test_past_changes_justified`), corridas LLM que cubren las salidas, casos sanitizados.
-     Opcional útil: `--report` con el informe del PR (§D.3 paso 7).
-   - `cmd_draft`: `<DocId>` → copia `document_date`/`change_period`/`schedule` desde la fila `fechas` de
-     `raw/` (CellRef `raw:NT_024@sha12:pN:fechas#test`); `<EffectId>` → crea la versión nueva copiando las celdas
-     de la fila citada por el efecto y heredando de `based_on` las columnas que la NT no reproduce.
-   - **Antes:** `normalize.parse_date_literal` debe aceptar fechas en palabras («30 de agosto de 2024»,
-     «27 de setiembre de 2024», «del») y `dd-mm-aaaa` (NT_001). Afecta NT 013–018, 020, 022, 023. Ajustar el
-     validador de `DateStatement` y sus tests.
-3. **`explain.py`** según su docstring y el informe de cierre (resumen): resolver el término (código con
-   lápidas vía `kb.code_index()`, ID → campo y/o validación, `xml_name`, DocId, clave completa; si no está
-   curado, modo índice `not_curated` con `mentions.find_mentions` y el aviso obligatorio), salida de texto como
-   §O (estado no vigente primero), `--history` con `temporal.diff_versions`, `--json` (contrato del docstring;
-   `xsd` = dump de `XsdCheck`), `--xml` (solo lectura, prohibido con `--at`, fechas de `dFeEmiDE` y de
-   `--response`/`--processed-at`, `xsd.read_values` con mapeo ID → (xml_name, padre real del XSD),
-   `dsl.evaluate` dentro de `temporal.resolve_xml_axes`, PII enmascarada, el CDC es el atributo `DE/@Id` y
-   también se enmascara, aviso «SIFEN informa el primer error…»), `cmd_status` y errores (término desconocido
-   → exit 2; `kb.errors` → exit 1; `TemporalDataError` → exit 1). Tests: los de §K.1 (`test_cli_output_utf8_piped`)
-   y §K.7 (`test_explain_json_snapshot`) más los de la especificación. `--at` por defecto = hoy en
-   America/Asuncion (fallback UTC-03:00).
-4. **Curación del piloto (PR de conocimiento, lo revisa el usuario):**
-   - `kb/_meta.yaml` (línea base MT_V150 `976cd88c…`, `coverage_from` 2023-06-17, gracia 7, eje `processing`,
-     supuestos A1 y A2 `unverified`).
-   - `kb/documents/`: una ficha por fuente (32), calendario de NT 013–027 con `sifen draft <DocId>`;
-     efectos completos solo en las NT que tocan el piloto (según el inventario/libro de cambios: 1, 2, 8, 10, 21,
-     23, 24…), el resto `curation_scope: dates_only`.
-   - Campos DE (10): C002, D011, D015, D201, D202, D208, D209, D210, F014, F023.
-   - Validaciones DE (12): D208 (1310), D208a, D208b (1319), D208c (1321), D208d (1322, lápida NT 2), D208e
-     (1331), D208f (1333), D208g (1335), D209a (1313), D210 (1314), D210a (1323, lápida NT 2), D210b (1334).
-   - Issues ISS-0001…0006 (lista en `docs/arquitectura.md` §S).
-   - `tests/golden/temporal.yaml` real (filas de §G.5 y §K.5; regla día anterior/día del cambio por ambiente).
-   - Seguir `curation/prompts/curar_entidad.md`; literales y fechas SOLO con `sifen draft`; interpretaciones
-     con `Interpretation(by: llm, run: …)`. La bitácora `curation/runs/` la arman los hooks si la curación corre en
-     una sesión de Claude Code abierta en el repo (WSL). Si no, registrar la corrida de forma explícita y decirlo.
-5. **Dependencia menor:** `tzdata; sys_platform == 'win32'` en `pyproject.toml` (sin ella, en Windows la fecha
-   de Paraguay usa UTC-03:00 fijo: puede errar en el invierno de 2024 y antes).
-6. **README:** reemplazar los marcadores `<!-- SALIDA-REAL -->` (README y `docs/uso.md`) por salidas reales de
-   `sifen explain` una vez implementado.
-7. **Verificar la Definition of Done** (`docs/arquitectura.md` §T). Lo que depende del usuario: T.8 evaluación
-   ciega (él escribe 15 preguntas y su clave de respuestas **antes** de ver salidas), T.11 umbral de costo de
-   curación por NT, T.12 cronometraje de tres rechazos. Preparar plantillas y pedírselo.
-8. **Publicar en GitHub:**
-   1. ✅ Repo público `NetseWin/sifen-kb` creado, con descripción y topics, y solo merge commit habilitado.
-   2. ✅ Push de `main` (código, infraestructura, `sources/` y `raw/`, sin `kb/`): CI en verde.
-   3. ✅ Protección de `main`: PR obligatorio, check `checks` en verde, sin force-push ni borrado, también para
-      administradores.
-   4. PRs: ✅ #1 y #2 integrados con merge commit; **#3 (conocimiento) abierto, lo revisa y mergea el usuario**
-      con merge commit y trailer `Reviewed-by:`.
-   5. Pendiente: tras el merge del #3, `release.yml` (manual) crea el tag `kb-AAAA.MM.DD` y la release con el
-      manifiesto.
+a) **Cierre documental** de esta etapa: dejar `docs/` (este archivo, `docs/traspaso-curacion-piloto.md` y
+   `docs/informe-revision-piloto.md`) coherente con el estado real (PR #1/#2 integrados, paso B hecho y
+   verificado, PR #3 abierto). Es esta revisión misma.
+b) **T.8 — evaluación ciega** (plantilla en `docs/evaluacion.md`): el usuario escribe las 15 preguntas y su
+   clave de respuestas **antes** de ver salidas de `sifen explain`. La plantilla ya está corregida (la trampa
+   «D208b después de NT 23» espera `removed`, `introduced_by: NT_010#6` e ISS-0002 como Issue no
+   bloqueante/aviso). **No ejecutar todavía la evaluación.**
+c) **Revisión humana del PR #3** contra los PDF renderizados: checklist **sin marcar** en
+   `docs/informe-revision-piloto.md` §11 (trabajo del usuario).
+d) **Merge del PR #3** por el usuario (merge commit con trailer `Reviewed-by:`; sin squash ni «rebase and
+   merge», desactivados en el repo).
+e) **Follow-ups de código** (PR de código independiente):
+   - ampliar el matcher del hook `PostToolUse` y los `deny` `Edit(...)` de `.claude/settings.json` a las
+     herramientas MCP de escritura (p. ej. `mcp__.*__(edit|write)`), con tests de `hooklog`;
+   - `cut_kb` conserva Issues posteriores al corte (un Issue no tiene fecha propia): requiere una decisión del
+     usuario sobre qué significa «posterior».
+f) **Primera release:** tras el merge del #3, `release.yml` (manual) crea el tag `kb-AAAA.MM.DD` y la release
+   con el manifiesto.
+
+### Estado histórico (plan original de §5) — se conserva por trazabilidad; todo está hecho, salvo lo indicado
+
+1. Tests nuevos del extractor (`tests/extraction/test_golden_piloto.py`, `test_raw_contract.py`,
+   `test_extract_determinism.py` y unitarios de `apply_fixes`/`parse_fixes`/`RawRow.current`): **hechos y en
+   verde** (qué fija cada uno se ve en el propio test; la especificación original era: filas del MT, contrato
+   de `raw/` y determinismo de la extracción).
+2. `integrity.py` + `draft.py` (+ `normalize.parse_date_literal` con fechas en palabras y `dd-mm-aaaa`):
+   **hechos** (`cmd_fmt`, `cmd_check` con las comprobaciones de §K.3/§K.4 y `--report`, `cmd_draft`).
+3. `explain.py` (+ `cmd_status`, `--json`, `--xml`, `--history`): **hecho** (commit `d2eef71`).
+4. Curación del piloto: **hecha** (paso B, `7ba7fdb`; PR #3).
+5. `tzdata; sys_platform == 'win32'` en `pyproject.toml` (para Windows): **hecho**.
+6. Reemplazar los marcadores `<!-- SALIDA-REAL -->` (README y `docs/uso.md`) por salidas reales de
+   `sifen explain`: **hecho** en el cierre documental del PR #3 (salidas reales de `explain 1321` y `explain 1400`
+   ejecutadas contra un checkout limpio de `e7d0f2c`).
+7. Definition of Done (`docs/arquitectura.md` §T): plantillas listas en `docs/evaluacion.md`; T.8 pasa al paso
+   b) de arriba, T.11 y T.12 los completa el usuario (T.12 después del merge).
+8. Publicación en GitHub: **hecha** (repo público `NetseWin/sifen-kb`, `main` protegida, PR #1 y #2 integrados
+   con merge commit); la release (tag `kb-AAAA.MM.DD`) queda en el paso f).
 
 ## 6. Hallazgos que conviene no redescubrir
 
@@ -279,7 +249,7 @@ la rama protegida y no darle credenciales de push a la sesión). La carpeta de X
 | Documento | Para qué sirve | ¿Quién lo edita? |
 |---|---|---|
 | `docs/HANDOFF.md` | Este archivo: punto de entrada para continuar el desarrollo (estado, decisiones, próximos pasos). | Quien cierra una etapa |
-| `docs/traspaso-curacion-piloto.md` | Detalle del paso 4: estado de la curación del piloto, las decisiones 1–12 del usuario sobre ella, el paso A (hecho) y el paso B pendiente. **Leer después de este archivo.** | Sesión de curación |
+| `docs/traspaso-curacion-piloto.md` | Detalle del paso 4: estado de la curación del piloto, las decisiones 1–15 del usuario sobre ella, el paso A y el paso B (ambos hechos). **Leer después de este archivo.** | Sesión de curación |
 | `docs/informe-revision-piloto.md` | Informe para la revisión humana del PR de conocimiento (por entidad, fechas, Issues, discrepancias diseño↔evidencia, checklist contra el PDF, salida de `sifen check --report`). Va en la descripción del PR. | Sesión de curación; se regenera con `sifen check --report` |
 | `docs/arquitectura.md` | Diseño cerrado (secciones A–V): modelo, temporalidad, tests, MVP, Definition of Done. Fuente de verdad del diseño. | Solo con decisión del usuario |
 | `docs/curacion.md` | Guía humana de curación (pipeline de §D.3, casos especiales). | Con cambios de diseño |

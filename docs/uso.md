@@ -2,7 +2,7 @@
 
 La CLI es el único punto de entrada para consultar y mantener la base de conocimiento. Está basada en el diseño de [`arquitectura.md`](arquitectura.md) §O. Se ejecuta con `uv run sifen …` desde la raíz del repositorio (o con `--root RUTA`).
 
-> **Estado.** Esta guía describe la CLI diseñada. Algunos comandos y modos se están implementando: `sifen --help` y `sifen <comando> --help` muestran lo disponible en tu versión. Los ejemplos de salida de este documento son **ilustrativos** (están tomados del diseño, con marcadores `<n>` y `<sha12>`); la salida real depende de lo que ya esté curado.
+> **Estado.** La CLI está implementada por completo (`explain`, `status`, `source`, `extract`, `draft`, `check`, `fmt`); `sifen --help` y `sifen <comando> --help` muestran las opciones exactas de cada versión. Los bloques de salida de este documento son **reales**, ejecutados contra la rama `kb/piloto-receptor` (`e7d0f2c`, 2026-10-18); la línea `KB` muestra ese commit (checkout limpio), y las líneas con la fecha de «hoy» corresponden al día de ejecución.
 
 ## Resumen
 
@@ -16,8 +16,8 @@ sifen status [--json]
 sifen source check [--scope nt,xsd,manual,tablas] [--offline]
 sifen source add --doc <DocId> (--url <url> | --file RUTA --note TEXTO)
 sifen extract [--doc <DocId>]... [--check]
-sifen draft <DocId>|<EffectId>
-sifen check [--json]
+sifen draft <DocId>|<DocId>#<n>|<clave-entidad> [--baseline FILA] [--update-revision] [--dry-run]
+sifen check [--json] [--report]
 sifen fmt [--check]
 ```
 
@@ -94,31 +94,41 @@ Acompañan a `undetermined`:
 
 ### Ejemplos
 
-Salida ilustrativa de la consulta puntual:
+Salida real de la consulta puntual (`uv run sifen explain 1321 --at 2025-01-10`, ejecutada el 2026-10-18 contra `e7d0f2c`):
 
 ```text
 $ uv run sifen explain 1321 --at 2025-01-10
-val:DE:D208c · código 1321 · R · IN_FORCE (prod · eje: procesamiento [supuesto A2])
-  Versión     NT_024#1 · desde 2025-01-01 (declarada en NT 24, rev <sha12>) · hasta: abierta
-  Literal     «…es mayor o igual a 7.000.000 (F023 >= 7.000.000 o F014 >= 7.000.000)»  NT 24 p.<n>
-  Historia    MT v150 (base, ≥60 M) → NT 21 (2024-01-01, ≥35 M) → NT 24 (2025-01-01, ≥7 M)
-  Violación   [interpretación, parcial] (not exists(D011) or D011 != 13) and exists(D208) and D208 == 5 and (…)
-  Campos      D208 iTipIDRec (D3/D200, N 1, 0-1) · D011 iTipTra · F014 dTotGralOpe · F023 dTotalGs
-  XSD         instantánea 2026-10-17, posterior a la fecha consultada: referencia, no evidencia de 2025
-  Avisos      ISS-0005 gap: la prosa asocia F023/F014 a la moneda (D015); se formalizó el paréntesis
-  Fuentes     verificadas el 2026-10-17 (hace 0 días)
-  KB          kb-2026.11.xx · corpus MT_V150 + NT_001–NT_027 · curado: receptor/identidad
+val:DE:D208c · código 1321 · R · IN_FORCE (2025-01-10 · prod · eje: procesamiento [supuesto A2])
+  Versión     NT_024#1 · desde 2025-01-01 (declarada) [NT_024 «01/01/2025», rev ccc2d1550e92 p. 1 PDF] · hasta abierta
+  Mensaje     «Tipo de documento de identidad del receptor incorrecto para el total general de la operación en guaraníes»
+  Literal     «El Tipo de documento de identidad del receptor no puede ser Innominado (D208≠5) cuando el total general de la operación en guaraníes (cuando la moneda es extranjera) o el total general de la operación (cuando la moneda es PYG) es mayor a 7.000.000 (F023 > 7.000.000 o F014 > 7.000.000)»
+  Base legal  Decreto 872/2023, art. 6, numeral 2, inciso ii) (NT_024 rev ccc2d1550e92 · p. 1 PDF)
+  Fuente      NT_024 rev ccc2d1550e92 · p. 1 PDF
+  Historia    línea base (base) → NT_021#1 (2024-01-01) → [NT_024#1 (2025-01-01)]
+  Violación   [interpretación, parcial] exists(D208) and D208 == 5 and ((exists(F023) and F023 > 7000000) or (exists(F014) and F014 > 7000000))
+  Huecos      Sigue el paréntesis formal. La prosa asocia F023 a moneda extranjera y F014 a PYG (D015): con moneda extranjera, F014 > 7.000.000 y F023 <= 7.000.000, el paréntesis viola y la prosa no (ISS-0005). Que D208 ausente no viole es interpretación. Polaridad mixta: «(D208≠5)» es la restricción que debe cumplirse, no el disparador; la condición de violación es D208 = 5. Literal efectivo: NT 24 quita en rojo «Si el Tipo de transacción es distinto a Muestras médicas (D011≠13),», «o igual» y el «=» de los dos «>=» (rojo = contenido eliminado, decisión del usuario 2026-10-17): «mayor a» y sin la excepción D011 = 13 (ISS-0011).
+  Campos      D208 iTipIDRec (D3/D200, N 1, 0-1) · F014 dTotGralOpe (F/F001, N 1-15p(0-8), 1-1) · F023 dTotalGs (F/F001, N 1-15p(0-8), 0-1)
+              D208: XSD /rDE/DE/gDatGralOpe/gDatRec/iTipIDRec (0-1) · ocurrencia del manual 0-1: match
+              F014: XSD /rDE/DE/gTotSub/dTotGralOpe (1-1) · ocurrencia del manual 1-1: match
+              F023: XSD /rDE/DE/gTotSub/dTotalGs (0-1) · ocurrencia del manual 0-1: match
+  XSD         instantánea posterior a la fecha consultada: referencia, no evidencia (instantánea 2026-10-17 (rev cdd1f03f1d29): match)
+              D208: gDatRec/iTipIDRec: 0-1 (manual 0-1); F014: gTotSub/dTotGralOpe: 1-1 (manual 1-1); F023: gTotSub/dTotalGs: 0-1 (manual 0-1)
+  Issues      ISS-0005 (ambiguity, no bloqueante) · ISS-0011 (ambiguity, no bloqueante)
+  Avisos      gap de la formalización (partial): Sigue el paréntesis formal. La prosa asocia F023 a moneda extranjera y F014 a PYG (D015): con moneda extranjera, F014 > 7.000.000 y F023 <= 7.000.000, el paréntesis viola y la prosa no (ISS-0005). Que D208 ausente no viole es interpretación. Polaridad mixta: «(D208≠5)» es la restricción que debe cumplirse, no el disparador; la condición de violación es D208 = 5. Literal efectivo: NT 24 quita en rojo «Si el Tipo de transacción es distinto a Muestras médicas (D011≠13),», «o igual» y el «=» de los dos «>=» (rojo = contenido eliminado, decisión del usuario 2026-10-17): «mayor a» y sin la excepción D011 = 13 (ISS-0011).
+              ISS-0005 (ambiguity, no bloqueante): La observación de D208c (1321) asocia en prosa el monto a la moneda («el total general de la operación en guaraníes (cuando la moneda es extranjera) o el total general de la operación (cuando la moneda es PYG)», es decir F023 con moneda extranjera y F014 con PYG, según D015), pero el paréntesis formal dice «(F023 >= X o F014 >= X)» (MT V150; desde NT 21, con el literal efectivo, «(F023 > X o F014 > X)») sin condicionar a la moneda. Con moneda extranjera, F014 por encima del umbral y F023 no, el paréntesis viola y la prosa no. Afecta las tres versiones (MT V150, NT 21, NT 24).
+              ISS-0011 (ambiguity, no bloqueante): En la fila D208c (1321) de NT 21 y de NT 24 están resaltados en rojo «Si el Tipo de transacción es distinto a Muestras médicas (D011≠13),», «o igual» y el «=» de los dos «>=», y en amarillo la «E» de «El Tipo» (en el MT V150 es «el», en minúscula) y los montos. La curación inicial tomó todo el texto como vigente (celda completa). Indicios de la lectura rojo = eliminado (como en la leyenda del MT y en NT 2, 8, 10 y 23): la «E» pasa a mayúscula justo donde empezaría la oración si se quita la cláusula previa; y el Decreto 872/2023, art. 6, numeral 2, que ambas NT citan, dice «supere» y no exceptúa las muestras médicas (ISS-0012). Con esa lectura la regla sería: innominado prohibido cuando el monto es mayor a 35.000.000 (NT 21) o 7.000.000 (NT 24), sin la excepción D011 = 13. Los veredictos difieren solo con el monto exactamente igual al umbral o con D011 = 13.
+              XSD anacrónico: instantánea posterior a la fecha consultada: referencia, no evidencia (instantánea del 2026-10-17)
+  Fuentes     verificadas el 2026-10-17 (hace 1 días)
+  KB          e7d0f2c · corpus MT_V150 + NT_001–NT_027 + CHECKSUM_MT + NORMA_DECRETO_872_2023 + XSD_DIR + XSD_RAR · curado: 32 documentos (dates_only 24, pilot 8) · 10 campos · 12 validaciones
 ```
 
-<!-- SALIDA-REAL -->
-
-La misma regla en otra fecha o ambiente. Lo que cambia la fecha: el 2024-12-31 rige NT 21 (≥ 35 M); el 2025-01-01, NT 24 (≥ 7 M). Con ambientes distintos (NT 23, campo `D208`, valor 6 de la enumeración):
+La misma regla en otra fecha o ambiente. Lo que cambia con la fecha: el 2024-12-31 rige NT 21 («mayor a 35.000.000», sin la excepción D011) y el 2025-01-01, NT 24 («mayor a 7.000.000», también sin la excepción D011); el MT V150 era «mayor o igual a 60.000.000» con la excepción de muestras médicas (D011≠13). El ejemplo del campo `D208` muestra la divergencia de ambientes de NT 23 (test: 30/08/2024; producción: 27/09/2024). El valor 6 de la enumeración («Tarjeta Diplomática de exoneración fiscal») ya existe desde el MT V150 y NT 23 no lo agrega: está presente en ambientes y fechas, en las tres versiones del campo (MT V150, NT 2 y NT 23); lo que cambia con NT 23 es la observación del campo (quita «y D202 ≠ 4» y agrega «No informar si D201 = 1») y que la validación D208 (1310) pasa a `undetermined` (ISS-0003):
 
 ```bash
-uv run sifen explain 1321 --at 2024-12-31
-uv run sifen explain 1321 --at 2025-01-01
-uv run sifen explain D208 --at 2024-09-15 --env test   # el valor 6 ya está en la enumeración (test: 30/08/2024)
-uv run sifen explain D208 --at 2024-09-15 --env prod   # todavía no (producción: 27/09/2024)
+uv run sifen explain 1321 --at 2024-12-31              # rige NT 21: «mayor a 35.000.000», sin la excepción D011
+uv run sifen explain 1321 --at 2025-01-01              # rige NT 24: «mayor a 7.000.000», sin la excepción D011
+uv run sifen explain D208 --at 2024-09-15 --env test   # rige NT 23 (test: 30/08/2024); el valor 6 ya estaba desde el MT V150
+uv run sifen explain D208 --at 2024-09-15 --env prod   # todavía rige NT 2 (producción: 27/09/2024); el valor 6 también está
 ```
 
 Historia completa y documentos:
@@ -134,22 +144,23 @@ Un código fuera de lo curado (modo índice):
 uv run sifen explain 1400              # not_curated: menciones por fecha de producción del documento
 ```
 
-Salida real (2026-10-17; `1400` todavía no está curado):
+Salida real de `uv run sifen explain 1400` (ejecutada el 2026-10-18 contra `e7d0f2c`; `1400` sigue sin curar):
 
 ```text
 $ uv run sifen explain 1400
-NOT_CURATED · 1400 (2026-10-17 · prod · eje: procesamiento [supuesto A2])
+NOT_CURATED · 1400 (2026-10-18 · prod · eje: procesamiento [supuesto A2])
   Estado      NOT_CURATED: no curado: vigencia no resuelta; se listan las menciones en raw/ sin inferir la regla
   Aviso       vigencia no resuelta: una mención posterior puede modificar o eliminar la regla
   Menciones   3 en raw/, por fecha de producción del documento (la más reciente primero; nunca por número de NT):
-              1. NT_026 rev 5ed252f14427 · p. 1 PDF · producción 2025-06-16 (literal de raw/, sin curar)
+              1. NT_026 rev 5ed252f14427 · p. 1 PDF · producción 2025-06-16
                  «…ción E E020 Grupo de informaciones de Compras Públicas es obligatorio 1400 El grupo de informaciones de Compras Públicas es obligatorio para tip…»
               2. MT_V150 rev 976cd88c05c3 · p. 148 impresa / 149 PDF · sin fecha de producción
                  «…2 1399 Campos que componen la Factura Electrónica FE (E010-E099) E020 1400 E025 1449 Campos de informaciones de Compras Públicas (E020-E029) E30…»
               3. MT_V150 rev 976cd88c05c3 · p. 168 impresa / 169 PDF · sin fecha de producción
                  «…n E 78 E020 Grupo de informaciones de Compras Públicas es obligatorio 1400 El grupo de informaciones de Compras Públicas es obligatorio para tip…»
-  Fuentes     verificadas el 2026-10-17 (hace 0 días)
-  KB          08cd5f7-dirty · corpus MT_V150 + NT_001–NT_027 + CHECKSUM_MT + NORMA_DECRETO_872_2023 + XSD_DIR + XSD_RAR · curado: nada
+  Avisos      fuentes verificadas el 2026-10-17: una NT posterior podría regir (NT 25 y 27 rigieron el día de su subida)
+  Fuentes     verificadas el 2026-10-17 (hace 1 días)
+  KB          e7d0f2c · corpus MT_V150 + NT_001–NT_027 + CHECKSUM_MT + NORMA_DECRETO_872_2023 + XSD_DIR + XSD_RAR · curado: 32 documentos (dates_only 24, pilot 8) · 10 campos · 12 validaciones
 ```
 
 Un rechazo con XML (el XML, fuera del repo, no se modifica y sale enmascarado):
@@ -159,7 +170,7 @@ uv run sifen explain 1321 --xml C:/sifen-privado/xml/de.xml --response C:/sifen-
 uv run sifen explain 1321 --xml /ruta/de.xml --processed-at 2025-01-02 --env prod
 ```
 
-El resultado es `TRUE` (la regla se viola), `FALSE` o `UNKNOWN` según la formalización y la versión vigente en **ambas** fechas. Si emisión y procesamiento caen a ambos lados de un cambio, el estado es `undetermined` (`axis_split`). Ejemplo del diseño: un DE emitido el 30/12/2024 a un receptor innominado por 10.000.000 PYG y procesado el 02/01/2025: con la fecha de emisión aplica NT 21 (≥ 35 M) y no viola; con la de procesamiento aplica NT 24 (≥ 7 M) y viola `1321`.
+El resultado es `TRUE` (la regla se viola), `FALSE` o `UNKNOWN` según la formalización y la versión vigente en **ambas** fechas. Si emisión y procesamiento caen a ambos lados de un cambio, el estado es `undetermined` (`axis_split`). Ejemplo del diseño: un DE emitido el 30/12/2024 a un receptor innominado por 10.000.000 PYG y procesado el 02/01/2025: con la fecha de emisión aplica NT 21 («mayor a 35.000.000») y no viola; con la de procesamiento aplica NT 24 («mayor a 7.000.000») y viola `1321`.
 
 ### Salida JSON
 
@@ -176,9 +187,9 @@ Resume qué sabe y qué no sabe la KB: horizonte de fuentes (fecha del último `
 | `sifen source check [--scope …] [--offline]` | Compara el hash de las URL conocidas y de los listados del portal de DNIT (NT, directorio XSD, Manual, tablas) y registra el chequeo en el manifiesto. No descarga fuentes a `sources/`. Con `--offline` solo verifica el repositorio. Si no hay nada sin registrar, avanza el horizonte. |
 | `sifen source add --doc <DocId> --url <url>` | **Acción humana.** Descarga desde un dominio de DNIT permitido (`www.dnit.gov.py`, `ekuatia.set.gov.py`, `www.set.gov.py`), calcula `sha256` y `md5`, copia a `sources/<DocId>/<sha12>.<ext>` y agrega la revisión a `sources.manifest.yaml` (solo se le agrega). Con `--file RUTA --note TEXTO` registra una copia local que conserva la empresa (`origin: offline`, la nota es obligatoria). |
 | `sifen extract [--doc <DocId>] [--check]` | Genera `raw/` (texto por página, índice y celdas de tablas) de forma determinista. Con `--check` regenera en memoria y compara byte a byte con `raw/`; así se detecta una edición a mano o un cambio del extractor. |
-| `sifen draft <DocId>` | Copia desde las celdas de la tabla de fechas de la NT su `document_date` y su calendario por ambiente a `kb/documents/<DocId>.yaml`. |
-| `sifen draft <DocId>#<n>` | Crea la versión nueva de la entidad a la que apunta el efecto, copiando los literales de las celdas de `raw/` y heredando de la predecesora temporal las columnas que la NT no trae. |
-| `sifen check [--json]` | Esquema, formato, integridad, evidencia y cobertura (subconjunto rápido de las pruebas). Devuelve **todos** los hallazgos. |
+| `sifen draft <DocId>` | Copia desde las celdas de la tabla de fechas de la NT su `document_date` y su calendario por ambiente a `kb/documents/<DocId>.yaml`. Con `--update-revision` mueve `current_revision` a la última revisión del manifiesto y copia sus fechas. |
+| `sifen draft <DocId>#<n>` | Crea la versión nueva de la entidad a la que apunta el efecto, copiando los literales de las celdas de `raw/` y heredando de la predecesora temporal las columnas que la NT no trae. Con `--baseline FILA` y la clave de la entidad (p. ej. `val:DE:D208c`) crea la entidad con su versión base copiada de esa fila del MT (p. ej. `raw:MT_V150@976cd88c05c3:p167:D208c`). En cualquier forma, `--dry-run` muestra lo que se escribiría («se escribiría»), sin escribir. |
+| `sifen check [--json] [--report]` | Esquema, formato, integridad, evidencia y cobertura (subconjunto rápido de las pruebas). Devuelve **todos** los hallazgos. Con `--report`, informe de revisión del PR: por entidad, versión anterior/nueva y diff, fechas, Issues y pasado. |
 | `sifen fmt [--check]` | Escribe los archivos de `kb/` (y el manifiesto) en formato canónico. Con `--check` no escribe y falla si alguno no lo es. |
 
 Los literales y las fechas solo los copia `sifen draft`. El flujo completo y la revisión humana están en [`curacion.md`](curacion.md).
