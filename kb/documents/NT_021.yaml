@@ -26,7 +26,7 @@ effects:
       - raw:NT_021@1e716577d874:p1:D208c
     interpretation:
       by: llm
-      run: a067d55b-d757-498d-a601-f946db1a3acc
+      run: ce4ca541-bb4f-49d4-8e9f-5430b10e6d63
       note: |-
-        La NT reproduce la fila completa; cambia la Observación (umbral 60.000.000 → 35.000.000 y la «E» mayúscula de «El Tipo»). La celda se copia completa, con el texto resaltado en rojo; la lectura alternativa de ese rojo queda en ISS-0011. La revisión registrada (re-subida del 2024-12-30) lleva la marca de agua «VER NOTA TÉCNICA N° 24 DESDE EL 01/01/2025», que es gráfica: no está en el texto del PDF ni en raw/, por eso la ficha no declara superseded_by (su cita no sería verificable). El fin de esta versión (2025-01-01) se deriva del inicio de NT_024#1 y lo fija la fila golden «watermark».
+        La NT reproduce la fila completa; cambia la Observación: umbral 60.000.000 → 35.000.000, se eliminan en rojo «Si el Tipo de transacción es distinto a Muestras médicas (D011≠13),», «o igual» y el «=» de los dos «>=» (rojo = contenido eliminado, decisión del usuario 2026-10-17) y la «E» de «El Tipo» pasa a mayúscula (amarillo = modificado), donde empieza la oración al quitar la cláusula previa. Regla efectiva: «mayor a» 35.000.000, sin la excepción D011 = 13 (ISS-0011, trazabilidad). La revisión registrada (re-subida del 2024-12-30) lleva la marca de agua «VER NOTA TÉCNICA N° 24 DESDE EL 01/01/2025», que es gráfica: no está en el texto del PDF ni en raw/, por eso la ficha no declara superseded_by (su cita no sería verificable). El fin de esta versión (2025-01-01) se deriva del inicio de NT_024#1 y lo fija la fila golden «watermark».
 curation_scope: pilot

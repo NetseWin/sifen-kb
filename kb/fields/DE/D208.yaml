@@ -45,7 +45,7 @@ versions:
     length: 1
     occurrence: 0-1
     observations: |-
-      Obligatorio si D201 = 2 y D202 ≠ 4 No informar si D201 = 1 o D202=4 1= Cédula paraguaya 2= Pasaporte 3= Cédula extranjera 4= Carnet de residencia 5= Innominado 6=Tarjeta Diplomática de exoneración fiscal 9= Otro
+      Obligatorio si D201 = 2 y D202 ≠ 4 1= Cédula paraguaya 2= Pasaporte 3= Cédula extranjera 4= Carnet de residencia 5= Innominado 6=Tarjeta Diplomática de exoneración fiscal 9= Otro
     enumeration:
       - code: 1
         label: Cédula paraguaya
@@ -63,14 +63,11 @@ versions:
         label: Otro
     enumeration_interpretation:
       by: llm
-      run: a067d55b-d757-498d-a601-f946db1a3acc
+      run: ce4ca541-bb4f-49d4-8e9f-5430b10e6d63
       note: |-
-        El valor 6 ya figura en el MT V150 publicado (resaltado en verde = agregado en la leyenda del MT).
+        Lista de valores idéntica a la de la línea base: NT 2 no agrega ni quita valores. El cambio está en la condición: el tramo en rojo «No informar si D201 = 1 o D202=4» se elimina (rojo = contenido eliminado, decisión del usuario 2026-10-17), en la misma NT que elimina D208d (1322).
     evidence:
       - raw:NT_002@6aaf4a8f4797:p1:D208
-    open_questions:
-      - |-
-        NT 2 reproduce la celda Observaciones igual que el MT, pero resalta en rojo «No informar si D201 = 1 o D202=4» y en la misma NT elimina D208d (1322), la validación que impone ese «no informar». ¿El rojo indica que ese tramo se elimina? (ISS-0009)
   - introduced_by:
       - NT_023#1
     based_on:
@@ -83,7 +80,7 @@ versions:
     length: 1
     occurrence: 0-1
     observations: |-
-      Obligatorio si D201 = 2 y D202 ≠ 4 No informar si D201 = 1 1= Cédula paraguaya 2= Pasaporte 3= Cédula extranjera 4= Carnet de residencia 5= Innominado 6=Tarjeta Diplomática de exoneración fiscal 9= Otro
+      Obligatorio si D201 = 2 No informar si D201 = 1 1= Cédula paraguaya 2= Pasaporte 3= Cédula extranjera 4= Carnet de residencia 5= Innominado 6=Tarjeta Diplomática de exoneración fiscal 9= Otro
     enumeration:
       - code: 1
         label: Cédula paraguaya
@@ -101,11 +98,11 @@ versions:
         label: Otro
     enumeration_interpretation:
       by: llm
-      run: a067d55b-d757-498d-a601-f946db1a3acc
+      run: ce4ca541-bb4f-49d4-8e9f-5430b10e6d63
       note: |-
-        Lista de valores idéntica a la del MT V150 y de NT 2: NT 23 no agrega ni quita valores; el cambio de la observación está en la condición «No informar».
+        Lista de valores idéntica a la del MT V150 y de NT 2: NT 23 no agrega ni quita valores. El cambio está en la condición: se elimina «y D202 ≠ 4» (en rojo) y se agrega «No informar si D201 = 1».
     evidence:
       - raw:NT_023@9cb063673358:p1:D208
     open_questions:
       - |-
-        NT 23 resalta en rojo «y D202 ≠ 4» de «Obligatorio si D201 = 2 y D202 ≠ 4» y cita el Art. 6° (Numeral 1) del Decreto 872/2023 (identificación obligatoria en B2B, B2F o B2G). Si el rojo indicara eliminación, D208 sería obligatorio para todo receptor no contribuyente, como dice D208g (1335). La KB copia la celda completa (ISS-0009, ISS-0003).
+        Desde NT 23 la observación del campo exige D208 para todo receptor no contribuyente (D201 = 2), como D208g (1335), mientras la validación D208 (1310) sigue diciendo «y D202≠4» y NT 23 no la menciona: no se sabe si el servidor devuelve 1310, 1335 o ambos (ISS-0003).

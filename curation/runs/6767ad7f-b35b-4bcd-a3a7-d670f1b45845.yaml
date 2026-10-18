@@ -1,0 +1,30 @@
+session_id: 6767ad7f-b35b-4bcd-a3a7-d670f1b45845
+started_at: 2026-10-18T19:08:56Z
+base_commit: 926f1ebea447fb30b8983a67241a4380860ff4dd
+tool: claude-code
+prompt_path: curation/prompts/curar_entidad.md
+instructions_sha256: 56c3f71f1c84c6cc0dbfe4bb29f44dd5490adde1a24c283966aaf3bf2f99f67a
+inputs:
+  - path: CLAUDE.md
+    sha256: 5365f27b360317a4cb80defce6021fbe654beef29b003374c9e5916f6de51e2c
+  - path: curation/prompts/curar_entidad.md
+    sha256: 6e290bab069c07b23ab94ec7566408a82506d95688fe9513ce20b12686e055eb
+outputs:
+  - path: docs/HANDOFF.md
+    sha256: cf01967447bc70a86adbf97aee8c5a3792c6025e20d8f47788cd2f9a7a7a28c4
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: docs/HANDOFF.md fue editado mediante herramientas MCP (mcp__custom-tools__edit y mcp__custom-tools__bash), que no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:33:19Z
+  - path: docs/traspaso-curacion-piloto.md
+    sha256: f086859e76db0d295ed4d41d89c26481b60d03790f371dff69c3ecb80bf61fa1
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:30:27Z
+  - path: kb/issues/ISS-0012.yaml
+    sha256: cad0bc6d9db4aa1110fb9ad67d0a1bb228145fe885cd0037821f00010b601f4a
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:24:03Z

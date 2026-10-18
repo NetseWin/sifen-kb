@@ -1,0 +1,18 @@
+session_id: 6b58d45f-98a7-4353-8d45-d1b664f31286
+started_at: 2026-10-18T18:31:06Z
+base_commit: 926f1ebea447fb30b8983a67241a4380860ff4dd
+tool: claude-code
+prompt_path: curation/prompts/curar_entidad.md
+instructions_sha256: 56c3f71f1c84c6cc0dbfe4bb29f44dd5490adde1a24c283966aaf3bf2f99f67a
+inputs:
+  - path: CLAUDE.md
+    sha256: 5365f27b360317a4cb80defce6021fbe654beef29b003374c9e5916f6de51e2c
+  - path: curation/prompts/curar_entidad.md
+    sha256: 6e290bab069c07b23ab94ec7566408a82506d95688fe9513ce20b12686e055eb
+outputs:
+  - path: tests/golden/temporal.yaml
+    sha256: b4e287c8b58be8058e3dc201534e43e7989f5d728ec48ed83696ea2bd64b996e
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:24:03Z

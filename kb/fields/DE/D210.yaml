@@ -25,12 +25,9 @@ versions:
     length: 1-20
     occurrence: 0-1
     observations: |-
-      Obligatorio si D201 = 2 y D202 ≠ 4 No informar si D201 = 1 o D202=4 En caso de DE innominado, completar con 0 (cero)
+      Obligatorio si D201 = 2 y D202 ≠ 4 En caso de DE innominado, completar con 0 (cero)
     evidence:
       - raw:NT_002@6aaf4a8f4797:p1:D210
-    open_questions:
-      - |-
-        NT 2 reproduce la celda Observaciones igual que el MT, pero resalta en rojo «No informar si D201 = 1 o D202=4» y en la misma NT elimina D210a (1323), la validación que impone ese «no informar». ¿El rojo indica que ese tramo se elimina? (ISS-0009)
   - introduced_by:
       - NT_023#2
     based_on:
@@ -43,9 +40,6 @@ versions:
     length: 1-20
     occurrence: 0-1
     observations: |-
-      Obligatorio si D201 = 2 y D202 ≠ 4 No informar si D201 = 1 En caso de DE innominado, completar con 0 (cero)
+      Obligatorio si D201 = 2 No informar si D201 = 1 En caso de DE innominado, completar con 0 (cero)
     evidence:
       - raw:NT_023@9cb063673358:p1:D210
-    open_questions:
-      - |-
-        NT 23 resalta en rojo «y D202 ≠ 4» de «Obligatorio si D201 = 2 y D202 ≠ 4» y cita el Art. 6° (Numeral 1) del Decreto 872/2023. Si el rojo indicara eliminación, D210 sería obligatorio para todo receptor no contribuyente. La KB copia la celda completa (ISS-0009, ISS-0010).

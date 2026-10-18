@@ -3,7 +3,7 @@ kind: ambiguity
 affects:
   - subject: val:DE:D208c
 statement: |-
-  La observación de D208c (1321) asocia en prosa el monto a la moneda («el total general de la operación en guaraníes (cuando la moneda es extranjera) o el total general de la operación (cuando la moneda es PYG)», es decir F023 con moneda extranjera y F014 con PYG, según D015), pero el paréntesis formal dice «(F023 >= X o F014 >= X)» sin condicionar a la moneda. Con moneda extranjera, F014 >= X y F023 < X, el paréntesis viola y la prosa no. Afecta las tres versiones (MT V150, NT 21, NT 24).
+  La observación de D208c (1321) asocia en prosa el monto a la moneda («el total general de la operación en guaraníes (cuando la moneda es extranjera) o el total general de la operación (cuando la moneda es PYG)», es decir F023 con moneda extranjera y F014 con PYG, según D015), pero el paréntesis formal dice «(F023 >= X o F014 >= X)» (MT V150; desde NT 21, con el literal efectivo, «(F023 > X o F014 > X)») sin condicionar a la moneda. Con moneda extranjera, F014 por encima del umbral y F023 no, el paréntesis viola y la prosa no. Afecta las tres versiones (MT V150, NT 21, NT 24).
 evidence:
   - raw:MT_V150@976cd88c05c3:p167:D208c#observation
   - raw:NT_021@1e716577d874:p1:D208c#observation

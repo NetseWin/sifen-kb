@@ -29,16 +29,16 @@ versions:
     message: |-
       Tipo de documento de identidad del receptor incorrecto para el total general de la operación en guaraníes
     observation: |-
-      Si el Tipo de transacción es distinto a Muestras médicas (D011≠13), El Tipo de documento de identidad del receptor no puede ser Innominado (D208≠5) cuando el total general de la operación en guaraníes (cuando la moneda es extranjera) o el total general de la operación (cuando la moneda es PYG) es mayor o igual a 35.000.000 (F023 >= 35000000 o F014 >= 35000000)
+      El Tipo de documento de identidad del receptor no puede ser Innominado (D208≠5) cuando el total general de la operación en guaraníes (cuando la moneda es extranjera) o el total general de la operación (cuando la moneda es PYG) es mayor a 35.000.000 (F023 > 35000000 o F014 > 35000000)
     condition:
       expr: |-
-        (not exists(D011) or D011 != 13) and exists(D208) and D208 == 5 and ((exists(F023) and F023 >= 35000000) or (exists(F014) and F014 >= 35000000))
+        exists(D208) and D208 == 5 and ((exists(F023) and F023 > 35000000) or (exists(F014) and F014 > 35000000))
       level: partial
       gaps: |-
-        Sigue el paréntesis formal. La prosa asocia F023 a moneda extranjera y F014 a PYG (D015): con moneda extranjera, F014 >= 35.000.000 y F023 < 35.000.000, el paréntesis viola y la prosa no (ISS-0005). Que D011 ausente equivalga a «≠ 13» y que D208 ausente no viole son interpretaciones. Polaridad mixta: «(D208≠5)» es la restricción que debe cumplirse, no el disparador; la condición de violación es D208 = 5. Se toma como vigente todo el texto de la celda, incluido el resaltado en rojo («Si el Tipo de transacción es distinto a Muestras médicas (D011≠13),», «o igual», «=»); si ese rojo significara eliminación, la regla sería «mayor a» y sin la excepción de D011 (ISS-0011, ISS-0012).
+        Sigue el paréntesis formal. La prosa asocia F023 a moneda extranjera y F014 a PYG (D015): con moneda extranjera, F014 > 35.000.000 y F023 <= 35.000.000, el paréntesis viola y la prosa no (ISS-0005). Que D208 ausente no viole es interpretación. Polaridad mixta: «(D208≠5)» es la restricción que debe cumplirse, no el disparador; la condición de violación es D208 = 5. Literal efectivo: NT 21 quita en rojo «Si el Tipo de transacción es distinto a Muestras médicas (D011≠13),», «o igual» y el «=» de los dos «>=» (rojo = contenido eliminado, decisión del usuario 2026-10-17): «mayor a» y sin la excepción D011 = 13 (ISS-0011).
       interpretation:
         by: llm
-        run: a067d55b-d757-498d-a601-f946db1a3acc
+        run: ce4ca541-bb4f-49d4-8e9f-5430b10e6d63
     legal_basis:
       - citation: Decreto 872/2023, art. 6
         stated_in:
@@ -57,16 +57,16 @@ versions:
     message: |-
       Tipo de documento de identidad del receptor incorrecto para el total general de la operación en guaraníes
     observation: |-
-      Si el Tipo de transacción es distinto a Muestras médicas (D011≠13), El Tipo de documento de identidad del receptor no puede ser Innominado (D208≠5) cuando el total general de la operación en guaraníes (cuando la moneda es extranjera) o el total general de la operación (cuando la moneda es PYG) es mayor o igual a 7.000.000 (F023 >= 7.000.000 o F014 >= 7.000.000)
+      El Tipo de documento de identidad del receptor no puede ser Innominado (D208≠5) cuando el total general de la operación en guaraníes (cuando la moneda es extranjera) o el total general de la operación (cuando la moneda es PYG) es mayor a 7.000.000 (F023 > 7.000.000 o F014 > 7.000.000)
     condition:
       expr: |-
-        (not exists(D011) or D011 != 13) and exists(D208) and D208 == 5 and ((exists(F023) and F023 >= 7000000) or (exists(F014) and F014 >= 7000000))
+        exists(D208) and D208 == 5 and ((exists(F023) and F023 > 7000000) or (exists(F014) and F014 > 7000000))
       level: partial
       gaps: |-
-        Sigue el paréntesis formal. La prosa asocia F023 a moneda extranjera y F014 a PYG (D015): con moneda extranjera, F014 >= 7.000.000 y F023 < 7.000.000, el paréntesis viola y la prosa no (ISS-0005). Que D011 ausente equivalga a «≠ 13» y que D208 ausente no viole son interpretaciones. Polaridad mixta: «(D208≠5)» es la restricción que debe cumplirse, no el disparador; la condición de violación es D208 = 5. Se toma como vigente todo el texto de la celda, incluido el resaltado en rojo («Si el Tipo de transacción es distinto a Muestras médicas (D011≠13),», «o igual», «=»); si ese rojo significara eliminación, la regla sería «mayor a» y sin la excepción de D011 (ISS-0011, ISS-0012).
+        Sigue el paréntesis formal. La prosa asocia F023 a moneda extranjera y F014 a PYG (D015): con moneda extranjera, F014 > 7.000.000 y F023 <= 7.000.000, el paréntesis viola y la prosa no (ISS-0005). Que D208 ausente no viole es interpretación. Polaridad mixta: «(D208≠5)» es la restricción que debe cumplirse, no el disparador; la condición de violación es D208 = 5. Literal efectivo: NT 24 quita en rojo «Si el Tipo de transacción es distinto a Muestras médicas (D011≠13),», «o igual» y el «=» de los dos «>=» (rojo = contenido eliminado, decisión del usuario 2026-10-17): «mayor a» y sin la excepción D011 = 13 (ISS-0011).
       interpretation:
         by: llm
-        run: a067d55b-d757-498d-a601-f946db1a3acc
+        run: ce4ca541-bb4f-49d4-8e9f-5430b10e6d63
     legal_basis:
       - citation: Decreto 872/2023, art. 6, numeral 2, inciso ii)
         stated_in:

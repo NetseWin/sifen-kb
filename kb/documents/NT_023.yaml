@@ -26,9 +26,9 @@ effects:
       - raw:NT_023@9cb063673358:p1:D208
     interpretation:
       by: llm
-      run: a067d55b-d757-498d-a601-f946db1a3acc
+      run: ce4ca541-bb4f-49d4-8e9f-5430b10e6d63
       note: |-
-        Cambia la Observación: «No informar si D201 = 1 o D202=4» pasa a «No informar si D201 = 1». La lista de valores (incluido «6=Tarjeta Diplomática de exoneración fiscal») ya estaba en el MT V150 y en NT 2: NT 23 no agrega el valor 6. En el PDF «y D202 ≠ 4» está en rojo; la KB copia la celda completa (ISS-0009).
+        Cambia la Observación: se elimina «y D202 ≠ 4» (en rojo; rojo = contenido eliminado, decisión del usuario 2026-10-17) y se agrega «No informar si D201 = 1», con la cita del Art. 6° (Numeral 1) del Decreto 872/2023. La lista de valores (incluido «6=Tarjeta Diplomática de exoneración fiscal») ya estaba en el MT V150 y en NT 2: NT 23 no agrega el valor 6. Literal efectivo; ISS-0009 queda como trazabilidad.
   - id: NT_023#2
     verb_literal: se modifican los siguientes campos
     action: modify
@@ -38,9 +38,9 @@ effects:
       - raw:NT_023@9cb063673358:p1:D210
     interpretation:
       by: llm
-      run: a067d55b-d757-498d-a601-f946db1a3acc
+      run: ce4ca541-bb4f-49d4-8e9f-5430b10e6d63
       note: |-
-        Cambia la Observación: «No informar si D201 = 1 o D202=4» pasa a «No informar si D201 = 1». En el PDF «y D202 ≠ 4» está en rojo; la KB copia la celda completa (ISS-0009).
+        Igual que NT_023#1: se elimina «y D202 ≠ 4» (en rojo) y se agrega «No informar si D201 = 1». Literal efectivo; ISS-0009 queda como trazabilidad.
   - id: NT_023#3
     verb_literal: se modifica la siguiente validación
     action: modify
@@ -62,9 +62,9 @@ effects:
       - raw:NT_023@9cb063673358:p2:D210
     interpretation:
       by: llm
-      run: a067d55b-d757-498d-a601-f946db1a3acc
+      run: ce4ca541-bb4f-49d4-8e9f-5430b10e6d63
       note: |-
-        La fila reproducida es idéntica a la del MT V150: el «se modifica» no se refleja en el literal. En el PDF el tramo «y el tipo de operación es diferente a B2F (D202≠4)» está en rojo; si el rojo significara eliminación (leyenda del MT), 1314 exigiría D210 para todo receptor no contribuyente. Se copia la celda completa y se abre ISS-0010 (bloqueante sobre 1314 desde NT 23).
+        La fila reproduce la del MT V150 con el tramo «y el tipo de operación es diferente a B2F (D202≠4)» en rojo, que se elimina (rojo = contenido eliminado, decisión del usuario 2026-10-17): el «se modifica» consiste en quitar la excepción B2F. Desde NT 23, 1314 exige D210 para todo receptor no contribuyente (D201 = 2), paralelo a D208g (1335). ISS-0010 resuelto (decisión 4).
   - id: NT_023#5
     verb_literal: se modifica la siguiente validación
     action: add
@@ -74,9 +74,9 @@ effects:
       - raw:NT_023@9cb063673358:p2:D208f
     interpretation:
       by: llm
-      run: a067d55b-d757-498d-a601-f946db1a3acc
+      run: ce4ca541-bb4f-49d4-8e9f-5430b10e6d63
       note: |-
-        El encabezado dice «se modifica», pero D208f (1333) no existe en el MT V150 ni en ninguna NT anterior: no hay predecesora que modificar, se modela como alta. Mensaje y observación idénticos a los de D208b (1319), eliminada por NT 10 según NT_010#6: ISS-0002.
+        El encabezado dice «se modifica», pero D208f (1333) no existe en el MT V150 ni en ninguna NT anterior y la fila está entera en verde (agregado): no hay predecesora que modificar, se modela como alta (color = acción, ≠ verbo literal: ISS-0014, trazabilidad). Mensaje y observación idénticos a los de D208b (1319), eliminada por NT 10 según NT_010#6: ISS-0002.
   - id: NT_023#6
     verb_literal: se modifica la siguiente validación
     action: add
@@ -86,9 +86,9 @@ effects:
       - raw:NT_023@9cb063673358:p2:D210b
     interpretation:
       by: llm
-      run: a067d55b-d757-498d-a601-f946db1a3acc
+      run: ce4ca541-bb4f-49d4-8e9f-5430b10e6d63
       note: |-
-        El encabezado dice «se modifica», pero D210b (1334) no existe en el MT V150 ni en ninguna NT anterior: se modela como alta. Posible reintroducción de D210a (1323, eliminada por NT 2) sin la condición B2F: ISS-0004.
+        El encabezado dice «se modifica», pero D210b (1334) no existe en el MT V150 ni en ninguna NT anterior y la fila está entera en verde: se modela como alta (ISS-0014, trazabilidad). Posible reintroducción de D210a (1323, eliminada por NT 2) sin la condición B2F: ISS-0004.
   - id: NT_023#7
     verb_literal: se modifica la siguiente validación
     action: add
@@ -98,9 +98,9 @@ effects:
       - raw:NT_023@9cb063673358:p2:D208g
     interpretation:
       by: llm
-      run: a067d55b-d757-498d-a601-f946db1a3acc
+      run: ce4ca541-bb4f-49d4-8e9f-5430b10e6d63
       note: |-
-        El encabezado dice «se modifica», pero D208g (1335) no existe en el MT V150 ni en ninguna NT anterior: se modela como alta. Regla equivalente a D208 (1310) sin la excepción B2F, con otro ID y código: ISS-0003.
+        El encabezado dice «se modifica», pero D208g (1335) no existe en el MT V150 ni en ninguna NT anterior y la fila está entera en verde: se modela como alta (ISS-0014, trazabilidad). Regla equivalente a D208 (1310) sin la excepción B2F, con otro ID y código: ISS-0003.
   - id: NT_023#8
     verb_literal: se modifica la siguiente validación
     action: modify

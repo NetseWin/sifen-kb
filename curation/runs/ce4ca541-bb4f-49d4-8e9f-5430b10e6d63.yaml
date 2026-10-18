@@ -1,0 +1,102 @@
+session_id: ce4ca541-bb4f-49d4-8e9f-5430b10e6d63
+started_at: 2026-10-18T14:51:21Z
+base_commit: 926f1ebea447fb30b8983a67241a4380860ff4dd
+tool: claude-code
+prompt_path: curation/prompts/curar_entidad.md
+instructions_sha256: 56c3f71f1c84c6cc0dbfe4bb29f44dd5490adde1a24c283966aaf3bf2f99f67a
+inputs:
+  - path: CLAUDE.md
+    sha256: 5365f27b360317a4cb80defce6021fbe654beef29b003374c9e5916f6de51e2c
+  - path: curation/prompts/curar_entidad.md
+    sha256: 6e290bab069c07b23ab94ec7566408a82506d95688fe9513ce20b12686e055eb
+outputs:
+  - path: kb/fields/DE/D208.yaml
+    sha256: dd4451925280d809655d2bb031904ab065c10dd2451791d38af092a26bfd45b3
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z
+  - path: kb/validations/DE/D208c.yaml
+    sha256: a883888d45f1fcb1fec54deb2d96c27ee9d292a9bea64d84085703aaa13e6e96
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z
+  - path: kb/validations/DE/D210.yaml
+    sha256: 03dd2f04e8f643e7b289a50fc4ff31c4c28500f03e12aa22a373fb745c5add84
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z
+  - path: kb/documents/NT_002.yaml
+    sha256: f100dc5793374f0fc693f1c07ec416fd18617988035f7657a5627902e8b40121
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z
+  - path: kb/documents/NT_008.yaml
+    sha256: 18faffd4c6836edf246b5cde72bb6b3e87f6b070bd429b56c719aa3aba2e437d
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z
+  - path: kb/documents/NT_021.yaml
+    sha256: af129a97e899a52422ebef67db3938922f1c72c0ec724507fafdacc0274e8f79
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z
+  - path: kb/documents/NT_023.yaml
+    sha256: d5e457256c6922f38669bc7b44f846adb959b62a2ad4b3cfb5d4e09f9a8c7230
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z
+  - path: kb/documents/NT_024.yaml
+    sha256: 2501bf87909fa41e39741bdb267895e2ac9d236ac52de1cfc07af475ebd2d391
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z
+  - path: kb/issues/ISS-0003.yaml
+    sha256: a7de38902390db19ca175b57e708e51f10b049075e318754d16b5155c22536d9
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z
+  - path: kb/issues/ISS-0005.yaml
+    sha256: 6b5e288f4ad9c22e903735714d116ace647645bff96b59653ca0afde18bfa3ee
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z
+  - path: kb/issues/ISS-0009.yaml
+    sha256: 3612b10632b737380d82bc957a103491cdc0fb3db24cb38d473306cc4ea02203
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z
+  - path: kb/issues/ISS-0010.yaml
+    sha256: efc0fd407a16e3c3f5cd66c3a5e2806a2e16c2fde4f11c57edd1bb7fac5bd08c
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z
+  - path: kb/issues/ISS-0011.yaml
+    sha256: e11bbafe4665e79ad19250cb54591cbd9ff3af7901dd9069248904620ae8d158
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z
+  - path: kb/issues/ISS-0014.yaml
+    sha256: 4278c0ec3238c575ffdabb679810adaff23088accb5c514b1133ad77a713c09f
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z
+  - path: kb/validations/DE/D208g.yaml
+    sha256: 81ece3d6d30ff87a3b32de50161f6eecda450b484bce07f616ed1a977159717c
+    source: backfill
+    reason: |-
+      Sesión en arnés Pi: las ediciones con herramientas MCP (mcp__custom-tools__edit/write) no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
+    recorded_at: 2026-10-18T19:20:06Z

@@ -15,4 +15,6 @@ evidence:
 blocking: true
 policy: |-
   Decisión del usuario (2026-10-17): el rojo es contenido eliminado, así que NT 23 elimina de 1314 la excepción B2F y este Issue debe resolverse cuando la versión NT_023#4 se re-materialice con el effective_literal (cambio de código pendiente, ver ISS-0009); su condición quedará sin «D202 != 4». Mientras la versión materializada siga mostrando la celda completa (excepción B2F incluida), el bloqueo se mantiene como estado transitorio para no presentar como vigente un literal que la decisión ya descarta: desde el inicio de NT 23 en cada ambiente (test 2024-08-30, producción 2024-09-27) D210 (1314) responde undetermined (blocking_issue).
-status: open
+status: resolved
+resolution: |-
+  Decisión del usuario (2026-10-17, decisión 4 del traspaso): el rojo es contenido eliminado. La versión NT_023#4 de D210 (1314) se re-materializó con sifen draft desde el literal efectivo de la celda (sin «y el tipo de operación es diferente a B2F (D202≠4)») y su condición es D201 == 2 and not exists(D210). Desde el inicio de NT 23 en cada ambiente (test 2024-08-30, producción 2024-09-27) D210 (1314) responde in_force con esa regla; el bloqueo transitorio desaparece.

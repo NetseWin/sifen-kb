@@ -2,8 +2,8 @@
 # Formato: ver la cabecera de tests/fixtures/golden_hyp.yaml. kb: real (por defecto) | corte:AAAA-MM-DD.
 # Completitud (§K.5): cada frontera de cada patrón temporal del piloto tiene una fila el día anterior y otra
 # el día del cambio, en cada ambiente donde las fechas difieren (test_golden_real_completeness). Las ventanas
-# de ISS-0002 (no bloqueante desde la decisión del 2026-10-17), ISS-0003 e ISS-0010 (bloqueantes) también tienen
-# sus dos filas por ambiente.
+# de ISS-0002 (no bloqueante desde la decisión del 2026-10-17), ISS-0003 (bloqueante) e ISS-0010 (resuelto por la
+# decisión 4 al re-materializar NT_023#4 con el literal efectivo) también tienen sus dos filas por ambiente.
 # Las filas G5-n reproducen la fila n de la tabla de §G.5 sobre datos reales. Donde la evidencia de raw/
 # contradice al diseño, manda la evidencia (ver el informe del PR): D208 ya trae el valor 6 en el MT V150
 # (NT 23 no lo agrega) y D208b la elimina NT 10 (NT_010#6, ISS-0008, aceptado por el usuario).
@@ -16,7 +16,8 @@
 - {id: horizon-beyond, key: "val:DE:D208c", at: "2026-10-25", env: prod, expect: {state: undetermined, reasons: [beyond_horizon], introduced_by: [NT_024#1], warnings_includes: ["más allá del horizonte"]}}
 - {id: G5-20, key: "val:DE:D208c", at: "2027-01-01", env: prod, expect: {state: undetermined, reasons: [beyond_horizon], introduced_by: [NT_024#1], interval_to: null}}
 
-# --- val:DE:D208c (1321): MT ≥ 60 M → NT 21 ≥ 35 M (test = prod = 2024-01-01) → NT 24 ≥ 7 M (2025-01-01) ---
+# --- val:DE:D208c (1321): MT ≥ 60 M → NT 21 > 35 M (test = prod = 2024-01-01) → NT 24 > 7 M (2025-01-01) ---
+# Desde NT 21, literal efectivo (decisión 3 del usuario): «mayor a» y sin la excepción D011≠13 (ISS-0011).
 - {id: G5-01, key: "val:DE:D208c", at: "2023-12-31", env: prod, expect: {state: in_force, introduced_by: baseline, interval_to: "2024-01-01", upcoming_includes: ["NT_021#1 · versión · desde 2024-01-01 (declarada)"]}}
 - {id: G5-02, key: "val:DE:D208c", at: "2024-01-01", env: prod, expect: {state: in_force, introduced_by: [NT_021#1], interval_from: "2024-01-01", code: "1321", severity: R}}
 - {id: d208c-test-2024, key: "val:DE:D208c", at: "2024-01-01", env: test, expect: {state: in_force, introduced_by: [NT_021#1]}}
@@ -25,14 +26,16 @@
 # superseded_by (su PageRef no sería verificable); el oráculo se comprueba sobre el intervalo derivado.
 - {id: watermark, key: "val:DE:D208c", at: "2024-06-01", env: prod, expect: {state: in_force, introduced_by: [NT_021#1], interval_from: "2024-01-01", interval_to: "2025-01-01"}}
 - {id: G5-03, key: "val:DE:D208c", at: "2024-12-31", env: prod, expect: {state: in_force, introduced_by: [NT_021#1], interval_to: "2025-01-01", upcoming_includes: ["NT_024#1 · versión · desde 2025-01-01 (declarada)"]}}
-- {id: G5-04a, key: "val:DE:D208c", at: "2025-01-01", env: prod, expect: {state: in_force, introduced_by: [NT_024#1], interval_from: "2025-01-01", interval_to: null, code: "1321", severity: R, open_issues_includes: [ISS-0005, ISS-0011, ISS-0012]}}
+- {id: G5-04a, key: "val:DE:D208c", at: "2025-01-01", env: prod, expect: {state: in_force, introduced_by: [NT_024#1], interval_from: "2025-01-01", interval_to: null, code: "1321", severity: R, open_issues_includes: [ISS-0005, ISS-0011]}}
+# G5-04a ya no espera ISS-0012 entre los abiertos: se resolvió por decisión del usuario del 2026-10-18 (con el literal
+# efectivo no queda diferencia con el Decreto; la cláusula D011≠13 en rojo la traza solo ISS-0011).
 - {id: d208c-test-2025, key: "val:DE:D208c", at: "2025-01-01", env: test, expect: {state: in_force, introduced_by: [NT_024#1]}}
 - {id: G5-04b, key: "val:DE:D208c", at: "2026-10-17", env: prod, expect: {state: in_force, introduced_by: [NT_024#1], upcoming_empty: true}}
 - {id: G5-15, key: "val:DE:D208c", at: "2026-10-17", env: test, expect: {state: in_force, introduced_by: [NT_024#1], history: ["línea base", "NT_021#1", "NT_024#1"]}}
 # G5-06: lo que una KB cortada antes de NT 21 podía decir honestamente.
 - {id: G5-06, kb: "corte:2023-12-20", key: "val:DE:D208c", at: "2024-06-01", env: prod, expect: {state: undetermined, reasons: [beyond_horizon], introduced_by: baseline, upcoming_empty: true}}
 # G.4 (G5-16, G5-17): DE emitido el 2024-12-30, innominado, PYG, F014 = 10.000.000. Veredicto por versión
-# declarado en la fila: ≥ 35 M no viola, ≥ 7 M viola. (G5-18, frontera 6.999.999/7.000.000, no se expresa en
+# declarado en la fila: > 35 M no viola, > 7 M viola. (G5-18, frontera 7.000.000/7.000.001, no se expresa en
 # este formato: el veredicto lo declara la fila, no lo calcula el DSL sobre los valores del XML.)
 - {id: G5-16, key: "val:DE:D208c", at: "2024-12-30", processed_at: "2025-01-02", env: prod, verdicts: {"NT_021#1": false, "NT_024#1": true}, expect: {state: undetermined, reasons: [axis_split], introduced_by: [NT_024#1], emission_verdict: false, processing_verdict: true, verdict: null}}
 - {id: G5-17, key: "val:DE:D208c", at: "2024-12-30", processed_at: null, env: prod, verdicts: {"NT_021#1": false, "NT_024#1": true}, expect: {state: undetermined, reasons: [processing_date_unknown], introduced_by: [NT_021#1], emission_verdict: false, verdict: null, boundary: "2025-01-01"}}
@@ -47,6 +50,9 @@
 - {id: k5-d208-prod, key: "field:DE:D208", at: "2024-09-15", env: prod, expect: {state: in_force, introduced_by: [NT_002#1], enum_includes: "6", interval_to: "2024-09-27", upcoming_includes: ["NT_023#1 · versión · desde 2024-09-27 (declarada)"]}}
 - {key: "field:DE:D208", at: "2024-09-26", env: prod, expect: {state: in_force, introduced_by: [NT_002#1]}}
 - {key: "field:DE:D208", at: "2024-09-27", env: prod, expect: {state: in_force, introduced_by: [NT_023#1], enum_includes: "6", history: ["línea base", "NT_002#1", "NT_023#1"]}}
+# Literal efectivo (decisión 2): NT 2 quita en rojo «No informar si D201 = 1 o D202=4» y NT 23 «y D202 ≠ 4».
+- {id: d208-nt02-diff, key: "field:DE:D208", diff: ["línea base", "NT_002#1"], expect: {changed: [enumeration_interpretation, observations], within_declared_scope: true}}
+- {id: d208-nt23-diff, key: "field:DE:D208", diff: ["NT_002#1", "NT_023#1"], expect: {changed: [enumeration_interpretation, observations], within_declared_scope: true}}
 
 # --- field:DE:D210: MT → NT_002#2 (~2020-07-16) → NT_023#2 (test 2024-08-30, prod 2024-09-27) ----------
 - {key: "field:DE:D210", at: "2020-07-15", env: prod, expect: {state: outside_coverage, introduced_by: baseline}}
@@ -55,6 +61,8 @@
 - {key: "field:DE:D210", at: "2024-08-30", env: test, expect: {state: in_force, introduced_by: [NT_023#2]}}
 - {key: "field:DE:D210", at: "2024-09-26", env: prod, expect: {state: in_force, introduced_by: [NT_002#2]}}
 - {key: "field:DE:D210", at: "2024-09-27", env: prod, expect: {state: in_force, introduced_by: [NT_023#2]}}
+- {id: d210-nt02-diff, key: "field:DE:D210", diff: ["línea base", "NT_002#2"], expect: {changed: [observations], within_declared_scope: true}}
+- {id: d210-nt23-diff, key: "field:DE:D210", diff: ["NT_002#2", "NT_023#2"], expect: {changed: [observations], within_declared_scope: true}}
 
 # --- field:DE:F014 (NT_001#1, ~2019-10-14) y field:DE:F023 (NT_008#1, ~2021-09-21): antes de la cobertura --
 - {key: "field:DE:F014", at: "2019-10-13", env: prod, expect: {state: outside_coverage, introduced_by: baseline}}
@@ -63,6 +71,7 @@
 - {key: "field:DE:F023", at: "2021-09-20", env: prod, expect: {state: outside_coverage, introduced_by: baseline}}
 - {key: "field:DE:F023", at: "2021-09-21", env: prod, expect: {state: outside_coverage, introduced_by: [NT_008#1]}}
 - {key: "field:DE:F023", at: "2026-10-17", env: prod, expect: {state: in_force, introduced_by: [NT_008#1], open_issues_includes: [ISS-0009]}}
+- {id: f023-nt08-diff, key: "field:DE:F023", diff: ["línea base", "NT_008#1"], expect: {changed: [observations], within_declared_scope: true}}
 
 # --- Campos solo con línea base (las NT solo los mencionan: efectos not_modeled) ----------------------
 - {key: "field:DE:C002", at: "2026-10-17", env: prod, expect: {state: in_force, introduced_by: baseline, enum_includes: "8", open_issues_includes: [ISS-0013]}}
@@ -119,14 +128,22 @@
 - {key: "val:DE:D210b", at: "2024-08-30", env: test, expect: {state: in_force, introduced_by: [NT_023#6], code: "1334"}}
 - {key: "val:DE:D210b", at: "2024-09-26", env: prod, expect: {state: not_yet_existing}}
 - {key: "val:DE:D210b", at: "2024-09-27", env: prod, expect: {state: in_force, introduced_by: [NT_023#6], open_issues_includes: [ISS-0004]}}
+# Altas en verde bajo «se modifica»: Issue de trazabilidad no bloqueante (decisiones 9 y 10), siguen in_force.
+- {id: iss14-d208f, key: "val:DE:D208f", at: "2026-10-17", env: prod, expect: {state: in_force, introduced_by: [NT_023#5], open_issues_includes: [ISS-0014]}}
+- {id: iss14-d210b, key: "val:DE:D210b", at: "2026-10-17", env: prod, expect: {state: in_force, introduced_by: [NT_023#6], open_issues_includes: [ISS-0014]}}
+- {id: iss14-d208g, key: "val:DE:D208g", at: "2026-10-17", env: test, expect: {state: in_force, introduced_by: [NT_023#7], open_issues_includes: [ISS-0014]}}
 
 - {key: "val:DE:D209a", at: "2026-10-17", env: prod, expect: {state: in_force, introduced_by: baseline, code: "1313"}}
 
-# --- val:DE:D210 (1314): MT → NT_023#4 (literal igual); ISS-0010 bloquea desde NT 23 en cada ambiente ------
+# --- val:DE:D210 (1314): MT → NT_023#4 (quita en rojo la excepción B2F) -----------------------------------
+# Las filas del inicio de NT 23 pasaron de undetermined (ISS-0010 bloqueante, estado transitorio) a in_force al
+# re-materializar NT_023#4 con el literal efectivo (decisión 4 del usuario, 2026-10-17; el golden aún no está en
+# main, así que no es un cambio al pasado).
 - {key: "val:DE:D210", at: "2024-08-29", env: test, expect: {state: in_force, introduced_by: baseline, code: "1314"}}
-- {key: "val:DE:D210", at: "2024-08-30", env: test, expect: {state: undetermined, reasons: [blocking_issue], introduced_by: [NT_023#4], open_issues_includes: [ISS-0010]}}
+- {key: "val:DE:D210", at: "2024-08-30", env: test, expect: {state: in_force, introduced_by: [NT_023#4], code: "1314"}}
 - {key: "val:DE:D210", at: "2024-09-26", env: prod, expect: {state: in_force, introduced_by: baseline}}
-- {key: "val:DE:D210", at: "2024-09-27", env: prod, expect: {state: undetermined, reasons: [blocking_issue], introduced_by: [NT_023#4]}}
+- {key: "val:DE:D210", at: "2024-09-27", env: prod, expect: {state: in_force, introduced_by: [NT_023#4], code: "1314"}}
+- {id: val-d210-nt23-diff, key: "val:DE:D210", diff: ["línea base", "NT_023#4"], expect: {changed: [condition, observation], within_declared_scope: true}}
 
 # --- val:DE:D210a (1323): lápida NT_002#4 (~2020-07-16); siempre muestra ISS-0004 (D210b) -----------------
 - {key: "val:DE:D210a", at: "2020-07-15", env: prod, expect: {state: outside_coverage, introduced_by: baseline}}

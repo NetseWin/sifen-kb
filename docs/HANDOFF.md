@@ -6,29 +6,40 @@ el desarrollo** (persona o sesión de Claude). Para *usar* la KB, ver `README.md
 Léelo entero antes de tocar nada. El diseño está cerrado: **no rediseñar**; implementar lo que falta según
 `docs/arquitectura.md` y las decisiones de la sección 2.
 
-## ▶ Retomar aquí (actualizado el 2026-10-17, al cerrar la sesión del paso A)
+## ▶ Retomar aquí (actualizado el 2026-10-18, al cerrar el paso B)
 
-- **Siguiente: paso B (curación) en una sesión NUEVA** de Claude Code abierta en el repo (WSL), en la rama
-  `kb/piloto-receptor`. Debe ser nueva porque `curation/prompts/curar_entidad.md` cambió y el hook
-  `SessionStart` hashea el prompt al arrancar (decisión del usuario). Instrucciones paso a paso, literales
-  efectivos esperados e Issues: **`docs/traspaso-curacion-piloto.md` §4 «Paso B»** (leer antes sus §1 y §3:
-  decisiones 1–12 del usuario, no reabrirlas).
-- **Paso A (código): hecho y commiteado** en `feat/literal-efectivo` (rama desde `main`, worktree
-  `../sifen-kb-literal-efectivo`): `0685ce4` literal efectivo (`rendered_literal`/`effective_literal`, rojo =
-  eliminado en MT y NT) + comprobación `marcado` (regla «mixta»); `215175e` `explain`/XSD: C002 documentado por
-  MT/NT frente a aceptado por el XSD. Suite completa 1690 passed, 2 skipped; `pr-scope` OK. **Sin push ni merge**
-  (los decide el usuario; repo aún no publicado).
-- **`kb/piloto-receptor`**: commits `5d41560` (`_meta.yaml`) y `1d42499` (curación del piloto, estado previo al
-  literal efectivo), rebasados sobre `feat/literal-efectivo`. Sin commitear: `curar_entidad.md`, este archivo y
-  el traspaso. `sifen check` da hoy **11 errores esperados** (8 `literales` + 3 `marcado`): son el trabajo del
-  paso B. Tests rápidos en verde (1181 passed, 1 skipped previsto).
-- **Orden de los PR:** primero `feat/literal-efectivo` → `main` (código); después rebasar `kb/piloto-receptor`
-  sobre `main` y abrir el PR de conocimiento (lo revisa y mergea el usuario; informe:
-  `docs/informe-revision-piloto.md`, que se actualiza al cerrar el paso B).
+- **Paso B (curación): hecho y verificado en `kb/piloto-receptor`, SIN commitear; espera la aprobación final
+  del usuario** (texto del commit propuesto en el chat del cierre). Re-materializadas con `sifen draft` las 8
+  versiones con literal efectivo (D208 @NT_002#1/@NT_023#1, D210 @NT_002#2/@NT_023#2, F023 @NT_008#1, D208c
+  @NT_021#1/@NT_024#1, 1314 @NT_023#4) y rehechas sus interpretaciones; ISS-0014 nuevo (trazabilidad
+  NT_023#5–#7); ISS-0010 e ISS-0012 resueltos (la cláusula D011≠13 en rojo la traza solo ISS-0011); golden
+  actualizado (1314 desde NT 23 `in_force`, filas `diff` e ISS-0014, sin `id` duplicados). Detalle:
+  `docs/traspaso-curacion-piloto.md` §1, §3 (decisiones 13–15) y §4 «Paso B»; informe:
+  `docs/informe-revision-piloto.md`.
+- **Bitácora (decisión 1b′):** la sesión editó con herramientas MCP, que no disparan `PostToolUse`. El PR de
+  código `feat/bitacora-procedencia` (`6e0c377`, worktree `../sifen-kb-bitacora`, aprobado y commiteado) agrega
+  `source: hook|backfill` por salida y el modo manual `python -m sifen_kb.hooklog Backfill`. El bridge abrió 3
+  sesiones de Claude Code; cada archivo se registró como `backfill` en la de su última edición real: 15 salidas
+  en `ce4ca541`, 1 en `6b58d45f` (golden) y 3 en `6767ad7f` (`HANDOFF.md`, traspaso, ISS-0012). El informe no se
+  registró (procedencia mixta, worker + MCP; nota en su cabecera). Las tres bitácoras entran en el commit.
+- **`kb/piloto-receptor`** rebasada sobre `feat/bitacora-procedencia` (stash con OK del usuario, sin conflictos):
+  `16d6e87` (`_meta.yaml`), `e9ff1e0` (curación previa al literal efectivo), `8465490` (prompt y traspaso), sobre
+  `6e0c377` ← `215175e` ← `0685ce4`. Cierre: `git diff --check`, ruff y `sifen fmt --check` OK; `sifen check`
+  0 errores (8 informativos); `pytest -q` 1833 passed, 1 skipped (previsto); `explain` focalizados como se
+  esperaba; anexo del informe regenerado con `sifen check --report`.
+- **Orden de los PR:** `feat/literal-efectivo` → `main`; después `feat/bitacora-procedencia` (rebase sobre `main`,
+  queda su único commit); después rebasar `kb/piloto-receptor` sobre `main` y abrir el PR de conocimiento (lo
+  revisa y mergea el usuario con `Reviewed-by:`). Sin push ni merge: los decide el usuario.
+- **Follow-up (PR de código independiente, NO en el paso B):** ampliar el matcher del hook `PostToolUse` y los
+  `deny` `Edit(...)` de `.claude/settings.json` a las herramientas MCP de escritura (p. ej.
+  `mcp__.*__(edit|write)`), con tests de `hooklog`.
+- **Paso A (código): hecho y commiteado** en `feat/literal-efectivo` (worktree `../sifen-kb-literal-efectivo`):
+  `0685ce4` literal efectivo + comprobación `marcado`; `215175e` C002 documentado por MT/NT frente al XSD.
 - **Pendiente de decidir con el usuario:** `cut_kb` conserva Issues posteriores al corte (un Issue no tiene fecha
-  propia); ISS-0012 ¿se resuelve con «mayor a»? (lo pregunta el paso B); `NOTICE` (sección 2).
-- Reglas de trabajo con este usuario: commits solo con su OK explícito; nunca push, merge, `git clean` ni
-  `git stash`; preguntas de decisión como texto numerado (1a, 2b…). Mapa de documentos: sección 8.
+  propia); `NOTICE` (sección 2).
+- Reglas de trabajo con este usuario: commits solo con su OK explícito; nunca push, merge ni `git clean`;
+  `git stash` solo con su autorización expresa; preguntas de decisión como texto numerado (1a, 2b…). Mapa de
+  documentos: sección 8.
 
 ---
 
@@ -111,7 +122,7 @@ Suite al cierre del paso A (rama `feat/literal-efectivo`, sin `kb/`): **1690 pas
 | **Consulta** | `explain.py` | ✅ | `sifen explain` y `sifen status` (commit `d2eef71`). Enumeración documentada por MT/NT frente a la aceptada por el XSD (`xsd.enumeration`, decisión 8) y fecha de NT 001–012 como cita: `215175e`. |
 | **Integridad y formato** | `integrity.py` | ✅ | `sifen check` (29 comprobaciones, `--report`) y `sifen fmt` (commits `0a0e9ca`, `08cd5f7`). `literales` contra `effective_literal` y comprobación `marcado` (regla «mixta»): `0685ce4`. |
 | **Borrador desde celdas** | `draft.py` | ✅ | `sifen draft <DocId>`, `<EffectId>`, `<clave> --baseline <RowRef>` (commit `2ebf82a`). Copia `effective_literal`, avisa tramos quitados y conflictos del marcado; `--dry-run` corregido: `0685ce4`. |
-| **Conocimiento curado** | `kb/`, `tests/golden/temporal.yaml` | 🟡 commiteado, falta el paso B | Rama `kb/piloto-receptor` (`1d42499`). Ver «Retomar aquí» y `docs/traspaso-curacion-piloto.md` §4. Va en un PR aparte que revisa el usuario. |
+| **Conocimiento curado** | `kb/`, `tests/golden/temporal.yaml` | 🟡 paso B verificado, sin commitear | Rama `kb/piloto-receptor` (`8465490`, rebasada sobre `6e0c377`, + árbol de trabajo). Bitácora resuelta con `backfill`; `sifen check` 0 errores; falta la aprobación final y el commit. Ver «Retomar aquí» y `docs/traspaso-curacion-piloto.md` §4. Va en un PR aparte que revisa el usuario. |
 
 ## 5. Próximos pasos, en orden
 
@@ -214,6 +225,11 @@ anteriores a una prórroga.
 
 **DSL:** números del texto fuente a `Decimal` (sin float); `exists()` nunca es UNKNOWN; con tipo "N" un valor
 no numérico da UNKNOWN; `literal_contains_constant` usa convención es-PY (punto = miles, coma = decimal).
+
+**Arnés sin herramientas nativas:** si la sesión corre en un arnés que edita con herramientas MCP
+(p. ej. Pi: `mcp__custom-tools__edit`/`write`), ni el hook `PostToolUse` (matcher `Edit|Write|MultiEdit`) ni los
+`deny` `Edit(...)` de `.claude/settings.json` las alcanzan: la bitácora queda sin `outputs` y `sifen check`
+(`corridas_llm`) falla. Le pasó a la sesión `ce4ca541` del paso B (2026-10-18).
 
 **Hooks/permisos de Claude Code:** `Edit(ruta)` cubre todas las herramientas de escritura; rutas con `/` =
 relativas a la raíz del proyecto; las reglas `Bash(...)` no son un límite de seguridad (la protección real es
