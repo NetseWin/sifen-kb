@@ -11,11 +11,11 @@ inputs:
     sha256: 6e290bab069c07b23ab94ec7566408a82506d95688fe9513ce20b12686e055eb
 outputs:
   - path: docs/HANDOFF.md
-    sha256: cf01967447bc70a86adbf97aee8c5a3792c6025e20d8f47788cd2f9a7a7a28c4
+    sha256: ba071b13bf0657bf0a54c2499eebbd06230116b51354c109a0a457a84baed68a
     source: backfill
     reason: |-
       Sesión en arnés Pi: docs/HANDOFF.md fue editado mediante herramientas MCP (mcp__custom-tools__edit y mcp__custom-tools__bash), que no dispararon el hook PostToolUse; registro retrospectivo del 2026-10-18
-    recorded_at: 2026-10-18T19:33:19Z
+    recorded_at: 2026-10-18T19:42:51Z
   - path: docs/traspaso-curacion-piloto.md
     sha256: f086859e76db0d295ed4d41d89c26481b60d03790f371dff69c3ecb80bf61fa1
     source: backfill

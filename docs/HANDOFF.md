@@ -8,8 +8,14 @@ Léelo entero antes de tocar nada. El diseño está cerrado: **no rediseñar**; 
 
 ## ▶ Retomar aquí (actualizado el 2026-10-18, al cerrar el paso B)
 
-- **Paso B (curación): hecho y verificado en `kb/piloto-receptor`, SIN commitear; espera la aprobación final
-  del usuario** (texto del commit propuesto en el chat del cierre). Re-materializadas con `sifen draft` las 8
+- **Paso B (curación): hecho, verificado y commiteado** en `kb/piloto-receptor`: `7ba7fdb` (aprobado por el
+  usuario; `sifen check` 0 errores, `pytest -q` 1833 passed / 1 skipped previsto). Siguiente: el paso C del
+  traspaso (§4) y el orden de los PR de abajo; push, merge y PR los decide el usuario.
+- **Autonomía (decisión del usuario, 2026-10-18):** la sesión decide sola lo técnico y de proceso (ramas,
+  rebases, verificaciones, bitácoras, docs, commits de trabajo en ramas de feature) y consulta solo lo normativo
+  de SIFEN, push/merge/PR/publicación, lo destructivo o irreversible, credenciales, cambios de alcance o de
+  diseño y bloqueos reales.
+- Contexto del paso B: Re-materializadas con `sifen draft` las 8
   versiones con literal efectivo (D208 @NT_002#1/@NT_023#1, D210 @NT_002#2/@NT_023#2, F023 @NT_008#1, D208c
   @NT_021#1/@NT_024#1, 1314 @NT_023#4) y rehechas sus interpretaciones; ISS-0014 nuevo (trazabilidad
   NT_023#5–#7); ISS-0010 e ISS-0012 resueltos (la cláusula D011≠13 en rojo la traza solo ISS-0011); golden
@@ -37,8 +43,8 @@ Léelo entero antes de tocar nada. El diseño está cerrado: **no rediseñar**; 
   `0685ce4` literal efectivo + comprobación `marcado`; `215175e` C002 documentado por MT/NT frente al XSD.
 - **Pendiente de decidir con el usuario:** `cut_kb` conserva Issues posteriores al corte (un Issue no tiene fecha
   propia); `NOTICE` (sección 2).
-- Reglas de trabajo con este usuario: commits solo con su OK explícito; nunca push, merge ni `git clean`;
-  `git stash` solo con su autorización expresa; preguntas de decisión como texto numerado (1a, 2b…). Mapa de
+- Reglas de trabajo con este usuario: commits de trabajo en ramas de feature sin pedir permiso (autonomía de
+  arriba); nunca push, merge ni `git clean` sin su OK; `git stash` solo para preservar trabajo, con respaldo previo; preguntas de decisión como texto numerado (1a, 2b…). Mapa de
   documentos: sección 8.
 
 ---
