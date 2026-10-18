@@ -1,12 +1,18 @@
 # Traspaso: curación del piloto receptor/identidad (§5 paso 4 de docs/HANDOFF.md)
 
-Estado al 2026-10-17 (actualizado al cerrar la sesión del paso A). Es el detalle del paso 4 de `docs/HANDOFF.md` (que remite aquí desde «Retomar aquí»): estado de la curación, las decisiones del usuario sobre ella y los pasos siguientes, en orden. Lo escribió la sesión de curación; el informe para la revisión humana del PR está en `docs/informe-revision-piloto.md`.
+Estado al 2026-10-18 (actualizado en la revisión del PR #3). Es el detalle del paso 4 de `docs/HANDOFF.md` (que remite aquí desde «Retomar aquí»): estado de la curación, las decisiones del usuario sobre ella y los pasos siguientes, en orden. Lo escribió la sesión de curación; el informe para la revisión humana del PR está en `docs/informe-revision-piloto.md`.
 
 ## 1. Dónde estamos
 
-**Actualizado al cerrar el paso B (2026-10-18; sesiones de Claude Code `ce4ca541`, `6b58d45f` y `6767ad7f`).** Paso B hecho y verificado en `kb/piloto-receptor` (rebasada sobre `feat/bitacora-procedencia`, `6e0c377`), **sin commitear**: espera la aprobación final del usuario. Ver §4 «Paso B» (B.4 cierre, B.6 bitácora) y las decisiones 13–15 en §3. Lo que sigue en esta sección es el estado al cerrar el paso A.
+**Estado actual (2026-10-18).** Repo publicado en `https://github.com/NetseWin/sifen-kb`.
 
-**Al cerrar la sesión del paso A (2026-10-17, sesión `d700f0c7`).**
+- **Paso A (código):** integrado en `main` con el PR #1 (`feat/literal-efectivo`, merge commit `aa76b37`).
+- **Bitácora con procedencia (1b′):** integrada en `main` con el PR #2 (`feat/bitacora-procedencia`, merge commit `c8a6bca`).
+- **Paso B (curación):** commiteado en `kb/piloto-receptor` (`7ba7fdb`, con correcciones de documentación posteriores) y publicado en el **PR #3**, con el CI en verde. Lo revisa y mergea el usuario con merge commit y `Reviewed-by:`.
+- Detalle del paso B en §4 (B.4 cierre, B.6 bitácora); decisiones 13–15 en §3.
+
+**Estado histórico al cerrar la sesión del paso A (2026-10-17, sesión `d700f0c7`).** Se conserva como registro: ya no describe el estado actual.
+
 
 - **Paso A (código) hecho** en la rama `feat/literal-efectivo` (desde `main`, en el worktree `../sifen-kb-literal-efectivo`): commits `0685ce4` (literal efectivo y comprobación `marcado`) y `215175e` (C002: enumeración MT/NT frente a XSD). Suite completa en esa rama: 1690 passed, 2 skipped (el golden real, que no existe en `main`); `pr-scope` contra `main`: OK (código + neutro). **Sin push ni merge: lo decide el usuario.**
 - **`kb/piloto-receptor` commiteada y rebasada** sobre `feat/literal-efectivo` (con el OK del usuario): `5d41560` (`_meta.yaml`) y `1d42499` (curación del piloto, estado previo al literal efectivo). El PR de conocimiento solo pasará `pr-scope` cuando `feat/literal-efectivo` esté mergeada en `main` (entonces se rebasa sobre `main`).
@@ -59,7 +65,7 @@ Estado al 2026-10-17 (actualizado al cerrar la sesión del paso A). Es el detall
 
 ### Paso B — Re-materializar la KB con el literal efectivo (sesión de curación NUEVA, rama `kb/piloto-receptor`)
 
-**Estado (2026-10-18, al cerrar el paso B): pasos 1–6 hechos y verificados, sin commitear (espera la aprobación final del usuario).**
+**Estado: hecho.** Los pasos 1–6 se hicieron y verificaron el 2026-10-18 y se commitearon en `7ba7fdb` (publicado en el PR #3). Lo que sigue en esta subsección es el registro de cómo se hizo.
 
 - B.1: las 8 versiones re-materializadas con `sifen draft` (quitadas la afectada y las posteriores de cada entidad; `draft` en orden cronológico). Los literales coinciden con los esperados de abajo. Interpretaciones rehechas con `run: ce4ca541…`: enumeración de D208 (mismos 7 valores), condiciones de D208c (`>` sin D011, `partial`, ISS-0005 en `gaps`) y de 1314 (`D201 == 2 and not exists(D210)`, `full`), `legal_basis` de D208c, notas de los efectos de NT 2, 8, 21, 23 y 24.
 - B.2: ISS-0014 nuevo (no bloqueante, `affects` NT_023#5, #6, #7) → `marcado` en 0. ISS-0010 resuelto. ISS-0009 e ISS-0011 abiertos como trazabilidad (texto actualizado). ISS-0003 sigue bloqueante (enunciado actualizado). ISS-0005: menciona `>` desde NT 21. ISS-0012 resuelto (decisión 15); la fila golden G5-04a ya no lo espera entre los abiertos.

@@ -1,6 +1,6 @@
 # Traspaso de desarrollo — sifen-kb
 
-Estado al **2026-10-17** (último commit de esta etapa: ver `git log`). Este documento es para quien **continúe
+Estado al **2026-10-18** (último commit de esta etapa: ver `git log`). Este documento es para quien **continúe
 el desarrollo** (persona o sesión de Claude). Para *usar* la KB, ver `README.md` y `docs/uso.md`.
 
 Léelo entero antes de tocar nada. El diseño está cerrado: **no rediseñar**; implementar lo que falta según
@@ -62,7 +62,7 @@ Léelo entero antes de tocar nada. El diseño está cerrado: **no rediseñar**; 
   `stack.md`, `priorart.md`).
 - **Repo local:** `/home/soporte/proyectos/sifen-kb` en WSL2 Ubuntu 26.04 (usuario `soporte`).
   Desde Windows: `\\wsl.localhost\Ubuntu\home\soporte\proyectos\sifen-kb`.
-- **GitHub:** **todavía no publicado.** Destino acordado: `https://github.com/NetseWin/sifen-kb`, **público**.
+- **GitHub:** publicado el 2026-10-18 en `https://github.com/NetseWin/sifen-kb` (**público**; ver «Retomar aquí»).
 - **Etapa:** construyendo el **MVP = Fases 0–1** del roadmap (`docs/arquitectura.md` §S, §T, §U) en el dominio
   piloto **receptor/identidad** (D208c / código 1321 y afines).
 
@@ -106,11 +106,11 @@ bajo MIT y que los *literales copiados de DNIT* quedan fuera de la licencia. Pre
   ```
 
   y los archivos se leen/escriben por la ruta UNC `\\wsl.localhost\Ubuntu\home\soporte\proyectos\sifen-kb\…`.
-- **GitHub:** el `gh` de Windows (`/mnt/c/Users/hugo.maldonado/scoop/shims/gh.exe`) está autenticado como
-  **NetseWin** con scopes `repo`, `gist`, `read:org`. **Falta el scope `workflow`** (sin él no se puede empujar
-  `.github/workflows/`): el usuario debe ejecutar `gh auth refresh -h github.com -s workflow` (abre el
-  navegador). En WSL no hay `gh` ni credenciales: para `git push` desde WSL, configurar un helper **local al
-  repo**: `git config credential.helper '!/mnt/c/Users/hugo.maldonado/scoop/shims/gh.exe auth git-credential'`.
+- **GitHub:** WSL tiene `gh` nativo (`/usr/bin/gh`, 2.46.0) autenticado como **NetseWin** (protocolo https;
+  scopes `gist`, `read:org`, `repo` y `workflow`). El repo tiene `origin` = `https://github.com/NetseWin/sifen-kb.git`
+  y un credential helper **local al repo** (`credential.https://github.com.helper = !/usr/bin/gh auth
+  git-credential`); la configuración global de git no se tocó. (Hasta el 2026-10-18 solo había `gh` de Windows,
+  sin el scope `workflow`.)
 - Identidad git de este repo (config local, decisión del usuario 2026-10-18): `Hugo Maldonado
   <92177318+NetseWin@users.noreply.github.com>`. La global de WSL sigue con el email personal: no commitear con
   ella. Antes de publicar se reescribió toda la historia con el noreply (ver «Historial reescrito» en la sección 6). Los commits llevan el trailer
@@ -134,7 +134,7 @@ Suite al cierre del paso A (rama `feat/literal-efectivo`, sin `kb/`): **1690 pas
 | **Consulta** | `explain.py` | ✅ | `sifen explain` y `sifen status` (commit `d2eef71`). Enumeración documentada por MT/NT frente a la aceptada por el XSD (`xsd.enumeration`, decisión 8) y fecha de NT 001–012 como cita: `215175e`. |
 | **Integridad y formato** | `integrity.py` | ✅ | `sifen check` (29 comprobaciones, `--report`) y `sifen fmt` (commits `0a0e9ca`, `08cd5f7`). `literales` contra `effective_literal` y comprobación `marcado` (regla «mixta»): `0685ce4`. |
 | **Borrador desde celdas** | `draft.py` | ✅ | `sifen draft <DocId>`, `<EffectId>`, `<clave> --baseline <RowRef>` (commit `2ebf82a`). Copia `effective_literal`, avisa tramos quitados y conflictos del marcado; `--dry-run` corregido: `0685ce4`. |
-| **Conocimiento curado** | `kb/`, `tests/golden/temporal.yaml` | 🟡 paso B verificado, sin commitear | Rama `kb/piloto-receptor` (`8465490`, rebasada sobre `6e0c377`, + árbol de trabajo). Bitácora resuelta con `backfill`; `sifen check` 0 errores; falta la aprobación final y el commit. Ver «Retomar aquí» y `docs/traspaso-curacion-piloto.md` §4. Va en un PR aparte que revisa el usuario. |
+| **Conocimiento curado** | `kb/`, `tests/golden/temporal.yaml` | 🟡 paso B commiteado, PR #3 abierto | Rama `kb/piloto-receptor` (paso B en `7ba7fdb`, sobre `6e0c377`). Bitácora resuelta con `backfill`; `sifen check` 0 errores; CI del PR #3 en verde. Falta el merge, que hace el usuario. Ver «Retomar aquí» y `docs/traspaso-curacion-piloto.md` §4. Va en un PR aparte que revisa el usuario. |
 
 ## 5. Próximos pasos, en orden
 
@@ -199,13 +199,15 @@ Suite al cierre del paso A (rama `feat/literal-efectivo`, sin `kb/`): **1690 pas
 7. **Verificar la Definition of Done** (`docs/arquitectura.md` §T). Lo que depende del usuario: T.8 evaluación
    ciega (él escribe 15 preguntas y su clave de respuestas **antes** de ver salidas), T.11 umbral de costo de
    curación por NT, T.12 cronometraje de tres rechazos. Preparar plantillas y pedírselo.
-8. **Publicar en GitHub** (pedir al usuario el scope `workflow` antes):
-   1. `gh repo create NetseWin/sifen-kb --public --source . --remote origin` (descripción y topics).
-   2. Push de `main` con código, infraestructura, `sources/` y `raw/` (sin `kb/`): CI debe quedar verde.
-   3. Protección de `main`: PR obligatorio, CI verde, sin force-push, sin bypass de administradores.
-   4. Rama + PR de conocimiento (`kb/`, `tests/golden/`, `curation/`) con el informe de revisión → lo revisa y
-      mergea el usuario con trailer `Reviewed-by:`.
-   5. Tras el merge, `release.yml` (manual) crea el tag `kb-AAAA.MM.DD` y la release con el manifiesto.
+8. **Publicar en GitHub:**
+   1. ✅ Repo público `NetseWin/sifen-kb` creado, con descripción y topics, y solo merge commit habilitado.
+   2. ✅ Push de `main` (código, infraestructura, `sources/` y `raw/`, sin `kb/`): CI en verde.
+   3. ✅ Protección de `main`: PR obligatorio, check `checks` en verde, sin force-push ni borrado, también para
+      administradores.
+   4. PRs: ✅ #1 y #2 integrados con merge commit; **#3 (conocimiento) abierto, lo revisa y mergea el usuario**
+      con merge commit y trailer `Reviewed-by:`.
+   5. Pendiente: tras el merge del #3, `release.yml` (manual) crea el tag `kb-AAAA.MM.DD` y la release con el
+      manifiesto.
 
 ## 6. Hallazgos que conviene no redescubrir
 
@@ -245,8 +247,9 @@ en `.git/noreply-rewrite/map.tsv`, respaldo en `.git/backup-pre-noreply.bundle`,
 commits que ya no estaban en la historia antes de reescribir (`5d41560`, `1d42499` y los `base_commit`
 `926f1eb…`/`8e86a454…` de las bitácoras) se dejaron como estaban: no tienen un equivalente exacto. El remapeo
 cambió mecánicamente `ISS-0009.yaml` y el traspaso después de su `backfill`: sus `sha256` en las bitácoras
-`ce4ca541` y `6767ad7f` son los del contenido anterior al remapeo (este archivo, editado después, se volvió a
-registrar).
+`ce4ca541` y `6767ad7f` son los del contenido anterior al remapeo. Este archivo se volvió a registrar después
+(último registro: commit `59c83c3`); las correcciones documentales de la revisión del PR #3 (HANDOFF, traspaso e
+informe) no se registraron: son solo docs, sin interpretación `by: llm`, y la bitácora no se tocó en esa revisión.
 
 **Arnés sin herramientas nativas:** si la sesión corre en un arnés que edita con herramientas MCP
 (p. ej. Pi: `mcp__custom-tools__edit`/`write`), ni el hook `PostToolUse` (matcher `Edit|Write|MultiEdit`) ni los
