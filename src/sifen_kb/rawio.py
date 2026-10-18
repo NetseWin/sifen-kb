@@ -60,13 +60,25 @@ Texto vigente de una celda: `RawRow.current(attr)` quita los tramos "deleted" de
 normaliza (la misma regla que el libro de cambios de pdf_to_md). `cells` conserva TODO el texto
 impreso, también el tachado.
 
-**El literal que copia y verifica la KB es `RawRow.literal(attr)`, no `current`.** El color solo
-tiene leyenda en el MT V150 (amarillo = modificación, verde = adición, rojo = eliminación): ahí
-`literal == current`. En las NT el resaltado no tiene semántica fiable (docs/arquitectura.md §I.4;
-docs/investigacion/sifen.md §5): en NT 21 y NT 24 el rojo marca «Si el Tipo de transacción es
-distinto a Muestras médicas (D011≠13)», «o igual» y el «=» de «>=», y ese texto SIGUE VIGENTE. Por
-eso en una NT `literal == cells[attr]` (todo el texto impreso) y la acción sale del verbo del
-encabezado, nunca del color.
+Semántica del marcado (decisiones 2 y 3 del usuario, 2026-10-17; docs/arquitectura.md §I.4)
+-------------------------------------------------------------------------------------------
+En el MT V150 **y en las NT** el rojo es contenido eliminado, el verde agregado y el amarillo
+modificado (leyenda del MT, pág. PDF 15), leídos siempre junto con el verbo del encabezado. Cada
+celda tiene dos literales:
+
+- `RawRow.rendered_literal(attr)` = `cells[attr]`: todo lo visible en el PDF, con su marcado.
+- `RawRow.effective_literal(attr)` = `current(attr)`: el contenido efectivo, derivado de forma
+  determinista quitando los tramos "deleted" (lo agregado y lo modificado se conservan). **Es el
+  literal que copia `sifen draft` y verifica `sifen check`**, en cualquier documento. Excepción: la
+  fila que elimina una regla reproduce lo eliminado, y la lápida se contrasta con `rendered`.
+
+El color nunca decide solo. `color_signal` resume el marcado de una fila y `marking_conflicts` lo
+contrasta con la acción curada del efecto y con el verbo literal del encabezado (`verb_actions`).
+Regla «mixta» (decisión del usuario, 2026-10-17): color ≠ acción curada, marcado que no permite
+reconstruir el contenido efectivo de forma unívoca, o `modify` cuyo contenido efectivo es igual al
+de la predecesora ⇒ Issue BLOQUEANTE; color ≠ verbo literal del encabezado pero = acción curada ⇒
+Issue de trazabilidad (no bloqueante). Lo exige la comprobación `marcado` de `sifen check`; esta
+capa solo detecta, no decide.
 
 Atributos: campos (FIELD_HEADERS) group, id, xml_name, description, parent, data_type, length,
 occurrence, observations, version; validaciones (VALIDATION_HEADERS) num, id, message, code,
@@ -88,7 +100,8 @@ Toda escritura es determinista: UTF-8, LF, JSON con claves ordenadas y sin escap
 from __future__ import annotations
 
 import json
-from collections.abc import Iterator
+import re
+from collections.abc import Iterable, Iterator, Mapping
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -151,8 +164,14 @@ ROW_FIELDS: tuple[str, ...] = (
     "marks",
 )
 LEDGER_DIR = "_ledger"
-COLOR_LEGEND_DOC = "MT_V150"
-"""Único documento cuya leyenda da semántica al color (ver `RawRow.literal`)."""
+IMPLIED_ACTION: dict[str, str] = {"added": "add", "deleted": "remove", "modified": "modify"}
+"""Acción que indica `RawRow.color_signal`; "mixed" no indica ninguna (marcado no unívoco)."""
+_VERBS: tuple[tuple[str, re.Pattern[str]], ...] = (
+    ("add", re.compile(r"\b(?:agreg|incorpor|inclu|adicion|nuev[oa]s?\b)", re.IGNORECASE)),
+    ("modify", re.compile(r"\b(?:modific|reemplaz|sustitu|actualiz|corrig|cambi|exclu)", re.IGNORECASE)),
+    # «se excluye» restringe el alcance (modify de la condición, §F.3) o quita la regla: ambas.
+    ("remove", re.compile(r"\b(?:elimin|suprim|derog|exclu)", re.IGNORECASE)),
+)
 
 
 def header_key(literal: str) -> str:
@@ -199,13 +218,135 @@ class RawRow:
             text = text[: m["start"]] + text[m["end"] :]
         return normalize_text(text)
 
-    def literal(self, attr: str) -> str:
-        """Literal de la celda que copia `sifen draft` y verifica `sifen check`.
+    def rendered_literal(self, attr: str) -> str:
+        """Todo lo visible de la celda (`cells[attr]`), también el texto en rojo."""
+        return self.cells[attr]
 
-        En el MT V150 (único documento con leyenda de colores) es `current(attr)`; en cualquier
-        otro documento, `cells[attr]` completo: el color de una NT no elimina texto.
+    def effective_literal(self, attr: str) -> str:
+        """Contenido efectivo de la celda en cualquier documento: sin los tramos en rojo (eliminados).
+
+        Es el literal que copia `sifen draft` y verifica `sifen check` (ver el módulo). Coincide con
+        `current(attr)`: lo agregado (verde) y lo modificado (amarillo) se conservan.
         """
-        return self.current(attr) if self.doc == COLOR_LEGEND_DOC else self.cells[attr]
+        return self.current(attr)
+
+    def removed_spans(self, attr: str) -> list[str]:
+        """Tramos en rojo de la celda, en orden: lo que `effective_literal` quita."""
+        deleted = [m for m in self.marks if m["attr"] == attr and m["change"] == "deleted"]
+        return [m["text"] for m in sorted(deleted, key=lambda m: m["start"])]
+
+    def color_signal(self, attrs: Iterable[str]) -> str | None:
+        """Resumen del marcado de la fila sobre `attrs` (y la celda `id`): qué dice el color.
+
+        - None: ninguna de esas celdas está resaltada (sin señal de color).
+        - "added" / "deleted": la fila entera es un alta / una baja: `row_change` lo dice, o la celda
+          `id` está entera de ese color y toda otra celda resaltada también (en NT 2 la «R» de la
+          severidad de D208d/D210a quedó sin color: no cuenta).
+        - "mixed": la celda `id` es un alta o una baja y otra celda tiene otro marcado (no unívoco).
+        - "modified": cualquier otro marcado (tramos en una fila que se conserva).
+        """
+        considered = [a for a in dict.fromkeys(["id", *attrs]) if a in self.cells]
+        marked = [self.changes[a] for a in considered if a in self.changes]
+        if not marked:
+            return None
+        whole = self.row_change if self.row_change in ("added", "deleted") else None
+        if whole is None and self.changes.get("id") in ("added", "deleted"):
+            whole = self.changes["id"]
+        if whole is None:
+            return "modified"
+        return whole if all(c == whole for c in marked) else "mixed"
+
+
+def verb_actions(verb_literal: str) -> frozenset[str]:
+    """Acciones que nombra el verbo literal del encabezado («se modifican y elimina …» → modify, remove).
+
+    Vacío si no nombra ninguna reconocible («se realizó una verificación de las fórmulas»): entonces
+    el verbo no contradice ningún color.
+    """
+    return frozenset(action for action, pattern in _VERBS if pattern.search(verb_literal))
+
+
+@dataclass(frozen=True)
+class MarkingConflict:
+    """Contradicción entre el marcado de la fila y la acción o el verbo de su efecto."""
+
+    kind: str
+    """`color_accion`, `mixto`, `vacio` o `sin_cambio` (bloqueantes); `color_verbo` (trazabilidad)."""
+    blocking: bool
+    message: str
+
+
+def marking_conflicts(
+    row: RawRow,
+    *,
+    action: str,
+    verb_literal: str,
+    attrs: Iterable[str],
+    predecessor: Mapping[str, str | None] | None = None,
+) -> list[MarkingConflict]:
+    """Contradicciones del marcado de `row` con la acción curada y el verbo literal (regla «mixta»).
+
+    `attrs`: columnas literales que copia la entidad. `predecessor`: literales efectivos de la
+    predecesora por columna (solo para `modify`; sin ella no se evalúa `sin_cambio`). Detecta; no
+    decide: cada conflicto exige un Issue (bloqueante salvo `color_verbo`), ver el módulo.
+    """
+    attrs = [a for a in attrs if a in row.cells]
+    out: list[MarkingConflict] = []
+    signal = row.color_signal(attrs)
+    implied = IMPLIED_ACTION.get(signal or "")
+    verbs = verb_actions(verb_literal)
+    if signal == "mixed":
+        out.append(
+            MarkingConflict(
+                "mixto",
+                True,
+                f"{row.ref}: la celda id es un alta o una baja y otras celdas tienen otro marcado: el "
+                "contenido efectivo no se reconstruye de forma unívoca",
+            )
+        )
+    elif implied is not None and implied != action:
+        out.append(
+            MarkingConflict(
+                "color_accion",
+                True,
+                f"{row.ref}: el marcado ({signal}) indica `{implied}` y el efecto es `{action}`",
+            )
+        )
+    elif implied is not None and verbs and implied not in verbs:
+        out.append(
+            MarkingConflict(
+                "color_verbo",
+                False,
+                f"{row.ref}: el marcado ({signal}) indica `{implied}`, como la acción curada, y el verbo "
+                f"del encabezado «{verb_literal}» no lo nombra",
+            )
+        )
+    if action in ("add", "modify") and signal != "deleted":
+        emptied = [a for a in attrs if row.rendered_literal(a) and not row.effective_literal(a)]
+        if emptied:
+            out.append(
+                MarkingConflict(
+                    "vacio",
+                    True,
+                    f"{row.ref}: el rojo vacía {', '.join(emptied)} en una fila que no se elimina "
+                    f"(`{action}`): el contenido efectivo no se reconstruye de forma unívoca",
+                )
+            )
+    if action == "modify" and predecessor is not None and attrs:
+        same = all(
+            normalize_text(row.effective_literal(a)) == normalize_text(predecessor.get(a) or "")
+            for a in attrs
+        )
+        if same:
+            out.append(
+                MarkingConflict(
+                    "sin_cambio",
+                    True,
+                    f"{row.ref}: el efecto es `modify` y el contenido efectivo de la fila es igual al de la "
+                    "predecesora en todas las columnas que reproduce",
+                )
+            )
+    return out
 
 
 def rev_dir(root: Path, doc: str, sha12: str) -> Path:

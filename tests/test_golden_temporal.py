@@ -11,6 +11,7 @@ Formato de fila: ver la cabecera de `tests/fixtures/golden_hyp.yaml`.
 from __future__ import annotations
 
 import importlib.util
+import shutil
 from datetime import date, timedelta
 from functools import cache
 from pathlib import Path
@@ -31,7 +32,7 @@ from sifen_kb.temporal import (
     timeline,
     version_label,
 )
-from sifen_kb.yamlio import is_canonical, load_kb_file
+from sifen_kb.yamlio import is_canonical, load_kb_file, write_kb_file
 
 TESTS = Path(__file__).resolve().parent
 FIXTURES = TESTS / "fixtures"
@@ -223,10 +224,28 @@ def test_golden_hyp(row: dict[str, Any]) -> None:
     run_row(row, default_kb="hyp")
 
 
+def _blocking_windows(kb: KB) -> list[tuple[str, date, str | None]]:
+    """(clave curada, día de frontera, ambiente o None) de cada ventana de un Issue bloqueante abierto.
+
+    Sujeto clave de entidad, o efecto (cuenta su destino); un documento como sujeto no se expande.
+    """
+    out = []
+    for issue in kb.issues.values():
+        if issue.status != "open" or not issue.blocking:
+            continue
+        for s in issue.affects:
+            key = kb.effect(s.subject).target if kb.has_effect(s.subject) else s.subject
+            if key is None or not kb.is_curated(key):
+                continue
+            out += [(key, d, s.env) for d in (s.since, s.until) if d is not None]
+    return out
+
+
 def boundary_gaps(kb: KB, rows: list[dict[str, Any]]) -> list[str]:
     """Regla de completitud: por frontera, filas el día anterior y el día del cambio, en cada
-    ambiente donde las fechas difieran (si coinciden, basta un ambiente). Incluye cobertura y
-    horizonte (en cualquier clave)."""
+    ambiente donde las fechas difieran (si coinciden, basta un ambiente). Incluye cobertura,
+    horizonte (en cualquier clave) y los bordes de la ventana de cada Issue bloqueante abierto
+    (`since`/`until`, en su ambiente; defecto menor del paso A de docs/traspaso-curacion-piloto.md)."""
     plain = [r for r in rows if "diff" not in r and "processed_at" not in r]
     have = {(r["key"], date.fromisoformat(r["at"]), r.get("env", "prod")) for r in plain}
 
@@ -246,6 +265,10 @@ def boundary_gaps(kb: KB, rows: list[dict[str, Any]]) -> list[str]:
                 for day in (d - timedelta(days=1), d):
                     if not has(key, day, None if same else env):
                         missing.append(f"{key} {day} {'cualquier ambiente' if same else env}")
+    for key, d, env in _blocking_windows(kb):
+        for day in (d - timedelta(days=1), d):
+            if not has(key, day, env):
+                missing.append(f"{key} {day} {env or 'cualquier ambiente'} (ventana de Issue bloqueante)")
     assert kb.meta is not None
     cov = kb.meta.coverage_from
     horizon = kb.horizon()
@@ -260,6 +283,30 @@ def boundary_gaps(kb: KB, rows: list[dict[str, Any]]) -> list[str]:
 def test_golden_hyp_completeness() -> None:
     rows = [r for r in HYP_ROWS if r.get("kb", "hyp") == "hyp"]
     assert boundary_gaps(base_kb("hyp"), rows) == []
+
+
+def test_completeness_requires_rows_at_blocking_issue_windows(tmp_path: Path) -> None:
+    """Un Issue bloqueante abierto abre una frontera: hacen falta filas el día anterior y el día de su
+    `since`/`until`, en su ambiente (un Issue no bloqueante o resuelto no la abre)."""
+    root = tmp_path / "kb_hyp"
+    shutil.copytree(BASES["hyp"], root)
+    issue = {
+        "id": "ISS-0003",
+        "kind": "ambiguity",
+        "affects": [{"subject": "NT_024#1", "env": "test", "since": "2026-03-02"}],
+        "statement": "[fixture] ventana bloqueante",
+        "blocking": True,
+        "status": "open",
+    }
+    write_kb_file(root / "kb" / "issues" / "ISS-0003.yaml", issue)
+    rows = [r for r in HYP_ROWS if r.get("kb", "hyp") == "hyp"]
+    gaps = boundary_gaps(load_kb(root), rows)
+    assert gaps == [
+        "val:DE:D208c 2026-03-01 test (ventana de Issue bloqueante)",
+        "val:DE:D208c 2026-03-02 test (ventana de Issue bloqueante)",
+    ]
+    write_kb_file(root / "kb" / "issues" / "ISS-0003.yaml", issue | {"blocking": False})
+    assert boundary_gaps(load_kb(root), rows) == []
 
 
 def test_golden_hyp_covers_g5_rows() -> None:
