@@ -107,7 +107,9 @@ bajo MIT y que los *literales copiados de DNIT* quedan fuera de la licencia. Pre
   `.github/workflows/`): el usuario debe ejecutar `gh auth refresh -h github.com -s workflow` (abre el
   navegador). En WSL no hay `gh` ni credenciales: para `git push` desde WSL, configurar un helper **local al
   repo**: `git config credential.helper '!/mnt/c/Users/hugo.maldonado/scoop/shims/gh.exe auth git-credential'`.
-- Identidad git (global en WSL): `Hugo Maldonado <92177318+NetseWin@users.noreply.github.com>`. Los commits llevan el trailer
+- Identidad git de este repo (config local, decisión del usuario 2026-10-18): `Hugo Maldonado
+  <92177318+NetseWin@users.noreply.github.com>`. La global de WSL sigue con el email personal: no commitear con
+  ella. Antes de publicar se reescribió toda la historia con el noreply (ver «Historial reescrito» en la sección 6). Los commits llevan el trailer
   `Co-Authored-By: Claude …`.
 - `.codegraph/` (índice local de CodeGraph) está en `.gitignore`.
 
@@ -231,6 +233,16 @@ anteriores a una prórroga.
 
 **DSL:** números del texto fuente a `Decimal` (sin float); `exists()` nunca es UNKNOWN; con tipo "N" un valor
 no numérico da UNKNOWN; `literal_contains_constant` usa convención es-PY (punto = miles, coma = decimal).
+
+**Historial reescrito (2026-10-18, antes de publicar):** los 26 commits se reescribieron con el email noreply
+(autor y committer; nombre y fechas intactos) y se remapearon las citas a commits en `kb/` y `docs/`
+(`e9b482c→0685ce4`, `30d4c99→215175e`, `b036909→6e0c377`, `401dac1→7ba7fdb`, `8ec4d04→d2eef71`…; mapa completo
+en `.git/noreply-rewrite/map.tsv`, respaldo en `.git/backup-pre-noreply.bundle`, ambos solo locales). Las citas a
+commits que ya no estaban en la historia antes de reescribir (`5d41560`, `1d42499` y los `base_commit`
+`926f1eb…`/`8e86a454…` de las bitácoras) se dejaron como estaban: no tienen un equivalente exacto. El remapeo
+cambió mecánicamente `ISS-0009.yaml` y el traspaso después de su `backfill`: sus `sha256` en las bitácoras
+`ce4ca541` y `6767ad7f` son los del contenido anterior al remapeo (este archivo, editado después, se volvió a
+registrar).
 
 **Arnés sin herramientas nativas:** si la sesión corre en un arnés que edita con herramientas MCP
 (p. ej. Pi: `mcp__custom-tools__edit`/`write`), ni el hook `PostToolUse` (matcher `Edit|Write|MultiEdit`) ni los
