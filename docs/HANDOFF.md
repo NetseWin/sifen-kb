@@ -9,8 +9,12 @@ Léelo entero antes de tocar nada. El diseño está cerrado: **no rediseñar**; 
 ## ▶ Retomar aquí (actualizado el 2026-10-18, al cerrar el paso B)
 
 - **Paso B (curación): hecho, verificado y commiteado** en `kb/piloto-receptor`: `7ba7fdb` (aprobado por el
-  usuario; `sifen check` 0 errores, `pytest -q` 1833 passed / 1 skipped previsto). Siguiente: el paso C del
-  traspaso (§4) y el orden de los PR de abajo; push, merge y PR los decide el usuario.
+  usuario; `sifen check` 0 errores, `pytest -q` 1833 passed / 1 skipped previsto).
+- **Publicado (2026-10-18):** `https://github.com/NetseWin/sifen-kb` (público; solo merge commit; `main` protegida:
+  PR obligatorio, check `checks` en verde, sin force-push ni borrado, también para administradores). PR #1
+  (`feat/literal-efectivo`) y PR #2 (`feat/bitacora-procedencia`) integrados con merge commit (`aa76b37`,
+  `c8a6bca`); CI en verde. **PR #3** (`kb/piloto-receptor`, conocimiento) abierto: **lo revisa y mergea el
+  usuario** (merge commit, `Reviewed-by:`). Después: el paso C del traspaso (§4) desde `main` limpio.
 - **Autonomía (decisión del usuario, 2026-10-18):** la sesión decide sola lo técnico y de proceso (ramas,
   rebases, verificaciones, bitácoras, docs, commits de trabajo en ramas de feature) y consulta solo lo normativo
   de SIFEN, push/merge/PR/publicación, lo destructivo o irreversible, credenciales, cambios de alcance o de
@@ -33,9 +37,9 @@ Léelo entero antes de tocar nada. El diseño está cerrado: **no rediseñar**; 
   `6e0c377` ← `215175e` ← `0685ce4`. Cierre: `git diff --check`, ruff y `sifen fmt --check` OK; `sifen check`
   0 errores (8 informativos); `pytest -q` 1833 passed, 1 skipped (previsto); `explain` focalizados como se
   esperaba; anexo del informe regenerado con `sifen check --report`.
-- **Orden de los PR:** `feat/literal-efectivo` → `main`; después `feat/bitacora-procedencia` (rebase sobre `main`,
-  queda su único commit); después rebasar `kb/piloto-receptor` sobre `main` y abrir el PR de conocimiento (lo
-  revisa y mergea el usuario con `Reviewed-by:`). Sin push ni merge: los decide el usuario.
+- **Integración:** las ramas estaban apiladas en línea sobre `main`, así que no se rebaseó nada (`pr-scope`
+  compara contra el ancestro común) y cada PR entra con merge commit: los hashes citados en `kb/` y `docs/`
+  siguen existiendo en `main`. No usar squash ni «rebase and merge» (desactivados en el repo).
 - **Follow-up (PR de código independiente, NO en el paso B):** ampliar el matcher del hook `PostToolUse` y los
   `deny` `Edit(...)` de `.claude/settings.json` a las herramientas MCP de escritura (p. ej.
   `mcp__.*__(edit|write)`), con tests de `hooklog`.
