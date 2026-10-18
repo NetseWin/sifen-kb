@@ -17,7 +17,8 @@ que derivan de `--at`)::
          "resolution": <Resolution.model_dump(mode="json")>,
          "version": <versión elegida .model_dump(mode="json")> | null,
          "related_fields": [{"id", "key", "xml_name", "xsd": str|null}, ...],
-         "xsd": {...} | null,                   # XsdCheck de la instantánea, si hay
+         "xsd": {...} | null,                   # XsdCheck de la instantánea, si hay (con
+                                                #   `enumeration` en campos con enumeración curada)
          "xml": {...} | null}                   # evaluación por eje (solo con --xml)
       ],
       "warnings": [str, ...]
@@ -39,6 +40,11 @@ Precisiones (lo que el esqueleto dejaba abierto; documentadas también en el inf
 - `resolution.source` y `resolution.history[].summary` citan la página impresa además de la PDF
   cuando `raw/` la conoce (el MT); `resolution.warnings` agrega los avisos de esta capa (XSD
   anacrónico, código que no corresponde a la versión mostrada).
+- `xsd.enumeration` (decisión 8 del usuario, 2026-10-17): en un campo con `enumeration` curada,
+  `documented` (códigos de la versión, MT/NT) frente a `accepted` (lo que acepta el tipo de la
+  instantánea; `exhaustive` dice si es la lista completa), `only_documented`, `only_accepted` e
+  `issues` (`source_conflict` del campo). Una discrepancia vuelve `xsd.status` `mismatch`, no cambia
+  el estado de la regla y, sin Issue que la registre, agrega un aviso.
 - `xml` (con `--xml`): `emitted_at`, `processed_at`, `processing_date_source`, `evaluated`,
   `decided`, `verdict` ("TRUE" = viola | "FALSE" | "UNKNOWN" | null si no se decide: `axis_split` o
   `processing_date_unknown`), `emission`/`processing` (`{at, state, reasons, version, verdict}`),
@@ -99,6 +105,7 @@ from sifen_kb.model import (
     Validation,
     ValidationVersion,
     XsdCheck,
+    XsdEnumeration,
     parse_ref,
 )
 from sifen_kb.normalize import parse_date_literal, sha12
@@ -696,10 +703,42 @@ def related_fields(
     return out
 
 
+def _enum_check(kb: KB, snap: Snapshot, ent: Field, fv: FieldVersion | None) -> XsdEnumeration | None:
+    """Códigos documentados por la versión (MT/NT) frente a los aceptados por la instantánea (decisión 8)."""
+    if fv is None or not fv.enumeration or not fv.xml_name:
+        return None
+    assert snap.index is not None
+    documented = [e.code for e in fv.enumeration]
+    issues = sorted(
+        iid
+        for iid, i in kb.issues.items()
+        if i.kind == "source_conflict" and any(s.subject == ent.key for s in i.affects)
+    )
+    base: dict[str, Any] = {
+        "documented": documented,
+        "documented_source": version_source(kb, fv),
+        "issues": issues,
+    }
+    d = _decl(snap, fv.xml_name, _parent_xml(kb, ent.context, fv))
+    if d.parent is None:
+        return XsdEnumeration(status="not_checked", detail=f"{ent.id}: {d.note}", **base)
+    c = snap.index.check_enumeration(fv.xml_name, d.parent, documented)
+    return XsdEnumeration(
+        status=c.status,
+        accepted=list(c.accepted) if c.accepted is not None else None,
+        exhaustive=c.exhaustive,
+        only_documented=list(c.only_documented),
+        only_accepted=list(c.only_accepted),
+        detail=f"{ent.id}: {c.detail}",
+        **base,
+    )
+
+
 def xsd_check(
     kb: KB, ent: Entity, v: Version | None, related: list[Related], at: date, snap: Snapshot | None
 ) -> XsdCheck | None:
-    """Estructura frente a la instantánea: campo = su ocurrencia; validación = la de sus campos."""
+    """Estructura frente a la instantánea: campo = su ocurrencia (y su enumeración, si la tiene curada:
+    lo documentado por MT/NT frente a lo aceptado por el XSD, decisión 8); validación = la de sus campos."""
     if snap is None:
         return None
     anach = xsd.anachronistic(at, snap.retrieved_at)
@@ -711,11 +750,14 @@ def xsd_check(
             anachronistic=anach,
             detail=f"instantánea ilegible: {snap.error}",
         )
+    enum = None
     if isinstance(ent, Field):
-        checks = [_occ_check(kb, snap, ent.context, ent.id, v if isinstance(v, FieldVersion) else None)]
+        fv = v if isinstance(v, FieldVersion) else None
+        checks = [_occ_check(kb, snap, ent.context, ent.id, fv)]
+        enum = _enum_check(kb, snap, ent, fv)
     else:
         checks = [_occ_check(kb, snap, ent.context, r.id, r.version) for r in related if r.version]
-    statuses = [s for s, _ in checks]
+    statuses = [s for s, _ in checks] + ([enum.status] if enum is not None else [])
     if not checks:
         status, detail = "not_checked", "sin campos curados con xml_name que comparar"
     else:
@@ -731,6 +773,7 @@ def xsd_check(
         status=status,  # type: ignore[arg-type]
         anachronistic=anach,
         detail=detail,
+        enumeration=enum,
     )
 
 
@@ -779,6 +822,12 @@ def entity_item(
             )
     if check is not None and check.anachronistic:
         extra.append(f"XSD anacrónico: {XSD_ANACHRONISM} (instantánea del {check.retrieved_at})")
+    enum = check.enumeration if check is not None else None
+    if enum is not None and enum.status == "mismatch" and not enum.issues:
+        extra.append(
+            f"XSD: los códigos que documentan el MT/NT y los que acepta la instantánea difieren y ningún Issue "
+            f"source_conflict lo registra ({enum.detail})"
+        )
     kind: Literal["field", "validation"] = "field" if isinstance(ent, Field) else "validation"
     return Item(
         key=key,
@@ -1413,6 +1462,15 @@ def _start_source(kb: KB, v: Version, env: Env) -> str:
     return "; ".join(parts)
 
 
+def _stated_txt(stated: str | dict[str, Any]) -> str:
+    """`stated_in` volcado a JSON (CellRef o PageRef) para el texto: un PageRef no sale como dict."""
+    if isinstance(stated, str):
+        return stated
+    page = _page_txt(stated.get("page_printed"), int(stated["page_pdf"]))
+    quote = f", cita «{stated['quote']}»" if stated.get("quote") else ""
+    return f"{stated['doc']} rev {stated['rev']} · {page}{quote}"
+
+
 def _cell_txt(kb: KB, ref: str | PageRef) -> str:
     if isinstance(ref, PageRef):
         return f"rev {ref.rev} {_page_txt(ref.page_printed, ref.page_pdf)}"
@@ -1548,6 +1606,39 @@ def _xsd_lines(it: Item) -> list[str]:
         out.append(_line("XSD", head))
     if c.detail:
         out.append(_line("", c.detail))
+    if c.enumeration is not None:
+        out += _enum_lines(c.enumeration)
+    return out
+
+
+def _codes(codes: list[str], limit: int = 20) -> str:
+    shown = ", ".join(codes[:limit])
+    return (shown + (f" … (+{len(codes) - limit})" if len(codes) > limit else "")) or "(ninguno)"
+
+
+def _enum_lines(e: XsdEnumeration) -> list[str]:
+    """Las dos dimensiones por separado (decisión 8): documentado por MT/NT frente a aceptado por el XSD."""
+    out = [
+        _line(
+            "",
+            f"Documentado por MT/NT [interpretación]: {_codes(e.documented)}"
+            + (f" ({e.documented_source})" if e.documented_source else ""),
+        )
+    ]
+    if e.accepted is not None:
+        scope = "" if e.exhaustive else " (solo se probaron los códigos documentados)"
+        out.append(_line("", f"Aceptado por la instantánea XSD{scope}: {_codes(e.accepted)}"))
+    elif e.detail:
+        out.append(_line("", e.detail))
+    diff = []
+    if e.only_documented:
+        diff.append(f"solo documentados: {_codes(e.only_documented)}")
+    if e.only_accepted:
+        diff.append(f"solo en el XSD, sin etiqueta en MT/NT: {_codes(e.only_accepted)}")
+    tail = f"Enumeración: {e.status}" + (f" ({'; '.join(diff)})" if diff else "")
+    if e.issues:
+        tail += f" · {', '.join(e.issues)} (source_conflict; no se consolidan)"
+    out.append(_line("", tail))
     return out
 
 
@@ -1833,7 +1924,11 @@ def _render_document(kb: KB, it: Item) -> list[str]:
     if c["curated"]:
         dd = c["document_date"]
         if dd:
-            out.append(_line("Fecha", f"«{dd['literal']}» → {dd['date']} (informativa; {dd['stated_in']})"))
+            out.append(
+                _line(
+                    "Fecha", f"«{dd['literal']}» → {dd['date']} (informativa; {_stated_txt(dd['stated_in'])})"
+                )
+            )
         if c["change_period"]:
             a, b = c["change_period"]
             out.append(
@@ -1844,7 +1939,7 @@ def _render_document(kb: KB, it: Item) -> list[str]:
             for env in ENVS:
                 s = c["schedule"][env]
                 cal.append(
-                    f"{env} {s['date'] or 'a definir'} «{s['literal']}» ({s['stated_in']})"
+                    f"{env} {s['date'] or 'a definir'} «{s['literal']}» ({_stated_txt(s['stated_in'])})"
                     if s
                     else f"{env}: no declarada"
                 )

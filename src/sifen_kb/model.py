@@ -481,12 +481,33 @@ class HistoryEntry(M):
     summary: str | None = None
 
 
+class XsdEnumeration(M):
+    """Dos dimensiones separadas (decisión 8 del usuario, 2026-10-17): lo que DOCUMENTAN el MT/NT
+    (códigos de la `enumeration` interpretada de la versión) y lo que ACEPTA la instantánea XSD. No
+    se consolidan ni se inventan etiquetas para los valores que solo acepta el XSD."""
+
+    status: Literal["match", "mismatch", "not_checked"]
+    documented: list[str]
+    documented_source: str | None = None
+    accepted: list[str] | None = None
+    """None: la instantánea no permite enumerarlos (ver `detail`)."""
+    exhaustive: bool = False
+    only_documented: list[str] = []
+    only_accepted: list[str] = []
+    issues: list[IssueId] = []
+    """Issues `source_conflict` del campo (la discrepancia es un dato, no un fallo)."""
+    detail: str | None = None
+
+
 class XsdCheck(M):
     snapshot: Sha12
     retrieved_at: date
     status: Literal["match", "mismatch", "not_checked"]
+    """`mismatch` si difiere la ocurrencia o la enumeración."""
     anachronistic: bool
     detail: str | None = None
+    enumeration: XsdEnumeration | None = None
+    """Solo campos con `enumeration` curada (C002, D208…)."""
 
 
 class Mention(M):

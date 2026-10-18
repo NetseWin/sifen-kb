@@ -620,6 +620,90 @@ def test_xsd_anachronism_flag_does_not_change_state(capsys: pytest.CaptureFixtur
     assert f"  XSD         {XSD_ANACHRONISM}" in out
 
 
+def _kb_with_c002(kb_xml: Path, dst: Path, *, issue: bool) -> Path:
+    root = copy_kb(kb_xml, dst)
+    labels = [
+        "Factura",
+        "Exportación",
+        "Importación",
+        "Autofactura",
+        "Crédito",
+        "Débito",
+        "Remisión",
+        "Retención",
+    ]
+    write_kb_file(
+        root / "kb" / "fields" / "DE" / "C002.yaml",
+        {
+            "key": "field:DE:C002",
+            "context": "DE",
+            "id": "C002",
+            "versions": [
+                {
+                    "introduced_by": "baseline",
+                    "evidence": ["raw:MT_V150@acb2499a93b3:p64:C002"],
+                    "group": "C",
+                    "parent": "C001",
+                    "xml_name": "iTiDE",
+                    "description": "[fixture] Tipo de Documento Electrónico",
+                    "data_type": "N",
+                    "length": "1-2",
+                    "occurrence": "1-1",
+                    "observations": " ".join(f"{n}= {t}" for n, t in enumerate(labels, 1)),
+                    "enumeration": [{"code": str(n), "label": t} for n, t in enumerate(labels, 1)],
+                    "enumeration_interpretation": {"by": "human", "note": "fixture"},
+                }
+            ],
+        },
+    )
+    if issue:
+        write_kb_file(
+            root / "kb" / "issues" / "ISS-0003.yaml",
+            {
+                "id": "ISS-0003",
+                "kind": "source_conflict",
+                "affects": [{"subject": "field:DE:C002"}],
+                "statement": "[fixture] el XSD acepta otros códigos que el MT",
+                "blocking": False,
+                "status": "open",
+            },
+        )
+    assert not load_kb(root).errors
+    return root
+
+
+def test_enumeration_documented_vs_accepted_by_xsd(
+    capsys: pytest.CaptureFixture[str], kb_xml: Path, tmp_path: Path
+) -> None:
+    """Decisión 8 del usuario (2026-10-17): C002 muestra lo documentado por MT/NT (1–8) y lo aceptado por
+    la instantánea XSD (1, 4–7, 9, 10) por separado, con `status: mismatch` y su Issue; sin etiquetas
+    inventadas para 9 y 10 y sin cambiar el estado de la regla."""
+    root = _kb_with_c002(kb_xml, tmp_path / "kbc", issue=True)
+    r = only(explain_json(capsys, root, "C002", "--at", "2026-10-17"))
+    assert r["resolution"]["state"] == "in_force"
+    xs = r["xsd"]
+    assert xs["status"] == "mismatch" and "1-1" in xs["detail"]
+    e = xs["enumeration"]
+    assert e["documented"] == [str(n) for n in range(1, 9)]
+    assert e["accepted"] == ["1", "4", "5", "6", "7", "9", "10"] and e["exhaustive"] is True
+    assert (e["only_documented"], e["only_accepted"], e["issues"]) == (
+        ["2", "3", "8"],
+        ["9", "10"],
+        ["ISS-0003"],
+    )
+    assert e["documented_source"].startswith("línea base · MT_V150 rev acb2499a93b3")
+    assert not any("ningún Issue source_conflict" in w for w in r["resolution"]["warnings"])
+    _, out, _ = run(capsys, "--root", str(root), "explain", "C002", "--at", "2026-10-17")
+    assert "Documentado por MT/NT [interpretación]: 1, 2, 3, 4, 5, 6, 7, 8" in out
+    assert "Aceptado por la instantánea XSD: 1, 4, 5, 6, 7, 9, 10" in out
+    assert "solo en el XSD, sin etiqueta en MT/NT: 9, 10" in out and "ISS-0003 (source_conflict" in out
+    assert "9=" not in out and "10=" not in out
+
+    bare = only(explain_json(capsys, _kb_with_c002(kb_xml, tmp_path / "kbd", issue=False), "C002"))
+    assert bare["xsd"]["enumeration"]["issues"] == []
+    assert any("ningún Issue source_conflict lo registra" in w for w in bare["resolution"]["warnings"])
+
+
 def test_xml_without_mapping_is_unknown_never_absent(capsys: pytest.CaptureFixture[str]) -> None:
     """kb_hyp no cura D011/F014/F023 ni registra XSD: la regla queda UNKNOWN (nunca 'ausente' = FALSE)."""
     de = XML / "de_innominado_pyg_f014_7000000_emision_2025-02-10.xml"
@@ -863,3 +947,18 @@ def test_real_repo_status(capsys: pytest.CaptureFixture[str]) -> None:
     assert st["xsd_snapshot"] is not None and st["xsd_snapshot"]["path"].startswith("sources/XSD_DIR/")
     assert st["errors"] == []
     assert date.fromisoformat(st["today"]) == today_paraguay()
+
+
+def test_document_date_pageref_is_rendered_as_text() -> None:
+    """La fecha de una NT 001–012 cita un PageRef: el texto lo muestra como cita, no como dict de Python."""
+    from sifen_kb.explain import _stated_txt
+
+    page_ref = {
+        "doc": "NT_001",
+        "rev": "4c47b667084d",
+        "page_pdf": 1,
+        "page_printed": None,
+        "quote": "Fecha: 14-10-2019",
+    }
+    assert _stated_txt(page_ref) == "NT_001 rev 4c47b667084d · p. 1 PDF, cita «Fecha: 14-10-2019»"
+    assert _stated_txt("raw:NT_024@ccc2d1550e92:p1:fechas#test") == "raw:NT_024@ccc2d1550e92:p1:fechas#test"

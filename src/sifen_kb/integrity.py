@@ -25,11 +25,17 @@ Comprobaciones (nombre → qué impide):
   de la curación, info); revisiones sin curar y documentos registrados sin ficha (avisos); horizonte.
 - `refs_raw`: cada `RowRef`/`CellRef` resuelve a EXACTAMENTE una fila (y su celda) de una revisión
   registrada; un `PageRef` cita una revisión registrada.
-- `literales`: cada literal de una versión == `RawRow.literal(attr)` de la fila citada (MT V150: texto
-  vigente sin lo tachado; NT: la celda completa, el color de una NT no tiene semántica). La fila es de
-  la entidad (clave e `id` == ID, tabla de campos o de validaciones según el tipo). Una columna que la
-  fila no reproduce se hereda de `based_on`; en la línea base, sin celda no hay literal.
+- `literales`: cada literal de una versión == `RawRow.effective_literal(attr)` de la fila citada (en el
+  MT y en las NT: sin los tramos en rojo, que son contenido eliminado; decisiones 2 y 3 del usuario,
+  2026-10-17). La fila es de la entidad (clave e `id` == ID, tabla de campos o de validaciones según el
+  tipo). Una columna que la fila no reproduce se hereda de `based_on`; en la línea base, sin celda no
+  hay literal. Una lápida solo se contrasta por el código (lo visible de la fila que elimina).
 - `destino_efecto`: el destino de un efecto (aplicado o `pending`) == ID de la fila citada.
+- `marcado`: las contradicciones del marcado de la fila de un efecto aplicado con su acción o con el
+  verbo literal del encabezado (`rawio.marking_conflicts`, regla «mixta» del usuario, 2026-10-17)
+  exigen un Issue: bloqueante (o resuelto) si el color contradice la acción, si el marcado no permite
+  reconstruir el contenido efectivo de forma unívoca o si un `modify` no cambia el contenido efectivo;
+  de trazabilidad (cualquiera) si el color solo contradice el verbo literal. Ver la decisión 14.
 - `citas`: `normalize_text(quote)` contenida en la página normalizada; `page_printed` == `index.json`.
 - `fechas_celdas`: `DateStatement`: literal == celda; la celda es del propio documento y de su
   `current_revision`; ranura ↔ atributo (`document_date`→`fecha`, `schedule.test`→`test`,
@@ -76,8 +82,8 @@ Decisiones ante ambigüedades del diseño (lectura conservadora; ver también el
    real a otra entidad aparece como fila propia con su ID (lo atrapa el libro de cambios). Una NT registrada sin
    ficha que menciona el vocabulario es un error. Se lee la revisión MÁS RECIENTE del manifiesto (como
    `mentions`). Solo documentos `NT_ddd`. El libro de cambios exige un efecto sobre la entidad de cada
-   fila cambiada (si está curada); su acción deducida por color NO se usa (el color de una NT no tiene
-   semántica).
+   fila cambiada (si está curada); su acción deducida por color no se usa aquí: la coherencia del
+   color con la acción y el verbo la comprueba `marcado`.
 2. Literales con varias filas citadas: el literal debe coincidir con la celda de AL MENOS una de ellas
    (aviso si las filas discrepan entre sí). Un `CellRef` solo respalda su atributo.
 3. `destino_efecto` no se aplica a `not_modeled`: su evidencia muestra la mención, no una fila del
@@ -108,6 +114,15 @@ Decisiones ante ambigüedades del diseño (lectura conservadora; ver también el
     (`xsd.PII_ELEMENTS`, como etiqueta XML o `nombre: valor`), con `tests/allowlist_pii.yaml` como
     lista de valores permitidos (si falta, ningún valor lo está; un valor con `*` se da por enmascarado)
     y una segunda capa de CDC de 44 dígitos, correos y RUC junto a «RUC».
+14. `marcado`: solo efectos aplicados (sin `disposition`) con destino y fila citada; `pending` lo avisa
+    `draft`. El conflicto es del EFECTO (su fila, su verbo, su acción), así que lo CUBRE un Issue que
+    nombra el efecto como sujeto (`affects: [{subject: NT_023#7, …}]`); un Issue que solo nombra la
+    entidad trata de otra cosa y no cuenta (el resolvedor ya aplica a la entidad un Issue cuyo sujeto
+    es uno de sus efectos). El conflicto bloqueante exige un Issue `blocking: true` abierto cuya
+    ventana (`env`, `since`, `until` de los sujetos de la entidad, del efecto o de su documento)
+    contiene el inicio del efecto en cada ambiente, o un Issue resuelto (lo decidió una persona y queda
+    la trazabilidad); el de trazabilidad (`color_verbo`), cualquier Issue que lo cubra. `sin_cambio`
+    compara con la versión `based_on` de la versión que introduce el efecto.
 
 Pasado justificado (`check_past_changes`, §K.4 `test_past_changes_justified`, §G.3):
 
@@ -180,7 +195,16 @@ from sifen_kb.model import (
     parse_ref,
 )
 from sifen_kb.normalize import normalize_text, parse_date_literal, sha12
-from sifen_kb.rawio import DATE_ATTRS, RawRow, iter_ledger, page_path, read_index, rev_dir, row_from_dict
+from sifen_kb.rawio import (
+    DATE_ATTRS,
+    RawRow,
+    iter_ledger,
+    marking_conflicts,
+    page_path,
+    read_index,
+    rev_dir,
+    row_from_dict,
+)
 from sifen_kb.sources import MANIFEST_NAME, check_append_only, verify_sources
 from sifen_kb.temporal import (
     PRE_COVERAGE,
@@ -491,11 +515,11 @@ class _Raw:
 
 
 def _cell(row: RawRow, attr: str) -> str | None:
-    """Literal esperado de la celda (`RawRow.literal`), None si la fila no trae ese atributo."""
+    """Literal esperado de la celda (`RawRow.effective_literal`), None si la fila no trae ese atributo."""
     if attr not in row.cells and attr not in row.raw_cells:
         return None
     try:
-        return row.literal(attr)
+        return row.effective_literal(attr)
     except KeyError:
         return row.cells.get(attr)
 
@@ -842,6 +866,86 @@ def check_effect_targets(kb: KB) -> list[Finding]:
                         w,
                         f"{e.id}: destino {e.target}, pero {ref} es la fila {rid} de la tabla «{row.table}»",
                     )
+    return out
+
+
+def _covers_start(kb: KB, issue: Issue, subjects: set[str], eid: str) -> bool:
+    """La ventana del Issue contiene el inicio del efecto `eid` en cada ambiente (decisión 14)."""
+    for env in ENVS:
+        try:
+            start, _ = effect_start(kb, eid, env)
+        except TemporalDataError:
+            return False
+        if not any(
+            s.subject in subjects
+            and s.env in (None, env)
+            and (s.since is None or start is None or s.since <= start)
+            and (s.until is None or start is None or start < s.until)
+            for s in issue.affects
+        ):
+            return False
+    return True
+
+
+def check_marking(kb: KB) -> list[Finding]:
+    """Contradicciones del marcado (color) con la acción o el verbo del efecto ⇒ Issue (decisión 14)."""
+    out = _Out("marcado")
+    raw = _Raw(kb.root)
+    for doc_id in sorted(kb.documents):
+        w = _loc(kb, doc_id)
+        for e in kb.documents[doc_id].effects:
+            if e.target is None or e.disposition is not None:
+                continue
+            ent = kb.entity(e.target)
+            is_field = e.target.startswith("field:")
+            attrs = FIELD_LITERALS if is_field else VALIDATION_LITERALS
+            table = "fields" if is_field else "validations"
+            version = next(
+                (
+                    v
+                    for v in (ent.versions if ent else [])
+                    if isinstance(v.introduced_by, list) and e.id in v.introduced_by
+                ),
+                None,
+            )
+            pred = _based_on_version(ent, version) if ent is not None and version is not None else None
+            predecessor = {a: getattr(pred, a) for a in attrs} if pred is not None else None
+            subjects = {e.target, e.id, doc_id}
+            covering = [
+                i
+                for i in sorted(kb.issues.values(), key=lambda i: i.id)
+                if any(s.subject == e.id for s in i.affects)
+            ]
+            for ref in _row_refs(e.evidence):
+                row, _err = raw.resolve(ref)
+                if row is None or row.table != table:
+                    continue  # lo informan refs_raw y destino_efecto
+                conflicts = marking_conflicts(
+                    row, action=e.action, verb_literal=e.verb_literal, attrs=attrs, predecessor=predecessor
+                )
+                for c in conflicts:
+                    if c.blocking:
+                        ok = [
+                            i
+                            for i in covering
+                            if i.status == "resolved" or (i.blocking and _covers_start(kb, i, subjects, e.id))
+                        ]
+                        need = (
+                            "un Issue bloqueante abierto (cuya ventana contenga el inicio del efecto en cada "
+                            "ambiente) o resuelto"
+                        )
+                    else:
+                        ok, need = covering, "un Issue de trazabilidad (no bloqueante basta)"
+                    if ok:
+                        out.info(
+                            w, f"{e.id} ({c.kind}): {c.message}; cubierto por {', '.join(i.id for i in ok)}"
+                        )
+                    else:
+                        out.error(
+                            w,
+                            f"{e.id} ({c.kind}): {c.message}: exige {need} con {e.id} entre sus sujetos "
+                            "(`affects`) (regla «mixta» del marcado, decisión del usuario 2026-10-17)",
+                        )
     return out
 
 
@@ -2161,6 +2265,7 @@ CHECKS: tuple[tuple[str, CheckFn], ...] = (
     ("refs_raw", check_raw_refs),
     ("literales", check_literals),
     ("destino_efecto", check_effect_targets),
+    ("marcado", check_marking),
     ("citas", check_quotes),
     ("fechas_celdas", check_date_cells),
     ("dsl", check_dsl),

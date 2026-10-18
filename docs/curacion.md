@@ -5,8 +5,8 @@ Cómo curar una entidad (un campo o una validación) o una Nota Técnica (NT) en
 ## Principios que no se negocian
 
 1. **Quien decide es una persona.** Un modelo de lenguaje (Claude) puede redactar la parte interpretativa, pero fechas, destinos, clasificación, versiones, resolución de Issues y todo merge los decide y revisa una persona.
-2. **Lo literal lo copia una herramienta.** Mensajes, observaciones, longitudes, ocurrencias y fechas llegan a `kb/` con `sifen draft`, desde las celdas de `raw/`. Un test exige igualdad (tras `normalize_text`) con la celda citada. Nadie los teclea, ni siquiera para "arreglar" un literal que parezca erróneo.
-3. **Cada cambio es una versión nueva completa.** Las NT reproducen la fila entera, sin "antes/después", y el color de resaltado del PDF no tiene semántica fiable: la acción sale del verbo del encabezado. Lo que declara la NT (verbo, alcance) es una **aserción** que un test compara con el diff.
+2. **Lo literal lo copia una herramienta.** Mensajes, observaciones, longitudes, ocurrencias y fechas llegan a `kb/` con `sifen draft`, desde las celdas de `raw/`. Un test exige igualdad (tras `normalize_text`) con el literal efectivo de la celda citada (sin el texto en rojo). Nadie los teclea, ni siquiera para "arreglar" un literal que parezca erróneo.
+3. **Cada cambio es una versión nueva completa.** Las NT reproducen la fila entera, sin "antes/después". El color de resaltado se lee con la leyenda del MT (rojo = eliminado, verde = agregado, amarillo = modificado) y siempre junto con el verbo del encabezado: la acción la decide quien cura, y si el color la contradice hace falta un Issue (ver «Color y verbo»). Lo que declara la NT (verbo, alcance) es una **aserción** que un test compara con el diff.
 4. **Historia *append-only*.** Nunca se borra una versión, un efecto ni una fila golden. Una eliminación es una **lápida** que conserva el código; corregir el pasado exige un Issue.
 5. **Lo dudoso es un Issue, no una decisión.** Contradicciones entre fuentes, posibles reemplazos no declarados, ambigüedades y prórrogas se registran; las bloqueantes vuelven `undetermined` a las entidades afectadas dentro de su ventana.
 6. **Un PR de conocimiento no toca código.** El check `pr-scope` lo exige.
@@ -99,7 +99,14 @@ Si la entidad todavía no existe en `kb/`, primero se crea su **versión base** 
 uv run sifen draft val:DE:D208c --baseline raw:MT_V150@976cd88c05c3:p167:D208c
 ```
 
-El literal que se copia es `RawRow.literal`: en el MT, sin el texto en rojo (su leyenda dice que el rojo es eliminación); en una NT, la celda completa, porque el color de una NT no tiene semántica fiable (en NT 21 y 24 el rojo marca texto vigente). La acción sale siempre del verbo del encabezado.
+El literal que se copia es `RawRow.effective_literal`: la celda sin el texto en rojo, en el MT **y en las NT** (decisiones 2 y 3 del usuario, 2026-10-17: en NT 21 y 24 el rojo también es contenido eliminado, así que D208c rige «mayor a» 35.000.000 / 7.000.000, sin la excepción D011≠13). `draft` avisa qué tramos quitó, para contrastarlos con el PDF; la celda completa (`rendered_literal`) queda en `raw/`. Una lápida copia la predecesora y su fila (entera en rojo) se compara por lo visible.
+
+**Color y verbo (regla «mixta», decisión del usuario del 2026-10-17).** `draft` avisa y `sifen check` (comprobación `marcado`) exige un Issue que nombre el efecto como sujeto (`affects: [{subject: NT_0xx#n}]`) cuando el marcado de la fila contradice el efecto:
+
+- el color contradice la **acción curada** (una fila entera en verde curada como `modify`, una entera en rojo que no es `remove`), el marcado no permite reconstruir el contenido efectivo de forma unívoca (el rojo vacía una celda de una fila que se conserva; la celda ID es un alta o una baja y otras celdas tienen otro color) o un `modify` no cambia el contenido efectivo respecto de la predecesora ⇒ Issue **bloqueante** (abierto, con una ventana que contenga el inicio del efecto en cada ambiente) o resuelto por una persona;
+- el color coincide con la acción pero no con el **verbo literal** del encabezado (NT 23: altas en verde bajo «se modifica la siguiente validación») ⇒ Issue **de trazabilidad**, no bloqueante.
+
+Nada de esto va en `extraction/fixes.yaml` (reservado a defectos técnicos de extracción).
 
 Lo que hay que completar a mano, y que es **interpretación**:
 

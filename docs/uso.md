@@ -85,7 +85,7 @@ Acompañan a `undetermined`:
 - **Literal** (observación, mensaje): copiado de la celda del documento oficial, no parafraseado.
 - **Violación / condición**: la formalización, si existe, marcada como **interpretación** con su nivel (`full`, `partial`, `none`) y sus huecos. No sustituye al literal.
 - **Campos relacionados**, con su identidad y ocurrencia.
-- **XSD**: si la estructura coincide con la instantánea de los XSD. Si la instantánea es posterior a la fecha consultada, se marca como referencia y **no cambia el estado**.
+- **XSD**: si la estructura coincide con la instantánea de los XSD. Si la instantánea es posterior a la fecha consultada, se marca como referencia y **no cambia el estado**. En un campo con enumeración curada (C002, D208…) muestra por separado los códigos que **documentan el MT/NT** y los que **acepta la instantánea XSD**, con `mismatch` y su Issue `source_conflict` si difieren; no los consolida ni inventa etiquetas para los valores que solo acepta el XSD.
 - `upcoming`, `pending_effects`, `open_issues`: lo que viene o está abierto; nada futuro queda oculto.
 - `warnings`: avisos no bloqueantes (inicio aproximado, horizonte en gracia, huecos de formalización, `open_questions`, Issues no bloqueantes, prórrogas).
 - `sources_checked_at` (horizonte de fuentes) y `kb_snapshot` (versión de la KB: tag, último documento y alcance curado).

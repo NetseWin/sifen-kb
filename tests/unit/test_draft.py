@@ -969,6 +969,8 @@ def test_cli_draft_baseline_and_dry_run(tmp_path: Path, capsys: pytest.CaptureFi
     ref = "raw:MT_V150@976cd88c05c3:p167:D208c"
     assert cli_main([*base, "val:DE:D208c", "--baseline", ref, "--dry-run"]) == 0
     assert not (root / "kb" / "validations" / "DE" / "D208c.yaml").exists()
+    out = capsys.readouterr().out
+    assert "se escribiría (--dry-run: no se escribió nada)" in out and ": escrito" not in out
     assert cli_main([*base, "val:DE:D208c", "--baseline", ref]) == 0
     assert (root / "kb" / "validations" / "DE" / "D208c.yaml").exists()
     assert cli_main([*base, "NT_024", "--baseline", ref]) == 2
@@ -978,9 +980,10 @@ def test_cli_draft_baseline_and_dry_run(tmp_path: Path, capsys: pytest.CaptureFi
 
 
 # --- datos reales ----------------------------------------------------------------------------------
-def test_real_nt024_d208c_keeps_d011_exception_and_ge(tmp_path: Path) -> None:
-    """La fila real de NT 24 marca en rojo «(D011≠13)», «o igual» y el «=»: en una NT el color no
-    elimina texto (§I.4), así que el literal copiado es la celda completa."""
+def test_real_nt024_d208c_drops_red_text(tmp_path: Path) -> None:
+    """La fila real de NT 24 marca en rojo «(D011≠13)», «o igual» y el «=»: el rojo es contenido
+    eliminado también en una NT (decisión 3 del usuario, 2026-10-17; antes se copiaba la celda
+    completa), así que el literal copiado es `effective_literal`, sin la excepción y con «>»."""
     root = _copy_real(tmp_path, ["NT_024", "NT_023"], mt=True)
     kb = load_kb(root)
     draft_document(kb, "NT_024")
@@ -990,21 +993,87 @@ def test_real_nt024_d208c_keeps_d011_exception_and_ge(tmp_path: Path) -> None:
     add_effect(root, "NT_024", 1, "val:DE:D208c", ["raw:NT_024@ccc2d1550e92:p1:D208c"])
     add_effect(root, "NT_023", 1, "field:DE:D208", ["raw:NT_023@9cb063673358:p1:D208"])
     res = draft_effect(load_kb(root), "NT_024#1")
-    draft_effect(load_kb(root), "NT_023#1")
+    res23 = draft_effect(load_kb(root), "NT_023#1")
     kb = assert_kb_ok(root)
     row = kb.raw.row("raw:NT_024@ccc2d1550e92:p1:D208c")
     assert row is not None
     base, v24 = kb.validations["val:DE:D208c"].versions
-    assert v24.observation == row.cells["observation"]
-    assert "(D011≠13)" in v24.observation and "mayor o igual a 7.000.000" in v24.observation  # type: ignore[operator]
-    assert "F023 >= 7.000.000 o F014 >= 7.000.000" in v24.observation  # type: ignore[operator]
+    assert v24.observation == row.effective_literal("observation") != row.rendered_literal("observation")
+    assert v24.observation is not None
+    assert "(D011≠13)" not in v24.observation and "o igual" not in v24.observation
+    assert v24.observation.startswith(
+        "El Tipo de documento de identidad del receptor no puede ser Innominado"
+    )
+    assert "es mayor a 7.000.000 (F023 > 7.000.000 o F014 > 7.000.000)" in v24.observation
     assert (v24.code, v24.severity, v24.message) == ("1321", "R", base.message)
     assert diff_versions(base, v24) == ["observation"]
-    assert any("se copia completo" in ln for ln in res.lines)
+    assert any("tramos en rojo" in w and "(D011≠13)" in w for w in res.warnings)
+    assert not any("marcado (" in w for w in res.warnings)  # verbo, color y acción coinciden
     f_base, f23 = kb.fields["field:DE:D208"].versions
     nt23 = kb.raw.row("raw:NT_023@9cb063673358:p1:D208")
-    assert nt23 is not None and f23.observations == nt23.cells["observations"]
+    assert nt23 is not None and f23.observations == nt23.effective_literal("observations")
+    assert f23.observations is not None and f23.observations.startswith(
+        "Obligatorio si D201 = 2 No informar si D201 = 1 1= Cédula paraguaya"
+    )
     assert diff_versions(f_base, f23) == ["observations"]
+    assert any("«y D202 ≠ 4»" in w for w in res23.warnings)
+
+
+def test_real_nt002_tombstone_is_compared_with_rendered_row(tmp_path: Path) -> None:
+    """NT 2 elimina D208d con la fila entera en rojo: la lápida copia la predecesora sin avisos de
+    diferencia (la fila que elimina se compara por lo visible) y el marcado coincide con `remove`."""
+    root = _copy_real(tmp_path, ["NT_002"], mt=True)
+    kb = load_kb(root)
+    draft_document(kb, "NT_002")
+    draft_baseline(kb, "val:DE:D208d", "raw:MT_V150@976cd88c05c3:p167:D208d")
+    add_effect(root, "NT_002", 1, "val:DE:D208d", ["raw:NT_002@6aaf4a8f4797:p1:D208d"], action="remove")
+    res = draft_effect(load_kb(root), "NT_002#1")
+    kb = assert_kb_ok(root)
+    base, tomb = kb.validations["val:DE:D208d"].versions
+    assert tomb.kind == "tombstone" and (tomb.code, tomb.observation) == (base.code, base.observation)
+    assert not any("difiere de la predecesora" in w for w in res.warnings), res.warnings
+    assert not any("marcado (" in w for w in res.warnings), res.warnings
+
+
+def green_row(vid: str, cells: dict[str, str]) -> dict[str, Any]:
+    """Fila entera en verde (un alta según el marcado)."""
+    marks = [{"attr": a, "change": "added", "start": 0, "end": len(t), "text": t} for a, t in cells.items()]
+    return raw_row(1, vid, "validations", cells, marks=marks) | {
+        "changes": dict.fromkeys(cells, "added"),
+        "row_change": "added",
+    }
+
+
+def _set_verb(root: Path, doc: str, verb: str) -> None:
+    path = root / "kb" / "documents" / f"{doc}.yaml"
+    data = load_kb_file(path)
+    data["effects"][0]["verb_literal"] = verb
+    write_kb_file(path, data)
+
+
+def test_marking_color_against_verb_is_warned_as_traceability(tmp_path: Path) -> None:
+    """Alta en verde, `add`, bajo «se modifica» (como NT 23 #5–#7): draft escribe y avisa que exige un
+    Issue de trazabilidad (regla «mixta» del usuario, 2026-10-17); no decide."""
+    row = green_row("V009", val_cells("V009", code="1009", obs="Nueva regla (Z=1)"))
+    root = build(tmp_path, {"NT_230": [fechas("01/12/2024", "01/01/2025", "01/01/2025"), row]})
+    add_effect(root, "NT_230", 1, "val:DE:V009", [nt_ref("NT_230", "V009")], action="add")
+    _set_verb(root, "NT_230", "se modifica la siguiente validación")
+    res = draft_effect(load_kb(root), "NT_230#1")
+    assert res.changed
+    (w,) = [w for w in res.warnings if w.startswith("marcado (")]
+    assert "color_verbo" in w and "Issue de trazabilidad (no bloqueante)" in w and "draft no decide" in w
+
+
+def test_marking_color_against_action_is_warned_as_blocking(tmp_path: Path) -> None:
+    """Fila entera en verde curada como `modify` de una regla existente: exige un Issue bloqueante."""
+    row = green_row("V001", val_cells("V001", obs="Nueva (A=9)"))
+    root = build(tmp_path, {"NT_231": [fechas("01/12/2024", "01/01/2025", "01/01/2025"), row]})
+    draft_baseline(load_kb(root), "val:DE:V001", mt_ref("V001"))
+    add_effect(root, "NT_231", 1, "val:DE:V001", [nt_ref("NT_231", "V001")])
+    res = draft_effect(load_kb(root), "NT_231#1")
+    assert res.changed
+    (w,) = [w for w in res.warnings if w.startswith("marcado (")]
+    assert "color_accion" in w and "Issue BLOQUEANTE" in w
 
 
 def test_replay_nt024(tmp_path: Path) -> None:

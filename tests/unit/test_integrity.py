@@ -62,7 +62,8 @@ DATE_HEADER = [
     "Fecha puesta a disposición para el Ambiente de Test",
     "Fecha puesta a disposición para el Ambiente de Producción",
 ]
-STRUCK = "(D208≠5)"
+STRUCK = "Si el Tipo de transacción es distinto a Muestras médicas,"
+"""Cláusula en rojo (eliminada) al inicio de la fila de cada NT: no está en la versión de la KB."""
 
 
 def source_bytes(doc: str) -> bytes:
@@ -214,11 +215,11 @@ def spec() -> dict[str, Any]:
         ("NT_021", ("29/12/2023", "01/01/2024", "01/01/2024"), "35.000.000"),
         ("NT_024", ("17/12/2024", "01/01/2025", "01/01/2025"), "7.000.000"),
     ):
-        o = obs(amount)
-        start = o.index(STRUCK)
+        o = f"{STRUCK} {obs(amount)}"
         nt_rows[doc] = [
             row(1, "fechas", "dates", dict(zip(("fecha", "test", "prod"), fechas, strict=True))),
-            # Un tramo rojo («deleted» según la leyenda del MT): en una NT el color no elimina texto.
+            # Un tramo rojo = contenido eliminado (decisiones 2 y 3 del usuario, 2026-10-17): el literal
+            # efectivo, el de la versión, es la observación sin él.
             row(
                 2,
                 "D208c",
@@ -228,8 +229,8 @@ def spec() -> dict[str, Any]:
                     {
                         "attr": "observation",
                         "change": "deleted",
-                        "start": start,
-                        "end": start + len(STRUCK),
+                        "start": 0,
+                        "end": len(STRUCK),
                         "text": STRUCK,
                     }
                 ],
@@ -684,12 +685,11 @@ def test_literal_must_equal_cell(tmp_path: Path) -> None:
     assert has(found(kb, "literales"), "NT_024#1", "message ≠ celda")
 
 
-def test_nt_literal_is_the_full_cell_even_with_red_text(tmp_path: Path) -> None:
-    # El color de una NT no tiene semántica (RawRow.literal): quitar el tramo «rojo» es un error.
+def test_nt_literal_is_the_effective_text_without_red(tmp_path: Path) -> None:
+    # Regla cambiada por las decisiones 2 y 3 del usuario (2026-10-17): en una NT el rojo también es
+    # contenido eliminado; conservar el tramo rojo en la versión (la celda completa) es un error.
     assert found(make(tmp_path, name="ok"), "literales") == []
-    kb = make(
-        tmp_path, lambda s: versions(s)[1].update(observation=obs("35.000.000").replace(" (D208≠5)", ""))
-    )
+    kb = make(tmp_path, lambda s: versions(s)[1].update(observation=f"{STRUCK} {obs('35.000.000')}"))
     assert has(found(kb, "literales"), "NT_021#1", "observation ≠ celda")
 
 
@@ -757,6 +757,110 @@ def test_effect_target_matches_row_id(tmp_path: Path) -> None:
     assert has(found(kb, "destino_efecto"), "NT_024#1", "destino val:DE:D208c", "fila D208b")
     # not_modeled exento: NT_024#2 apunta a field:DE:D208 y cita la fila de D208c (en el fixture limpio)
     assert found(make(tmp_path, name="ok"), "destino_efecto") == []
+
+
+# === marcado (regla «mixta» del usuario, 2026-10-17) ================================================
+def _green_row(s: dict[str, Any], doc: str = "NT_024") -> None:
+    """La fila D208c de la NT, entera en verde (un alta), sin tramos rojos."""
+    r = raw_row(s, doc, "D208c")
+    amount = "35.000.000" if doc == "NT_021" else "7.000.000"
+    r["cells"]["observation"] = obs(amount)  # `build` copia `cells` a `raw_cells`
+    r["changes"] = dict.fromkeys(r["cells"], "added")
+    r["row_change"] = "added"
+    r["marks"] = [
+        {"attr": a, "change": "added", "start": 0, "end": len(t), "text": t} for a, t in r["cells"].items()
+    ]
+    s["raw"][doc]["pages"][2] = text_of(r, prefix="Se modifica la siguiente validación:") + (
+        "\nBase legal: Decreto 872/2023, art. 6" if doc == "NT_024" else ""
+    )
+
+
+def _issue(s: dict[str, Any], iid: str, subject: str, *, blocking: bool, **scope: str) -> None:
+    s["issues"][iid] = {
+        "id": iid,
+        "kind": "ambiguity",
+        "affects": [{"subject": subject, **scope}],
+        "statement": "[fixture] el marcado contradice el efecto",
+        "evidence": [ref("NT_024", 2, "D208c")],
+        "blocking": blocking,
+        "status": "open",
+    }
+
+
+def test_marking_clean_fixture_has_no_conflicts(tmp_path: Path) -> None:
+    assert run_checks(make(tmp_path), base=NOBASE, only={"marcado"}) == []
+
+
+def test_marking_color_against_verb_needs_traceability_issue_on_the_effect(tmp_path: Path) -> None:
+    """Alta en verde bajo «se modifica» con acción `add` (como NT 23 #5–#7): Issue no bloqueante."""
+
+    def mutate(s: dict[str, Any]) -> None:
+        _green_row(s)
+        effect(s, "NT_024#1")["action"] = "add"
+
+    errs = found(make(tmp_path, mutate, name="a"), "marcado")
+    # ISS-0001 nombra la entidad y cita la fila, pero no el efecto: no cubre el conflicto.
+    assert has(errs, "NT_024#1 (color_verbo)", "Issue de trazabilidad", "NT_024#1 entre sus sujetos")
+
+    def covered(s: dict[str, Any]) -> None:
+        mutate(s)
+        _issue(s, "ISS-0002", "NT_024#1", blocking=False)
+
+    kb = make(tmp_path, covered, name="b")
+    assert found(kb, "marcado") == []
+    assert has(found(kb, "marcado", severity="info"), "NT_024#1 (color_verbo)", "cubierto por ISS-0002")
+
+
+def test_marking_color_against_action_needs_blocking_issue(tmp_path: Path) -> None:
+    """Alta en verde curada como `modify`: el color contradice la acción ⇒ Issue bloqueante."""
+    assert has(
+        found(make(tmp_path, _green_row, name="a"), "marcado"), "NT_024#1 (color_accion)", "bloqueante"
+    )
+
+    def non_blocking(s: dict[str, Any]) -> None:
+        _green_row(s)
+        _issue(s, "ISS-0002", "NT_024#1", blocking=False)
+
+    assert has(found(make(tmp_path, non_blocking, name="b"), "marcado"), "NT_024#1 (color_accion)")
+
+    def outside_window(s: dict[str, Any]) -> None:
+        _green_row(s)
+        _issue(s, "ISS-0002", "NT_024#1", blocking=True, since="2025-02-01")
+
+    assert has(found(make(tmp_path, outside_window, name="c"), "marcado"), "NT_024#1 (color_accion)")
+
+    def blocking(s: dict[str, Any]) -> None:
+        _green_row(s)
+        _issue(s, "ISS-0002", "NT_024#1", blocking=True, since="2025-01-01")
+
+    assert found(make(tmp_path, blocking, name="d"), "marcado") == []
+
+    def resolved(s: dict[str, Any]) -> None:
+        non_blocking(s)
+        s["issues"]["ISS-0002"] |= {"status": "resolved", "resolution": "[fixture] lo decidió una persona"}
+
+    assert found(make(tmp_path, resolved, name="e"), "marcado") == []
+
+
+def test_marking_modify_without_effective_change_is_blocking(tmp_path: Path) -> None:
+    """NT 24 reproduce la regla de NT 21 y solo el rojo cambia: el contenido efectivo no cambia."""
+
+    def mutate(s: dict[str, Any]) -> None:
+        r = raw_row(s, "NT_024", "D208c")
+        r["cells"]["observation"] = f"{STRUCK} {obs('35.000.000')}"
+        versions(s)[2].update(observation=obs("35.000.000"), condition=cond(35000000))
+
+    assert has(
+        found(make(tmp_path, mutate), "marcado"), "NT_024#1 (sin_cambio)", "igual al de la predecesora"
+    )
+
+
+def test_marking_ignores_pending_effects(tmp_path: Path) -> None:
+    def mutate(s: dict[str, Any]) -> None:
+        _green_row(s)
+        effect(s, "NT_024#1")["disposition"] = "pending"
+
+    assert found(make(tmp_path, mutate), "marcado") == []
 
 
 # === citas y fechas =================================================================================

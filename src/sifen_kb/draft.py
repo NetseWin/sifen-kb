@@ -25,9 +25,9 @@ Modos
     * MT y documentos que no son NT: solo ficha mínima, sin fechas.
 - `sifen draft <EffectId>` → `draft_effect`: versión nueva de la entidad destino del efecto (o
   agrega el efecto a la versión existente con el mismo inicio, §G.3), copiando con
-  `RawRow.literal(attr)` todas las columnas literales que la fila citada reproduce y heredando de
-  `based_on` (predecesora TEMPORAL en producción, calculada con `temporal`) las que no trae.
-  `action: remove` ⇒ lápida. Idempotente: si una versión ya cita el efecto, no hace nada.
+  `RawRow.effective_literal(attr)` todas las columnas literales que la fila citada reproduce y
+  heredando de `based_on` (predecesora TEMPORAL en producción, calculada con `temporal`) las que no
+  trae. `action: remove` ⇒ lápida. Idempotente: si una versión ya cita el efecto, no hace nada.
 - `draft_baseline(kb, key, rowref)` (sin CLI todavía): crea la entidad con su versión `baseline`
   desde la fila del Manual Técnico (línea base de `kb/_meta.yaml`).
 
@@ -59,11 +59,13 @@ Decisiones ante ambigüedades (lectura conservadora, documentada aquí y en el i
    propio documento.
 7. Una celda vacía en la fila de la NT se copia como ausente (`None`), no como `""`: la NT
    reproduce la columna y está vacía. Una columna que la tabla de la NT no tiene se hereda.
-8. Los literales se copian con `RawRow.literal(attr)`: en el MT V150 (`rawio.COLOR_LEGEND_DOC`,
-   único documento cuya leyenda define rojo = eliminación) es `current(attr)`; en una NT es
-   `cells[attr]` completo, porque el color de una NT no elimina texto (§I.4: en NT 21 y NT 24 el
-   rojo marca «(D011≠13)» y «>=», que siguen vigentes). Si en el MT el texto copiado difiere de
-   `cells[attr]`, se avisa con los tramos quitados para contrastarlos con el PDF.
+8. Los literales se copian con `RawRow.effective_literal(attr)`, en el MT y en las NT: el rojo es
+   contenido eliminado (decisiones 2 y 3 del usuario, 2026-10-17; §I.4; `rawio`). Si quitó tramos,
+   se avisa con su texto para contrastarlos con el PDF (`rendered_literal` es la celda completa).
+   La lápida es la excepción: su fila reproduce lo eliminado y se compara con la predecesora por
+   `rendered_literal`. Las contradicciones del marcado con la acción o el verbo del efecto
+   (`rawio.marking_conflicts`) se avisan: no se deciden aquí; `sifen check` (`marcado`) exige el
+   Issue que corresponda.
 9. Herencia de lo interpretado: `condition` se hereda de la predecesora solo si `observation` no
    cambió; `enumeration` (+ `enumeration_interpretation`) solo si `observations` no cambió.
    `legal_basis`, `open_questions` y `subject_field` nunca se copian (se avisa si la predecesora
@@ -115,7 +117,7 @@ from sifen_kb.model import (
     parse_ref,
 )
 from sifen_kb.normalize import normalize_text, parse_date_literal, sha12
-from sifen_kb.rawio import DATE_ATTRS, DATES_KEY, RawRow
+from sifen_kb.rawio import DATE_ATTRS, DATES_KEY, RawRow, marking_conflicts
 from sifen_kb.sources import latest_revision
 from sifen_kb.temporal import (
     Start,
@@ -208,10 +210,16 @@ class DraftResult:
     warnings: list[str] = field(default_factory=list)
     data: dict[str, Any] | None = None
     review: str = HUMAN_REVIEW_DATES
+    dry_run: bool = False
+    """`--dry-run`: `changed` dice qué se escribiría; no se escribió nada."""
 
     def render(self, root: Path | None = None) -> str:
         where = _rel(root, self.path) if self.path is not None else self.target
-        head = f"{where}: " + ("escrito" if self.changed else "sin cambios")
+        if not self.changed:
+            state = "sin cambios"
+        else:
+            state = "se escribiría (--dry-run: no se escribió nada)" if self.dry_run else "escrito"
+        head = f"{where}: {state}"
         out = [head, *(f"  {ln}" for ln in self.lines)]
         out += [f"AVISO: {w}" for w in self.warnings]
         out.append(self.review)
@@ -362,10 +370,6 @@ def _stated_doc(stmt: Any) -> str | None:
     if isinstance(si, dict):
         return si.get("doc")
     return None
-
-
-def _struck(row: RawRow, attr: str) -> list[str]:
-    return [m["text"] for m in row.marks if m["attr"] == attr and m["change"] == "deleted"]
 
 
 # --- fechas de un documento ------------------------------------------------------------------------
@@ -713,27 +717,42 @@ def _check_row(row: RawRow, etype: str, ent_id: str, ref: str) -> None:
 
 
 def _copy_row(row: RawRow, etype: str, res: DraftResult) -> tuple[dict[str, str | None], list[str]]:
-    """Columnas literales que la fila reproduce: atributo del modelo -> texto vigente (o None si vacío)."""
+    """Columnas literales que la fila reproduce: atributo del modelo -> literal efectivo (o None si vacío)."""
     out: dict[str, str | None] = {}
     for raw_attr, attr in _literals_of(etype).items():
         if raw_attr not in row.cells:
             continue
-        value = row.literal(raw_attr)
+        value = row.effective_literal(raw_attr)
         out[attr] = value or None
-        struck = _struck(row, raw_attr)
-        if not struck:
-            continue
-        if value != row.cells[raw_attr]:
+        removed = row.removed_spans(raw_attr)
+        if removed:
             res.warnings.append(
-                f"{attr}: según la leyenda de colores de {row.doc} se quitaron los tramos en rojo de {row.ref} "
-                f"({', '.join(_q(s) for s in struck)}); contrastar con el PDF"
-            )
-        else:
-            res.lines.append(
-                f"{attr}: {row.ref} marca en rojo {', '.join(_q(s) for s in struck)}; se copia completo "
-                "(en una NT el color no elimina texto, §I.4)"
+                f"{attr}: se quitaron de {row.ref} los tramos en rojo (contenido eliminado) "
+                f"{', '.join(_q(s) for s in removed)}; contrastar con el PDF"
             )
     return out, list(out)
+
+
+def _marking_warnings(
+    res: DraftResult, row: RawRow | None, eff: Effect, etype: str, pred_raw: dict[str, Any] | None
+) -> None:
+    """Avisa de las contradicciones del marcado (`rawio.marking_conflicts`); no decide nada."""
+    if row is None:
+        return
+    pred = {raw: (pred_raw or {}).get(attr) for raw, attr in _literals_of(etype).items()}
+    conflicts = marking_conflicts(
+        row,
+        action=eff.action,
+        verb_literal=eff.verb_literal,
+        attrs=list(_literals_of(etype)),
+        predecessor=pred if pred_raw is not None else None,
+    )
+    for c in conflicts:
+        need = "un Issue BLOQUEANTE" if c.blocking else "un Issue de trazabilidad (no bloqueante)"
+        res.warnings.append(
+            f"marcado ({c.kind}): {c.message}. Exige {need} sobre {eff.target} o {eff.id} que cite la fila "
+            "(`sifen check`, comprobación `marcado`); draft no decide"
+        )
 
 
 def _version_dict(
@@ -1122,6 +1141,7 @@ def draft_effect(kb: KB, effect_id: str, *, write: bool = True) -> DraftResult:
                 f"reintroducción tras la lápida {version_label(pred_v)}: exige un Issue que la justifique (§G.3)"
             )
 
+    _marking_warnings(res, row, eff, etype, pred_raw)
     based_on: Any = "baseline" if pred_v is None else _plain(pred_v.introduced_by)
     lit_attrs = list(_literals_of(etype).values())
     pred_lits = {a: (pred_raw or {}).get(a) for a in lit_attrs}
@@ -1131,11 +1151,13 @@ def draft_effect(kb: KB, effect_id: str, *, write: bool = True) -> DraftResult:
         copied: list[str] = []
         inherited = [a for a in lit_attrs if a in literals]
         if row is not None:
+            # La fila que elimina reproduce lo eliminado (en rojo): se compara lo visible.
             for raw_attr, attr in _literals_of(etype).items():
-                if raw_attr in row.cells and (row.literal(raw_attr) or None) != pred_lits.get(attr):
+                shown = row.rendered_literal(raw_attr) if raw_attr in row.cells else None
+                if raw_attr in row.cells and (shown or None) != pred_lits.get(attr):
                     res.warnings.append(
                         f"la fila que elimina ({row.ref}) difiere de la predecesora en `{attr}`: "
-                        f"{_q(row.literal(raw_attr))} ≠ {_q(pred_lits.get(attr))}; revisar (¿falta una versión?)"
+                        f"{_q(shown)} ≠ {_q(pred_lits.get(attr))}; revisar (¿falta una versión?)"
                     )
             evidence: list[Any] = [row.ref]
         else:
@@ -1225,6 +1247,7 @@ def _merge_into(
 ) -> DraftResult:
     """§G.3: agrega `eff` a la versión `idx` que ya tiene el mismo inicio (fusión a tres vías)."""
     assert ent_raw is not None
+    _marking_warnings(res, row, eff, etype, pred_raw)
     target = versions[idx]
     ours = dict(raw_versions[idx])
     is_tomb = target.kind == "tombstone"
@@ -1401,5 +1424,6 @@ def cmd_draft(args: argparse.Namespace) -> int:
         return 1
     for err in kb.errors:
         print(f"AVISO: kb/ tiene errores de carga ajenos a este draft: {err}", file=sys.stderr)
+    res.dry_run = not write
     print(res.render(kb.root))
     return 0
