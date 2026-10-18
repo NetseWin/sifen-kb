@@ -1,0 +1,120 @@
+id: NT_010
+kind: technical_note
+number: 10
+title: Nota Técnica N° 10
+current_revision: d261165c512c6b248598e98685f307f88da50f0ecc28cb25d94157d4a9cad711
+document_date:
+  value: 2022-02-04
+  literal: 04/02/2022
+  stated_in:
+    doc: NT_010
+    rev: d261165c512c
+    page_pdf: 1
+    quote: |-
+      Fecha: 04/02/2022
+change_period:
+  - value: 2021-02-01
+    literal: 01/02/2021
+    stated_in:
+      doc: NT_010
+      rev: d261165c512c
+      page_pdf: 1
+      quote: Cambios desde la fecha 01/02/2021 al 04/02/2022
+  - value: 2022-02-04
+    literal: 04/02/2022
+    stated_in:
+      doc: NT_010
+      rev: d261165c512c
+      page_pdf: 1
+      quote: Cambios desde la fecha 01/02/2021 al 04/02/2022
+effects:
+  - id: NT_010#1
+    verb_literal: se modifica el siguiente campo
+    action: modify
+    target: field:DE:D011
+    declared_scope: []
+    evidence:
+      - raw:NT_010@d261165c512c:p1:D012
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mención, no cambio: NT 10 modifica el campo D012 dDesTipTra (fuera del piloto), cuya observación nombra D011 («Obligatorio si existe el campo D011»). NT 10 no modifica el campo D011.
+  - id: NT_010#2
+    verb_literal: se modifica el siguiente campo
+    action: modify
+    target: field:DE:C002
+    declared_scope: []
+    evidence:
+      - raw:NT_010@d261165c512c:p2:E980
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mención, no cambio: NT 10 modifica el grupo E980 gCamTrans (fuera del piloto), cuya observación nombra C002 («Obligatorio si C002 = 7»). NT 10 no modifica el campo C002.
+  - id: NT_010#3
+    verb_literal: se modifican y elimina las siguientes validaciones y se agrega nueva validación
+    action: modify
+    target: field:DE:C002
+    declared_scope: []
+    evidence:
+      - raw:NT_010@d261165c512c:p3:D202
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mención, no cambio: NT 10 modifica la validación D202 (1300), fuera del piloto, cuya observación nombra C002 («(C002 ≠ 4)»). NT 10 no modifica el campo C002.
+  - id: NT_010#4
+    verb_literal: se modifican y elimina las siguientes validaciones y se agrega nueva validación
+    action: modify
+    target: field:DE:D201
+    declared_scope: []
+    evidence:
+      - raw:NT_010@d261165c512c:p3:D202
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mención, no cambio: la validación D202 (1300) que modifica NT 10 (fuera del piloto) nombra D201 («(D201=2)»). NT 10 no modifica el campo D201.
+  - id: NT_010#5
+    verb_literal: se modifican y elimina las siguientes validaciones y se agrega nueva validación
+    action: modify
+    target: field:DE:D202
+    declared_scope: []
+    evidence:
+      - raw:NT_010@d261165c512c:p3:D202
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mención, no cambio: la fila es la validación D202 (1300), fuera del piloto (su ID coincide con el del campo D202, pero es la tabla de validaciones); nombra D202 («(D202=2)», «(D202=4)»). NT 10 no modifica el campo D202.
+  - id: NT_010#6
+    verb_literal: se modifican y elimina las siguientes validaciones y se agrega nueva validación
+    action: remove
+    target: val:DE:D208b
+    declared_scope: row
+    evidence:
+      - raw:NT_010@d261165c512c:p3:D208b
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        El encabezado de §2.1 combina tres verbos para cuatro filas sin decir cuál corresponde a cada una: «se modifican» (plural), «elimina» (una eliminación) y «se agrega nueva validación» (una alta). Por exclusión: D208e (1331) es la nueva (no existe en el MT); D202 (1300) y D220 (1325) traen texto distinto del MT (modificadas); D208b (1319) se reproduce idéntica a la fila del MT, por lo que no hay modificación que aplicar y es la única candidata a «elimina». El resaltado rojo de toda la fila en el PDF coincide, pero el color no fundamenta la acción. Interpretación propia, sujeta a revisión: ISS-0008. Contradice el supuesto del diseño (§G.3, §S) de que D208b rige hasta NT 23.
+  - id: NT_010#7
+    verb_literal: se modifican y elimina las siguientes validaciones y se agrega nueva validación
+    action: add
+    target: val:DE:D208e
+    declared_scope: row
+    evidence:
+      - raw:NT_010@d261165c512c:p3:D208e
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        D208e (1331) no existe en el MT V150: es la «nueva validación» del encabezado.
+curation_scope: pilot

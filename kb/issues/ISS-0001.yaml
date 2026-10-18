@@ -1,0 +1,16 @@
+id: ISS-0001
+kind: source_conflict
+affects:
+  - subject: MT_V150
+statement: |-
+  El «Listado Checksum MD5» oficial de DNIT certifica MT_E_Kuatia_V150_10_09_2019.pdf con MD5 25EB165A8506EFA3A255B863ABCCAE95. El binario publicado hoy en el portal («Manual Técnico Versión 150.pdf», registrado en sources.manifest.yaml) tiene MD5 f48d7c820a14723ec14e66bfcb02e0df (sha256 976cd88c05c3…, 5.204.470 bytes). No se sabe qué difiere entre ambos binarios; el publicado muestra marcas de color de cambios (p. ej. D208d y D210a en verde, eliminadas luego por NT 2).
+evidence:
+  - doc: CHECKSUM_MT
+    rev: d6aa4660e0a9
+    page_pdf: 1
+    quote: MT_E_Kuatia_V150_10_09_2019.pdf 25EB165A8506EFA3A255B863ABCCAE95
+  - raw:MT_V150@976cd88c05c3:p72:D208
+blocking: false
+policy: |-
+  La línea base es el binario publicado (decisión del usuario registrada en kb/_meta.yaml). Las versiones de línea base se responden con normalidad; este Issue se muestra como aviso hasta que DNIT aclare o se obtenga el binario certificado.
+status: open

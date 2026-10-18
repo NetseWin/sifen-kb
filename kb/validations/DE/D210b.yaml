@@ -1,0 +1,26 @@
+key: val:DE:D210b
+context: DE
+id: D210b
+subject_field: field:DE:D210
+versions:
+  - introduced_by:
+      - NT_023#6
+    based_on: baseline
+    code: 1334
+    severity: R
+    message: El número de documento de identidad del receptor no es requerido
+    observation: |-
+      Si la naturaleza del receptor es contribuyente (D201=1) el número de documento de identidad no debe ser informado
+    condition:
+      expr: D201 == 1 and exists(D210)
+      level: full
+      interpretation:
+        by: llm
+        run: a067d55b-d757-498d-a601-f946db1a3acc
+        note: |-
+          Se viola cuando el receptor es contribuyente y D210 está presente. A diferencia de D210a (1323), no menciona B2F.
+    evidence:
+      - raw:NT_023@9cb063673358:p2:D210b
+    open_questions:
+      - |-
+        ¿D210b (1334) reintroduce con otro ID y código la regla de D210a (1323), eliminada por NT 2, sin la condición B2F? DNIT no lo declara (ISS-0004).

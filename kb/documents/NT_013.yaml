@@ -1,0 +1,19 @@
+id: NT_013
+kind: technical_note
+number: 13
+title: Nota Técnica N° 13
+current_revision: 5e9e85ec22f1d1081da69ea61e4b1fdf4f2ee2a57d88b0549b3b4c4f2b378af3
+document_date:
+  value: 2023-03-20
+  literal: 20/03/2023
+  stated_in: raw:NT_013@5e9e85ec22f1:p1:fechas#fecha
+schedule:
+  test:
+    value: 2023-04-21
+    literal: 21 de Abril del 2023
+    stated_in: raw:NT_013@5e9e85ec22f1:p1:fechas#test
+  prod:
+    value: 2023-06-17
+    literal: 17 de Junio del 2023
+    stated_in: raw:NT_013@5e9e85ec22f1:p1:fechas#prod
+curation_scope: dates_only

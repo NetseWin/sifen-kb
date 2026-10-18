@@ -1,0 +1,18 @@
+id: ISS-0010
+kind: ambiguity
+affects:
+  - subject: val:DE:D210
+    env: test
+    since: 2024-08-30
+  - subject: val:DE:D210
+    env: prod
+    since: 2024-09-27
+statement: |-
+  NT 23 §2.1 dice «se modifica la siguiente validación» y reproduce D210 (1314) con mensaje y observación idénticos a los del MT V150: el literal no muestra ningún cambio. El único cambio visible en el PDF es el resaltado rojo de «y el tipo de operación es diferente a B2F (D202≠4)». Si el rojo marca texto eliminado (como en las filas D208/D210 de la misma NT, ISS-0009), desde NT 23 1314 exigiría D210 para todo receptor no contribuyente (D201=2), paralelo a D208g (1335) y al Art. 6° (Numeral 1) del Decreto 872/2023 que la NT cita; si el rojo es texto vigente, la NT no cambia nada. Los veredictos difieren para receptores no contribuyentes en operaciones B2F sin D210.
+evidence:
+  - raw:NT_023@9cb063673358:p2:D210#observation
+  - raw:MT_V150@976cd88c05c3:p168:D210#observation
+blocking: true
+policy: |-
+  Decisión del usuario (2026-10-17): el rojo es contenido eliminado, así que NT 23 elimina de 1314 la excepción B2F y este Issue debe resolverse cuando la versión NT_023#4 se re-materialice con el effective_literal (cambio de código pendiente, ver ISS-0009); su condición quedará sin «D202 != 4». Mientras la versión materializada siga mostrando la celda completa (excepción B2F incluida), el bloqueo se mantiene como estado transitorio para no presentar como vigente un literal que la decisión ya descarta: desde el inicio de NT 23 en cada ambiente (test 2024-08-30, producción 2024-09-27) D210 (1314) responde undetermined (blocking_issue).
+status: open

@@ -1,0 +1,118 @@
+id: NT_023
+kind: technical_note
+number: 23
+title: Nota Técnica N° 23
+current_revision: 9cb063673358891eb867674c5f8f7a10487512b86c5ae5fc4d0ce438a95c0b03
+document_date:
+  value: 2024-08-27
+  literal: 27/08/2024
+  stated_in: raw:NT_023@9cb063673358:p1:fechas#fecha
+schedule:
+  test:
+    value: 2024-08-30
+    literal: 30 de agosto de 2024
+    stated_in: raw:NT_023@9cb063673358:p1:fechas#test
+  prod:
+    value: 2024-09-27
+    literal: 27 de setiembre de 2024
+    stated_in: raw:NT_023@9cb063673358:p1:fechas#prod
+effects:
+  - id: NT_023#1
+    verb_literal: se modifican los siguientes campos
+    action: modify
+    target: field:DE:D208
+    declared_scope: row
+    evidence:
+      - raw:NT_023@9cb063673358:p1:D208
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        Cambia la Observación: «No informar si D201 = 1 o D202=4» pasa a «No informar si D201 = 1». La lista de valores (incluido «6=Tarjeta Diplomática de exoneración fiscal») ya estaba en el MT V150 y en NT 2: NT 23 no agrega el valor 6. En el PDF «y D202 ≠ 4» está en rojo; la KB copia la celda completa (ISS-0009).
+  - id: NT_023#2
+    verb_literal: se modifican los siguientes campos
+    action: modify
+    target: field:DE:D210
+    declared_scope: row
+    evidence:
+      - raw:NT_023@9cb063673358:p1:D210
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        Cambia la Observación: «No informar si D201 = 1 o D202=4» pasa a «No informar si D201 = 1». En el PDF «y D202 ≠ 4» está en rojo; la KB copia la celda completa (ISS-0009).
+  - id: NT_023#3
+    verb_literal: se modifica la siguiente validación
+    action: modify
+    target: val:DE:D208e
+    declared_scope: row
+    evidence:
+      - raw:NT_023@9cb063673358:p2:D208e
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        Cambia la Observación: se agrega la Nota de Remisión Electrónica (C002 = 5, 6, 7).
+  - id: NT_023#4
+    verb_literal: se modifica la siguiente validación
+    action: modify
+    target: val:DE:D210
+    declared_scope: row
+    evidence:
+      - raw:NT_023@9cb063673358:p2:D210
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        La fila reproducida es idéntica a la del MT V150: el «se modifica» no se refleja en el literal. En el PDF el tramo «y el tipo de operación es diferente a B2F (D202≠4)» está en rojo; si el rojo significara eliminación (leyenda del MT), 1314 exigiría D210 para todo receptor no contribuyente. Se copia la celda completa y se abre ISS-0010 (bloqueante sobre 1314 desde NT 23).
+  - id: NT_023#5
+    verb_literal: se modifica la siguiente validación
+    action: add
+    target: val:DE:D208f
+    declared_scope: row
+    evidence:
+      - raw:NT_023@9cb063673358:p2:D208f
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        El encabezado dice «se modifica», pero D208f (1333) no existe en el MT V150 ni en ninguna NT anterior: no hay predecesora que modificar, se modela como alta. Mensaje y observación idénticos a los de D208b (1319), eliminada por NT 10 según NT_010#6: ISS-0002.
+  - id: NT_023#6
+    verb_literal: se modifica la siguiente validación
+    action: add
+    target: val:DE:D210b
+    declared_scope: row
+    evidence:
+      - raw:NT_023@9cb063673358:p2:D210b
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        El encabezado dice «se modifica», pero D210b (1334) no existe en el MT V150 ni en ninguna NT anterior: se modela como alta. Posible reintroducción de D210a (1323, eliminada por NT 2) sin la condición B2F: ISS-0004.
+  - id: NT_023#7
+    verb_literal: se modifica la siguiente validación
+    action: add
+    target: val:DE:D208g
+    declared_scope: row
+    evidence:
+      - raw:NT_023@9cb063673358:p2:D208g
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        El encabezado dice «se modifica», pero D208g (1335) no existe en el MT V150 ni en ninguna NT anterior: se modela como alta. Regla equivalente a D208 (1310) sin la excepción B2F, con otro ID y código: ISS-0003.
+  - id: NT_023#8
+    verb_literal: se modifica la siguiente validación
+    action: modify
+    target: field:DE:C002
+    declared_scope: []
+    evidence:
+      - raw:NT_023@9cb063673358:p3:H001
+      - raw:NT_023@9cb063673358:p3:H018a
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mención, no cambio: NT 23 (§2.2) modifica o agrega validaciones del grupo H (H001 2400, H018a 2444), fuera del piloto, cuyas observaciones nombran C002 («C002=4, 5, 6 o 8», «C002 ≠ 5, 6 o 7»). No modifica el campo C002.
+curation_scope: pilot

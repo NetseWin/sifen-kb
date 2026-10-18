@@ -1,0 +1,12 @@
+id: ISS-0013
+kind: source_conflict
+affects:
+  - subject: field:DE:C002
+statement: |-
+  La instantánea XSD del 2026-10-17 (XSD_DIR rev cdd1f03f1d29, DE_Types_v150.xsd, tipo tiTiDE del elemento iTiDE) restringe C002 con el patrón «1|[4-7]|9|10», mientras el MT V150 enumera 1 a 8 (2, 3 y 8 marcados «(Futuro)») y ninguna NT del corpus agrega los valores 9 y 10 ni modifica C002. El XSD no admite 2, 3 ni 8 y admite 9 y 10, cuyas etiquetas no figuran en el MT ni en las NT. El XSD_DIR no tiene texto en raw/: la referencia al tipo se da en este enunciado, no como cita verificable.
+evidence:
+  - raw:MT_V150@976cd88c05c3:p64:C002#observations
+blocking: false
+policy: |-
+  El significado y las etiquetas de los valores se toman del MT/NT (autoridad por dimensión, docs/arquitectura.md §D.5); la enumeración de C002 sigue el MT. La diferencia con el XSD se muestra como aviso; el XSD es evidencia de estructura solo desde su retrieved_at.
+status: open

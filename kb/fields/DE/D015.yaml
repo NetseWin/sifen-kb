@@ -1,0 +1,16 @@
+key: field:DE:D015
+context: DE
+id: D015
+versions:
+  - introduced_by: baseline
+    group: D1
+    parent: D010
+    xml_name: cMoneOpe
+    description: Moneda de la operación
+    data_type: A
+    length: 3
+    occurrence: 1-1
+    observations: |-
+      Según tabla de códigos para monedas de acuerdo con la norma ISO 4217 Se requiere la misma moneda para todos los ítems del DE
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p68:D015

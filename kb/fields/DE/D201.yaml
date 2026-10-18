@@ -1,0 +1,23 @@
+key: field:DE:D201
+context: DE
+id: D201
+versions:
+  - introduced_by: baseline
+    group: D3
+    parent: D200
+    xml_name: iNatRec
+    description: Naturaleza del receptor
+    data_type: N
+    length: 1
+    occurrence: 1-1
+    observations: 1= contribuyente 2= no contribuyente
+    enumeration:
+      - code: 1
+        label: contribuyente
+      - code: 2
+        label: no contribuyente
+    enumeration_interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p72:D201

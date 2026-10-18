@@ -1,0 +1,36 @@
+key: field:DE:C002
+context: DE
+id: C002
+versions:
+  - introduced_by: baseline
+    group: C
+    parent: C001
+    xml_name: iTiDE
+    description: Tipo de Documento Electrónico
+    data_type: N
+    length: 1-2
+    occurrence: 1-1
+    observations: |-
+      1= Factura electrónica 2= Factura electrónica de exportación (Futuro) 3= Factura electrónica de importación (Futuro) 4= Autofactura electrónica 5= Nota de crédito electrónica 6= Nota de débito electrónica 7= Nota de remisión electrónica 8= Comprobante de retención electrónico (Futuro)
+    enumeration:
+      - code: 1
+        label: Factura electrónica
+      - code: 2
+        label: Factura electrónica de exportación (Futuro)
+      - code: 3
+        label: Factura electrónica de importación (Futuro)
+      - code: 4
+        label: Autofactura electrónica
+      - code: 5
+        label: Nota de crédito electrónica
+      - code: 6
+        label: Nota de débito electrónica
+      - code: 7
+        label: Nota de remisión electrónica
+      - code: 8
+        label: Comprobante de retención electrónico (Futuro)
+    enumeration_interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p64:C002

@@ -1,0 +1,44 @@
+id: NT_008
+kind: technical_note
+number: 8
+title: Nota Técnica N° 8
+current_revision: 2b1c2f0b25e92e16b88d170611e3384b318e495242fe5731f906f8770f2e40e8
+document_date:
+  value: 2021-09-21
+  literal: 21/09/2021
+  stated_in:
+    doc: NT_008
+    rev: 2b1c2f0b25e9
+    page_pdf: 1
+    quote: |-
+      Fecha: 21/09/2021
+change_period:
+  - value: 2021-09-16
+    literal: 16/09/2021
+    stated_in:
+      doc: NT_008
+      rev: 2b1c2f0b25e9
+      page_pdf: 1
+      quote: Cambios desde la fecha 16/09/2021 al 21/09/2021
+  - value: 2021-09-21
+    literal: 21/09/2021
+    stated_in:
+      doc: NT_008
+      rev: 2b1c2f0b25e9
+      page_pdf: 1
+      quote: Cambios desde la fecha 16/09/2021 al 21/09/2021
+effects:
+  - id: NT_008#1
+    verb_literal: se modifican y eliminan las fórmulas de los siguientes campos
+    action: modify
+    target: field:DE:F023
+    declared_scope:
+      - observations
+    evidence:
+      - raw:NT_008@2b1c2f0b25e9:p1:F023
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        Las fórmulas están en la columna Observaciones. La celda reproducida es idéntica a la del MT V150; en el PDF el tramo «Cuando C002=4 corresponde a F014» está en rojo y el Histórico dice «se elimina la diferencia que cuenta con relación a la Autofactura campo F023». La KB copia la celda completa; la lectura «rojo = eliminado» queda en ISS-0009.
+curation_scope: pilot

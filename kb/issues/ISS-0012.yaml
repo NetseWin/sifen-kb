@@ -1,0 +1,19 @@
+id: ISS-0012
+kind: source_conflict
+affects:
+  - subject: val:DE:D208c
+    since: 2024-01-01
+statement: |-
+  Obligación legal frente a regla técnica. El Decreto 872/2023, art. 6, numeral 2 (leído en su literal) obliga a identificar al cliente en operaciones B2C «cuando la operación supere» 35.000.000 desde el 1° de enero de 2024 y 7.000.000 desde el 1° de enero de 2025, sin excepción por tipo de transacción. NT 21 y NT 24, que citan ese artículo, dicen «es mayor o igual a» (F023 >= … o F014 >= …) y exceptúan las muestras médicas (D011≠13). La KB no consolida la norma legal: registra la divergencia (relacionada con ISS-0011).
+evidence:
+  - doc: NORMA_DECRETO_872_2023
+    rev: 93340e5f15ca
+    page_pdf: 11
+    quote: |-
+      se deberá informar en la Factura Electrónica la identidad del cliente cuando la operación supere los siguientes montos
+  - raw:NT_021@1e716577d874:p1:D208c#observation
+  - raw:NT_024@ccc2d1550e92:p1:D208c#observation
+blocking: false
+policy: |-
+  La regla técnica vigente es la de la NT (autoridad por dimensión, docs/arquitectura.md §D.5); la divergencia legal se muestra como aviso.
+status: open

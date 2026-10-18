@@ -1,0 +1,14 @@
+id: ISS-0006
+kind: temporal
+affects:
+  - subject: NT_013
+    env: prod
+statement: |-
+  El PDF oficial vigente de NT 13 (revisión 5e9e85ec22f1) declara producción el 17/06/2023 (test 21/04/2023). Una fuente secundaria no oficial (README de la librería rshk-jsifenlib de Roshka) documenta para NT 13 «21/04/2023 desarrollo y 21/05/2023 producción»: posible prórroga in situ en una revisión anterior del PDF que no se conserva. La fuente secundaria no es evidencia citable (no figura como stated_in) y no hay otra revisión oficial registrada.
+evidence:
+  - raw:NT_013@5e9e85ec22f1:p1:fechas#prod
+  - raw:NT_013@5e9e85ec22f1:p1:fechas#test
+blocking: false
+policy: |-
+  Se usa la fecha del PDF oficial (2023-06-17), que además es coverage_from (decisión del usuario, supuesto A1): antes de esa fecha la KB responde outside_coverage. Si apareciera una revisión oficial anterior con 21/05/2023, se registra como fuente y se revisa este Issue.
+status: open

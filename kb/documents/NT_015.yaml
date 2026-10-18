@@ -1,0 +1,19 @@
+id: NT_015
+kind: technical_note
+number: 15
+title: Nota Técnica N° 15
+current_revision: d41ae8e7d1fdbcf6f72bb276f3903e8b7a111797dd25f1e342abb402b60cb09a
+document_date:
+  value: 2023-08-14
+  literal: 14/08/2023
+  stated_in: raw:NT_015@d41ae8e7d1fd:p1:fechas#fecha
+schedule:
+  test:
+    value: 2023-08-21
+    literal: 21 de Agosto del 2023
+    stated_in: raw:NT_015@d41ae8e7d1fd:p1:fechas#test
+  prod:
+    value: 2023-09-21
+    literal: 21 de Septiembre del 2023
+    stated_in: raw:NT_015@d41ae8e7d1fd:p1:fechas#prod
+curation_scope: dates_only

@@ -1,0 +1,29 @@
+id: NT_006
+kind: technical_note
+number: 6
+title: Nota Técnica N° 6
+current_revision: 44db68fbdcc1bbfbc48e72d92ddf80bd3f42424b9c9a0add92becc44c38e2da1
+document_date:
+  value: 2021-03-25
+  literal: 25/03/2021
+  stated_in:
+    doc: NT_006
+    rev: 44db68fbdcc1
+    page_pdf: 1
+    quote: |-
+      Fecha: 25/03/2021
+effects:
+  - id: NT_006#1
+    verb_literal: Se agrega la siguiente validación
+    action: add
+    target: field:DE:C002
+    declared_scope: []
+    evidence:
+      - raw:NT_006@44db68fbdcc1:p1:D011a
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mención, no cambio: NT 6 agrega la validación D011a (1216), fuera del piloto, cuya observación nombra C002 («C002≠1 o 4»). NT 6 no modifica el campo C002.
+curation_scope: dates_only

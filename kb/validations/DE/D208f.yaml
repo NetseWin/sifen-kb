@@ -1,0 +1,26 @@
+key: val:DE:D208f
+context: DE
+id: D208f
+subject_field: field:DE:D208
+versions:
+  - introduced_by:
+      - NT_023#5
+    based_on: baseline
+    code: 1333
+    severity: R
+    message: Tipo de documento de identidad del receptor incorrecto para el tipo de operación
+    observation: |-
+      El Tipo de documento de identidad del receptor no puede ser innominado (D208=5), cuando el tipo de operación es distinto a B2C (D202 ≠ 2)
+    condition:
+      expr: exists(D208) and D208 == 5 and D202 != 2
+      level: full
+      interpretation:
+        by: llm
+        run: a067d55b-d757-498d-a601-f946db1a3acc
+        note: |-
+          Misma formalización que D208b (1319): mensaje y observación idénticos (ISS-0002). Se viola cuando el receptor es innominado y la operación no es B2C.
+    evidence:
+      - raw:NT_023@9cb063673358:p2:D208f
+    open_questions:
+      - |-
+        ¿D208f (1333) reintroduce con otro ID y código la regla de D208b (1319), eliminada por NT 10 según NT_010#6? DNIT no lo declara (ISS-0002, ISS-0008).

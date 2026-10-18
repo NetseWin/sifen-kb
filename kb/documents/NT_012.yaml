@@ -1,0 +1,42 @@
+id: NT_012
+kind: technical_note
+number: 12
+title: Nota Técnica N° 12
+current_revision: 3f9243e48a0a27f7283b08f8534d33a2189060012895eb8adabf19ff04e142e7
+document_date:
+  value: 2023-02-21
+  literal: 21/02/2023
+  stated_in:
+    doc: NT_012
+    rev: 3f9243e48a0a
+    page_pdf: 1
+    quote: |-
+      Fecha: 21/02/2023
+effects:
+  - id: NT_012#1
+    verb_literal: se agrega la siguiente validación
+    action: add
+    target: field:DE:C002
+    declared_scope: []
+    evidence:
+      - raw:NT_012@3f9243e48a0a:p1:D022
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mención, no cambio: NT 12 agrega la validación D022 (1213), fuera del piloto, cuya observación nombra C002 («Autofactura Electrónica (C002=4)»). NT 12 no modifica el campo C002.
+  - id: NT_012#2
+    verb_literal: se agrega la siguiente validación
+    action: add
+    target: field:DE:D015
+    declared_scope: []
+    evidence:
+      - raw:NT_012@3f9243e48a0a:p1:D022
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mención, no cambio: la validación D022 (1213) que agrega NT 12 (fuera del piloto) nombra D015 («(D015=PYG)»). NT 12 no modifica el campo D015.
+curation_scope: dates_only

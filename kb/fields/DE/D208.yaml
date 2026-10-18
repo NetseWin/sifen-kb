@@ -1,0 +1,111 @@
+key: field:DE:D208
+context: DE
+id: D208
+versions:
+  - introduced_by: baseline
+    group: D3
+    parent: D200
+    xml_name: iTipIDRec
+    description: Tipo de documento de identidad del receptor
+    data_type: N
+    length: 1
+    occurrence: 0-1
+    observations: |-
+      Obligatorio si D201 = 2 y D202 ≠ 4 No informar si D201 = 1 o D202=4 1= Cédula paraguaya 2= Pasaporte 3= Cédula extranjera 4= Carnet de residencia 5= Innominado 6=Tarjeta Diplomática de exoneración fiscal 9= Otro
+    enumeration:
+      - code: 1
+        label: Cédula paraguaya
+      - code: 2
+        label: Pasaporte
+      - code: 3
+        label: Cédula extranjera
+      - code: 4
+        label: Carnet de residencia
+      - code: 5
+        label: Innominado
+      - code: 6
+        label: Tarjeta Diplomática de exoneración fiscal
+      - code: 9
+        label: Otro
+    enumeration_interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        El valor 6 ya figura en el MT V150 publicado (resaltado en verde = agregado en la leyenda del MT).
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p72:D208
+  - introduced_by:
+      - NT_002#1
+    based_on: baseline
+    group: D3
+    parent: D200
+    xml_name: iTipIDRec
+    description: Tipo de documento de identidad del receptor
+    data_type: N
+    length: 1
+    occurrence: 0-1
+    observations: |-
+      Obligatorio si D201 = 2 y D202 ≠ 4 No informar si D201 = 1 o D202=4 1= Cédula paraguaya 2= Pasaporte 3= Cédula extranjera 4= Carnet de residencia 5= Innominado 6=Tarjeta Diplomática de exoneración fiscal 9= Otro
+    enumeration:
+      - code: 1
+        label: Cédula paraguaya
+      - code: 2
+        label: Pasaporte
+      - code: 3
+        label: Cédula extranjera
+      - code: 4
+        label: Carnet de residencia
+      - code: 5
+        label: Innominado
+      - code: 6
+        label: Tarjeta Diplomática de exoneración fiscal
+      - code: 9
+        label: Otro
+    enumeration_interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        El valor 6 ya figura en el MT V150 publicado (resaltado en verde = agregado en la leyenda del MT).
+    evidence:
+      - raw:NT_002@6aaf4a8f4797:p1:D208
+    open_questions:
+      - |-
+        NT 2 reproduce la celda Observaciones igual que el MT, pero resalta en rojo «No informar si D201 = 1 o D202=4» y en la misma NT elimina D208d (1322), la validación que impone ese «no informar». ¿El rojo indica que ese tramo se elimina? (ISS-0009)
+  - introduced_by:
+      - NT_023#1
+    based_on:
+      - NT_002#1
+    group: D3
+    parent: D200
+    xml_name: iTipIDRec
+    description: Tipo de documento de identidad del receptor
+    data_type: N
+    length: 1
+    occurrence: 0-1
+    observations: |-
+      Obligatorio si D201 = 2 y D202 ≠ 4 No informar si D201 = 1 1= Cédula paraguaya 2= Pasaporte 3= Cédula extranjera 4= Carnet de residencia 5= Innominado 6=Tarjeta Diplomática de exoneración fiscal 9= Otro
+    enumeration:
+      - code: 1
+        label: Cédula paraguaya
+      - code: 2
+        label: Pasaporte
+      - code: 3
+        label: Cédula extranjera
+      - code: 4
+        label: Carnet de residencia
+      - code: 5
+        label: Innominado
+      - code: 6
+        label: Tarjeta Diplomática de exoneración fiscal
+      - code: 9
+        label: Otro
+    enumeration_interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        Lista de valores idéntica a la del MT V150 y de NT 2: NT 23 no agrega ni quita valores; el cambio de la observación está en la condición «No informar».
+    evidence:
+      - raw:NT_023@9cb063673358:p1:D208
+    open_questions:
+      - |-
+        NT 23 resalta en rojo «y D202 ≠ 4» de «Obligatorio si D201 = 2 y D202 ≠ 4» y cita el Art. 6° (Numeral 1) del Decreto 872/2023 (identificación obligatoria en B2B, B2F o B2G). Si el rojo indicara eliminación, D208 sería obligatorio para todo receptor no contribuyente, como dice D208g (1335). La KB copia la celda completa (ISS-0009, ISS-0003).

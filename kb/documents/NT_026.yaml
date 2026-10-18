@@ -1,0 +1,65 @@
+id: NT_026
+kind: technical_note
+number: 26
+title: Nota Técnica N° 26
+current_revision: 5ed252f144275c6c9d6ff47fc14021b173c912c4b92ba3572b36c327167119bc
+document_date:
+  value: 2025-06-06
+  literal: 06/06/2025
+  stated_in: raw:NT_026@5ed252f14427:p1:fechas#fecha
+schedule:
+  test:
+    value: 2025-06-09
+    literal: 09/06/2025
+    stated_in: raw:NT_026@5ed252f14427:p1:fechas#test
+  prod:
+    value: 2025-06-16
+    literal: 16/06/2025
+    stated_in: raw:NT_026@5ed252f14427:p1:fechas#prod
+effects:
+  - id: NT_026#1
+    verb_literal: se modifican las siguientes observaciones
+    action: modify
+    target: field:DE:D202
+    declared_scope: []
+    evidence:
+      - raw:NT_026@5ed252f14427:p1:E704
+      - raw:NT_026@5ed252f14427:p1:E705
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mención, no cambio: NT 26 modifica las observaciones de E704 y E705 (fuera del piloto), que nombran D202 («Opcional si D202 = 3»). No modifica el campo D202.
+  - id: NT_026#2
+    verb_literal: se modifica la siguiente observación
+    action: modify
+    target: field:DE:D202
+    declared_scope: []
+    evidence:
+      - raw:NT_026@5ed252f14427:p1:E020
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mención, no cambio: NT 26 modifica la observación del grupo E020 (fuera del piloto), que nombra D202 («Opcional si D202 = 3 (Tipo de operación B2G)»). No modifica el campo D202.
+  - id: NT_026#3
+    verb_literal: Se excluyen las siguientes reglas de validación
+    action: remove
+    target: field:DE:D202
+    declared_scope: []
+    evidence:
+      - raw:NT_026@5ed252f14427:p1:E020~2
+      - raw:NT_026@5ed252f14427:p1:E020a
+      - raw:NT_026@5ed252f14427:p2:E704
+      - raw:NT_026@5ed252f14427:p2:E705
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        Encabezados de §2.1 (p. 1) y §2.2 (p. 2): «Se excluyen las siguientes reglas de validación».
+    note: |-
+      Mención, no cambio: NT 26 excluye las validaciones E020 (1400), E020a (1401), E704 (1800) y E705 (1801), fuera del piloto, cuyas observaciones nombran D202 («(D202=3)»). No modifica el campo D202.
+curation_scope: dates_only

@@ -1,0 +1,32 @@
+id: NT_024
+kind: technical_note
+number: 24
+title: Nota Técnica N° 24
+current_revision: ccc2d1550e9227898e690a6025e9ab7ee1f47225dbab36acf8dda3bcb5570b9b
+document_date:
+  value: 2024-12-17
+  literal: 17/12/2024
+  stated_in: raw:NT_024@ccc2d1550e92:p1:fechas#fecha
+schedule:
+  test:
+    value: 2025-01-01
+    literal: 01/01/2025
+    stated_in: raw:NT_024@ccc2d1550e92:p1:fechas#test
+  prod:
+    value: 2025-01-01
+    literal: 01/01/2025
+    stated_in: raw:NT_024@ccc2d1550e92:p1:fechas#prod
+effects:
+  - id: NT_024#1
+    verb_literal: se modifica la siguiente validación
+    action: modify
+    target: val:DE:D208c
+    declared_scope: row
+    evidence:
+      - raw:NT_024@ccc2d1550e92:p1:D208c
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        La NT reproduce la fila completa; cambia la Observación (umbral 35.000.000 → 7.000.000 y las constantes del paréntesis pasan a escribirse «7.000.000»). La celda se copia completa, con el texto resaltado en rojo (ISS-0011).
+curation_scope: pilot

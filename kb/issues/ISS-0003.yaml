@@ -1,0 +1,19 @@
+id: ISS-0003
+kind: undeclared_change
+affects:
+  - subject: val:DE:D208
+    env: test
+    since: 2024-08-30
+  - subject: val:DE:D208
+    env: prod
+    since: 2024-09-27
+statement: |-
+  NT 23 agrega D208g (1335, «El tipo de documento de identidad del receptor es requerido»: obligatorio si D201=2) sin mencionar D208 (1310, «Es obligatorio informar el tipo de documento de identidad del receptor»: obligatorio si D201=2 y D202≠4). Es la misma obligación sin la excepción B2F, con otro ID, otro código y otro mensaje. NT 23 no declara que D208g reemplace a D208, ni que D208 se elimine o se modifique; además la observación del campo D208 en la misma NT sigue diciendo «Obligatorio si D201 = 2 y D202 ≠ 4» (con «y D202 ≠ 4» resaltado en rojo, ISS-0009). No se sabe si desde NT 23 el servidor devuelve 1310, 1335 o ambos.
+evidence:
+  - raw:NT_023@9cb063673358:p2:D208g
+  - raw:NT_023@9cb063673358:p1:D208
+  - raw:MT_V150@976cd88c05c3:p167:D208
+blocking: true
+policy: |-
+  Desde el inicio de NT 23 en cada ambiente (test 2024-08-30, producción 2024-09-27) D208 (1310) responde undetermined (blocking_issue), mostrando la versión de línea base. D208g (1335) responde in_force con aviso (open_questions). No se fusionan sin declaración de DNIT.
+status: open

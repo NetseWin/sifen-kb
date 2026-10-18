@@ -1,0 +1,42 @@
+key: val:DE:D210
+context: DE
+id: D210
+subject_field: field:DE:D210
+versions:
+  - introduced_by: baseline
+    code: 1314
+    severity: R
+    message: Es obligatorio informar el número de documento de identidad del receptor
+    observation: |-
+      Si la naturaleza del receptor es NO contribuyente (D201=2) y el tipo de operación es diferente a B2F (D202≠4), el número de documento de identidad debe ser informado
+    condition:
+      expr: D201 == 2 and D202 != 4 and not exists(D210)
+      level: full
+      interpretation:
+        by: llm
+        run: a067d55b-d757-498d-a601-f946db1a3acc
+        note: |-
+          Se viola cuando el receptor es no contribuyente, la operación no es B2F y D210 no se informa. D201 y D202 son obligatorios (1-1): se leen sin guarda.
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p168:D210
+  - introduced_by:
+      - NT_023#4
+    based_on: baseline
+    code: 1314
+    severity: R
+    message: Es obligatorio informar el número de documento de identidad del receptor
+    observation: |-
+      Si la naturaleza del receptor es NO contribuyente (D201=2) y el tipo de operación es diferente a B2F (D202≠4), el número de documento de identidad debe ser informado
+    condition:
+      expr: D201 == 2 and D202 != 4 and not exists(D210)
+      level: full
+      interpretation:
+        by: llm
+        run: a067d55b-d757-498d-a601-f946db1a3acc
+        note: |-
+          Se viola cuando el receptor es no contribuyente, la operación no es B2F y D210 no se informa. D201 y D202 son obligatorios (1-1): se leen sin guarda.
+    evidence:
+      - raw:NT_023@9cb063673358:p2:D210
+    open_questions:
+      - |-
+        NT 23 declara «se modifica» pero reproduce la fila idéntica a la del MT V150; el único cambio visible es el resaltado rojo de «y el tipo de operación es diferente a B2F (D202≠4)». Si el rojo indicara eliminación, 1314 exigiría D210 para todo receptor no contribuyente (paralelo a D208g/1335). La condición se mantiene igual porque el literal no cambió (ISS-0010, bloqueante).
