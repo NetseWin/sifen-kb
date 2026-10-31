@@ -2,13 +2,13 @@
 
 Base de conocimiento técnica, versionada y verificable de **SIFEN** (facturación electrónica de Paraguay, e-Kuatia): qué regla de validación rige en cada **fecha** y en cada **ambiente** (test o producción), con la cita literal del documento oficial de DNIT que la respalda.
 
-> **Estado: alfa.** El corpus oficial ya está registrado y el extractor genera `raw/`; el dominio piloto (receptor e identidad) se está curando. Algunos comandos de la CLI todavía no están completos. Lo que ves en este README sobre su salida es ilustrativo hasta que se pegue una salida real (ver los marcadores `SALIDA-REAL`).
+> **Estado.** El dominio piloto (receptor e identidad) está **curado y verificado** (32 documentos con ficha, 10 campos, 12 validaciones) y la CLI está **implementada** (`explain`, `status`, `source`, `extract`, `draft`, `check`, `fmt`). Las salidas de este README son reales, ejecutadas contra el commit `e7d0f2c` (2026-10-18).
 
 ## El problema
 
 Para saber si un documento electrónico (DE) debía ser aceptado o rechazado con el código `1321` no basta con abrir el Manual Técnico:
 
-- **El Manual Técnico base no es la regla vigente.** El Manual v150 trae el umbral de `D208c` en 60.000.000 guaraníes; la Nota Técnica 21 lo bajó a 35.000.000 y la Nota Técnica 24, a 7.000.000. La respuesta correcta depende de la fecha.
+- **El Manual Técnico base no es la regla vigente.** El Manual v150 fija el umbral de `D208c` en «mayor o igual a 60.000.000» guaraníes, con la excepción de las muestras médicas (D011≠13); la Nota Técnica 21 lo bajó a «mayor a 35.000.000» y la Nota Técnica 24, a «mayor a 7.000.000», ambas sin la excepción D011. La respuesta correcta depende de la fecha.
 - **Cada Nota Técnica (NT) tiene sus propias fechas, y distintas por ambiente.** Test y producción no cambian el mismo día (NT 23: 30/08/2024 en test y 27/09/2024 en producción). Las NT 001–012 no declaran vigencia. La numeración no ordena el tiempo.
 - **DNIT cambia los archivos in situ.** Vuelve a subir una NT con otra marca de agua o con otro contenido, y modifica los XSD sin cambiar el nombre, el namespace ni la versión. Lo único que lo delata es el hash.
 - **Los identificadores no son únicos.** `D208` es a la vez un campo y una validación; un mismo código puede estar en dos validaciones; una NT reasigna códigos.
@@ -23,43 +23,45 @@ Resuelve una consulta puntual a partir de fuentes con hash, evidencia literal y 
 sifen explain 1321 --at 2025-01-10 --env prod
 ```
 
-Salida **ilustrativa** (tomada del diseño, `docs/arquitectura.md` §O; los marcadores `<n>` y `<sha12>` se completan con datos reales):
+Salida real de `uv run sifen explain 1321 --at 2025-01-10 --env prod` ejecutada el 2026-10-18 contra `e7d0f2c`:
 
 ```text
-val:DE:D208c · código 1321 · R · IN_FORCE (prod · eje: procesamiento [supuesto A2])
-  Versión     NT_024#1 · desde 2025-01-01 (declarada en NT 24, rev <sha12>) · hasta: abierta
-  Literal     «…es mayor o igual a 7.000.000 (F023 >= 7.000.000 o F014 >= 7.000.000)»  NT 24 p.<n>
-  Historia    MT v150 (base, ≥60 M) → NT 21 (2024-01-01, ≥35 M) → NT 24 (2025-01-01, ≥7 M)
-  Violación   [interpretación, parcial] (not exists(D011) or D011 != 13) and exists(D208) and D208 == 5 and (…)
-  Campos      D208 iTipIDRec (D3/D200, N 1, 0-1) · D011 iTipTra · F014 dTotGralOpe · F023 dTotalGs
-  XSD         instantánea 2026-10-17, posterior a la fecha consultada: referencia, no evidencia de 2025
-  Avisos      ISS-0005 gap: la prosa asocia F023/F014 a la moneda (D015); se formalizó el paréntesis
-  Fuentes     verificadas el 2026-10-17 (hace 0 días)
-  KB          kb-2026.11.xx · corpus MT_V150 + NT_001–NT_027 · curado: receptor/identidad
+val:DE:D208c · código 1321 · R · IN_FORCE (2025-01-10 · prod · eje: procesamiento [supuesto A2])
+  Versión     NT_024#1 · desde 2025-01-01 (declarada) [NT_024 «01/01/2025», rev ccc2d1550e92 p. 1 PDF] · hasta abierta
+  Mensaje     «Tipo de documento de identidad del receptor incorrecto para el total general de la operación en guaraníes»
+  Literal     «El Tipo de documento de identidad del receptor no puede ser Innominado (D208≠5) cuando el total general de la operación en guaraníes (cuando la moneda es extranjera) o el total general de la operación (cuando la moneda es PYG) es mayor a 7.000.000 (F023 > 7.000.000 o F014 > 7.000.000)»
+  Base legal  Decreto 872/2023, art. 6, numeral 2, inciso ii) (NT_024 rev ccc2d1550e92 · p. 1 PDF)
+  Fuente      NT_024 rev ccc2d1550e92 · p. 1 PDF
+  Historia    línea base (base) → NT_021#1 (2024-01-01) → [NT_024#1 (2025-01-01)]
+  Violación   [interpretación, parcial] exists(D208) and D208 == 5 and ((exists(F023) and F023 > 7000000) or (exists(F014) and F014 > 7000000))
+«…»
+  Issues      ISS-0005 (ambiguity, no bloqueante) · ISS-0011 (ambiguity, no bloqueante)
+«…»
+  Fuentes     verificadas el 2026-10-17 (hace 1 días)
+  KB          e7d0f2c · corpus MT_V150 + NT_001–NT_027 + CHECKSUM_MT + NORMA_DECRETO_872_2023 + XSD_DIR + XSD_RAR · curado: 32 documentos (dates_only 24, pilot 8) · 10 campos · 12 validaciones
 ```
 
-Salida real (se pegará aquí cuando el comando esté completo):
+Salida truncada: los dos renglones «…» sustituyen, sin editar ninguna línea visible, las líneas `Huecos`, `Campos` y `XSD` y las de `Avisos` (el texto completo de cada Issue); la salida íntegra está en [`docs/uso.md`](docs/uso.md). La línea `KB` muestra el commit contra el que se ejecutó (`e7d0f2c`, checkout limpio).
 
-<!-- SALIDA-REAL -->
+La evolución del umbral, que resume la línea `Historia` (`--history` da el detalle con las fuentes de cada frontera): MT v150, «mayor o igual a 60.000.000» con la excepción de muestras médicas (D011≠13) → NT 21 (2024-01-01), «mayor a 35.000.000» sin la excepción D011 → NT 24 (2025-01-01), «mayor a 7.000.000» sin la excepción D011.
 
-La respuesta nunca es solo "vigente" o "no vigente": incluye el **estado** y los **motivos**, el intervalo derivado, la cita (documento, revisión por hash y página), la historia, los avisos y el **horizonte de fuentes** (la fecha del último chequeo limpio del portal de DNIT). Si lo consultado todavía no está curado, responde `not_curated` con las menciones literales ordenadas por fecha de vigencia, sin inferir la regla:
-
-Salida real de hoy sobre este repositorio (2026-10-17; `1321` todavía no está curado, así que responde en modo índice):
+La respuesta nunca es solo "vigente" o "no vigente": incluye el **estado** y los **motivos**, el intervalo derivado, la cita (documento, revisión por hash y página), la historia, los avisos y el **horizonte de fuentes** (la fecha del último chequeo limpio del portal de DNIT). El modo `not_curated` sigue existiendo para lo que todavía no está curado (fuera del piloto): responde con las menciones literales, ordenadas por fecha de producción del documento (la más reciente primero; nunca por número de NT), sin inferir la regla. Salida real de `uv run sifen explain 1400` ejecutada el 2026-10-18 contra `e7d0f2c`:
 
 ```text
-$ uv run sifen explain 1321 --at 2025-01-10
-NOT_CURATED · 1321 (2025-01-10 · prod · eje: procesamiento [supuesto A2])
+$ uv run sifen explain 1400
+NOT_CURATED · 1400 (2026-10-18 · prod · eje: procesamiento [supuesto A2])
   Estado      NOT_CURATED: no curado: vigencia no resuelta; se listan las menciones en raw/ sin inferir la regla
   Aviso       vigencia no resuelta: una mención posterior puede modificar o eliminar la regla
   Menciones   3 en raw/, por fecha de producción del documento (la más reciente primero; nunca por número de NT):
-              1. NT_024 rev ccc2d1550e92 · p. 1 PDF · producción 2025-01-01 (literal de raw/, sin curar)
-                 «…eceptor incorrecto para el total general de la operación en guaraníes 1321 Si el Tipo de transacción es distinto a Muestras médicas (D011≠13), E…»
-              2. NT_021 rev 1e716577d874 · p. 1 PDF · producción 2024-01-01 (literal de raw/, sin curar)
-                 «…eceptor incorrecto para el total general de la operación en guaraníes 1321 Si el Tipo de transacción es distinto a Muestras médicas (D011≠13), E…»
-              3. MT_V150 rev 976cd88c05c3 · p. 166 impresa / 167 PDF · sin fecha de producción
-                 «…eceptor incorrecto para el total general de la operación en guaraníes 1321 Si el Tipo de transacción es distinto a Muestras médicas (D011≠13), e…»
-  Fuentes     verificadas el 2026-10-17 (hace 0 días)
-  KB          08cd5f7-dirty · corpus MT_V150 + NT_001–NT_027 + CHECKSUM_MT + NORMA_DECRETO_872_2023 + XSD_DIR + XSD_RAR · curado: nada
+              1. NT_026 rev 5ed252f14427 · p. 1 PDF · producción 2025-06-16
+                 «…ción E E020 Grupo de informaciones de Compras Públicas es obligatorio 1400 El grupo de informaciones de Compras Públicas es obligatorio para tip…»
+              2. MT_V150 rev 976cd88c05c3 · p. 148 impresa / 149 PDF · sin fecha de producción
+                 «…2 1399 Campos que componen la Factura Electrónica FE (E010-E099) E020 1400 E025 1449 Campos de informaciones de Compras Públicas (E020-E029) E30…»
+              3. MT_V150 rev 976cd88c05c3 · p. 168 impresa / 169 PDF · sin fecha de producción
+                 «…n E 78 E020 Grupo de informaciones de Compras Públicas es obligatorio 1400 El grupo de informaciones de Compras Públicas es obligatorio para tip…»
+  Avisos      fuentes verificadas el 2026-10-17: una NT posterior podría regir (NT 25 y 27 rigieron el día de su subida)
+  Fuentes     verificadas el 2026-10-17 (hace 1 días)
+  KB          e7d0f2c · corpus MT_V150 + NT_001–NT_027 + CHECKSUM_MT + NORMA_DECRETO_872_2023 + XSD_DIR + XSD_RAR · curado: 32 documentos (dates_only 24, pilot 8) · 10 campos · 12 validaciones
 ```
 
 La guía completa de la CLI está en [`docs/uso.md`](docs/uso.md).
@@ -163,7 +165,7 @@ build/                    artefactos generados (no versionado)
 ## Alcance actual y limitaciones
 
 - **Corpus registrado** (consulta del portal el 2026-10-17): Manual Técnico v150 y su listado de checksums MD5, Notas Técnicas 001–027, Decreto 872/2023, el RAR oficial de XSD y una instantánea de los 47 XSD publicados.
-- **MVP: un dominio piloto, receptor e identidad** (campos `C002`, `D011`, `D015`, `D201`, `D202`, `D208`, `D209`, `D210`, `F014`, `F023` y sus validaciones `D208`–`D210b`). El resto del DE (tablas completas del Manual, condición de operación, eventos, servicios web, codificaciones) está en el roadmap de `docs/arquitectura.md` §U. Fuera del piloto, `explain` responde `not_curated` con las menciones, no con una regla.
+- **Piloto receptor e identidad, curado** (campos `C002`, `D011`, `D015`, `D201`, `D202`, `D208`, `D209`, `D210`, `F014`, `F023` y sus validaciones `D208`–`D210b`; 32 documentos con ficha, 10 campos y 12 validaciones, con un único Issue bloqueante abierto, ISS-0003). El resto del DE (tablas completas del Manual, condición de operación, eventos, servicios web, codificaciones) está en el roadmap de `docs/arquitectura.md` §U. Fuera del piloto, `explain` responde `not_curated` con las menciones, no con una regla.
 - **Cobertura temporal.** Las respuestas temporales se garantizan desde `coverage_from` (propuesta: 2023-06-17, la primera NT con calendario). Antes de esa fecha, `outside_coverage`. Las NT 001–012 no declaran vigencia: se ordenan por la fecha del documento y el inicio se marca como aproximado.
 - **Eje de fecha.** `--at` significa fecha de **procesamiento** (supuesto A2, pendiente de confirmar con DNIT). Con un XML se resuelven la fecha de emisión y la de procesamiento.
 - **Horizonte de fuentes.** El chequeo del portal es manual en el MVP. Si pasó el horizonte, la respuesta lo dice y, vencida la gracia, queda `undetermined`: una NT posterior podría regir.
@@ -200,8 +202,8 @@ Los documentos de `sources/` son documentos públicos oficiales de DNIT, se redi
 
 ## Summary (English)
 
-**sifen-kb** is a versioned, verifiable technical knowledge base for **SIFEN**, Paraguay's electronic invoicing system. The base Technical Manual is not the rule currently in force: each Technical Note (NT) changes rules on its own dates, with different dates for the test and production environments, and the tax authority (DNIT) re-uploads NT files and edits XSD schemas in place. A rule such as validation code `1321` (threshold 60,000,000 in the Manual, 35,000,000 in NT 21, 7,000,000 in NT 24) therefore depends on the date and environment.
+**sifen-kb** is a versioned, verifiable technical knowledge base for **SIFEN**, Paraguay's electronic invoicing system. The base Technical Manual is not the rule currently in force: each Technical Note (NT) changes rules on its own dates, with different dates for the test and production environments, and the tax authority (DNIT) re-uploads NT files and edits XSD schemas in place. A rule such as validation code `1321` (≥ 60,000,000 guaraníes in the Manual, with a medical-samples exception D011≠13; > 35,000,000 in NT 21 and > 7,000,000 in NT 24, both without that exception) therefore depends on the date and environment.
 
 `sifen explain 1321 --at 2025-01-10 --env prod` resolves the rule from official sources identified by hash, literal evidence copied by tooling and checked against the PDF cells, and fully materialized versions. Answers carry an honest state (`in_force`, `removed`, `not_yet_existing`, `undetermined`, `outside_coverage`, `not_curated`), reasons, citations (document, revision hash, page) and the date up to which sources were last checked. There is a single editable canonical form (restricted YAML in `kb/`); AI proposes, a human approves, and mechanical controls (permission denies, hooks, tests, a `pr-scope` CI check) enforce it.
 
-Install with `git clone`, `uv sync` (uv manages Python 3.14); Linux, macOS and Windows via WSL2. Current scope (alpha): a pilot domain (receiver/identity); the rest of the electronic document is on the roadmap. The PDF extractor integrates code from the author's earlier MIT-licensed project `pdf_to_md`. Code and own documentation are MIT-licensed; the official DNIT documents under `sources/` are not covered by that license, belong to DNIT, and are redistributed unmodified for traceability. This project is not affiliated with DNIT and is not legal or tax advice. Docs are in Spanish; see `docs/arquitectura.md` for the full design.
+Install with `git clone`, `uv sync` (uv manages Python 3.14); Linux, macOS and Windows via WSL2. Current scope: the pilot domain (receiver/identity) is curated and the CLI (`explain`, `status`, `source`, `extract`, `draft`, `check`, `fmt`) is implemented; the rest of the electronic document is on the roadmap. The PDF extractor integrates code from the author's earlier MIT-licensed project `pdf_to_md`. Code and own documentation are MIT-licensed; the official DNIT documents under `sources/` are not covered by that license, belong to DNIT, and are redistributed unmodified for traceability. This project is not affiliated with DNIT and is not legal or tax advice. Docs are in Spanish; see `docs/arquitectura.md` for the full design.

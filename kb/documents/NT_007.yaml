@@ -1,0 +1,46 @@
+id: NT_007
+kind: technical_note
+number: 7
+title: Nota Técnica N° 7
+current_revision: ad25333d61ec5a74b4832da392c0d89112d9d40dc3adb14bab028cabfe200846
+document_date:
+  value: 2022-02-01
+  literal: 01/02/2022
+  stated_in:
+    doc: NT_007
+    rev: ad25333d61ec
+    page_pdf: 1
+    quote: |-
+      Fecha: 01/02/2022
+change_period:
+  - value: 2022-02-01
+    literal: 01/02/2022
+    stated_in:
+      doc: NT_007
+      rev: ad25333d61ec
+      page_pdf: 1
+      quote: Cambios desde la fecha 01/02/2022al 01/02/2022
+  - value: 2022-02-01
+    literal: 01/02/2022
+    stated_in:
+      doc: NT_007
+      rev: ad25333d61ec
+      page_pdf: 1
+      quote: Cambios desde la fecha 01/02/2022al 01/02/2022
+effects:
+  - id: NT_007#1
+    verb_literal: Modificar el campo de interés del fisco
+    action: modify
+    target: field:DE:C002
+    declared_scope: []
+    evidence:
+      - raw:NT_007@ad25333d61ec:p1:B006
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        La NT no tiene encabezado con verbo sobre la tabla; el verbo se toma de «Principales alteraciones» del Histórico del Documento.
+    note: |-
+      Mención, no cambio: NT 7 modifica el campo B006 dInfoFisc (fuera del piloto), cuya observación nombra C002 («Nota de remisión (C002=7)»). NT 7 no modifica el campo C002.
+curation_scope: dates_only

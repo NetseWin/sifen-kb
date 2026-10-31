@@ -1,0 +1,21 @@
+key: val:DE:D208
+context: DE
+id: D208
+subject_field: field:DE:D208
+versions:
+  - introduced_by: baseline
+    code: 1310
+    severity: R
+    message: Es obligatorio informar el tipo de documento de identidad del receptor
+    observation: |-
+      Si la naturaleza del receptor es NO contribuyente (D201=2) y el tipo de operación es diferente a B2F (D202≠4), el tipo de documento de identidad debe ser informado
+    condition:
+      expr: D201 == 2 and D202 != 4 and not exists(D208)
+      level: full
+      interpretation:
+        by: llm
+        run: a067d55b-d757-498d-a601-f946db1a3acc
+        note: |-
+          Se viola cuando el receptor es no contribuyente, la operación no es B2F y D208 no se informa. D201 y D202 son obligatorios (1-1): se leen sin guarda.
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p167:D208

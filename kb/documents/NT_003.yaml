@@ -1,0 +1,61 @@
+id: NT_003
+kind: technical_note
+number: 3
+title: Nota Técnica N° 3
+current_revision: 3d27fa591b59a56c7f03cf17340c67b359dfebed23c14c8dff655998ebfc03e8
+document_date:
+  value: 2020-11-18
+  literal: 18/11/2020
+  stated_in:
+    doc: NT_003
+    rev: 3d27fa591b59
+    page_pdf: 1
+    quote: |-
+      Fecha: 18/11/2020
+change_period:
+  - value: 2020-11-15
+    literal: 15/11/2020
+    stated_in:
+      doc: NT_003
+      rev: 3d27fa591b59
+      page_pdf: 1
+      quote: |-
+        Cambios desde la fecha: 15/11/2020 al 15/11/2020
+  - value: 2020-11-15
+    literal: 15/11/2020
+    stated_in:
+      doc: NT_003
+      rev: 3d27fa591b59
+      page_pdf: 1
+      quote: |-
+        Cambios desde la fecha: 15/11/2020 al 15/11/2020
+effects:
+  - id: NT_003#1
+    verb_literal: Se modifican los siguientes campos
+    action: modify
+    target: field:DE:D202
+    declared_scope: []
+    evidence:
+      - raw:NT_003@3d27fa591b59:p1:D219
+      - raw:NT_003@3d27fa591b59:p1:D223
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mención, no cambio: NT 3 modifica los campos D219 y D223 (fuera del piloto), cuyas observaciones nombran D202 («D202≠4», «D202 = 4»). NT 3 no modifica el campo D202.
+  - id: NT_003#2
+    verb_literal: Se eliminan las siguientes validaciones
+    action: remove
+    target: field:DE:D202
+    declared_scope: []
+    evidence:
+      - raw:NT_003@3d27fa591b59:p1:D219~2
+      - raw:NT_003@3d27fa591b59:p1:D223~2
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mención, no cambio: NT 3 elimina las validaciones D219 (1324) y D223 (1327), fuera del piloto, cuyas observaciones nombran D202 («D202≠4»). NT 3 no modifica el campo D202.
+curation_scope: dates_only

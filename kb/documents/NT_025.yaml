@@ -1,0 +1,19 @@
+id: NT_025
+kind: technical_note
+number: 25
+title: Nota Técnica N° 25
+current_revision: 3950e171f161fe360adda7e04dcd7ff2676b842b6e5f8da5c13fd974e8f916d2
+document_date:
+  value: 2024-04-23
+  literal: 23/04/2024
+  stated_in: raw:NT_025@3950e171f161:p1:fechas#fecha
+schedule:
+  test:
+    value: 2025-04-28
+    literal: 28/04/2025
+    stated_in: raw:NT_025@3950e171f161:p1:fechas#test
+  prod:
+    value: 2025-04-28
+    literal: 28/04/2025
+    stated_in: raw:NT_025@3950e171f161:p1:fechas#prod
+curation_scope: dates_only

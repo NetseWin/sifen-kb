@@ -1,0 +1,40 @@
+key: val:DE:D208b
+context: DE
+id: D208b
+subject_field: field:DE:D208
+versions:
+  - introduced_by: baseline
+    code: 1319
+    severity: R
+    message: Tipo de documento de identidad del receptor incorrecto para el tipo de operación
+    observation: |-
+      El Tipo de documento de identidad del receptor no puede ser innominado (D208=5), cuando el tipo de operación es distinto a B2C (D202 ≠ 2)
+    condition:
+      expr: exists(D208) and D208 == 5 and D202 != 2
+      level: full
+      interpretation:
+        by: llm
+        run: a067d55b-d757-498d-a601-f946db1a3acc
+        note: |-
+          Se viola cuando el receptor es innominado (D208 = 5) y la operación no es B2C. D208 ausente no viola.
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p167:D208b
+  - introduced_by:
+      - NT_010#6
+    based_on: baseline
+    kind: tombstone
+    code: 1319
+    severity: R
+    message: Tipo de documento de identidad del receptor incorrecto para el tipo de operación
+    observation: |-
+      El Tipo de documento de identidad del receptor no puede ser innominado (D208=5), cuando el tipo de operación es distinto a B2C (D202 ≠ 2)
+    condition:
+      expr: exists(D208) and D208 == 5 and D202 != 2
+      level: full
+      interpretation:
+        by: llm
+        run: a067d55b-d757-498d-a601-f946db1a3acc
+        note: |-
+          Se viola cuando el receptor es innominado (D208 = 5) y la operación no es B2C. D208 ausente no viola.
+    evidence:
+      - raw:NT_010@d261165c512c:p3:D208b

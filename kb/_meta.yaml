@@ -1,0 +1,13 @@
+baseline_doc: MT_V150
+baseline_sha256: 976cd88c05c31041ee86db1667e1b426e2d9ddf675d941973d5918cbdc5427c6
+coverage_from: 2023-06-17
+horizon_grace_days: 7
+date_axis_default: processing
+assumptions:
+  - id: A1
+    text: NT 001–012 rigieron en producción antes de coverage_from (2023-06-17).
+    status: unverified
+  - id: A2
+    text: |-
+      --at es la fecha de procesamiento (dFecProc de la respuesta de SIFEN), no la de emisión (dFeEmiDE).
+    status: unverified

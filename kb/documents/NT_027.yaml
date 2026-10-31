@@ -1,0 +1,46 @@
+id: NT_027
+kind: technical_note
+number: 27
+title: Nota Técnica N° 27
+current_revision: 3ff6fbbf9f54d938a777c8a98f0b18555af6b21014e2bc5349c7bfe56e2bb37d
+document_date:
+  value: 2026-03-09
+  literal: 09/03/2026
+  stated_in: raw:NT_027@3ff6fbbf9f54:p1:fechas#fecha
+schedule:
+  test:
+    value: 2026-03-09
+    literal: 09/03/2026
+    stated_in: raw:NT_027@3ff6fbbf9f54:p1:fechas#test
+  prod:
+    value: 2026-03-09
+    literal: 09/03/2026
+    stated_in: raw:NT_027@3ff6fbbf9f54:p1:fechas#prod
+effects:
+  - id: NT_027#1
+    verb_literal: se modifican los siguientes campos
+    action: modify
+    target: field:DE:D208
+    declared_scope: []
+    evidence:
+      - raw:NT_027@3ff6fbbf9f54:p1:GENFE010
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mismo xml_name en otro contexto: NT 27 modifica GENFE010 iTipIDRec del evento de Nominación de Factura Electrónica (fuera del MVP). No modifica el campo D208 del DE.
+  - id: NT_027#2
+    verb_literal: se modifican los siguientes campos
+    action: modify
+    target: field:DE:D209
+    declared_scope: []
+    evidence:
+      - raw:NT_027@3ff6fbbf9f54:p1:GENFE011
+    disposition: not_modeled
+    interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+    note: |-
+      Mismo xml_name en otro contexto: NT 27 modifica GENFE011 dDTipIDRec del evento de Nominación (fuera del MVP). No modifica el campo D209 del DE.
+curation_scope: dates_only

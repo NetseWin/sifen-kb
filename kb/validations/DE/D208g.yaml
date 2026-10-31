@@ -1,0 +1,26 @@
+key: val:DE:D208g
+context: DE
+id: D208g
+subject_field: field:DE:D208
+versions:
+  - introduced_by:
+      - NT_023#7
+    based_on: baseline
+    code: 1335
+    severity: R
+    message: El tipo de documento de identidad del receptor es requerido
+    observation: |-
+      Si la naturaleza del receptor es NO Contribuyente (D201=2), el tipo de documento de identidad del receptor debe ser informado
+    condition:
+      expr: D201 == 2 and not exists(D208)
+      level: full
+      interpretation:
+        by: llm
+        run: a067d55b-d757-498d-a601-f946db1a3acc
+        note: |-
+          Se viola cuando el receptor es no contribuyente y D208 no se informa, sin excepción por tipo de operación (a diferencia de D208/1310, que excluye B2F).
+    evidence:
+      - raw:NT_023@9cb063673358:p2:D208g
+    open_questions:
+      - |-
+        ¿D208g (1335) reemplaza a D208 (1310) sin la excepción B2F? DNIT no lo declara; en la misma NT la observación del campo D208 pasa a «Obligatorio si D201 = 2» (literal efectivo, sin «y D202 ≠ 4»), coherente con D208g, pero 1310 no se menciona (ISS-0003, ISS-0009).

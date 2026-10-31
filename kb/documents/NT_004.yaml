@@ -1,0 +1,32 @@
+id: NT_004
+kind: technical_note
+number: 4
+title: Nota Técnica N° 4
+current_revision: 185619ec4badc431187cdfd79e4095161e52665a164595a5ab33862db1507c58
+document_date:
+  value: 2020-12-29
+  literal: 29/12/2020
+  stated_in:
+    doc: NT_004
+    rev: 185619ec4bad
+    page_pdf: 1
+    quote: |-
+      Fecha: 29/12/2020
+change_period:
+  - value: 2020-12-29
+    literal: 29/12/2020
+    stated_in:
+      doc: NT_004
+      rev: 185619ec4bad
+      page_pdf: 1
+      quote: |-
+        Cambios desde la fecha: 29/12/2020 al 29/12/2020
+  - value: 2020-12-29
+    literal: 29/12/2020
+    stated_in:
+      doc: NT_004
+      rev: 185619ec4bad
+      page_pdf: 1
+      quote: |-
+        Cambios desde la fecha: 29/12/2020 al 29/12/2020
+curation_scope: dates_only

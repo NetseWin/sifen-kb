@@ -1,0 +1,18 @@
+id: ISS-0008
+kind: ambiguity
+affects:
+  - subject: val:DE:D208b
+  - subject: val:DE:D208f
+statement: |-
+  NT 10 §2.1 («se modifican y elimina las siguientes validaciones y se agrega nueva validación») reproduce cuatro filas sin decir qué verbo corresponde a cada una: D202 (1300), D220 (1325), D208b (1319) y D208e (1331). La curación (NT_010#6) interpreta que D208b es la eliminada: D208e es la única que no existe en el MT («nueva»), D202 y D220 traen texto distinto del MT («se modifican») y D208b se reproduce idéntica al MT, sin nada que modificar; el resaltado rojo de toda la fila coincide. Esto contradice el supuesto del diseño (docs/arquitectura.md §G.3, §S) de que D208b rige hasta NT 23.
+evidence:
+  - raw:NT_010@d261165c512c:p3:D208b
+  - raw:NT_010@d261165c512c:p3:D208e
+  - raw:NT_010@d261165c512c:p3:D202
+  - raw:NT_010@d261165c512c:p3:D220
+blocking: false
+policy: |-
+  Lápida de D208b por NT_010#6 con inicio aproximado (2022-02-04, fecha del documento; NT 10 no declara calendario): D208b responde removed desde NT 10, también después de NT 23.
+status: resolved
+resolution: |-
+  Decisión del usuario (2026-10-17): se acepta que NT 10 elimina D208b (1319). El inicio sigue siendo aproximado (la fecha del documento no se convierte en vigencia declarada). D208f (1333) es una entidad independiente; la relación posible queda en ISS-0002 (no bloqueante).

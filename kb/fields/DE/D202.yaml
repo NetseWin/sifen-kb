@@ -1,0 +1,30 @@
+key: field:DE:D202
+context: DE
+id: D202
+versions:
+  - introduced_by: baseline
+    group: D3
+    parent: D200
+    xml_name: iTiOpe
+    description: Tipo de operación
+    data_type: N
+    length: 1
+    occurrence: 1-1
+    observations: |-
+      1= B2B 2= B2C 3= B2G 4= B2F (Esta última opción debe utilizarse solo en caso de servicios para empresas o personas físicas del exterior)
+    enumeration:
+      - code: 1
+        label: B2B
+      - code: 2
+        label: B2C
+      - code: 3
+        label: B2G
+      - code: 4
+        label: B2F
+    enumeration_interpretation:
+      by: llm
+      run: a067d55b-d757-498d-a601-f946db1a3acc
+      note: |-
+        La etiqueta de 4 omite la aclaración entre paréntesis («Esta última opción debe utilizarse solo en caso de servicios para empresas o personas físicas del exterior»), que queda en observations.
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p72:D202

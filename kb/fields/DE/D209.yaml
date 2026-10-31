@@ -1,0 +1,16 @@
+key: field:DE:D209
+context: DE
+id: D209
+versions:
+  - introduced_by: baseline
+    group: D3
+    parent: D200
+    xml_name: dDTipIDRec
+    description: Descripción del tipo de documento de identidad
+    data_type: A
+    length: 9-41
+    occurrence: 0-1
+    observations: |-
+      Obligatorio si existe el campo D208 1= “Cédula paraguaya” 2= “Pasaporte” 3= “Cédula extranjera” 4= “Carnet de residencia” 5 = “Innominado” 6= “Tarjeta Diplomática de exoneración fiscal” Si D208 = 9 informar el tipo de documento de identidad del receptor
+    evidence:
+      - raw:MT_V150@976cd88c05c3:p73:D209

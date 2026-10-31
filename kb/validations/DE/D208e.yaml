@@ -1,0 +1,44 @@
+key: val:DE:D208e
+context: DE
+id: D208e
+subject_field: field:DE:D208
+versions:
+  - introduced_by:
+      - NT_010#7
+    based_on: baseline
+    code: 1331
+    severity: R
+    message: |-
+      El adquiriente del comprobante de venta informado no se encuentra identificado. Favor verifique el dato ingresado.
+    observation: |-
+      Si el tipo de documento electrónico es Nota de Crédito (C002 = 5) o Nota de Débito (C002 = 6), el tipo de documento de identidad del receptor no puede ser INNOMINADO (D208 ≠ 5)
+    condition:
+      expr: C002 in (5, 6) and exists(D208) and D208 == 5
+      level: full
+      gaps: |-
+        Polaridad mixta: «(D208 ≠ 5)» es la restricción que debe cumplirse, no el disparador; la condición de violación es D208 = 5. D208 ausente no viola.
+      interpretation:
+        by: llm
+        run: a067d55b-d757-498d-a601-f946db1a3acc
+    evidence:
+      - raw:NT_010@d261165c512c:p3:D208e
+  - introduced_by:
+      - NT_023#3
+    based_on:
+      - NT_010#7
+    code: 1331
+    severity: R
+    message: |-
+      El adquiriente del comprobante de venta informado no se encuentra identificado. Favor verifique el dato ingresado.
+    observation: |-
+      Si el tipo de documento electrónico seleccionado es igual a Nota de Crédito, Nota de Débito o Nota de Remisión Electrónica (C002 = 5, 6, 7), el tipo de documento de identidad del receptor no puede ser INNOMINADO (D208 ≠ 5)
+    condition:
+      expr: C002 in (5, 6, 7) and exists(D208) and D208 == 5
+      level: full
+      gaps: |-
+        Polaridad mixta: «(D208 ≠ 5)» es la restricción que debe cumplirse, no el disparador; la condición de violación es D208 = 5. D208 ausente no viola.
+      interpretation:
+        by: llm
+        run: a067d55b-d757-498d-a601-f946db1a3acc
+    evidence:
+      - raw:NT_023@9cb063673358:p2:D208e
