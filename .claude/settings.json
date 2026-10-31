@@ -43,9 +43,22 @@
         ]
       }
     ],
+    "PreToolUse": [
+      {
+        "matcher": "^mcp__.+__(multi_?)?(edit|write)(_file)?$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run --quiet --project \"${CLAUDE_PROJECT_DIR}\" python -m sifen_kb.hooklog PreToolUse",
+            "timeout": 30,
+            "onFailure": "block"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
-        "matcher": "Edit|Write|MultiEdit",
+        "matcher": "^(Edit|Write|MultiEdit)$|^mcp__.+__(multi_?)?(edit|write)(_file)?$",
         "hooks": [
           {
             "type": "command",

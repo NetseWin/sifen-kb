@@ -4,6 +4,7 @@ import hashlib
 import io
 import json
 import os
+import re
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -108,7 +109,9 @@ def load_run(path: Path) -> CurationRun:
         ("post-tool-use", "PostToolUse"),
         ("Backfill", "Backfill"),
         ("back-fill", "Backfill"),
-        ("PreToolUse", None),
+        ("PreToolUse", "PreToolUse"),
+        ("pre-tool-use", "PreToolUse"),
+        ("Stop", None),
         ("", None),
     ],
 )
@@ -600,3 +603,457 @@ def test_module_entrypoint_backfill_exits_1_on_error(repo):
     assert cp.returncode == 1
     assert cp.stdout == ""
     assert cp.stderr.startswith("hooklog:")
+
+
+# --- herramientas MCP de escritura: registro (PostToolUse) y guardia (PreToolUse) ------------------
+REPO_ROOT = Path(__file__).resolve().parents[2]
+MCP_EDIT = "mcp__custom-tools__edit"
+MCP_WRITE = "mcp__custom-tools__write"
+SETTINGS = {
+    "permissions": {
+        "deny": [
+            "Edit(/raw/**)",
+            "Edit(/kb/_meta.yaml)",
+            "Edit(/build)",
+            "Read(**/*.pem)",
+            "Bash(git push *)",
+        ]
+    }
+}
+
+
+def mcp_payload(repo: Path, path: object, tool: str = MCP_EDIT, event: str = "PreToolUse", **extra) -> dict:
+    tool_input = {"path": path, "edits": [{"oldText": "a", "newText": "b"}]} if path is not None else {}
+    return {
+        "session_id": "sess-1",
+        "cwd": str(repo),
+        "hook_event_name": event,
+        "tool_name": tool,
+        "tool_input": tool_input,
+        **extra,
+    }
+
+
+@pytest.fixture(autouse=True)
+def isolated_project_dir(monkeypatch):
+    """Los repos temporales no heredan la raíz del arnés que ejecuta pytest."""
+    monkeypatch.delenv("CLAUDE_PROJECT_DIR", raising=False)
+
+
+@pytest.fixture
+def guarded(repo: Path) -> Path:
+    write(repo, ".claude/settings.json", json.dumps(SETTINGS))
+    return repo
+
+
+def run_guard(payload: object, argv=("PreToolUse",)):
+    out, err = io.StringIO(), io.StringIO()
+    text = payload if isinstance(payload, str) else json.dumps(payload)
+    code = main(list(argv), stdin=io.StringIO(text), stderr=err, stdout=out)
+    return code, out.getvalue(), err.getvalue()
+
+
+def denial(out: str) -> str:
+    """Motivo del rechazo; falla si stdout no es exactamente la decisión `deny` de un PreToolUse."""
+    data = json.loads(out)
+    assert set(data) == {"hookSpecificOutput"}
+    spec = data["hookSpecificOutput"]
+    assert set(spec) == {"hookEventName", "permissionDecision", "permissionDecisionReason"}
+    assert (spec["hookEventName"], spec["permissionDecision"]) == ("PreToolUse", "deny")
+    return spec["permissionDecisionReason"]
+
+
+@pytest.mark.parametrize("tool", [MCP_EDIT, MCP_WRITE])
+def test_post_tool_use_records_mcp_edit_tools(repo, tool):
+    write(repo, KB_FILE, "v: 1\n")
+    path = process("PostToolUse", mcp_payload(repo, KB_FILE, tool=tool, event="PostToolUse"), now=NOW)
+    [o] = load_run(path).outputs
+    assert (o.path, o.sha256, o.source) == (KB_FILE, hashlib.sha256(b"v: 1\n").hexdigest(), None)
+
+
+def test_post_tool_use_ignores_mcp_tools_that_do_not_edit(repo):
+    write(repo, KB_FILE, "v: 1\n")
+    payload = mcp_payload(repo, KB_FILE, tool="mcp__custom-tools__bash", event="PostToolUse")
+    assert process("PostToolUse", payload, now=NOW) is None
+    assert not (repo / "curation" / "runs").exists()
+
+
+@pytest.mark.parametrize(
+    ("target", "rel", "rule"),
+    [
+        ("raw/MT_V150/pages/001.txt", "raw/MT_V150/pages/001.txt", "Edit(/raw/**)"),
+        ("kb/_meta.yaml", "kb/_meta.yaml", "Edit(/kb/_meta.yaml)"),
+        ("build/kb.json", "build/kb.json", "Edit(/build)"),
+        ("kb/../raw/x.txt", "raw/x.txt", "Edit(/raw/**)"),
+    ],
+)
+def test_guard_denies_mcp_edit_of_protected_path(guarded, target, rel, rule):
+    code, out, err = run_guard(mcp_payload(guarded, target))
+    assert (code, err) == (0, "")
+    reason = denial(out)
+    assert rule in reason and rel in reason
+    assert not (guarded / "curation" / "runs").exists()  # la guardia no escribe la bitácora
+
+
+def test_guard_also_applies_local_settings(guarded):
+    write(
+        guarded, ".claude/settings.local.json", json.dumps({"permissions": {"deny": ["Edit(/privado/**)"]}})
+    )
+    code, out, err = run_guard(mcp_payload(guarded, "privado/de.xml", tool=MCP_WRITE))
+    assert (code, err) == (0, "")
+    assert "Edit(/privado/**)" in denial(out)
+    assert "Edit(/raw/**)" in denial(run_guard(mcp_payload(guarded, "raw/x.txt"))[1])
+
+
+def test_guard_denies_absolute_path_and_write_tool(guarded):
+    code, out, err = run_guard(mcp_payload(guarded, str(guarded / "kb" / "_meta.yaml"), tool=MCP_WRITE))
+    assert (code, err) == (0, "")
+    assert "kb/_meta.yaml" in denial(out)
+
+
+@pytest.mark.parametrize("target", ["kb/validations/DE/D208c.yaml", "docs/uso.md", "rawx/a.txt", "build2/a"])
+def test_guard_allows_unprotected_path(guarded, target):
+    assert run_guard(mcp_payload(guarded, target)) == (0, "", "")
+    assert not (guarded / "curation" / "runs").exists()
+
+
+def test_guard_allows_path_outside_the_repo(guarded, tmp_path):
+    assert run_guard(mcp_payload(guarded, str(tmp_path / "fuera" / "x.txt"))) == (0, "", "")
+
+
+def test_guard_allows_mcp_tools_that_do_not_edit(guarded):
+    assert run_guard(mcp_payload(guarded, "raw/x.txt", tool="mcp__custom-tools__read")) == (0, "", "")
+
+
+def test_guard_without_settings_fails_closed(repo):
+    assert_unchanged_guard(
+        repo,
+        mcp_payload(repo, "raw/x.txt"),
+        (
+            2,
+            "",
+            f"hooklog: guardia: {repo}/.claude/settings.json: faltan los settings del proyecto; "
+            "se bloquea la herramienta\n",
+        ),
+    )
+
+
+def test_guard_denies_edit_tool_without_path(guarded):
+    code, out, err = run_guard(mcp_payload(guarded, None))
+    assert (code, err) == (0, "")
+    assert "ruta" in denial(out)
+
+
+def test_guard_takes_event_from_hook_event_name(guarded):
+    code, out, _ = run_guard(mcp_payload(guarded, "raw/x.txt"), argv=())
+    assert code == 0
+    assert "Edit(/raw/**)" in denial(out)
+
+
+@pytest.mark.parametrize(
+    ("settings_text", "stdin_text"),
+    [
+        ("{ esto no es json", None),
+        (json.dumps({"permissions": {"deny": "Edit(/raw/**)"}}), None),
+        (json.dumps(SETTINGS), "{{{ no es json"),
+        (json.dumps(SETTINGS), "[1, 2]"),
+    ],
+    ids=["settings_ilegible", "deny_no_es_lista", "stdin_no_es_json", "stdin_no_es_objeto"],
+)
+def test_guard_fails_closed_with_exit_2(repo, settings_text, stdin_text):
+    write(repo, ".claude/settings.json", settings_text)
+    code, out, err = run_guard(stdin_text if stdin_text is not None else mcp_payload(repo, "docs/uso.md"))
+    assert code == 2
+    assert out == ""
+    assert err.startswith("hooklog: guardia:") and "se bloquea" in err
+
+
+def test_guard_fails_closed_on_unexpected_exception(guarded, monkeypatch):
+    def boom(*args, **kwargs):
+        raise RuntimeError("fallo interno")
+
+    monkeypatch.setattr(hooklog, "protected_rules", boom)
+    code, out, err = run_guard(mcp_payload(guarded, "docs/uso.md"))
+    assert (code, out) == (2, "")
+    assert "RuntimeError" in err and "se bloquea" in err
+
+
+def test_module_entrypoint_guard_denies(guarded):
+    src = Path(hooklog.__file__).resolve().parents[1]
+    env = {**os.environ, "PYTHONPATH": str(src)}
+    cp = subprocess.run(
+        [sys.executable, "-m", "sifen_kb.hooklog", "PreToolUse"],
+        input=json.dumps(mcp_payload(guarded, "raw/x.txt")),
+        capture_output=True,
+        text=True,
+        cwd=guarded,
+        env=env,
+        check=False,
+    )
+    assert (cp.returncode, cp.stderr) == (0, "")
+    assert "Edit(/raw/**)" in denial(cp.stdout)
+
+
+# --- regresiones de la guardia: rutas múltiples, enlaces y contexto de seguridad -------------------
+def tree_snapshot(root: Path) -> dict:
+    """Contenido y estructura, incluidos enlaces sin seguirlos (solo repos temporales de prueba)."""
+    return {
+        p.relative_to(root).as_posix(): (
+            ("enlace", os.readlink(p))
+            if p.is_symlink()
+            else ("archivo", p.read_bytes())
+            if p.is_file()
+            else ("directorio", None)
+        )
+        for p in root.rglob("*")
+    }
+
+
+def assert_unchanged_guard(root: Path, payload: object, expected: tuple) -> None:
+    before = tree_snapshot(root)
+    result = run_guard(payload)
+    assert tree_snapshot(root) == before
+    assert result == expected
+
+
+def expected_denial(reason: str) -> tuple:
+    return (
+        0,
+        json.dumps(
+            {
+                "hookSpecificOutput": {
+                    "hookEventName": "PreToolUse",
+                    "permissionDecision": "deny",
+                    "permissionDecisionReason": reason,
+                }
+            },
+            ensure_ascii=False,
+        )
+        + "\n",
+        "",
+    )
+
+
+def protected_denial(rel: str, rule: str = "Edit(/raw/**)") -> tuple:
+    return expected_denial(
+        f"Se bloquea la escritura de {rel}: la regla {rule} de `permissions.deny` en "
+        ".claude/settings.json (incluidas las de .claude/settings.local.json) protege esta ruta."
+    )
+
+
+@pytest.mark.parametrize(
+    ("target", "expected"),
+    [
+        ("docs/../raw/x", protected_denial("raw/x")),
+        ("raw/x/", protected_denial("raw/x")),
+        ("build/x", protected_denial("build/x", "Edit(/build)")),
+        ("rawx/x", (0, "", "")),
+        ("RAW/x", (0, "", "")),
+        (r"raw\x", (0, "", "")),
+    ],
+)
+def test_guard_path_regressions(guarded, target, expected):
+    assert_unchanged_guard(guarded, mcp_payload(guarded, target), expected)
+
+
+@pytest.mark.parametrize("outside", [False, True])
+def test_guard_absolute_path_regressions(guarded, tmp_path, outside):
+    target = tmp_path / "fuera/x" if outside else guarded / "raw/x"
+    expected = (0, "", "") if outside else protected_denial("raw/x")
+    assert_unchanged_guard(tmp_path, mcp_payload(guarded, str(target)), expected)
+
+
+@pytest.mark.parametrize("protected_link", [False, True])
+def test_guard_checks_lexical_and_resolved_symlink_paths(guarded, protected_link):
+    if protected_link:
+        write(guarded, "store/x", "original\n")
+        (guarded / "raw").symlink_to("store", target_is_directory=True)
+        target = "raw/x"
+    else:
+        write(guarded, "raw/x", "original\n")
+        (guarded / "alias").symlink_to("raw", target_is_directory=True)
+        target = "alias/x"
+    assert_unchanged_guard(guarded, mcp_payload(guarded, target), protected_denial("raw/x"))
+
+
+def test_guard_protected_file_with_aliased_project_cwd(guarded, tmp_path, monkeypatch):
+    write(guarded, "store/x", "original\n")
+    (guarded / "raw").mkdir()
+    (guarded / "raw/x").symlink_to("../store/x")
+    alias = tmp_path / "project-alias"
+    alias.symlink_to(guarded, target_is_directory=True)
+    monkeypatch.setenv("CLAUDE_PROJECT_DIR", str(guarded))
+    before = tree_snapshot(guarded)
+    code, out, err = run_guard(mcp_payload(alias, "raw/x"))
+    assert tree_snapshot(guarded) == before
+    assert (code, err) == (0, "")
+    assert "Edit(/raw/**)" in denial(out)
+
+
+@pytest.mark.parametrize("project_is_alias", [False, True])
+def test_guard_protected_file_with_absolute_aliased_target(guarded, tmp_path, monkeypatch, project_is_alias):
+    write(guarded, "store/x", "original\n")
+    (guarded / "raw").mkdir()
+    (guarded / "raw/x").symlink_to("../store/x")
+    alias = tmp_path / "project-alias"
+    alias.symlink_to(guarded, target_is_directory=True)
+    monkeypatch.setenv("CLAUDE_PROJECT_DIR", str(alias if project_is_alias else guarded))
+    before = tree_snapshot(guarded)
+    code, out, err = run_guard(mcp_payload(alias, str(alias / "raw/x")))
+    assert tree_snapshot(guarded) == before
+    assert (code, err) == (0, "")
+    assert "Edit(/raw/**)" in denial(out)
+
+
+@pytest.mark.parametrize("key", ["path", "file_path", "notebook_path"])
+@pytest.mark.parametrize("bad", ["", 42, None, [], {}])
+def test_guard_rejects_every_present_invalid_path_key(guarded, key, bad):
+    payload = mcp_payload(guarded, "docs/uso.md")
+    payload["tool_input"][key] = bad
+    assert_unchanged_guard(
+        guarded,
+        payload,
+        expected_denial("Se bloquea la escritura: la herramienta no indica una ruta de destino utilizable."),
+    )
+
+
+@pytest.mark.parametrize("key", ["path", "file_path", "notebook_path"])
+@pytest.mark.parametrize("tool", [MCP_EDIT, "Write"])
+def test_guard_checks_all_conflicting_path_keys(guarded, key, tool):
+    payload = mcp_payload(guarded, "docs/uso.md", tool=tool)
+    payload["tool_input"] = dict.fromkeys(("path", "file_path", "notebook_path"), "docs/uso.md")
+    payload["tool_input"][key] = "raw/x"
+    assert_unchanged_guard(guarded, payload, protected_denial("raw/x"))
+
+
+@pytest.mark.parametrize("tool", [MCP_WRITE, "Write"])
+def test_post_records_every_distinct_registrable_path(repo, tool):
+    a = write(repo, "store/x", "a\n")
+    b = write(repo, "ok.txt", "b\n")
+    payload = mcp_payload(repo, "store/x", tool=tool, event="PostToolUse")
+    payload["tool_input"].update(file_path="ok.txt", notebook_path="./store/x")
+    out, err = io.StringIO(), io.StringIO()
+    assert main(["PostToolUse"], stdin=io.StringIO(json.dumps(payload)), stdout=out, stderr=err) == 0
+    assert (out.getvalue(), err.getvalue()) == ("", "")
+    run = load_run(repo / "curation/runs/sess-1.yaml")
+    assert [(o.path, o.sha256, o.source) for o in run.outputs] == [
+        ("ok.txt", hashlib.sha256(b"b\n").hexdigest(), None),
+        ("store/x", hashlib.sha256(b"a\n").hexdigest(), None),
+    ]
+    assert (a.read_bytes(), b.read_bytes()) == (b"a\n", b"b\n")
+
+
+@pytest.mark.parametrize("case", ["empty", "missing", "bad_tool", "bad_deny", "local_json", "local_deny"])
+def test_guard_fails_closed_on_missing_or_malformed_security_context(guarded, case):
+    payload = mcp_payload(guarded, "docs/uso.md")
+    settings = guarded / ".claude/settings.json"
+    if case == "empty":
+        payload = ""
+        message = "falta un `tool_name` de tipo string"
+    elif case == "missing":
+        del payload["tool_name"]
+        message = "falta un `tool_name` de tipo string"
+    elif case == "bad_tool":
+        payload["tool_name"] = 42
+        message = "falta un `tool_name` de tipo string"
+    elif case == "bad_deny":
+        write(guarded, ".claude/settings.json", json.dumps({"permissions": {"deny": [42]}}))
+        message = f"{settings}: cada entrada de `permissions.deny` debe ser un string"
+    elif case == "local_json":
+        write(guarded, ".claude/settings.local.json", "{")
+        message = (
+            f"{settings.with_name('settings.local.json')}: settings ilegible o inválido "
+            "(Expecting property name enclosed in double quotes: line 1 column 2 (char 1))"
+        )
+    else:
+        write(guarded, ".claude/settings.local.json", json.dumps({"permissions": {"deny": [None]}}))
+        message = f"{settings.with_name('settings.local.json')}: cada entrada de `permissions.deny` debe ser un string"
+    assert_unchanged_guard(
+        guarded, payload, (2, "", f"hooklog: guardia: {message}; se bloquea la herramienta\n")
+    )
+
+
+@pytest.mark.parametrize("relative_rule", [None, "./raw/**", "raw/**"])
+def test_guard_project_env_wins_but_relative_paths_use_payload_cwd(
+    guarded, tmp_path, monkeypatch, relative_rule
+):
+    other = tmp_path / "otro"
+    other.mkdir()
+    monkeypatch.setenv("CLAUDE_PROJECT_DIR", str(guarded))
+    if relative_rule is None:
+        target = str(guarded / "raw/x")
+        expected = protected_denial("raw/x")
+    else:
+        write(
+            guarded,
+            ".claude/settings.json",
+            json.dumps({"permissions": {"deny": [f"Edit({relative_rule})"]}}),
+        )
+        target = "raw/x"
+        expected = protected_denial(str(other / "raw/x"), f"Edit({relative_rule})")
+    assert_unchanged_guard(tmp_path, mcp_payload(other, target), expected)
+
+
+@pytest.mark.parametrize("env_value", [None, ""])
+def test_guard_falls_back_to_payload_root_without_project_env(guarded, monkeypatch, env_value):
+    if env_value is not None:
+        monkeypatch.setenv("CLAUDE_PROJECT_DIR", env_value)
+    assert_unchanged_guard(guarded, mcp_payload(guarded, "raw/x"), protected_denial("raw/x"))
+
+
+# --- .claude/settings.json real: la guardia cubre las zonas de `deny` y los matchers coinciden ------
+def repo_settings() -> dict:
+    return json.loads((REPO_ROOT / ".claude" / "settings.json").read_text(encoding="utf-8"))
+
+
+def hook_entries(event: str) -> list[dict]:
+    return repo_settings()["hooks"][event]
+
+
+@pytest.mark.parametrize(
+    "target",
+    [
+        "sources/NT_024/abc.pdf",
+        "sources.manifest.yaml",
+        "raw/MT_V150/pages/001.txt",
+        "extraction/fixes.yaml",
+        "build/kb.json",
+        "kb/_meta.yaml",
+        ".claude/settings.json",
+        "CLAUDE.md",
+        "curation/runs/sess.yaml",
+    ],
+)
+def test_repo_settings_guard_denies_every_edit_deny_zone(target):
+    code, out, err = run_guard(mcp_payload(REPO_ROOT, target))
+    assert (code, err) == (0, "")
+    assert target in denial(out)
+
+
+@pytest.mark.parametrize(
+    "target",
+    ["kb/validations/DE/D208c.yaml", "kb/issues/ISS-0001.yaml", "docs/uso.md", "src/sifen_kb/cli.py"],
+)
+def test_repo_settings_guard_allows_curation_and_code(target):
+    assert run_guard(mcp_payload(REPO_ROOT, target)) == (0, "", "")
+
+
+def test_repo_settings_pre_tool_use_hook_blocks_on_failure_and_matches_mcp_edit_tools():
+    [entry] = hook_entries("PreToolUse")
+    [hook] = entry["hooks"]
+    assert hook["onFailure"] == "block"
+    assert hook["command"].endswith("python -m sifen_kb.hooklog PreToolUse")
+    matcher = re.compile(entry["matcher"])  # regex JS no anclada; esta sintaxis vale igual en Python
+    for name in (MCP_EDIT, MCP_WRITE, "mcp__fs__write_file", "mcp__fs__edit_file", "mcp__x__multi_edit"):
+        assert matcher.search(name) and hooklog.is_edit_tool(name), name
+    for name in ("mcp__custom-tools__bash", "mcp__custom-tools__read", "Edit", "Bash", "mcp__x__editor"):
+        assert not matcher.search(name), name
+
+
+def test_repo_settings_post_tool_use_matcher_keeps_native_tools_and_adds_mcp():
+    [entry] = hook_entries("PostToolUse")
+    matcher = re.compile(entry["matcher"])
+    for name in ("Edit", "Write", "MultiEdit", MCP_EDIT, MCP_WRITE):
+        assert matcher.search(name), name
+    for name in ("Bash", "Read", "NotebookEdit", "mcp__custom-tools__bash", "mcp__custom-tools__read"):
+        assert not matcher.search(name), name

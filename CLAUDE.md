@@ -8,7 +8,7 @@ Base de conocimiento de SIFEN (Paraguay): qué regla rige en cada fecha y ambien
    `uv run sifen explain <término> --json [--at AAAA-MM-DD] [--env prod|test]`. No respondas reglas SIFEN de memoria.
 2. Para un rechazo con XML usa `--xml RUTA` y pide la respuesta de SIFEN (`--response RUTA`) o su fecha de
    procesamiento (`--processed-at`). Nunca abras un XML real con Read, cat, grep ni otra herramienta.
-3. Empieza por `state` y `reasons`. Si no es `in_force`, dilo antes que nada. Si es `not_curated`, di que la
+3. Empieza por `state` y `reasons` (con `--json`, en `results[].resolution`). Si no es `in_force`, dilo antes que nada. Si es `not_curated`, di que la
    vigencia no está resuelta y muestra las menciones sin inferir la regla.
 4. Cita el documento oficial (documento, revisión sha12, página impresa y PDF). La autoridad es DNIT, nunca "la KB".
 5. Transmite `warnings`, `pending_effects`, `open_issues` y la fecha del horizonte de fuentes tal cual.
