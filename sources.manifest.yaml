@@ -325,3 +325,9 @@ checks:
       - xsd
       - manual
     unregistered: []
+  - at: 2026-10-31T09:18:08Z
+    scope:
+      - nt
+      - xsd
+      - manual
+    unregistered: []
